@@ -54,6 +54,10 @@ function redirect_login( $redirect_to, $request, $user ) {
     }
 }
 
+if (!current_user_can( 'administrator' )) :
+	show_admin_bar( false );
+endif;
+
 // Make theme available for translation
 // Translations can be filed in the /languages/ directory
 load_theme_textdomain( 'rolopress', TEMPLATEPATH . '/languages' );
