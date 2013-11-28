@@ -139,7 +139,7 @@ function rolopress_default_top_menu_right() { ?>
             <?php if ( $user_level >= 1 ) : ?>
                 <li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span><?php _e('Settings', 'rolopress') ?></span></a></li>
             <?php endif // $user_level >= 1 ?>
-            <li><?php wp_loginout(); ?></li>
+            <li><?php wp_loginout(home_url( '/wp-admin/' )); ?></li>
         </ul>
 <?php
 }

@@ -78,6 +78,10 @@ li {
     background: #023f7b;
     padding:5px 15px;
 }
+#menu .menu {
+	max-width: 1280px;
+	margin: 10px auto 0;
+}
 #menu ul {
     list-style: none;
     margin: 0;

@@ -41,6 +41,19 @@ function custom_login() { ?>
 <?php }
 add_action( 'login_enqueue_scripts', 'custom_login' );
 
+// Função que redireciona o usuário após fazer login
+add_filter( 'login_redirect', 'redirect_login', 10, 3 );
+function redirect_login( $redirect_to, $request, $user ) {
+    if ( is_array( $user->roles ) ) {
+        // Se o usuário é administrador, redireciona para /wp-admin
+        if ( in_array( 'administrator', $user->roles ) )
+            return home_url( '/wp-admin/' );
+        else
+            // Se não, redireciona para home
+            return home_url();
+    }
+}
+
 // Make theme available for translation
 // Translations can be filed in the /languages/ directory
 load_theme_textdomain( 'rolopress', TEMPLATEPATH . '/languages' );
