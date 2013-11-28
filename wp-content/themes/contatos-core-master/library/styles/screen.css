@@ -22,6 +22,45 @@ li {
 
 /* =Header
 -------------------------------------------------------------- */
+.wrapper-header {
+    background: url('../../img/bg-header.jpg') repeat scroll center center rgba(0, 0, 0, 0);
+    height: 230px;
+	overflow: hidden;
+}
+.wrapper-header-content {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+.logo-header {
+	width: 806px;
+	height: 46px;
+	background: url('../../img/logo-contatos.png') no-repeat;
+	margin: 85px 0 0;
+	float: left;
+}
+.busca-header {
+    float: right;
+    margin: 91px 0 0;
+    max-width: 300px;
+}
+.busca-header input {
+	padding: 10px 15px;
+	background: #FFF;
+	border: 1px solid #023f7b;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #919191;
+	font-size: 16px;
+}
+.busca-header input#searchsubmit {
+    background: url("../../img/icon-busca.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    cursor: pointer;
+    height: 46px;
+    margin: 0 0 0 10px;
+    width: 46px;
+}
 #access {
     margin: 0 0 1.5em 0;
     overflow: auto;
@@ -30,8 +69,8 @@ li {
     display: none;
 }
 #menu {
-    height: 36px;
-    background: #464646;
+    height: 60px;
+    background: #023f7b;
     padding:5px 15px;
 }
 #menu ul {
