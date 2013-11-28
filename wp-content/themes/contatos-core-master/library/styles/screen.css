@@ -38,6 +38,11 @@ li {
 	margin: 85px 0 0;
 	float: left;
 }
+.a-logo-header {
+	width: 806px;
+	height: 46px;
+	position: absolute;
+}
 .busca-header {
     float: right;
     margin: 91px 0 0;

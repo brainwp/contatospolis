@@ -17,7 +17,9 @@
 <div class="wrapper-header">
 	<div class="wrapper-header-content">
 
-			<div class="logo-header"></div><!-- .logo-header -->
+			<div class="logo-header">
+				<a class="a-logo-header" href="<?php echo home_url(); ?>"></a>
+			</div><!-- .logo-header -->
 			<div class="busca-header">
 				<form id="searchform" method="get" action="<?php bloginfo('url') ?>">
 					<?php
