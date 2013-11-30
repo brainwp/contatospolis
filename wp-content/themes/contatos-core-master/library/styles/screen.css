@@ -104,6 +104,19 @@ li {
 	padding: 0 10px 0 0;
 	color: #CCC;
 }
+#menu li.icon-user {
+    background: url("../../img/sprite.png") no-repeat scroll 0 0 transparent;
+    height: 30px;
+    margin: 2px 10px 0 0;
+    width: 30px;
+}
+
+#menu li.icon-logout {
+    background: url("../../img/sprite.png") no-repeat scroll -31px 5px transparent;
+    height: 25px;
+    margin: 4px 10px 0 0;
+    width: 25px;
+}
 #menu a:hover {
     color:#FFFFFF;
     text-decoration:underline;
