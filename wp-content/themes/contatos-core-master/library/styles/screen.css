@@ -81,6 +81,7 @@ li {
 #menu .menu {
 	max-width: 1280px;
 	margin: 10px auto 0;
+	color:#ccc;
 }
 #menu ul {
     list-style: none;
@@ -98,6 +99,10 @@ li {
     padding:0 10px 0 0;
     color:#ccc;
     text-decoration:none;
+}
+#menu li.name-user {
+	padding: 0 10px 0 0;
+	color: #CCC;
 }
 #menu a:hover {
     color:#FFFFFF;

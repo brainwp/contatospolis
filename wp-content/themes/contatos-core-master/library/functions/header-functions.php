@@ -135,11 +135,22 @@ add_action('rolopress_before_wrapper', 'rolopress_default_top_menu');
 function rolopress_default_top_menu_right() { ?>
 
         <ul class="menu_item sub_menu alignright default_menu">
-            <?php global $user_ID, $user_identity, $user_level ?>
+            <?php global $user_ID, $user_identity, $user_level, $current_user ?>
+
             <?php if ( $user_level >= 1 ) : ?>
                 <li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span><?php _e('Settings', 'rolopress') ?></span></a></li>
             <?php endif // $user_level >= 1 ?>
+            
             <li><?php wp_loginout(home_url( '/wp-admin/' )); ?></li>
+                       
+            <li class="name-user">
+			<?php
+				if ( is_user_logged_in() ) {
+				get_currentuserinfo();
+				echo _e('Hello ', 'rolopress') . $current_user->display_name;
+				}
+			?>
+			</li>
         </ul>
 <?php
 }

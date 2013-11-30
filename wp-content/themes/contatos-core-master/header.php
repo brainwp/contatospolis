@@ -13,7 +13,7 @@
 
 <body class="<?php rolopress_body_class() ?>">
 
-<?php rolopress_before_wrapper(); // kook antes do wrapper // before wrapper hook ?> 
+<?php rolopress_before_wrapper(); // hook antes do wrapper // before wrapper hook ?> 
 
 <div class="wrapper-header">
 	<div class="wrapper-header-content">
