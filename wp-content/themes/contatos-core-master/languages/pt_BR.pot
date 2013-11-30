@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RoloPress Core Beta 1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
 "POT-Creation-Date: 2011-01-15 13:55+0000\n"
-"PO-Revision-Date: 2013-11-28 14:24-0300\n"
+"PO-Revision-Date: 2013-11-30 14:38-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "Dashboard"
 
 #: library/admin/admin-menu/admin-setup-menus.php:19
 msgid "Layout Options"
-msgstr ""
+msgstr "Opções de Layout"
 
 #: library/admin/admin-menu/admin-setup-menus.php:19
 msgid "Layout"
@@ -103,7 +103,7 @@ msgstr "Imagem"
 #: library/admin/admin-menu/menu-rolopress-main.php:95
 #: library/admin/admin-menu/menu-rolopress-main.php:98
 msgid "Save Changes"
-msgstr ""
+msgstr "Salvar Mudanças"
 
 #: library/admin/admin-menu/menu-rolopress-layout.php:38
 msgid "1 Column"
@@ -190,7 +190,7 @@ msgstr ""
 
 #: library/extensions/extended-admin-post-filter/extend-admin-post-filter.php:42
 msgid "View all Owners"
-msgstr ""
+msgstr "Ver todos Proprietários"
 
 #: library/functions/company-functions.php:26
 msgid "Company information successfully added."
@@ -277,11 +277,11 @@ msgstr "Editar Contato"
 #: library/functions/contact-functions.php:203 library/setup/settings.php:164
 #: library/setup/settings.php:167 library/widgets/add-contact-form.php:26
 msgid "Add Contact"
-msgstr ""
+msgstr "Adicionar Contato"
 
 #: library/functions/content-functions.php:26
 msgid "Not Found"
-msgstr ""
+msgstr "Não Encontrado"
 
 #: library/functions/content-functions.php:28
 msgid "All Items"
@@ -352,7 +352,7 @@ msgstr ""
 #: library/functions/content-functions.php:167
 #, php-format
 msgid "View all posts by %s"
-msgstr ""
+msgstr "Ver todos posts por %s"
 
 #: library/functions/content-functions.php:169
 msgid "Created on "
@@ -405,12 +405,12 @@ msgstr ""
 
 #: library/functions/dynamic-classes.php:428
 msgid "W"
-msgstr ""
+msgstr "W"
 
 #: library/functions/dynamic-classes.php:428
 #: library/functions/dynamic-classes.php:434
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: library/functions/dynamic-classes.php:439
 #, php-format
@@ -437,11 +437,11 @@ msgstr ""
 #: library/functions/header-functions.php:148 library/widgets/search.php:18
 #: library/widgets/search.php:84
 msgid "Search"
-msgstr ""
+msgstr "Procurar"
 
 #: library/functions/header-functions.php:153
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 #: library/functions/messages.php:21
 msgid "Sorry, you don't have permission to view this page."
@@ -540,7 +540,7 @@ msgstr "Celular"
 #: library/functions/template-functions.php:100
 #: library/setup/setup-fields.php:84 library/widgets/pages.php:85
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: library/functions/template-functions.php:101
 #: library/functions/template-functions.php:260
