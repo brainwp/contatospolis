@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RoloPress Core Beta 1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
 "POT-Creation-Date: 2011-01-15 13:55+0000\n"
-"PO-Revision-Date: 2013-11-30 14:38-0300\n"
+"PO-Revision-Date: 2013-12-03 11:00-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -327,7 +327,7 @@ msgstr ""
 
 #: library/functions/content-functions.php:120
 msgid "Write a Note"
-msgstr ""
+msgstr "Escrever uma Nota"
 
 #: library/functions/content-functions.php:120
 #: library/functions/content-functions.php:122
@@ -337,7 +337,7 @@ msgstr "1 Nota"
 #: library/functions/content-functions.php:120
 #: library/functions/content-functions.php:122 notes.php:24
 msgid "% Notes"
-msgstr ""
+msgstr "% Notas"
 
 #: library/functions/content-functions.php:140
 #: library/functions/content-functions.php:146
@@ -375,7 +375,7 @@ msgstr ""
 #: library/functions/dynamic-classes.php:434
 #, php-format
 msgid "Archive for %1$s"
-msgstr ""
+msgstr "Arquivo de %1$s"
 
 #: library/functions/dynamic-classes.php:416
 msgid "g:i a"
@@ -419,12 +419,12 @@ msgstr ""
 
 #: library/functions/dynamic-classes.php:442
 msgid "404 Not Found"
-msgstr ""
+msgstr "404 Não Encontrado"
 
 #: library/functions/dynamic-classes.php:447
 #, php-format
 msgid "%1$s Page %2$s"
-msgstr ""
+msgstr "%1$s Página %2$s"
 
 #: library/functions/header-functions.php:108
 msgid "JavaScript is disabled. For RoloPress to work properly,"
@@ -517,13 +517,13 @@ msgstr "Cidade"
 #: library/functions/template-functions.php:245
 #: library/setup/setup-fields.php:312
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #: library/functions/template-functions.php:89
 #: library/functions/template-functions.php:246
 #: library/setup/setup-fields.php:313
 msgid "Zip"
-msgstr ""
+msgstr "CEP"
 
 #: library/functions/template-functions.php:90
 #: library/functions/template-functions.php:247
@@ -631,7 +631,7 @@ msgstr ""
 
 #: library/functions/widgets.php:30
 msgid "Secondary"
-msgstr ""
+msgstr "Secundário"
 
 #: library/functions/widgets.php:30
 msgid ""
@@ -712,7 +712,7 @@ msgstr "Endereço"
 
 #: library/setup/setup-fields.php:157 library/setup/setup-fields.php:283
 msgid "Background Info"
-msgstr ""
+msgstr "Informações de Background"
 
 #: library/setup/setup-fields.php:188
 msgid "Company Name"
@@ -749,7 +749,7 @@ msgstr ""
 #: library/widgets/add-contact-form.php:19
 #: library/widgets/add-contact-form.php:49
 msgid "Add Contact Form"
-msgstr ""
+msgstr "Adicionar Formulário de Contato"
 
 #: library/widgets/add-contact-form.php:54
 msgid "Displays the Add Contact Form.  Great for a sidebar or a Widgets page."
@@ -787,7 +787,7 @@ msgstr "Ordenar Categoria por:"
 
 #: library/widgets/bookmarks.php:166
 msgid "Class:"
-msgstr ""
+msgstr "Class:"
 
 #: library/widgets/bookmarks.php:175 library/widgets/recent-items.php:117
 msgid "Limit:"
@@ -827,7 +827,7 @@ msgstr ""
 
 #: library/widgets/bookmarks.php:233
 msgid "Show description?"
-msgstr ""
+msgstr "Mostrar descrição?"
 
 #: library/widgets/bookmarks.php:237
 msgid "Hide invisible?"
@@ -847,7 +847,7 @@ msgstr "Mostrar imagens?"
 
 #: library/widgets/bookmarks.php:253
 msgid "Show name?"
-msgstr ""
+msgstr "Mostrar nome?"
 
 #: library/widgets/bookmarks.php:257
 msgid "Show private?"
@@ -875,15 +875,15 @@ msgstr ""
 
 #: library/widgets/categories.php:18 library/widgets/categories.php:113
 msgid "Categories"
-msgstr ""
+msgstr "Categorias"
 
 #: library/widgets/categories.php:45
 msgid "RSS"
-msgstr ""
+msgstr "RSS"
 
 #: library/widgets/categories.php:122 library/widgets/owners.php:104
 msgid "Style:"
-msgstr ""
+msgstr "Estilo:"
 
 #: library/widgets/categories.php:129 library/widgets/companies.php:123
 #: library/widgets/tags.php:121
@@ -1053,7 +1053,7 @@ msgstr ""
 
 #: library/widgets/owners.php:115
 msgid " HTML?"
-msgstr ""
+msgstr " HTML?"
 
 #: library/widgets/owners.php:115
 msgid "html"
@@ -1069,7 +1069,7 @@ msgstr ""
 
 #: library/widgets/owners.php:127
 msgid "Show full name?"
-msgstr ""
+msgstr "Mostrar nome completo?"
 
 #: library/widgets/pages.php:18
 msgid ""
@@ -1137,7 +1137,7 @@ msgstr ""
 
 #: library/widgets/recent-items.php:56
 msgid "Select Month"
-msgstr ""
+msgstr "Selecionar Mês"
 
 #: library/widgets/recent-items.php:58
 msgid "Select Week"
@@ -1165,7 +1165,7 @@ msgstr "Depois:"
 
 #: library/widgets/recent-notes.php:13
 msgid "Display your recent Notes"
-msgstr ""
+msgstr "Exibir suas Notas recentes"
 
 #: library/widgets/recent-notes.php:14 library/widgets/recent-notes.php:48
 msgid "Recent Notes"
