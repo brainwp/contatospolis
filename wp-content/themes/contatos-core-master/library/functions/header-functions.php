@@ -118,7 +118,7 @@ add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
  * @since 1.4
  */
 function rolopress_default_top_menu() { 
-	echo "<div id=\"menu\">";
+	echo "<div id=\"menu\"><div class=\"wrapper-menu\">";
 	wp_nav_menu( array( 'menu' => 'default-menu') ); // display menu built in Appearance > Menus
 	rolopress_default_top_menu_right(); // call function to create right side of menu.
 	echo "</div>";
@@ -134,7 +134,7 @@ add_action('rolopress_before_wrapper', 'rolopress_default_top_menu');
  */
 function rolopress_default_top_menu_right() { ?>
 
-        <ul class="menu_item sub_menu alignright default_menu">
+        <ul class="menu_item sub_menu alignright default_menu default_menu_right">
             <?php global $user_ID, $user_identity, $user_level, $current_user ?>
 			
             <li><?php wp_loginout(home_url( '/wp-admin/' )); ?></li>
@@ -154,6 +154,7 @@ function rolopress_default_top_menu_right() { ?>
 			?>
 			</li>
         </ul>
+</div><!-- .wrapper-menu -->
 <?php
 }
 ?>
