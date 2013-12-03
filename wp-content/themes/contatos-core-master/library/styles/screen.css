@@ -86,7 +86,7 @@ li {
 }
 
 #menu .menu {
-    color: #CCCCCC;
+    color: #FFFFFF;
     float: left;
     margin: 11px 0;
     max-width: 900px;
@@ -111,12 +111,12 @@ li {
     display: block;
     float: left;
     padding:0 10px 0 0;
-    color:#ccc;
+    color:#FFFFFF;
     text-decoration:none;
 }
 #menu li.name-user {
 	padding: 0 10px 0 0;
-	color: #CCC;
+	color: #FFFFFF;
 }
 #menu li.icon-user {
     background: url("../../img/sprite.png") no-repeat scroll 0 0 transparent;
@@ -132,11 +132,21 @@ li {
     width: 25px;
 }
 #menu a:hover {
-    color:#FFFFFF;
+    color:#8ea6be;
     text-decoration:underline;
 }
 .menu_item {
     line-height: 36px;
+}
+#menu .menu_item  a {
+    display: block;
+    float: left;
+    color:#8ea6be;
+    text-decoration:none;
+}
+#menu .menu_item  a:hover {
+    color:#FFFFFF;
+    text-decoration:underline;
 }
 #menu .widget-title {
     display: none;

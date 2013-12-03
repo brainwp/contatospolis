@@ -71,12 +71,9 @@ a:hover {
 #menu .menu_item  a {
     display: block;
     float: left;
-    color:#ccc;
     text-decoration:none;
 }
 #menu .menu_item  a:hover {
-    color:#FFFFFF;
-    text-decoration:underline;
 }
 #menu  .menu_item {
     line-height: 36px;
