@@ -5,6 +5,7 @@
 
 body, #wrapper {
     margin: .5em 1%;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 li {
     list-style:none;

@@ -75,6 +75,14 @@ function rolo_css_print() {
 }
 add_action ('wp_head','rolo_css_print');
 
+/**
+ * Adicionando Google Font: Source Sans
+ */
+function rolo_font_print() {
+	echo "<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>" . "\r";
+}
+add_action ('wp_head','rolo_font_print');
+
 
 /**
  * Allows for hiding of widget areas when printing
