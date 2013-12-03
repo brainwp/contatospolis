@@ -158,6 +158,35 @@ li {
     color: white;
 }
 
+/* =Footer
+-------------------------------------------------------------- */
+
+#footer {
+	min-height: 50px;
+}
+
+#colophon {
+	max-width: 1280px;
+	margin: 10px auto 0 auto;
+}
+
+#site-info {
+    float: left;
+    margin: 5px 0 0;
+    max-width: 900px;
+}
+
+#site-info p {
+	text-align: left;
+}
+
+#logos-footer {
+	float: right;
+	width: 305px;
+	height: 95px;
+	background: url("../../img/logos-footer.png") no-repeat;
+}
+
 /* =main
 -------------------------------------------------------------- */
 h3.section-heading {
