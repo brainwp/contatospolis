@@ -167,33 +167,178 @@ function rolo_company_header($company_id) {
         return false;
     }
 
-    $company = get_post_meta($company_id, 'rolo_company', true);
+    // $company = get_post_meta($company_id, 'rolo_company', true);
+    $company = get_post_custom($company_id);
+
+    
+
+    $company_name = $company['rolo_company_name'][0];
+    $company_year = $company['rolo_company_year'][0];
+    $company_legal = $company['rolo_company_legal'][0];
+    $company_email = $company['rolo_company_email'][0];
+    $company_website = $company['rolo_company_website'][0];
+    
+    $company_source = $company['rolo_company_source'][0];
+    $company_tags = $company['rolo_company_post_tag'][0];
+    $company_others = $company['rolo_company_others'][0];
+    $company_address = $company['rolo_company_address'][0];
+    $company_phone = $company['rolo_company_phone'][0];
+
+    $company_redes = unserialize($company['rolo_company_redes'][0]);
+
+    foreach ($company_redes as $key => $value) {
+    	if($value) {
+    		$redes .= $key . '.com/' . $value . '<br>';
+    	}
+    }
+
+	$company_tel = $company['rolo_company_telefone'][0];
+    $company_end = $company['rolo_company_endereco'][0];
+
+    $company_contato = $company['rolo_company_contato_facil'][0];
+
+    $company_update = get_the_time( 'd/m/Y', $company_id );
     
 	$post_id = get_post($post->ID); // get current company id
     $slug = $post_id->post_name; // define slug as $slug
 
-?>
-    <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
+    $company_contatos = unserialize($company['rolo_contatos'][0]);
 
-			<?php echo get_avatar (($company['rolo_company_email']),96, rolo_get_twitter_profile_image($company['rolo_company_twitter'], ROLOPRESS_IMAGES . "/icons/rolo-company.jpg"));?>
-			<li>
-                 <a class="fn"
-                    <?php if (is_single()) : // show proper links on single or archive company pages ?>
-                        href="<?php echo get_term_link($company['rolo_company_name'], 'company'); ?>"><?php echo $company['rolo_company_name'];?>
-                    <?php else: ?>
-                        href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>
-                    <?php endif;?>
-                </a>
-			</li>
-		
-			<?php 
-			if ($company['rolo_company_email'] != "") { ?>
-				<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li><?php }
-			if ($company['rolo_company_website'] != "") { ?>
-				<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li><?php }
-			?>
+?>
+    <div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
+             
+             <a class="fn"
+                <?php if (is_single()) : // show proper links on single or archive company pages ?>
+                    href="<?php echo get_term_link($company_name, 'company'); ?>"><?php echo $company_name;?>
+                <?php else: ?>
+                    href="<?php the_permalink();?>"><?php echo $company_name;?>
+                <?php endif;?>
+            </a>
+			
+			<div class="item-image">
+			<?php echo get_avatar (($company_email),96, rolo_get_twitter_profile_image($company_twitter, ROLOPRESS_IMAGES . "/icons/rolo-company.jpg"));?>
+			</div>
+			<div class="item-col-1">
+				<div class="ano"><span class="title"><?php _e('Ano de Criação ', 'rolopress'); ?></span><span id="rolo_company_year" class="resposta <?php echo ($company_year ? '' : 'vazio'); ?>"><?php echo $company_year; ?></span></div>
+				<div class="legal"><span class="title"><?php _e('Constituída Legalmente? ', 'rolopress'); ?></span><span id="rolo_company_legal" class="resposta <?php echo ($company_legal ? '' : 'vazio'); ?>"><?php echo $company_legal; ?></span></div>
+				<div class="obs"><span class="title"><?php _e('Observações ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo $company_others; ?></span></div>
+				<div class="data"><span class="title"><?php _e('Data das Informações ', 'rolopress'); ?></span><span id="rolo_company_update" class="resposta <?php echo ($company_update ? '' : 'vazio'); ?>"><?php echo $company_update; ?></span></div>
+			</div>
+			<div class="item-col-2">
+				<div class="email url-field"><span class="title"><?php _e('E-mail ', 'rolopress'); ?></span><span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><a class="email" href="mailto:<?php echo $company_email;?>"><?php echo $company_email;?> </a></span></div>
+				<div class="endereco"><span class="title"><?php _e('Endereço ', 'rolopress'); ?></span><span id="rolo_company_endereco" class="resposta <?php echo ($company_end ? '' : 'vazio'); ?>"><?php echo $company_end; ?></span></div>
+				<div class="telefone"><span class="title"><?php _e('Telefone ', 'rolopress'); ?></span><span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?></span></div>
+				<div class="website url-field group"><span class="title"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><a class="url" href="http://<?php echo $company_website; ?>"><?php echo $company_website; ?></a></span></div>
+				<div class="redes"><span class="title"><?php _e('Redes Sociais ', 'rolopress'); ?></span><span id="rolo_company_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span></div>
+				<div class="contato"><span class="title"><?php _e('Forma mais fácil de contactar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span></div>
+			</div>
+			<hr>
+			<div class="contatos">
+				<table>
+					<tr>
+						<th></th>
+						<th>Contatos</th>
+						<th>Cargo</th>
+						<th>Telefone</th>
+						<th>E-mail</th>
+					</tr>
+				<?php 
+					foreach($company_contatos as $contato) {
+
+						$user = get_post( $contato );
+
+						if(has_term( 'Contact', 'type', $user )) { ?>
+
+							<tr>
+								<td><button>+</button></td>
+								<td><?php echo $user->post_title; ?></td>
+								<td><?php echo get_post_meta( $user->ID, 'rolo_contato_cargo', true ); ?></td>
+								<td><?php echo get_post_meta( $user->ID, 'rolo_contato_telefone', true ); ?></td>
+								<td><?php echo get_post_meta( $user->ID, 'rolo_contato_email', true ); ?></td>
+							</tr>
+
+							
+						<?php }
+						
+
+					}
+					/*
+				?>
+							<tr>
+								<td><button>+</button></td>
+								<td colspan="4" class="insertname"><input type="text" ></td>
+							</tr>
+
+							*/ ?>
+				</table>
+			</div>
+			<hr>
+			<div class="taxonomias">
+				<div class="item-col-1">
+					<?php 
+						require_once(ABSPATH . 'wp-admin/includes/template.php');
+						
+						echo '<div class="caracterizacao">';
+							echo '<h3>Caracterização institucional</h3>';
+							wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) );
+						echo '</div>';
+						echo '<div class="interesse">';
+							echo '<h3>Áreas de interesse</h3>';
+							wp_terms_checklist( $company_id, array( 'taxonomy' => 'interesse', 'checked_ontop' => false ) );
+						echo '</div>';
+					?>
+				</div>
+				<div class="item-col-2">
+					<?php
+						echo '<div class="abrangencia">';
+							echo '<h3>Abrangência da atuação</h3>';
+							wp_terms_checklist( $company_id, array( 'taxonomy' => 'abrangencia', 'checked_ontop' => false ) );
+						echo '</div>';
+						echo '<div class="participacao">';
+							echo '<h3>Espaços de participação</h3>';
+							wp_terms_checklist( $company_id, array( 'taxonomy' => 'participacao', 'checked_ontop' => false ) );
+						echo '</div>';
+					?>
+				</div>
+			</div>
+			<hr>
+			<div class="impactos">
+				<div class="item-col-1">
+					<h3>Impactos Socioambientais</h3>
+					<?php 
+						$company_conflito = unserialize($company['rolo_conflito'][0]); 
+						$checked = ''; if($company_conflito[0]) { $checked = 'checked="checked"'; }
+						$projeto = ''; if($company_conflito[1]) { $projeto = $company_conflito[1]; }
+						$desde = ''; if($company_conflito[2]) { $desde = $company_conflito[2]; }
+						$instancia = ''; if($company_conflito[3]) { $instancia = $company_conflito[3]; }
+						$fim = ''; if($company_conflito[4]) { $fim = 'checked="checked"'; }
+						$obs = ''; if($company_conflito[5]) { $obs = $company_conflito[5]; }						
+					?>
+
+					<div><span class="title">Encontra-se em situação de conflito com grandes projetos e/ou áreas de proteção ambiental?</span><span id="rolo_conflito" class="resposta"> <input type="checkbox" <?php echo $checked; ?> /> Sim</span></div>
+					<div><span class="title">Qual projeto?</span><span id="rolo_conflito" class="resposta <?php echo ($projeto ? '' : 'vazio'); ?>"><?php echo $projeto; ?></span></div>
+					<div><span class="title">Desde quando isso ocorre?</span><span id="rolo_conflito" class="resposta <?php echo ($desde ? '' : 'vazio'); ?>"><?php echo $desde; ?></span></div>
+					<div><span class="title">O caso foi levado a alguma instância?</span><span id="rolo_conflito" class="resposta <?php echo ($instancia ? '' : 'vazio'); ?>"><?php echo $instancia; ?></span></div>
+					<div><span class="title">A situação foi equacionada?</span><span id="rolo_conflito" class="resposta"> <input type="checkbox" <?php echo $fim; ?>/> Sim</span></div>
+					<div><span class="title">Outras observações relativas ao caso em questão</span><span id="rolo_conflito" class="resposta <?php echo ($obs ? '' : 'vazio'); ?>"><?php echo $obs; ?></span></div>
+				</div>
+				<div class="item-col-2">
+					<h3>Relação com o projeto Litoral Sustentável</h3>
+					<?php 
+						$company_relacao = unserialize($company['rolo_relacao'][0]); 
+						$checked = ''; if($company_relacao[0]) { $checked = 'checked="checked"'; }
+						$local = ''; if($company_relacao[1]) { $local = $company_relacao[1]; }
+						$apoio = ''; if($company_relacao[2]) { $apoio = 'checked="checked"'; }
+						$conflito = ''; if($company_relacao[3]) { $conflito = $company_relacao[3]; }
+					?>
+					<div><span class="title">Participou de algum evento do projeto?</span><span id="rolo_relacao" class="resposta"> <input type="checkbox" <?php echo $checked; ?> /> Sim</span></div>
+					<div><span class="title">Local</span><span id="rolo_relacao" class="resposta <?php echo ($local ? '' : 'vazio'); ?>"><?php echo $local; ?></span></div>
+					<div><span class="title">Tem apoiado/divulgado o projeto?</span><span id="rolo_relacao" class="resposta"> <input type="checkbox" <?php echo $apoio; ?> /> Sim</span></div>
+					<div><span class="title">Tem algum histórico de conflito com o projeto? Qual motivo?</span><span id="rolo_relacao" class="resposta <?php echo ($conflito ? '' : 'vazio'); ?>"><?php echo $conflito; ?></span></div>
+				</div>
+			</div>
 			<?php rolopress_after_company_header();?>
-    </ul><!-- hcard -->
+    </div><!-- hcard -->
 <?php
 }
 
@@ -531,6 +676,98 @@ function rolo_get_ID_by_page_title($page_title)
 	global $wpdb;
 	$page_title_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title = '".$page_title."'");
 	return $page_title_id;
+}
+
+
+/**
+ * List Taxonomies
+ *
+ * @param string $page_name Page title
+ *
+ *
+ */
+function rolo_list_taxonomies( $args = '' ) {
+	$defaults = array(
+		'show_option_all' => '', 'show_option_none' => __('No categories'),
+		'orderby' => 'name', 'order' => 'ASC',
+		'style' => 'list',
+		'show_count' => 0, 'hide_empty' => 1,
+		'use_desc_for_title' => 1, 'child_of' => 0,
+		'feed' => '', 'feed_type' => '',
+		'feed_image' => '', 'exclude' => '',
+		'exclude_tree' => '', 'current_category' => 0,
+		'hierarchical' => true, 'title_li' => __( 'Categories' ),
+		'echo' => 1, 'depth' => 0,
+		'taxonomy' => 'category',
+		'walker' => 'Walker_Category_Checklist_Rolo'
+	);
+
+	$r = wp_parse_args( $args, $defaults );
+
+	if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] )
+		$r['pad_counts'] = true;
+
+	if ( true == $r['hierarchical'] ) {
+		$r['exclude_tree'] = $r['exclude'];
+		$r['exclude'] = '';
+	}
+
+	if ( !isset( $r['class'] ) )
+		$r['class'] = ( 'category' == $r['taxonomy'] ) ? 'categories' : $r['taxonomy'];
+
+	extract( $r );
+
+	if ( !taxonomy_exists($taxonomy) )
+		return false;
+
+	$categories = get_categories( $r );
+
+	$output = '';
+	if ( $title_li && 'list' == $style )
+			$output = '<li class="' . esc_attr( $class ) . '">' . $title_li . '<ul>';
+
+	if ( empty( $categories ) ) {
+		if ( ! empty( $show_option_none ) ) {
+			if ( 'list' == $style )
+				$output .= '<li>' . $show_option_none . '</li>';
+			else
+				$output .= $show_option_none;
+		}
+	} else {
+		if ( ! empty( $show_option_all ) ) {
+			$posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
+			$posts_page = esc_url( $posts_page );
+			if ( 'list' == $style )
+				$output .= "<li><a href='$posts_page'>$show_option_all</a></li>";
+			else
+				$output .= "<a href='$posts_page'>$show_option_all</a>";
+		}
+
+		if ( empty( $r['current_category'] ) && ( is_category() || is_tax() || is_tag() ) ) {
+			$current_term_object = get_queried_object();
+			if ( $current_term_object && $r['taxonomy'] === $current_term_object->taxonomy )
+				$r['current_category'] = get_queried_object_id();
+		}
+
+		if ( $hierarchical ) {
+			$depth = $r['depth'];
+		} else {
+			$depth = -1; // Flat.
+		}
+			
+
+		$output .= walk_category_tree( $categories, $depth, $r );
+	}
+
+	if ( $title_li && 'list' == $style )
+		$output .= '</ul></li>';
+
+	$output = apply_filters( 'wp_list_categories', $output, $args );
+
+	if ( $echo )
+		echo $output;
+	else
+		return $output;
 }
 
 ?>

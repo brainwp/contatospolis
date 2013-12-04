@@ -507,7 +507,7 @@ array
     'save_function' => '',
     'mandatory' => false
     ),
-    /*
+    
     'participation' =>
     array
     (
@@ -520,25 +520,25 @@ array
     'description' => '',
     'setup_function' => 'rolo_setup_company_multiple',
     'save_function' => 'rolo_save_company_multiple',
-    'type' => 'checkbox',
+    'type' => 'mixed',
     'mandatory' => false
     ),
     'impacts' =>
     array
     (
     'multiple' => array (__('Conflict','rolopress'), __('Comitee','rolopress'), __('Council','rolopress'), __('Network','rolopress'), __('Others','rolopress')),
-    'name' => 'participation',
-    'class' => 'participation',
-    'filter' => "rolo_participation",
+    'name' => 'impacts',
+    'class' => 'impacts',
+    'filter' => "rolo_impacts",
     'default_value' => '',
-    'title' => __('Participation spaces','rolopress'),
+    'title' => __('Environmental impacts','rolopress'),
     'description' => '',
     'setup_function' => 'rolo_setup_company_multiple',
     'save_function' => 'rolo_save_company_multiple',
-    'type' => 'checkbox',
+    'type' => 'mixed',
     'mandatory' => false
     ),
-    */
+    
 );
 
 /**
@@ -552,6 +552,12 @@ function rolo_create_taxonomy() {
     register_taxonomy( 'state', 'post', array( 'hierarchical' => false, 'label' => __('State', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
     register_taxonomy( 'zip', 'post', array( 'hierarchical' => false, 'label' => __('Zip', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
     register_taxonomy( 'country', 'post', array( 'hierarchical' => false, 'label' => __('Country', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+
+    // Contatos polis
+    register_taxonomy( 'caracterizacao', 'post', array( 'hierarchical' => true, 'label' => __('Caracterização Institucional', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'abrangencia', 'post', array( 'hierarchical' => false, 'label' => __('Abrangência da Atuação', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'interesse', 'post', array( 'hierarchical' => false, 'label' => __('Áreas de Interesse', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'participacao', 'post', array( 'hierarchical' => true, 'label' => __('Espaços de Participação', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
 }
 add_action('init', 'rolo_create_taxonomy', 0);
 

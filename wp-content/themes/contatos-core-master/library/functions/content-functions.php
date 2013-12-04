@@ -8,9 +8,119 @@
  * @subpackage Functions
  */
  
+add_action( 'wp_ajax_nopriv_rolo_ajax_edit_contacts', 'rolo_ajax_edit_contacts' );
+add_action( 'wp_ajax_rolo_ajax_edit_contacts', 'rolo_ajax_edit_contacts' );
+function rolo_ajax_edit_contacts() {
+
+	$id = $_POST['data'];
+	$postid = $_POST['company'];
+	$mode = $_POST['mode'];
+
+	if($mode == 'add') {
+		$contatos = get_post_meta( $postid, 'rolo_contatos', true );
+		
+		if(!in_array($id, $contatos))
+			$contatos[] = $id;
+		
+		$meta = update_post_meta( $postid, 'rolo_contatos', $contatos );
+		$safe = 'ok';
+	}
+
+	$response = array('status' => $safe);
+
+	header( "Content-Type: application/json" );
+	echo json_encode($response);
+	exit;
 
 
- 
+}
+
+add_action( 'wp_ajax_nopriv_rolo_ajax_autocomplete', 'rolo_ajax_autocomplete' );
+add_action( 'wp_ajax_rolo_ajax_autocomplete', 'rolo_ajax_autocomplete' );
+function rolo_ajax_autocomplete() {
+
+	$tipo = $_POST['type'];
+	$term = $_POST['term'];
+
+	$response = get_posts( array('type' => 'contact') );
+
+	header( "Content-Type: application/json" );
+	echo json_encode($response);
+	exit;
+
+
+}
+
+add_action( 'wp_ajax_nopriv_rolo_ajax_edit_company', 'rolo_ajax_edit_company' );
+add_action( 'wp_ajax_rolo_ajax_edit_company', 'rolo_ajax_edit_company' );
+function rolo_ajax_edit_company() {
+
+	$vars = $_POST['data'];
+	$erro = false;
+	$restrict = array('rolo_conflito', 'rolo_relacao', 'rolo_company_redes', 'rolo_company_update');
+
+	if(!in_array($vars['id'], $restrict)) :
+
+		if($vars['new_value'] == $vars['orig_value']) {
+			$status = 'sucesso';
+			$value = $vars['new_value'];
+		} else {
+			$meta = update_post_meta( $vars['data'], $vars['id'], $vars['new_value'], $vars['orig_value'] );
+
+			if($meta == (int) $meta) {
+				$status = 'sucesso';
+				$value = $vars['new_value'];
+			} else {
+				$status = 'erro';
+				$erro = $meta;
+			}
+		}
+
+	else :
+		$status = 'dev';
+/*
+		switch ($vars['id']) {
+			case 'rolo_company_update':
+				# code...
+				break;
+			
+			default:
+				# code...
+				break;
+		} */
+	endif;
+
+	$response = array( 'status' => $status, 'erro' => $erro, 'value' => $value );
+
+ 	
+ 	header( "Content-Type: application/json" );
+	echo json_encode($response);
+	exit;
+}
+
+add_action( 'wp_ajax_nopriv_rolo_ajax_edit_taxonomy', 'rolo_ajax_edit_taxonomy' );
+add_action( 'wp_ajax_rolo_ajax_edit_taxonomy', 'rolo_ajax_edit_taxonomy' );
+function rolo_ajax_edit_taxonomy() {
+
+	$vars = $_POST['data'];
+
+	$meta = wp_get_post_terms( $vars['postid'], $vars['area'], $args );
+
+	$meta = has_term( $vars['val'], $vars['area'], $vars['postid'] );
+
+	if($meta) {
+		$terms = wp_remove_object_terms( $vars['postid'], $vars['val'], $vars['area'] );
+	} else {
+		$terms = wp_set_object_terms( $vars['postid'], (int) $vars['val'], $vars['area'], true );
+	}
+
+	$response = array( 'status' => $status, 'erro' => $erro, 'value' => $value );
+ 	
+ 	header( "Content-Type: application/json" );
+	echo json_encode($terms);
+	exit;
+
+} 
 /**
  * Shows appropriate title for each page
  *
@@ -291,7 +401,7 @@ function rolo_loop() { ?>
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-		<li id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
+		<div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 		
 			<?php rolopress_before_entry(); // Before entry hook ?>
 
@@ -313,7 +423,7 @@ function rolo_loop() { ?>
 										<?php }
 								}
 
-								if ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID()); the_content();
+								if ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID()); // the_content();
 										if ( is_active_sidebar("company-under-main")){ ?>
 											<div class="widget-area company-under-main">
 											<?php dynamic_sidebar("company-under-main"); ?>
@@ -329,10 +439,10 @@ function rolo_loop() { ?>
 								elseif
 									( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID()); }
 								else { ?>
-											<li id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
+											<div id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
 												<?php echo '<img class="entry-icon" src=' . ROLOPRESS_IMAGES . '/icons/rolo-default.jpg />' ?>
 												<a class="entry-title" href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a>
-											</li>
+											</div>
 								<?php }
 					}
 									
@@ -345,7 +455,7 @@ function rolo_loop() { ?>
 										<div class="widget-area">
 										<ul class="xoxo">
 										<?php dynamic_sidebar("widget-page");?>
-										</ul> 
+										</div> 
 										</div><!-- #widget-area -->	
 										<?php }
 									else {
@@ -355,30 +465,30 @@ function rolo_loop() { ?>
 					}
 							
 					else { ?>
-								<li id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
+								<div id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
 									<?php echo '<img class="entry-icon" src=' . ROLOPRESS_IMAGES . '/icons/rolo-default.jpg />' ?>
 									<a class="entry-title" href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a>
-								</li>
+								</div>
 					
 					<?php }; ?>
 					
 				</div><!-- .entry-main -->
 					
-				<?php rolo_entry_footer(); ?>
+				<?php // rolo_entry_footer(); ?>
 
 				<?php rolopress_after_entry(); // After entry hook ?>
 				
-		</li><!-- #entry-<?php the_ID(); ?> -->
+		</div><!-- #entry-<?php the_ID(); ?> -->
 <?php endwhile; ?>
 
 <?php if (!is_single() ) { // not needed on single pages ?>
-	</ul><!-- item-list-->
+	</div><!-- item-list-->
 <?php }; ?>
 
 
 <?php else : // 404 or no search results ?>
 
-		<li id="entry-0" class="<?php rolopress_entry_class(); ?>">
+		<div id="entry-0" class="<?php rolopress_entry_class(); ?>">
 			<?php rolopress_before_entry(); // Before entry hook ?>
 				<div class="entry-main">
 				

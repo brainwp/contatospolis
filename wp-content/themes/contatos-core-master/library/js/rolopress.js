@@ -115,6 +115,109 @@ jQuery(document).ready(function() {
         action: 'rolo_edit_note', form_type: "textarea"
     });
 
+    // Edit in place - Contatos Polis
+    jQuery('.resposta').not('#rolo_company_legal').eip(ajax_url.ajaxurl, {
+        action: 'rolo_ajax_edit_company',
+        data: ajax_url.postid
+    });
+
+    // Edit in place - Contatos Polis
+    jQuery('#rolo_company_legal').eip(ajax_url.ajaxurl, {
+        action: 'rolo_ajax_edit_company',
+        data: ajax_url.postid,
+         form_type: "select",
+                select_options: {
+                        "Não" : "Não",
+                        "Sim" : "Sim"
+                }
+    });
+
+    jQuery('.selectit input').on('change', function() {
+
+        var area = jQuery(this).parents('div').attr('class');
+        var val = jQuery(this).val();
+
+        var ajax_data = { area: area, val: val, postid: ajax_url.postid }
+
+        jQuery.post( 
+                ajax_url.ajaxurl, { 
+                    action : 'rolo_ajax_edit_taxonomy',
+                    data   : ajax_data
+                }, function( resp ) {
+                        var data = ajax_data;
+                        if(resp.status == 'sucesso') {
+                        }
+
+                    });
+    });
+
+    // Autocomplete nomes
+    var autocomp_nomes = {
+         source: function(request, response) {
+             jQuery.post( 
+                ajax_url.ajaxurl, { 
+                    action : 'rolo_ajax_autocomplete',
+                    type: 'nomes',
+                    data   : request.term
+                }, function( resp ) {
+
+                    response(jQuery.map(resp, function(item) {
+
+                        var split = item.post_title.slice(0,request.term.length);
+
+                        if (split == request.term) {
+                            return {
+                                label: item.post_title,
+                                value: item.ID
+                            }    
+                        }
+                        
+                    }), 'json');
+                })        
+        },
+        minLength: 2,
+        delay: 500,
+        select: function(event, ui) {
+                this.value = ui.item.label;
+
+                var tr = jQuery(event.target).parents('tr');
+                jQuery(tr).children().eq(0).children('button').html('OK').attr('name',ui.item.value);
+                
+            return false;
+            }
+    };
+
+    jQuery('.contatos').on('click', 'button', function() {
+
+        if(jQuery(this).html() == "+") {
+
+            var newrow = jQuery('<tr><td><button>-</button></td><td class="insertname" colspan="4"><input type="text" /></td></tr>');
+            jQuery('input', newrow).autocomplete(autocomp_nomes);
+            jQuery(this).parents('tbody').append(newrow);  
+
+
+        } else if(jQuery(this).html() == "-") {
+            jQuery(this).parents('tr').detach();
+        } else if(jQuery(this).html() == "OK") {
+            console.log('ok');
+            jQuery.post( 
+                ajax_url.ajaxurl, { 
+                    action : 'rolo_ajax_edit_contacts',
+                    mode   : 'add',
+                    data   : jQuery(this).attr('name'),
+                    company: ajax_url.postid
+                }, function( resp ) {
+
+                    if (resp.status == 'ok') {
+                        window.location.reload();
+                    };
+                })    
+        }
+    });
+
+    // jQuery(".contatos input").autocomplete(ajax_url.ajaxurl);
+        
+
     // Validation for mandatory fields
     jQuery('#add_contact, #edit_contact, #add_company, #edit_company').click(function (e) {
         jQuery('div.mandatory input').each(function () {

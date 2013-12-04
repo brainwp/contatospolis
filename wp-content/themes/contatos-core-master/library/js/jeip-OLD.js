@@ -21,7 +21,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-// version: 0.2.0
+// version: 0.1.2
 
 (function( $ ) {
 	$.fn.eip = function( save_url, options ) {
@@ -36,6 +36,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			edit_event			: "click",
 			select_options		: false,
 			data				: false,
+			action				: false,
+			id_field			: false,
 
 			form_type			: "text", // text, textarea, select
 			size				: false, // calculate at run time
@@ -64,7 +66,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 			text_form			: '<input type="text" id="edit-#{id}" class="#{editfield_class}" value="#{value}" /> <br />',
 			textarea_form		: '<textarea cols="#{cols}" rows="#{rows}" id="edit-#{id}" class="#{editfield_class}">#{value}</textarea> <br />',
-			start_select_form	: '<select id="edit-#{id}" class="#{editfield_class}">',
+			start_select_form	: '<select id="edit-#{id}" class="#{editfield_clas}">',
 			select_option_form	: '<option id="edit-option-#{id}-#{option_value}" value="#{option_value}" #{selected}>#{option_text}</option>',
 			stop_select_form	: '</select>',
 
@@ -243,7 +245,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		
 		var _saveEdit = function( self, orig_option_value ) {
 			var orig_value = $( self ).html( );
-			var new_value = $( "#edit-" + self.id ).prop( "value" );
+			var new_value = $( "#edit-" + self.id ).attr( "value" );
 
 			if( orig_value == new_value ) {
 				$( "#editor-" + self.id ).fadeOut( "fast" );
@@ -273,8 +275,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				id			: self.id,
 				form_type	: opt.form_type,
 				orig_value	: orig_value,
-				new_value	: $( "#edit-" + self.id ).prop( "value" ),
-				data		: opt.data
+				new_value	: $( "#edit-" + self.id ).attr( "value" ),
+				data		: opt.data,
+				action		: opt.action,
+				id_field	: $('#' + opt.id_field).val(),
+				note_id	    : $(self).parent('div').attr('id')
 			}
 
 			if( opt.form_type == 'select' ) {
@@ -283,43 +288,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				ajax_data.new_option_text = $( "#edit-option-" + self.id + "-" + new_value ).html( );
 			}
 
-	        $.post( 
-	            opt.save_url, { 
-	                action : opt.action,
-	                data   : ajax_data
-	            }, function( resp ) {
-	                    
-	                    var data = ajax_data;
-	                    
-	                    if(resp.status == 'sucesso') {
-
-	                    	$(self).removeClass('vazio');
-	                    	$(self).html(resp.value);
-
-	                    	$( "#editor-" + self.id ).fadeOut( "fast" );
-							$( "#editor-" + self.id ).detach();
-
-							$( "#saving-" + self.id ).fadeOut( "fast" );
-							$( "#saving-" + self.id ).detach();
-
-							$( self ).bind( opt.edit_event, function( e ) {
-								_editMode( self );
-							} );
-
-							$( self ).addClass( opt.mouseover_class );
-							$( self ).fadeIn( "fast" );
-
-							if( opt.after_save != false ) {
-								opt.after_save( self );
-							}
-
-							$( self ).removeClass( opt.mouseover_class );
-	                    } else {
-	                    	$( self ).html( resp.status );	
-	                    }
-            	}
-            );
-			/*
 			$.ajax( {
 				url		: opt.save_url,
 				type	: "POST",
@@ -334,6 +302,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 					}
 					else {
 						$( self ).html( data.html );
+                        // for url fields
+                        if ($(self).hasClass('edit-icon')) {
+                            $(self).prev('a').html(data.html);
+                        }
 					}
 
 					$( "#saving-" + self.id ).fadeOut( "fast" );
@@ -353,7 +325,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 					$( self ).removeClass( opt.mouseover_class );
 				} // success
 			} ); // ajax
-			*/
 		}; // _saveEdit
 
 

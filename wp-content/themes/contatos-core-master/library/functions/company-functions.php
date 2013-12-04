@@ -481,7 +481,7 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index, $company_id 
             </label>
                 <?php if($type == 'checkbox') : ?>
             <input type="checkbox" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" />
-                <?php else : ?>
+                <?php elseif($type != 'mixed') : ?>
             <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" />
                 <?php endif; ?>
             <select name="<?php echo $select_name;?>" tabindex="<?php echo $rolo_tab_index++;?>">
@@ -491,6 +491,9 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index, $company_id 
                 }
 ?>
             </select>
+            <?php if($type == 'mixed') : ?>
+                Nome: <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" style="float: none;" />
+            <?php endif; ?>
 <?php
             if ($i == 0) {
                 $hidden = 'style = "display:none"';

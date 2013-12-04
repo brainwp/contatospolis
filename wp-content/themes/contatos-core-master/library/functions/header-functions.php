@@ -31,6 +31,8 @@ function rolo_css_standard() {
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/screen.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/widgets.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/uni-form.css" media="screen,projection,print" />' . "\n";
+
+	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/extras.css" media="screen,projection,print" />' . "\n";
 }
 add_action ('wp_head','rolo_css_standard');
 
