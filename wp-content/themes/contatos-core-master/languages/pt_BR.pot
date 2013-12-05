@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RoloPress Core Beta 1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
 "POT-Creation-Date: 2011-01-15 13:55+0000\n"
-"PO-Revision-Date: 2013-12-03 11:00-0300\n"
+"PO-Revision-Date: 2013-12-05 12:34-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Suporte"
 
 #: library/admin/admin-dashboard.php:29
 msgid "For RoloPress Help and Support, please visit our "
-msgstr ""
+msgstr "Para ajuda e suporte com o Contatos Polis, visite nosso "
 
 #: library/admin/admin-dashboard.php:30
 msgid "Forums"
@@ -83,14 +83,14 @@ msgstr "Contatos"
 
 #: library/admin/admin-menu/admin-setup-menus.php:25
 msgid "Company Settings"
-msgstr ""
+msgstr "Configurações da Instituição"
 
 #: library/admin/admin-menu/admin-setup-menus.php:25
 #: library/setup/settings.php:182 library/setup/settings.php:185
 #: library/widgets/companies.php:25 library/widgets/companies.php:32
 #: library/widgets/companies.php:102
 msgid "Companies"
-msgstr ""
+msgstr "Instituições"
 
 #: library/admin/admin-menu/menu-posts-edit.php:16
 msgid "Image"
@@ -224,11 +224,11 @@ msgstr ""
 
 #: library/functions/company-functions.php:138
 msgid "Edit company"
-msgstr ""
+msgstr "Editar instituição"
 
 #: library/functions/company-functions.php:203
 msgid "Add company"
-msgstr ""
+msgstr "Adicionar instituição"
 
 #: library/functions/company-functions.php:296
 #: library/functions/contact-functions.php:293
@@ -297,11 +297,11 @@ msgstr ""
 
 #: library/functions/content-functions.php:38
 msgid "Items Tagged As: "
-msgstr ""
+msgstr "Itens Tagueados Como: "
 
 #: library/functions/content-functions.php:43
 msgid " List"
-msgstr "Lista"
+msgstr " Lista"
 
 #: library/functions/content-functions.php:47
 msgid "Owned by: "
@@ -347,7 +347,7 @@ msgstr "Editar"
 
 #: library/functions/content-functions.php:166
 msgid "By "
-msgstr ""
+msgstr "Por "
 
 #: library/functions/content-functions.php:167
 #, php-format
@@ -469,7 +469,7 @@ msgstr " e um "
 
 #: library/functions/messages.php:50
 msgid "Company."
-msgstr ""
+msgstr "Instituição."
 
 #: library/functions/messages.php:51
 msgid "You may also want to make sure your "
@@ -668,7 +668,7 @@ msgstr ""
 #: library/setup/settings.php:200 library/setup/settings.php:203
 #: library/widgets/add-company-form.php:26
 msgid "Add Company"
-msgstr ""
+msgstr "Adicionar Instituição"
 
 #: library/setup/setup-fields.php:23
 msgid "First Name"
@@ -684,7 +684,7 @@ msgstr "Título"
 
 #: library/setup/setup-fields.php:62 library/setup/setup-fields.php:310
 msgid "Company"
-msgstr ""
+msgstr "Instituição"
 
 #: library/setup/setup-fields.php:75 library/setup/setup-fields.php:201
 msgid "Email"
@@ -716,7 +716,7 @@ msgstr "Informações de Background"
 
 #: library/setup/setup-fields.php:188
 msgid "Company Name"
-msgstr ""
+msgstr "Nome da Instituição"
 
 #: library/setup/setup-fields.php:309
 msgid "Rolopress Type"
@@ -907,7 +907,7 @@ msgstr "Excluir:"
 
 #: library/widgets/categories.php:152 library/widgets/pages.php:163
 msgid "Exclude Tree:"
-msgstr ""
+msgstr "Excluir Árvore:"
 
 #: library/widgets/categories.php:156 library/widgets/pages.php:152
 msgid "Depth:"
@@ -920,11 +920,11 @@ msgstr "Número:"
 
 #: library/widgets/categories.php:167 library/widgets/pages.php:174
 msgid "Child Of:"
-msgstr ""
+msgstr "Filho de:"
 
 #: library/widgets/categories.php:171
 msgid "Current Category:"
-msgstr ""
+msgstr "Categoria Atual:"
 
 #: library/widgets/categories.php:175 library/widgets/owners.php:100
 msgid "Feed Image:"
@@ -994,7 +994,7 @@ msgstr ""
 #: library/widgets/company-details.php:26
 #: library/widgets/company-details.php:49
 msgid "Company Details"
-msgstr ""
+msgstr "Detalhes da Instituição"
 
 #: library/widgets/company-details.php:54
 msgid ""
@@ -1016,7 +1016,7 @@ msgstr ""
 #: library/widgets/contact-details.php:26
 #: library/widgets/contact-details.php:48
 msgid "Contact Details"
-msgstr ""
+msgstr "Detalhes do Contato"
 
 #: library/widgets/contact-details.php:53
 msgid ""
@@ -1049,7 +1049,7 @@ msgstr ""
 
 #: library/widgets/owners.php:96
 msgid "Feed:"
-msgstr ""
+msgstr "Feed:"
 
 #: library/widgets/owners.php:115
 msgid " HTML?"
@@ -1110,7 +1110,7 @@ msgstr ""
 
 #: library/widgets/pages.php:201
 msgid "Show date?:"
-msgstr ""
+msgstr "Exibir data?:"
 
 #: library/widgets/pages.php:209
 msgid "Date Format:"
@@ -1133,7 +1133,7 @@ msgstr ""
 
 #: library/widgets/recent-items.php:54
 msgid "Select Year"
-msgstr ""
+msgstr "Selecionar Ano"
 
 #: library/widgets/recent-items.php:56
 msgid "Select Month"
@@ -1243,7 +1243,7 @@ msgstr ""
 
 #: notes.php:67
 msgid "Cancel attachment to note"
-msgstr ""
+msgstr "Cancelar anexos para a nota"
 
 #: notes.php:71
 msgid "You must be "
@@ -1263,7 +1263,7 @@ msgstr ""
 
 #: notes.php:78
 msgid "Log out "
-msgstr ""
+msgstr "Logout "
 
 #: notes.php:122
 msgid "Your note is awaiting moderation."
