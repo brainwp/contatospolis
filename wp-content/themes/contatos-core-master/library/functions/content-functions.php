@@ -8,7 +8,7 @@
  * @subpackage Functions
  */
 
-add_action( 'wp_insert_post', 'rolo_generate_meta_term' );
+add_action( 'save_post', 'rolo_generate_meta_term' );
 function rolo_generate_meta_term($id) {
 	
 	$p = get_post($id);
@@ -16,7 +16,7 @@ function rolo_generate_meta_term($id) {
 	if(has_term('company','type',$id)) {
 		update_post_meta($id, 'rolo_company_name', $p->post_title);
 		$term = wp_insert_term($p->post_title, 'company');
-		$t = wp_set_object_terms($id, $term->term_id, 'company' );
+//		$t = wp_set_object_terms($id, $term->term_id, 'company' );
 // TODO RESOLVER PENDENCIA DE AUTOMATIZAR A ENTRADA DA NOVA TAXONOMIA
 	} elseif (has_term('contact', 'type', $id)) {
 		update_post_meta($id, 'rolo_contact_name', $p->post_title);
