@@ -186,10 +186,12 @@ function rolo_company_header($company_id) {
 
     $company_redes = unserialize($company['rolo_company_redes'][0]);
 
+    if($company_redes) {	
     foreach ($company_redes as $key => $value) {
     	if($value) {
     		$redes .= $key . '.com/' . $value . '<br>';
     	}
+    }
     }
 
 	$company_tel = $company['rolo_company_telefone'][0];
@@ -206,7 +208,7 @@ function rolo_company_header($company_id) {
 
 ?>
     <div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
-             
+
              <a class="fn"
                 <?php if (is_single()) : // show proper links on single or archive company pages ?>
                     href="<?php echo get_term_link($company_name, 'company'); ?>"><?php echo $company_name;?>
@@ -243,6 +245,7 @@ function rolo_company_header($company_id) {
 						<th>E-mail</th>
 					</tr>
 				<?php 
+                                        if($company_contatos) {
 					foreach($company_contatos as $contato) {
 
 						$user = get_post( $contato );
@@ -262,6 +265,7 @@ function rolo_company_header($company_id) {
 						
 
 					}
+                                        }
 					/*
 				?>
 							<tr>
