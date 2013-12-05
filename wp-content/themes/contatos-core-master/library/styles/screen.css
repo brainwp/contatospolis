@@ -5,6 +5,7 @@
 
 body, #wrapper {
     margin: .5em 1%;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 li {
     list-style:none;
@@ -22,6 +23,50 @@ li {
 
 /* =Header
 -------------------------------------------------------------- */
+.wrapper-header {
+    background: url('../../img/bg-header.jpg') repeat scroll center center rgba(0, 0, 0, 0);
+    height: 230px;
+	overflow: hidden;
+}
+.wrapper-header-content {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+.logo-header {
+	width: 806px;
+	height: 46px;
+	background: url('../../img/logo-contatos.png') no-repeat;
+	margin: 85px 0 0;
+	float: left;
+}
+.a-logo-header {
+	width: 806px;
+	height: 46px;
+	position: absolute;
+}
+.busca-header {
+    float: right;
+    margin: 91px 0 0;
+    max-width: 300px;
+}
+.busca-header input {
+	padding: 10px 15px;
+	background: #FFF;
+	border: 1px solid #023f7b;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #919191;
+	font-size: 16px;
+}
+.busca-header input#searchsubmit {
+    background: url("../../img/icon-busca.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    cursor: pointer;
+    height: 46px;
+    margin: 0 0 0 10px;
+    width: 46px;
+}
 #access {
     margin: 0 0 1.5em 0;
     overflow: auto;
@@ -30,9 +75,27 @@ li {
     display: none;
 }
 #menu {
-    height: 36px;
-    background: #464646;
+    height: 60px;
+    background: #023f7b;
     padding:5px 15px;
+}
+
+.wrapper-menu {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+#menu .menu {
+    color: #FFFFFF;
+    float: left;
+    margin: 11px 0;
+    max-width: 900px;
+    overflow: hidden;
+}
+#menu .default_menu_right {
+    float: right;
+    margin: 12px 0;
+    max-width: 400px;
 }
 #menu ul {
     list-style: none;
@@ -48,15 +111,42 @@ li {
     display: block;
     float: left;
     padding:0 10px 0 0;
-    color:#ccc;
+    color:#FFFFFF;
     text-decoration:none;
 }
+#menu li.name-user {
+	padding: 0 10px 0 0;
+	color: #FFFFFF;
+}
+#menu li.icon-user {
+    background: url("../../img/sprite.png") no-repeat scroll 0 0 transparent;
+    height: 30px;
+    margin: 2px 10px 0 0;
+    width: 30px;
+}
+
+#menu li.icon-logout {
+    background: url("../../img/sprite.png") no-repeat scroll -31px 5px transparent;
+    height: 25px;
+    margin: 4px 10px 0 0;
+    width: 25px;
+}
 #menu a:hover {
-    color:#FFFFFF;
+    color:#8ea6be;
     text-decoration:underline;
 }
 .menu_item {
     line-height: 36px;
+}
+#menu .menu_item  a {
+    display: block;
+    float: left;
+    color:#8ea6be;
+    text-decoration:none;
+}
+#menu .menu_item  a:hover {
+    color:#FFFFFF;
+    text-decoration:underline;
 }
 #menu .widget-title {
     display: none;
@@ -66,6 +156,35 @@ li {
     font-size: 22px;
     text-decoration: none;
     color: white;
+}
+
+/* =Footer
+-------------------------------------------------------------- */
+
+#footer {
+	min-height: 50px;
+}
+
+#colophon {
+	max-width: 1280px;
+	margin: 10px auto 0 auto;
+}
+
+#site-info {
+    float: left;
+    margin: 5px 0 0;
+    max-width: 900px;
+}
+
+#site-info p {
+	text-align: left;
+}
+
+#logos-footer {
+	float: right;
+	width: 305px;
+	height: 95px;
+	background: url("../../img/logos-footer.png") no-repeat;
 }
 
 /* =main

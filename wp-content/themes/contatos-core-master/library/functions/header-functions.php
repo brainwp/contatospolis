@@ -77,6 +77,14 @@ function rolo_css_print() {
 }
 add_action ('wp_head','rolo_css_print');
 
+/**
+ * Adicionando Google Font: Source Sans
+ */
+function rolo_font_print() {
+	echo "<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>" . "\r";
+}
+add_action ('wp_head','rolo_font_print');
+
 
 /**
  * Allows for hiding of widget areas when printing
@@ -120,7 +128,7 @@ add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
  * @since 1.4
  */
 function rolopress_default_top_menu() { 
-	echo "<div id=\"menu\">";
+	echo "<div id=\"menu\"><div class=\"wrapper-menu\">";
 	wp_nav_menu( array( 'menu' => 'default-menu') ); // display menu built in Appearance > Menus
 	rolopress_default_top_menu_right(); // call function to create right side of menu.
 	echo "</div>";
@@ -136,26 +144,27 @@ add_action('rolopress_before_wrapper', 'rolopress_default_top_menu');
  */
 function rolopress_default_top_menu_right() { ?>
 
-        <ul class="menu_item sub_menu alignright default_menu">
-            <li>
-                <form id="searchform" method="get" action="<?php bloginfo('url') ?>">
-<?php
-                    if (isset($_GET['s'])) {
-                        $s = $_GET['s'];
-                    } else {
-                        $s = '';
-                    }
-?>
-                    <input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($s), true) ?>" size="20" tabindex="1" />
-                    <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
-                </form>
-            </li>
-            <?php global $user_ID, $user_identity, $user_level ?>
+        <ul class="menu_item sub_menu alignright default_menu default_menu_right">
+            <?php global $user_ID, $user_identity, $user_level, $current_user ?>
+			
+            <li><?php wp_loginout(home_url( '/wp-admin/' )); ?></li>
+            <li class="icon-logout"></li>
+            
             <?php if ( $user_level >= 1 ) : ?>
-                <li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span><?php _e('Settings', 'rolopress') ?></span></a></li>
+                <li><a title="settings" href="<?php echo get_edit_user_link() ?>"><span><?php _e('Profile', 'rolopress') ?></span></a></li>
+				<li class="icon-user"></li>
             <?php endif // $user_level >= 1 ?>
-            <li><?php wp_loginout(); ?></li>
+                                   
+            <li class="name-user">
+			<?php
+				if ( is_user_logged_in() ) {
+				get_currentuserinfo();
+				echo _e('Hello ', 'rolopress') . $current_user->display_name;
+				}
+			?>
+			</li>
         </ul>
+</div><!-- .wrapper-menu -->
 <?php
 }
 ?>

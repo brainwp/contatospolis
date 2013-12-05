@@ -13,7 +13,8 @@ body {
 }
 body, input, textarea {
     color: #111;
-    font: 12px Arial,sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12px;
     line-height: 1.5;
 }
 

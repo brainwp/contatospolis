@@ -54,7 +54,7 @@ a:hover {
     display: none;
 }
 .menu-main-menu-container {
-    background: #464646;
+    background: #023f7b;
     float:left;
 }
 
@@ -71,12 +71,9 @@ a:hover {
 #menu .menu_item  a {
     display: block;
     float: left;
-    color:#ccc;
     text-decoration:none;
 }
 #menu .menu_item  a:hover {
-    color:#FFFFFF;
-    text-decoration:underline;
 }
 #menu  .menu_item {
     line-height: 36px;
@@ -144,11 +141,11 @@ a:hover {
 /* =footer
 -------------------------------------------------------------- */
 #footer {
-    background:none repeat scroll 0 0 #464646;
+    background:none repeat scroll 0 0 #023f7b;
     border-top:3px solid #4384BA;
     color:white;
-    height:40px;
-    margin-top:-40px;
+    height: 110x;
+    margin-top: -40px;
     padding:5px 0;
     text-align:center;
 }

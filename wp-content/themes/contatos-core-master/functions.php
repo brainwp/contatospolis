@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * Functions File
  *
@@ -18,7 +18,46 @@ function dump($this) {
 	var_dump($this);
 	echo '</pre>';
 }
- 
+
+function custom_login() { ?>
+    <style type="text/css">
+        body.login {
+            background-image: url(<?php echo get_template_directory_uri(); ?>/img/bg-admin.jpg);
+			padding-top: 120px;
+			overflow: hidden;
+        }
+		#login h1 a {
+			background-image:url(<?php echo get_template_directory_uri(); ?>/img/logo-admin.png) !important;
+			padding-bottom: 40px;
+		}
+		 body.login #login {
+			padding: 30px;
+			background-color: #e0eaeb;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+		}
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'custom_login' );
+
+// Função que redireciona o usuário após fazer login
+add_filter( 'login_redirect', 'redirect_login', 10, 3 );
+function redirect_login( $redirect_to, $request, $user ) {
+    if ( is_array( $user->roles ) ) {
+        // Se o usuário é administrador, redireciona para /wp-admin
+        if ( in_array( 'administrator', $user->roles ) )
+            return home_url( '/wp-admin/' );
+        else
+            // Se não, redireciona para home
+            return home_url();
+    }
+}
+
+if (!current_user_can( 'administrator' )) :
+	show_admin_bar( false );
+endif;
+
 // Make theme available for translation
 // Translations can be filed in the /languages/ directory
 load_theme_textdomain( 'rolopress', TEMPLATEPATH . '/languages' );
