@@ -116,7 +116,7 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place - Contatos Polis
-    jQuery('.resposta').not('#rolo_company_legal').eip(ajax_url.ajaxurl, {
+    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid
     });
@@ -132,6 +132,100 @@ jQuery(document).ready(function() {
                 }
     });
 
+    jQuery('input.rolo_conflito.check').on('change', function() {
+
+        if (jQuery(".rolo_conflito.check:checked").length == 1) {
+            jQuery('.input_conflito').removeClass('out');
+        } else {
+            jQuery('.input_conflito').not('.button').addClass('out');
+        }
+
+    });
+
+    jQuery('input.rolo_relacao.check').on('change', function() {
+
+        if (jQuery(".rolo_relacao.check:checked").length == 1) {
+            jQuery('.input_relacao').removeClass('out');
+        } else {
+            jQuery('.input_relacao').not('.button').addClass('out');
+        }
+
+    });
+
+    jQuery('.input_conflito.button, .input_relacao.button').on('click', function() {
+
+        var list = [];
+        var tags;
+        var act;
+        if(jQuery(this).hasClass('input_conflito')) {
+            check = jQuery('.input_conflito.check:checked').length;
+            act = 'conflito';
+            tags = jQuery('.input_conflito').not('.button');
+        } else {
+            check = jQuery('.input_relacao.check:checked').length;
+            act = 'relacao';
+            tags = jQuery('.input_relacao').not('.button');
+        }
+
+        jQuery.each(tags, function() {
+            
+            if(jQuery(this).is('input:checked')) {
+                list.push('checked');
+            } else {
+                list.push(jQuery(this).val());
+            }
+            
+        });
+
+        if(check == 1) {
+            list.unshift(true);    
+        } else {
+            list.unshift(false);
+        }
+        
+
+        jQuery.post( 
+            ajax_url.ajaxurl, { 
+                action : 'rolo_ajax_edit_company_other',
+                act    : act,
+                postid : ajax_url.postid,
+                data   : list
+            }, function( resp ) {
+                
+                    if(resp.status == 'sucesso') {
+                        window.location.reload();
+                    }
+
+                });
+
+    });
+/*
+    jQuery('.input_relacao.button').on('click', function() {
+
+        var list = [];
+        jQuery.each(jQuery('.input_relacao').not('.button'), function() {
+            
+            if(jQuery(this).is('input:checked')) {
+                list.push('checked');
+            } else {
+                list.push(jQuery(this).val());
+            }
+
+        });
+
+        jQuery.post( 
+            ajax_url.ajaxurl, { 
+                action : 'rolo_ajax_edit_company_relacao',
+                data   : list
+            }, function( resp ) {
+
+                    if(resp.status == 'sucesso') {
+                    }
+
+                });
+
+    });
+*/
     jQuery('.selectit input').on('change', function() {
 
         var area = jQuery(this).parents('div').attr('class');

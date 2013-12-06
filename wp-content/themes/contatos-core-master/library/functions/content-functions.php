@@ -7,22 +7,43 @@
  * @package RoloPress
  * @subpackage Functions
  */
-
-add_action( 'save_post', 'rolo_generate_meta_term' );
-function rolo_generate_meta_term($id) {
-	
-	$p = get_post($id);
-
-	if(has_term('company','type',$id)) {
-		update_post_meta($id, 'rolo_company_name', $p->post_title);
-		$term = wp_insert_term($p->post_title, 'company');
-//		$t = wp_set_object_terms($id, $term->term_id, 'company' );
-// TODO RESOLVER PENDENCIA DE AUTOMATIZAR A ENTRADA DA NOVA TAXONOMIA
-	} elseif (has_term('contact', 'type', $id)) {
-		update_post_meta($id, 'rolo_contact_name', $p->post_title);
-	}
-}
  
+add_action( 'wp_ajax_nopriv_rolo_ajax_edit_company_other', 'rolo_ajax_edit_company_other' );
+add_action( 'wp_ajax_rolo_ajax_edit_company_other', 'rolo_ajax_edit_company_other' );
+function rolo_ajax_edit_company_other() {
+
+	$vars = $_POST['data'];
+	$act = $_POST['act'];
+	$id = $_POST['postid'];
+
+	if($vars[0] == "false") {
+		$vars[0] = false;
+	} else {
+		$vars[0] = true;
+	}
+
+	if($act == 'conflito') {
+		if($vars[4] != 'checked')
+			$vars[4] = false;
+
+		update_post_meta( $id, 'rolo_conflito', $vars );
+		$safe = 'sucesso';
+	} else {
+		if($vars[2] != 'checked')
+			$vars[2] = false;
+		update_post_meta( $id, 'rolo_relacao', $vars );
+		$safe = 'sucesso';
+	}
+
+	// $response = $vars;
+	$response = array('status' => $safe);
+
+	header( "Content-Type: application/json" );
+	echo json_encode($response);
+	exit;
+
+}
+
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_contacts', 'rolo_ajax_edit_contacts' );
 add_action( 'wp_ajax_rolo_ajax_edit_contacts', 'rolo_ajax_edit_contacts' );
 function rolo_ajax_edit_contacts() {
@@ -93,6 +114,8 @@ function rolo_ajax_edit_company() {
 
 	else :
 		$status = 'dev';
+
+	
 /*
 		switch ($vars['id']) {
 			case 'rolo_company_update':

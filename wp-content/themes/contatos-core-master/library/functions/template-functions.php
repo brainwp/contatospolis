@@ -186,13 +186,14 @@ function rolo_company_header($company_id) {
 
     $company_redes = unserialize($company['rolo_company_redes'][0]);
 
-    if($company_redes) {	
-    foreach ($company_redes as $key => $value) {
-    	if($value) {
-    		$redes .= $key . '.com/' . $value . '<br>';
-    	}
+    if($company_redes) {
+    	foreach ($company_redes as $key => $value) {
+	    	if($value) {
+	    		$redes .= $key . '.com/' . $value . '<br>';
+	    	}
+	    }	
     }
-    }
+    
 
 	$company_tel = $company['rolo_company_telefone'][0];
     $company_end = $company['rolo_company_endereco'][0];
@@ -208,7 +209,7 @@ function rolo_company_header($company_id) {
 
 ?>
     <div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
-
+             
              <a class="fn"
                 <?php if (is_single()) : // show proper links on single or archive company pages ?>
                     href="<?php echo get_term_link($company_name, 'company'); ?>"><?php echo $company_name;?>
@@ -245,7 +246,8 @@ function rolo_company_header($company_id) {
 						<th>E-mail</th>
 					</tr>
 				<?php 
-                                        if($company_contatos) {
+
+					if($company_contatos) :
 					foreach($company_contatos as $contato) {
 
 						$user = get_post( $contato );
@@ -262,10 +264,12 @@ function rolo_company_header($company_id) {
 
 							
 						<?php }
+
 						
 
 					}
-                                        }
+
+					endif;
 					/*
 				?>
 							<tr>
@@ -310,35 +314,44 @@ function rolo_company_header($company_id) {
 				<div class="item-col-1">
 					<h3>Impactos Socioambientais</h3>
 					<?php 
+						$edit = 'OK';
+						$out = 'out';
 						$company_conflito = unserialize($company['rolo_conflito'][0]); 
-						$checked = ''; if($company_conflito[0]) { $checked = 'checked="checked"'; }
+						
+						$checked = ''; if($company_conflito[0]) { $checked = 'checked="checked"'; $edit = 'editar'; $out = ''; }
 						$projeto = ''; if($company_conflito[1]) { $projeto = $company_conflito[1]; }
 						$desde = ''; if($company_conflito[2]) { $desde = $company_conflito[2]; }
 						$instancia = ''; if($company_conflito[3]) { $instancia = $company_conflito[3]; }
 						$fim = ''; if($company_conflito[4]) { $fim = 'checked="checked"'; }
-						$obs = ''; if($company_conflito[5]) { $obs = $company_conflito[5]; }						
+						$obs = ''; if($company_conflito[5]) { $obs = $company_conflito[5]; }		
+
+
 					?>
 
-					<div><span class="title">Encontra-se em situação de conflito com grandes projetos e/ou áreas de proteção ambiental?</span><span id="rolo_conflito" class="resposta"> <input type="checkbox" <?php echo $checked; ?> /> Sim</span></div>
-					<div><span class="title">Qual projeto?</span><span id="rolo_conflito" class="resposta <?php echo ($projeto ? '' : 'vazio'); ?>"><?php echo $projeto; ?></span></div>
-					<div><span class="title">Desde quando isso ocorre?</span><span id="rolo_conflito" class="resposta <?php echo ($desde ? '' : 'vazio'); ?>"><?php echo $desde; ?></span></div>
-					<div><span class="title">O caso foi levado a alguma instância?</span><span id="rolo_conflito" class="resposta <?php echo ($instancia ? '' : 'vazio'); ?>"><?php echo $instancia; ?></span></div>
-					<div><span class="title">A situação foi equacionada?</span><span id="rolo_conflito" class="resposta"> <input type="checkbox" <?php echo $fim; ?>/> Sim</span></div>
-					<div><span class="title">Outras observações relativas ao caso em questão</span><span id="rolo_conflito" class="resposta <?php echo ($obs ? '' : 'vazio'); ?>"><?php echo $obs; ?></span></div>
+					<div><span class="title">Encontra-se em situação de conflito com grandes projetos e/ou áreas de proteção ambiental?</span><span id="rolo_conflito" class="rolo_conflito resposta"> <input type="checkbox" class="rolo_conflito check" <?php echo $checked; ?> /> Sim</span></div>
+					<div><span class="title">Qual projeto?</span><span class="rolo_conflito resposta <?php echo ($projeto ? '' : 'vazio'); ?>"><?php echo $projeto; ?></span><input type="text" class="input_conflito out" value="<?php echo $projeto; ?>"/></div>
+					<div><span class="title">Desde quando isso ocorre?</span><span class="rolo_conflito resposta <?php echo ($desde ? '' : 'vazio'); ?>"><?php echo $desde; ?></span><input type="text" class="input_conflito out" value="<?php echo $desde; ?>"/></div>
+					<div><span class="title">O caso foi levado a alguma instância?</span><span class="rolo_conflito resposta <?php echo ($instancia ? '' : 'vazio'); ?>"><?php echo $instancia; ?></span><input type="text" class="input_conflito out" value="<?php echo $instancia; ?>"/></div>
+					<div><span class="title">A situação foi equacionada?</span><span class="rolo_conflito resposta"> <input type="checkbox" class="input_conflito" <?php echo $fim; ?>/> Sim</span></div>
+					<div><span class="title">Outras observações relativas ao caso em questão</span><span class="rolo_conflito resposta <?php echo ($obs ? '' : 'vazio'); ?>"><?php echo $obs; ?></span><input type="text" class="input_conflito out" value="<?php echo $obs; ?>"/></div>
+					<div><input type="button" class="input_conflito <?php echo $out; ?> button" value="<?php echo $edit; ?>" /></div>
 				</div>
 				<div class="item-col-2">
 					<h3>Relação com o projeto Litoral Sustentável</h3>
 					<?php 
+						$edit = 'OK';
+						$out = 'out';
 						$company_relacao = unserialize($company['rolo_relacao'][0]); 
-						$checked = ''; if($company_relacao[0]) { $checked = 'checked="checked"'; }
+						$checked = ''; if($company_relacao[0]) { $checked = 'checked="checked"'; $edit = 'editar'; $out = ''; }
 						$local = ''; if($company_relacao[1]) { $local = $company_relacao[1]; }
 						$apoio = ''; if($company_relacao[2]) { $apoio = 'checked="checked"'; }
 						$conflito = ''; if($company_relacao[3]) { $conflito = $company_relacao[3]; }
 					?>
-					<div><span class="title">Participou de algum evento do projeto?</span><span id="rolo_relacao" class="resposta"> <input type="checkbox" <?php echo $checked; ?> /> Sim</span></div>
-					<div><span class="title">Local</span><span id="rolo_relacao" class="resposta <?php echo ($local ? '' : 'vazio'); ?>"><?php echo $local; ?></span></div>
-					<div><span class="title">Tem apoiado/divulgado o projeto?</span><span id="rolo_relacao" class="resposta"> <input type="checkbox" <?php echo $apoio; ?> /> Sim</span></div>
-					<div><span class="title">Tem algum histórico de conflito com o projeto? Qual motivo?</span><span id="rolo_relacao" class="resposta <?php echo ($conflito ? '' : 'vazio'); ?>"><?php echo $conflito; ?></span></div>
+					<div><span class="title">Participou de algum evento do projeto?</span><span class="rolo_relacao resposta"> <input type="checkbox" class="rolo_relacao check" <?php echo $checked; ?> /> Sim</span></div>
+					<div><span class="title">Local</span><span class="rolo_relacao resposta <?php echo ($local ? '' : 'vazio'); ?>"><?php echo $local; ?></span><input type="text" class="input_relacao out" value="<?php echo $local; ?>"/></div>
+					<div><span class="title">Tem apoiado/divulgado o projeto?</span><span class="rolo_relacao resposta"> <input type="checkbox" class="input_relacao" <?php echo $apoio; ?> /> Sim</span></div>
+					<div><span class="title">Tem algum histórico de conflito com o projeto? Qual motivo?</span><span class="rolo_relacao resposta <?php echo ($conflito ? '' : 'vazio'); ?>"><?php echo $conflito; ?></span><input type="text" class="input_relacao out" value="<?php echo $conflito; ?>" /></div>
+					<div><input type="button" class="input_relacao <?php echo $out; ?> button" value="<?php echo $edit; ?>" /></div>
 				</div>
 			</div>
 			<?php rolopress_after_company_header();?>

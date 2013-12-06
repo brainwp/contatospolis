@@ -3,3 +3,7 @@
 	content: " Sem informação";
 	color: #9D9D9D;
 }
+
+input.out {
+	display: none;
+}
