@@ -148,10 +148,39 @@ a:hover {
     margin-top: -40px;
     padding:5px 0;
     text-align:center;
+	overflow: hidden;
 }
 #footer a {
     color: white;
     font-weight: bold;
+}
+#site-info {
+    margin: 35px 0 0;
+}
+
+.logo-litoral {
+    float: left;
+    height: 91px;
+    width: 201px;
+}
+
+.logo-litoral a {
+    height: 91px;
+    width: 201px;
+	position: absolute;
+}
+
+.logo-polis {
+    float: left;
+    height: 91px;
+    margin: 0 0 0 17px;
+    width: 83px;
+}
+
+.logo-polis a {
+    height: 91px;
+	width: 83px;
+	position: absolute;
 }
 
 /* =Archives

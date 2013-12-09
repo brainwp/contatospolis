@@ -11,7 +11,8 @@
 			</div><!-- #site-info -->
 
 			<div id="logos-footer">
-				<div class=""></div>
+				<div class="logo-litoral"><a href="http://www.litoralsustentavel.org.br" target="_blank"></a></div>
+				<div class="logo-polis"><a href="http://www.polis.org.br" target="_blank"></a></div>
 			</div><!-- .logos-footer -->
 			
 		</div><!-- #colophon -->
