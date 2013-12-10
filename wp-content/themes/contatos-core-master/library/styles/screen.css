@@ -3,13 +3,22 @@
 
 -------------------------------------------------------------- */   
 
-body, #wrapper {
+body {
     margin: .5em 1%;
 	font-family: 'Source Sans Pro', sans-serif;
 }
+
 li {
     list-style:none;
 }
+
+#wrapper {
+	background: #f0f0f0;
+	margin: 0 auto;
+	max-width: 1280px;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
 .error {
     text-align:center;
     background:yellow;
@@ -19,6 +28,14 @@ li {
 }
 .hide {
     display: none;
+}
+
+.grey {
+	color: #444;
+}
+
+.blue {
+	color: #023f7b;
 }
 
 /* =Header
@@ -156,6 +173,48 @@ li {
     font-size: 22px;
     text-decoration: none;
     color: white;
+}
+
+/* */
+
+.item-image {
+	width: 110px;
+	margin: 0 20px 0 0;
+	float: left;
+}
+
+.item-col-1 {
+	width: 400px;
+	float: left;
+}
+
+.cada-linha span.title {
+	margin-right: 20px;
+}
+
+h2.title_single {
+    font-size: 1.8em;
+    font-weight: normal;	
+}
+
+.entry-main {
+}
+
+.item-form {
+	font-size: 1.3em;
+}
+
+.cada-linha {
+	width: 100%;
+	min-height: 30px;
+}
+
+.title-bloco-1 {
+	float: left;
+}
+
+.resposta {
+	float: left;
 }
 
 /* =Footer

@@ -137,6 +137,13 @@ $rolosearch = $options[disable_rolosearch];
 		require_once( ROLOPRESS_EXTENSIONS . '/rolosearch/rolosearch.php' );
 	}
 
+add_filter('get_avatar', 'contatos_clean_default_avatar');
+function contatos_clean_default_avatar( $avatar ) {
+		$avatar = str_replace('http://0.gravatar.com/avatar/?d=', '', $avatar);
+		$avatar = str_replace('&s=96', '', $avatar);
+	return $avatar;
+}
+
 // Load javascript - only if user has proper permissions
 if ( current_user_can('edit_posts') ) {
 	require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); }

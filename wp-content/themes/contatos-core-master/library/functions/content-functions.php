@@ -166,8 +166,8 @@ function rolo_ajax_edit_taxonomy() {
  */
 function rolo_pageheader() {
     
-    if (is_single()){
-        $pagetitle = '<h2 class="page-title">' . __(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ), 'rolopress') . __(get_the_title(),'rolopress') . "</h2>\n";
+    if (is_single() && rolo_type_is( 'company' )){
+        $pagetitle = '<h2 class="page-title"><span class="grey">' . __('Company ','rolopress') . '</span><span class="blue">' .  __(get_the_title(),'rolopress') . "</span></h2>\n";
 	} elseif (is_page()) {    
         $pagetitle = '<h2 class="page-title page">' . __(get_the_title(),'rolopress') . "</h2>\n";
     } elseif (is_404()) {    

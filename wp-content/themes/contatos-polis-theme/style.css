@@ -124,7 +124,6 @@ a:hover {
     padding: 5px;
 }
 #main,#primary li.widget,#secondary li.widget  {
-    border: 4px solid #E4F2FD;
     -webkit-border-radius: 6px;
     -khtml-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -145,7 +144,6 @@ a:hover {
     border-top:3px solid #4384BA;
     color:white;
     height: 110x;
-    margin-top: -40px;
     padding:5px 0;
     text-align:center;
 	overflow: hidden;
@@ -201,6 +199,7 @@ a:hover {
 }
 .archive .post {
     height: auto;
+	overflow: hidden;
     padding:0 10px 0 0;
 }
 .entry-meta,.entry-summary{
@@ -300,8 +299,6 @@ h3.section-title{
     width:60px;
 }
 .fn ,.entry-title{
-    font-size:16px;
-    font-weight:bold;
 }
 .archive .entry-title {
     clear: none;
