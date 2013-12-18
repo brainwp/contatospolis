@@ -88,4 +88,3 @@ if ( !defined('ABSPATH') )
 	
 /** Configura as variáveis do WordPress e arquivos inclusos. */
 require_once(ABSPATH . 'wp-settings.php');
-

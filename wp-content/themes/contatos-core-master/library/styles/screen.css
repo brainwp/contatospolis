@@ -188,6 +188,11 @@ li {
 	float: left;
 }
 
+.item-col-2 {
+	width: 400px;
+	float: left;
+}
+
 .cada-linha span.title {
 	margin-right: 20px;
 }
@@ -197,7 +202,19 @@ h2.title_single {
     font-weight: normal;	
 }
 
-.entry-main {
+.hentry {
+}
+
+.bloco {
+	overflow: hidden;
+	margin: 10px 0px;
+}
+
+.bloco .contatos {
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	width: 100%;
+	clear: both;
+	overflow: hidden;
 }
 
 .item-form {
@@ -209,7 +226,7 @@ h2.title_single {
 	min-height: 30px;
 }
 
-.title-bloco-1 {
+.title-bloco-1, .title-bloco-2 {
 	float: left;
 }
 
