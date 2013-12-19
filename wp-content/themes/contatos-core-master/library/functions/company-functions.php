@@ -29,6 +29,11 @@ function rolo_add_company() {
                 echo __("There was some problem in inserting the company info", 'rolopress');
     //            TODO - Handle Error properly
             }
+
+            $permalink = get_permalink( $company_id );
+
+            header('Location: '.$permalink);
+
         } elseif (isset($_POST['rp_add_notes']) && $_POST['rp_add_notes'] == 'add_notes') {
             if (_rolo_save_company_notes()) {
                 echo __("Notes successfully added.", 'rolopress');
@@ -37,7 +42,7 @@ function rolo_add_company() {
                 echo __("There was some problem in inserting the notes", 'rolopress');
             }
         } else {
-            _rolo_show_company_fields();
+            // _rolo_show_company_fields();
         }
     }
 }

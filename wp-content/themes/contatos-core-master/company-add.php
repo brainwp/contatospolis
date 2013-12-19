@@ -7,6 +7,10 @@
  * @package RoloPress
  * @subpackage Template
  */
+
+if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
+    rolo_add_company();
+    
 get_header(); ?>
 	
 	<?php rolopress_before_container(); // Before container hook ?>
@@ -17,9 +21,7 @@ get_header(); ?>
 			
 				<?php rolo_pageheader();?>
 				
-				<?php if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
-						// rolo_add_company();
-?>
+				<?php // ?>
 <form id="company-add" class="uniForm inlineLabels" method="post" action="">
     <div id="errorMsg">
         <h3>Mandatory fields are not filled.</h3>
@@ -33,6 +35,8 @@ get_header(); ?>
 
             <input type="text" class="textInput name" tabindex="1000" size="55" value="" name="rolo_company_name">
         </div>
+    
+<?php /*
         <div class="ctrlHolder year mandatory">
             <label for="rolo_company_year">
 <em>*</em>Foundation Year			</label>
@@ -846,11 +850,13 @@ Others			</label>
                         <img alt="Delete" class="rolo_delete_ctrl" src="http://co-di-go.biz/contatospolis/wp-content/themes/contatos-core-master/library/images/forms/delete.png">
             <img alt="Add another" class="rolo_add_ctrl" src="http://co-di-go.biz/contatospolis/wp-content/themes/contatos-core-master/library/images/forms/add.png">
         </div>
+    */ ?>
     </fieldset>
    <div class="buttonHolder">
       <input type="hidden" value="add_company" name="rp_add_company">
       <button tabindex="1107" class="submitButton" id="add_company" name="submit" type="submit">Add company</button>
    </div>
+   
 </form>
 <?php
 					} else {

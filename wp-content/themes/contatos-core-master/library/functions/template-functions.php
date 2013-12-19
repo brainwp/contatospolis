@@ -16,6 +16,7 @@
  *
  * @since 0.1
  */
+/*
 function rolo_contact_header($contact_id) {
     if (!$contact_id) {
         return false;
@@ -41,12 +42,115 @@ function rolo_contact_header($contact_id) {
             </li>
 			<?php if ($contact['rolo_contact_email'] != "") { ?><li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li><?php } ?>
 
-			<?php rolopress_after_contact_header();?>
+			<?php rolopress_after_contact_header();?> 
     </ul><!-- hcard -->
 </div><!-- .bloco -->
 <?php
 }
+*/
+function rolo_contact_header($contact_id) {
 
+    if (!$contact_id) {
+        return false;
+    }
+
+    // $contact = get_post_meta($contact_id, 'rolo_contact', true);
+    $contact = get_post_custom($contact_id);
+
+    $contact_name = $contact['rolo_contact_first_name'][0].' '.$contact['rolo_contact_last_name'][0];
+    $contact_city = $contact['rolo_contact_city'][0];
+    
+    $contact_local = $contact['rolo_contact_local'][0];
+    $contact_local_city = $contact['rolo_contact_local_city'][0];
+    $contact_role = $contact['rolo_contact_role'][0];
+    $contact_company = $contact['rolo_contact_company'][0];
+    $contact_party = $contact['rolo_contact_party'][0];
+
+    $contact_email = $contact['rolo_contact_email'][0];
+    $contact_website = $contact['rolo_contact_website'][0];
+    
+    $contact_others = $contact['rolo_contact_others'][0];
+    $contact_address = $contact['rolo_contact_address'][0];
+    $contact_phone = $contact['rolo_contact_phone'][0];
+
+    $contact_redes = unserialize($contact['rolo_contact_redes'][0]);
+
+    if($contact_redes) {
+    	foreach ($contact_redes as $key => $value) {
+	    	if($value) {
+	    		$redes .= $key . '.com/' . $value . '<br>';
+	    	}
+	    }	
+    }
+    
+
+	$contact_tel = $contact['rolo_contact_telefone'][0];
+    $contact_end = $contact['rolo_contact_endereco'][0];
+
+    $contact_contato = $contact['rolo_contact_contato_facil'][0];
+
+    $contact_update = get_the_time( 'd/m/Y', $contact_id );
+    
+	$post_id = get_post($post->ID); // get current contact id
+    $slug = $post_id->post_name; // define slug as $slug
+
+   // $contact_contatos = unserialize($contact['rolo_contatos'][0]);
+
+?>
+    <div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
+
+			<h2 class="title_single">
+			<?php echo __('contact ','rolopress') ?>
+             <a class="fn blue"
+                <?php if (is_single()) : // show proper links on single or archive contact pages ?>
+                    href="<?php // echo get_term_link($contact_name, 'contact'); ?>"><?php echo $contact_name;?>
+                <?php else: ?>
+                    href="<?php the_permalink();?>"><?php echo $contact_name;?>
+                <?php endif; ?>
+            </a>
+			</h2>
+			
+			<div class="item-image">
+			<?php echo get_avatar(($contact_email),96, rolo_get_twitter_profile_image($contact_twitter, ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg"));?>
+			</div>
+			<div class="item-col-1 item-form">
+				<div class="cada-linha">
+				<div class="ano">
+					<span class="title title-bloco-1 grey"><?php _e('Cidade ', 'rolopress'); ?></span><span id="rolo_contact_city" class="resposta <?php echo ($contact_city ? '' : 'vazio'); ?>"><?php echo $contact_city; ?></span>
+				</div>
+				</div><!-- .cada-linha -->
+				<div class="cada-linha">
+				<div class="legal">
+					<span class="title title-bloco-1 grey"><?php _e('Local de trabalho ', 'rolopress'); ?></span><span id="rolo_contact_local" class="resposta <?php echo ($contact_local ? '' : 'vazio'); ?>"><?php echo $contact_local; ?></span>
+					<span class="title title-bloco-1 grey"><?php _e('Cidade ', 'rolopress'); ?></span><span id="rolo_contact_local_city" class="resposta <?php echo ($contact_local_city ? '' : 'vazio'); ?>"><?php echo $contact_local_city; ?></span>
+					<span class="title title-bloco-1 grey"><?php _e('Cargo ', 'rolopress'); ?></span><span id="rolo_contact_role" class="resposta <?php echo ($contact_role ? '' : 'vazio'); ?>"><?php echo $contact_role; ?></span>
+				</div>
+				</div><!-- .cada-linha -->
+				<div class="cada-linha">
+					<div class="obs"><span class="title title-bloco-1 grey"><?php _e('Entidade ', 'rolopress'); ?></span><span id="rolo_contact_company" class="resposta <?php echo ($contact_company ? '' : 'vazio'); ?>"><?php echo $contact_company; ?></span></div>
+				</div><!-- .cada-linha -->
+				<div class="cada-linha">
+					<div class="obs"><span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span><span id="rolo_contact_others" class="resposta <?php echo ($contact_others ? '' : 'vazio'); ?>"><?php echo $contact_others; ?></span></div>
+				</div><!-- .cada-linha -->
+				<div class="cada-linha">
+					<div class="data"><span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span><span id="rolo_contact_update" class="resposta <?php echo ($contact_update ? '' : 'vazio'); ?>"><?php echo $contact_update; ?></span></div>
+				</div><!-- .cada-linha -->
+				<div class="cada-linha">
+					<div class="data"><span class="title title-bloco-1 grey"><?php _e('Posicionamento político ', 'rolopress'); ?></span><span id="rolo_contact_party" class="resposta <?php echo ($contact_party ? '' : 'vazio'); ?>"><?php echo $contact_party; ?></span></div>
+				</div><!-- .cada-linha -->
+			</div>
+			<div class="item-col-2 item-form">
+				<div class="email"><span class="title"><?php _e('E-mail ', 'rolopress'); ?></span><span id="rolo_contact_email" class="resposta <?php echo ($contact_email ? '' : 'vazio'); ?>"><?php echo $contact_email;?></span></div>
+				<div class="endereco"><span class="title"><?php _e('Endereço ', 'rolopress'); ?></span><span id="rolo_contact_endereco" class="resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span></div>
+				<div class="telefone"><span class="title"><?php _e('Telefone ', 'rolopress'); ?></span><span id="rolo_contact_telefone" class="resposta <?php echo ($contact_tel ? '' : 'vazio'); ?>"><?php echo $contact_tel;?></span></div>
+				<div class="website url-field group"><span class="title"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_contact_website" class="resposta <?php echo ($contact_website ? '' : 'vazio'); ?>"><?php echo $contact_website; ?></span></div>
+				<div class="redes"><span class="title"><?php _e('Redes Sociais ', 'rolopress'); ?></span><span id="rolo_contact_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span></div>
+				<div class="contato"><span class="title"><?php _e('Forma mais fácil de contactar ', 'rolopress'); ?></span><span id="rolo_contact_contato_facil" class="resposta <?php echo ($contact_contato ? '' : 'vazio'); ?>"><?php echo $contact_contato; ?></span></div>
+			</div>
+
+    </div><!-- hcard -->
+<?php
+}
 /**
  * Displays a contact detail information
  *
@@ -281,7 +385,11 @@ function rolo_company_header($company_id) {
 				</div><!-- .cada-linha -->
 
 			</div>
+<<<<<<< HEAD
+		<?php if(is_single()) : ?>
+=======
 
+>>>>>>> bad0126e6b830adf4c36dd87d21d7bda97eb4104
 			<hr>
 
 			<div class="contatos item-form">
@@ -407,6 +515,7 @@ function rolo_company_header($company_id) {
 			<?php //* Fim do Bloco de Company */?>
 
 			<?php rolopress_after_company_header();?>
+		<?php endif; ?>
     </div><!-- hcard -->
 <?php
 }

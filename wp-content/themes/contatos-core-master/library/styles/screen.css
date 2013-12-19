@@ -5,7 +5,7 @@
 
 body {
     margin: .5em 1%;
-	font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 li {
@@ -13,10 +13,10 @@ li {
 }
 
 #wrapper {
-	background: #f0f0f0;
-	margin: 0 auto;
-	max-width: 1280px;
-	font-family: 'Source Sans Pro', sans-serif;
+    background: #f0f0f0;
+    margin: 0 auto;
+    max-width: 1280px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .error {
@@ -31,11 +31,11 @@ li {
 }
 
 .grey {
-	color: #444;
+    color: #444;
 }
 
 .blue {
-	color: #023f7b;
+    color: #023f7b;
 }
 
 /* =Header
@@ -43,23 +43,23 @@ li {
 .wrapper-header {
     background: url('../../img/bg-header.jpg') repeat scroll center center rgba(0, 0, 0, 0);
     height: 230px;
-	overflow: hidden;
+    overflow: hidden;
 }
 .wrapper-header-content {
     margin: 0 auto;
     max-width: 1280px;
 }
 .logo-header {
-	width: 806px;
-	height: 46px;
-	background: url('../../img/logo-contatos.png') no-repeat;
-	margin: 85px 0 0;
-	float: left;
+    width: 806px;
+    height: 46px;
+    background: url('../../img/logo-contatos.png') no-repeat;
+    margin: 85px 0 0;
+    float: left;
 }
 .a-logo-header {
-	width: 806px;
-	height: 46px;
-	position: absolute;
+    width: 806px;
+    height: 46px;
+    position: absolute;
 }
 .busca-header {
     float: right;
@@ -67,14 +67,14 @@ li {
     max-width: 300px;
 }
 .busca-header input {
-	padding: 10px 15px;
-	background: #FFF;
-	border: 1px solid #023f7b;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	color: #919191;
-	font-size: 16px;
+    padding: 10px 15px;
+    background: #FFF;
+    border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #919191;
+    font-size: 16px;
 }
 .busca-header input#searchsubmit {
     background: url("../../img/icon-busca.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -98,8 +98,8 @@ li {
 }
 
 .wrapper-menu {
-	max-width: 1280px;
-	margin: 0 auto;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 #menu .menu {
@@ -132,8 +132,8 @@ li {
     text-decoration:none;
 }
 #menu li.name-user {
-	padding: 0 10px 0 0;
-	color: #FFFFFF;
+    padding: 0 10px 0 0;
+    color: #FFFFFF;
 }
 #menu li.icon-user {
     background: url("../../img/sprite.png") no-repeat scroll 0 0 transparent;
@@ -178,14 +178,19 @@ li {
 /* */
 
 .item-image {
-	width: 110px;
-	margin: 0 20px 0 0;
-	float: left;
+    width: 110px;
+    margin: 0 20px 0 0;
+    float: left;
 }
 
 .item-col-1 {
-	width: 400px;
-	float: left;
+    width: 400px;
+    float: left;
+}
+
+.item-col-2 {
+    width: 400px;
+    float: left;
 }
 
 .item-col-2 {
@@ -194,14 +199,29 @@ li {
 }
 
 .cada-linha span.title {
-	margin-right: 20px;
+    margin-right: 20px;
 }
 
 h2.title_single {
     font-size: 1.8em;
-    font-weight: normal;	
+    font-weight: normal;    
 }
 
+.hentry {
+}
+
+<<<<<<< HEAD
+.bloco {
+    overflow: hidden;
+    margin: 10px 0px;
+}
+
+.bloco .contatos {
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+=======
 .hentry {
 }
 
@@ -215,35 +235,40 @@ h2.title_single {
 	width: 100%;
 	clear: both;
 	overflow: hidden;
+>>>>>>> bad0126e6b830adf4c36dd87d21d7bda97eb4104
 }
 
 .item-form {
-	font-size: 1.3em;
+    font-size: 1.3em;
 }
 
 .cada-linha {
-	width: 100%;
-	min-height: 30px;
+    width: 100%;
+    min-height: 30px;
 }
 
 .title-bloco-1, .title-bloco-2 {
+<<<<<<< HEAD
+    float: left;
+=======
 	float: left;
+>>>>>>> bad0126e6b830adf4c36dd87d21d7bda97eb4104
 }
 
 .resposta {
-	float: left;
+    float: left;
 }
 
 /* =Footer
 -------------------------------------------------------------- */
 
 #footer {
-	min-height: 50px;
+    min-height: 50px;
 }
 
 #colophon {
-	max-width: 1280px;
-	margin: 10px auto 0 auto;
+    max-width: 1280px;
+    margin: 10px auto 0 auto;
 }
 
 #site-info {
@@ -253,14 +278,14 @@ h2.title_single {
 }
 
 #site-info p {
-	text-align: left;
+    text-align: left;
 }
 
 #logos-footer {
-	float: right;
-	width: 305px;
-	height: 95px;
-	background: url("../../img/logos-footer.png") no-repeat;
+    float: right;
+    width: 305px;
+    height: 95px;
+    background: url("../../img/logos-footer.png") no-repeat;
 }
 
 /* =main
@@ -302,7 +327,7 @@ h3.section-heading {
 }
 
 /* =Notes
--------------------------------------------------------------- */	
+-------------------------------------------------------------- */   
 ol.notelist {
     list-style:none;
     margin:0;
@@ -470,4 +495,13 @@ ol.notelist li.pingback div.vcard {
 }
 #main  .widget-area  br {
     clear:left;
+}
+
+
+
+/* Ajustes Moraleida */
+.title-bloco-1 {
+    clear: both;
+    display: block;
+    float: left;
 }
