@@ -111,7 +111,7 @@ function rolo_contact_header($contact_id) {
 </h2>
 
 <div class="item-image">
-	<?php echo get_avatar(($contact_email),96, rolo_get_twitter_profile_image($contact_twitter, ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg"));?>
+	<?php echo rolo_get_avatar_image($contact_id); ?>
 </div>
 <div class="item-col-1 item-form">
 	<div class="cada-linha">
@@ -320,12 +320,12 @@ function rolo_company_header($company_id) {
     		</h2>
 
     		<div class="item-image">
-    			<?php echo get_avatar(($company_email),96 );?>
+    			<?php echo rolo_get_avatar_image($company_id, $size = array(96,96) ); ?>
     		</div><!-- .item-image -->
     		<div class="item-col-1 item-form">
     			<div class="cada-linha">
-    				<div class="email url-field">
-    					<span class="title title-bloco-2 grey"><?php _e('E-mail ', 'rolopress'); ?></span><span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><a class="email" href="mailto:<?php echo $company_email;?>"><?php echo $company_email;?> </a></span>
+    				<div class="email">
+    					<span class="title title-bloco-2 grey"><?php _e('E-mail ', 'rolopress'); ?></span><span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><?php echo $company_email;?></span>
     				</div>
     			</div><!-- .cada-linha -->
 
@@ -343,7 +343,7 @@ function rolo_company_header($company_id) {
 
     			<div class="cada-linha">
     				<div class="website url-field group">
-    					<span class="title title-bloco-2 grey"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><a class="url" href="http://<?php echo $company_website; ?>"><?php echo $company_website; ?></a></span>
+    					<span class="title title-bloco-2 grey"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><?php echo $company_website; ?></span>
     				</div>
     			</div><!-- .cada-linha -->
     			<?php if(is_single()) : ?>
@@ -597,7 +597,7 @@ function rolo_company_header_list($company_id) {
     		</h2>
 
     		<div class="item-image">
-    			<?php echo get_avatar(($company_email),96 );?>
+    			<?php echo rolo_get_avatar_image($company_id, $size = array(96,96) ); ?>
     		</div><!-- .item-image -->
     		<div class="item-col-1 item-form">
     			<div class="cada-linha">

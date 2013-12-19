@@ -8,6 +8,38 @@
  * @subpackage Functions
  */
  
+add_theme_support( 'post-thumbnails' ); 
+
+function rolo_get_avatar_image($avatar_id, $size = array(120,120) ) {
+
+
+
+	if(has_post_thumbnail( $avatar_id )) {
+
+		$image = get_the_post_thumbnail( $avatar_id, $size );
+
+	} else {
+
+		$contact_twitter = '';
+
+		if(has_term( 'Company', 'type', $avatar_id )) {
+			$email = get_post_meta( $avatar_id, 'rolo_company_email', true );
+		} else {
+			$email = get_post_meta( $avatar_id, 'rolo_contact_email', true );
+		}
+
+		if(!$email) {
+			$email = "contato@brasa.art.br";
+		}
+
+		$image = get_avatar( ($email), $size[0], rolo_get_twitter_profile_image($contact_twitter, ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg"));
+
+	}
+
+	return $image;
+
+}
+
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_company_other', 'rolo_ajax_edit_company_other' );
 add_action( 'wp_ajax_rolo_ajax_edit_company_other', 'rolo_ajax_edit_company_other' );
 function rolo_ajax_edit_company_other() {
