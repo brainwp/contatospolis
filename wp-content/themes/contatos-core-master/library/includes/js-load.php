@@ -25,7 +25,7 @@ function rolo_add_script() {
         wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );    
     }
     
-    if(is_singular( 'post' )) {
+    if(is_singular( 'post' ) && current_user_can( 'edit_posts' )) {
         wp_enqueue_media();
     }
     
