@@ -319,7 +319,7 @@ function rolo_company_header($company_id) {
     			<?php // echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
     		</h2>
 
-    		<div class="item-image">
+    		<div id="image-click" class="item-image">
     			<?php echo rolo_get_avatar_image($company_id, $size = array(96,96) ); ?>
     		</div><!-- .item-image -->
     		<div class="item-col-1 item-form">

@@ -40,6 +40,23 @@ function rolo_get_avatar_image($avatar_id, $size = array(120,120) ) {
 
 }
 
+add_action( 'wp_ajax_nopriv_rolo_ajax_edit_thumbnail', 'rolo_ajax_edit_thumbnail' );
+add_action( 'wp_ajax_rolo_ajax_edit_thumbnail', 'rolo_ajax_edit_thumbnail' );
+function rolo_ajax_edit_thumbnail() {
+
+	$attid = $_POST['att'];
+	$postid = $_POST['postid'];
+
+	update_post_meta( $postid, '_thumbnail_id', $attid );
+	
+	$image = get_the_post_thumbnail( $postid, array(96,96) );
+
+	header( "Content-Type: application/json" );
+	echo json_encode($image);
+	exit;
+
+}
+
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_company_other', 'rolo_ajax_edit_company_other' );
 add_action( 'wp_ajax_rolo_ajax_edit_company_other', 'rolo_ajax_edit_company_other' );
 function rolo_ajax_edit_company_other() {

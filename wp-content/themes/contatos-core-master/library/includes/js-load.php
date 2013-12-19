@@ -25,7 +25,9 @@ function rolo_add_script() {
         wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );    
     }
     
-
+    if(is_singular( 'post' )) {
+        wp_enqueue_media();
+    }
     
     if(is_single()) {
         wp_localize_script( 'rolopress-js', 'ajax_url', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'postid' => get_the_ID() ) );
