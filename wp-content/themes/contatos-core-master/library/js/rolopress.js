@@ -154,15 +154,23 @@ jQuery(document).ready(function() {
 
     jQuery('.input_conflito.button, .input_relacao.button').on('click', function() {
 
+        var cl;
+
+        if(jQuery(this).hasClass('input_conflito')) {
+            cl = '.input_conflito';
+        } else {
+            cl = '.input_relacao';
+        }
+
         var list = [];
         var tags;
         var act;
         if(jQuery(this).hasClass('input_conflito')) {
-            check = jQuery('.input_conflito.check:checked').length;
+            check = jQuery('.rolo_conflito.check').is(':checked');
             act = 'conflito';
             tags = jQuery('.input_conflito').not('.button');
         } else {
-            check = jQuery('.input_relacao.check:checked').length;
+            check = jQuery('.rolo_relacao.check').is(':checked');
             act = 'relacao';
             tags = jQuery('.input_relacao').not('.button');
         }
@@ -183,7 +191,6 @@ jQuery(document).ready(function() {
             list.unshift(false);
         }
         
-
         jQuery.post( 
             ajax_url.ajaxurl, { 
                 action : 'rolo_ajax_edit_company_other',
