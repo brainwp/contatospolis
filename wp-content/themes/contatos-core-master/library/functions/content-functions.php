@@ -448,7 +448,7 @@ function rolo_loop() { ?>
 					
 					if (is_archive() || is_home()) { 
 								if ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID());}
-								if ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID());} ?>
+								if ( rolo_type_is( 'company' ) ) { rolo_company_header_list(get_the_ID());} ?>
 					<?php }
 					
 					elseif (is_single() ) { 
