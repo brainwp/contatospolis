@@ -19,8 +19,12 @@ function rolo_add_script() {
         // Build in tag auto complete script - Code explanation at http://bit.ly/2vbemR
         wp_enqueue_script( 'suggest' );
 //    }
-    wp_enqueue_script( 'autocomplete', '//code.jquery.com/ui/1.10.3/jquery-ui.js', array('jquery'), '', true );
-    wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );
+    
+    if(is_single()) {
+        wp_enqueue_script( 'autocomplete', '//code.jquery.com/ui/1.10.3/jquery-ui.js', array('jquery'), '', true );
+        wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );    
+    }
+    
 
     
     if(is_single()) {
