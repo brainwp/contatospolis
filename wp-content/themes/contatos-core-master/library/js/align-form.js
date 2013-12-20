@@ -19,4 +19,11 @@ jQuery(function() {
             max3 = jQuery(this).width();   
     });
     jQuery('.title-bloco-3').width(max3);
+	
+	var max4 = 0;
+	jQuery('.title-bloco-4').each(function(){
+        if (jQuery(this).width() > max4)
+            max4 = jQuery(this).width();   
+    });
+    jQuery('.title-bloco-4').width(max4);
 });

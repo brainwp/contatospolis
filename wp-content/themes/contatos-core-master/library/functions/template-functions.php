@@ -98,15 +98,16 @@ function rolo_contact_header($contact_id) {
    }
 
     ?>
-    <div class="bloco card-<?php echo basename(get_permalink());?>">
+    
+    <div class="bloco card-<?php echo basename( get_permalink() );?>">
 
     <h2 class="title_single">
-        <?php echo __('Contact ','rolopress'); ?>
+        <?php echo __( 'Contact ','rolopress' ); ?>
         <a class="fn blue"
-        <?php if (is_single()) : // show proper links on single or archive contact pages ?>
-        href="<?php // echo get_term_link($contact_name, 'contact'); ?>"><?php echo $contact_name;?>
+        <?php if ( is_single() ) : // show proper links on single or archive contact pages ?>
+        href="<?php // echo get_term_link($contact_name, 'contact'); ?>"><?php echo $contact_name; ?>
     <?php else: ?>
-    	href="<?php the_permalink();?>"><?php echo $contact_name;?>
+    	href="<?php the_permalink(); ?>"><?php echo $contact_name; ?>
     <?php endif; ?>
     </a>
     </h2>
@@ -115,7 +116,7 @@ function rolo_contact_header($contact_id) {
         <?php echo rolo_get_avatar_image($contact_id); ?>
     </div>
 
-    <div class="item-col-1 item-form">
+    <div class="item-col-1 width-40 item-form">
         <div class="cada-linha">
             <div class="ano">
                 <span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span><span id="rolo_contact_city" class="resposta <?php echo ($contact_city ? '' : 'vazio'); ?>"><?php echo $contact_city; ?></span>
@@ -140,15 +141,42 @@ function rolo_contact_header($contact_id) {
     <?php endif; ?>	
     </div><!-- .item-col-1 -->
         
-    <div class="item-col-2 item-form">
-        <div class="email"><span class="title"><?php _e('E-mail ', 'rolopress'); ?></span><span id="rolo_contact_email" class="resposta <?php echo ($contact_email ? '' : 'vazio'); ?>"><?php echo $contact_email;?></span></div>
-        <div class="endereco"><span class="title"><?php _e('Endereço ', 'rolopress'); ?></span><span id="rolo_contact_endereco" class="resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span></div>
-        <div class="telefone"><span class="title"><?php _e('Telefone ', 'rolopress'); ?></span><span id="rolo_contact_telefone" class="resposta <?php echo ($contact_tel ? '' : 'vazio'); ?>"><?php echo $contact_tel;?></span></div>
-        <?php if(is_single()) : ?>
-        <div class="website url-field group"><span class="title"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_contact_website" class="resposta <?php echo ($contact_website ? '' : 'vazio'); ?>"><?php echo $contact_website; ?></span></div>
-    <?php endif; ?>
-        <div class="redes"><span class="title"><?php _e('Redes Sociais ', 'rolopress'); ?></span><span id="rolo_contact_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span></div>
-        <div class="contato"><span class="title"><?php _e('Forma mais fácil de contactar ', 'rolopress'); ?></span><span id="rolo_contact_contato_facil" class="resposta <?php echo ($contact_contato ? '' : 'vazio'); ?>"><?php echo $contact_contato; ?></span></div>
+    <div class="item-col-2 width-40 item-form">
+		
+       	<div class="cada-linha email">
+        	<span class="title title-bloco-4"><?php _e('E-mail ', 'rolopress'); ?></span>
+            <span id="rolo_contact_email" class="resposta <?php echo ($contact_email ? '' : 'vazio'); ?>"><?php echo $contact_email;?></span>
+        </div><!-- .cada-linha -->
+
+       	<div class="cada-linha endereco">
+        <span class="title title-bloco-4"><?php _e('Endereço ', 'rolopress'); ?></span>
+        <span id="rolo_contact_endereco" class="resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
+        </div><!-- .cada-linha -->
+       	
+        <div class="cada-linha telefone">
+        <span class="title title-bloco-4"><?php _e('Telefone ', 'rolopress'); ?></span>
+        <span id="rolo_contact_telefone" class="resposta <?php echo ($contact_tel ? '' : 'vazio'); ?>"><?php echo $contact_tel;?></span>      
+        </div><!-- .cada-linha -->
+       	
+
+		<?php if(is_single()) : ?>
+        	<div class="cada-linha website url-field group">
+               <span class="title title-bloco-4"><?php _e('Website ', 'rolopress'); ?></span>
+               <span id="rolo_contact_website" class="resposta <?php echo ($contact_website ? '' : 'vazio'); ?>"><?php echo $contact_website; ?></span>
+        	</div><!-- .cada-linha -->
+       	
+	<?php endif; ?>
+		
+        <div class="cada-linha redes">
+            <span class="title title-bloco-4"><?php _e('Redes Sociais ', 'rolopress'); ?></span>
+            <span id="rolo_contact_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
+        </div><!-- .cada-linha -->
+        
+		<div class="cada-linha contato">
+        	<span class="title title-bloco-4"><?php _e('Forma mais fácil de contactar ', 'rolopress'); ?></span>
+            <span id="rolo_contact_contato_facil" class="resposta <?php echo ($contact_contato ? '' : 'vazio'); ?>"><?php echo $contact_contato; ?></span>
+        </div><!-- .cada-linha -->
+        
     </div><!-- .item-col-2 -->
 </div><!-- .bloco -->
 
@@ -324,7 +352,7 @@ function rolo_company_header($company_id) {
     	<div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
     		<h2 class="title_single">
-    			<?php // echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
+    			<?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
     		</h2>
 
     		<div id="image-click" class="item-image <?php echo $enable; ?>">
@@ -605,7 +633,7 @@ function rolo_company_header_list($company_id) {
     	<div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
     		<h2 class="title_single">
-    			<?php // echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
+    			<?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
     		</h2>
 
     		<div class="item-image <?php echo $enable; ?>">

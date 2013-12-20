@@ -276,8 +276,10 @@ h2.title_single {
 	clear: both;
 }
 
-.title-bloco-1, .title-bloco-2, .title-bloco-3 {
-    float: left;
+.title-bloco-1,
+.title-bloco-2,
+.title-bloco-3,
+.title-bloco-4 {
 	float: left;
 }
 
