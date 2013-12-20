@@ -241,7 +241,7 @@ h2.title_single {
 
 .bloco {
 	overflow: hidden;
-	margin: 10px 0px;
+	margin: 0 0 10px 0px;
 }
 
 .item-list .even { /* adds invisible border so hover effect doesn't shake */
@@ -265,6 +265,16 @@ h2.title_single {
 	clear: both;
 	overflow: hidden;
 }
+
+.avatar, .entry-icon  {
+	background: url("../../img/avatar-default.jpg") no-repeat;
+    float: left;
+    margin: 7px 10px 0 0;
+    border: 2px solid #CCC;
+    height:100px;
+    width:100px;
+}
+
 
 .item-form {
     font-size: 1.3em;

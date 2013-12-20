@@ -279,11 +279,6 @@ h3.section-title{
 /* =Item Info
 -------------------------------------------------------------- */
 .avatar, .entry-icon  {
-    float: left;
-    margin: 0 10px 0 0;
-    border: 2px solid #E4F2FD;
-    height:60px;
-    width:60px;
 }
 .fn ,.entry-title{
 }
