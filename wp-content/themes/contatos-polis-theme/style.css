@@ -183,20 +183,7 @@ a:hover {
 
 /* =Archives
 -------------------------------------------------------------- */
-.item-list .even { /* adds invisible border so hover effect doesn't shake */
-                   border:2px solid #f7f7f7;
-                   background: #f7f7f7;
-}
-.item-list .odd { /* adds invisible border so hover effect doesn't shake */
-                  border:2px solid #fff;
-}
-.item-list .even:hover , .item-list .odd:hover{
-    border:2px solid #d5d5d5;
-    -webkit-border-radius: 3px;
-    -khtml-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
+
 .archive .post {
     height: auto;
 	overflow: hidden;

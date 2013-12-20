@@ -3,6 +3,34 @@
 
 -------------------------------------------------------------- */   
 
+.width-10 {
+	width: 10%;
+}
+
+.width-20 {
+	width: 20%;
+}
+
+.width-30 {
+	width: 30%;
+}
+
+.width-40 {
+	width: 40%;
+}
+
+.width-45 {
+	width: 45%;
+}
+
+.width-50 {
+	width: 50%;
+}
+
+.width-100 {
+	width: 100%;
+}
+
 body {
     margin: .5em 1%;
     font-family: 'Source Sans Pro', sans-serif;
@@ -17,6 +45,7 @@ li {
     margin: 0 auto;
     max-width: 1280px;
     font-family: 'Source Sans Pro', sans-serif;
+	overflow: hidden;
 }
 
 .error {
@@ -184,18 +213,13 @@ li {
 }
 
 .item-col-1 {
-    width: 400px;
+	margin: 0 15px 0 10px;
     float: left;
 }
 
 .item-col-2 {
-    width: 400px;
+	margin: 0 15px 0 10px;
     float: left;
-}
-
-.item-col-2 {
-	width: 400px;
-	float: left;
 }
 
 .cada-linha span.title {
@@ -207,21 +231,11 @@ h2.title_single {
     font-weight: normal;    
 }
 
-.hentry {
+
+.item-list > li {
+    overflow: hidden;
 }
 
-<<<<<<< HEAD
-.bloco {
-    overflow: hidden;
-    margin: 10px 0px;
-}
-
-.bloco .contatos {
-    background: none repeat scroll 0% 0% rgb(255, 255, 255);
-    width: 100%;
-    clear: both;
-    overflow: hidden;
-=======
 .hentry {
 }
 
@@ -230,12 +244,26 @@ h2.title_single {
 	margin: 10px 0px;
 }
 
+.item-list .even { /* adds invisible border so hover effect doesn't shake */
+                   border:2px solid #f7f7f7;
+                   background: #f7f7f7;
+}
+.item-list .odd { /* adds invisible border so hover effect doesn't shake */
+                  border:2px solid #fff;
+}
+.item-list .even:hover , .item-list .odd:hover{
+    border:2px solid #d5d5d5;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
 .bloco .contatos {
 	background: none repeat scroll 0% 0% rgb(255, 255, 255);
 	width: 100%;
 	clear: both;
 	overflow: hidden;
->>>>>>> bad0126e6b830adf4c36dd87d21d7bda97eb4104
 }
 
 .item-form {
@@ -245,18 +273,27 @@ h2.title_single {
 .cada-linha {
     width: 100%;
     min-height: 30px;
+	clear: both;
 }
 
-.title-bloco-1, .title-bloco-2 {
-<<<<<<< HEAD
+.title-bloco-1, .title-bloco-2, .title-bloco-3 {
     float: left;
-=======
 	float: left;
->>>>>>> bad0126e6b830adf4c36dd87d21d7bda97eb4104
+}
+
+.sub-titulo-form {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 25px
 }
 
 .resposta {
     float: left;
+}
+
+.resposta-textarea {
+	max-width: 300px;
 }
 
 /* =Footer

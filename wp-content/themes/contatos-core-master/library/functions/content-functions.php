@@ -484,13 +484,14 @@ return $query;
  */
 function rolo_loop() { ?>
 <?php if (!is_single() ) { // This class is not needed on single pages ?>
-	<ul class="item-list">
+<ul class="item-list">
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-		<div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
+<li>
+	<div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 		
-			<?php rolopress_before_entry(); // Before entry hook ?>
+		<?php rolopress_before_entry(); // Before entry hook ?>
 
 				<div class="entry-main group">
 				<?php 
@@ -501,54 +502,53 @@ function rolo_loop() { ?>
 					<?php }
 					
 					elseif (is_single() ) { 
-					
-								if ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); the_content();
-										if ( is_active_sidebar("contact-under-main")){ ?>
-											<div class="widget-area contact-under-main">
-											<?php dynamic_sidebar("contact-under-main"); ?>
-											</div> 
-										<?php }
-								}
+						if ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); the_content();
+								if ( is_active_sidebar("contact-under-main")){ ?>
+									<div class="widget-area contact-under-main">
+									<?php dynamic_sidebar("contact-under-main"); ?>
+									</div> 
+								<?php }
+						}
 
-								if ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID()); // the_content();
-										if ( is_active_sidebar("company-under-main")){ ?>
-											<div class="widget-area company-under-main">
-											<?php dynamic_sidebar("company-under-main"); ?>
-											</div> 
-										<?php }
-								}
+						if ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID()); // the_content();
+								if ( is_active_sidebar("company-under-main")){ ?>
+									<div class="widget-area company-under-main">
+									<?php dynamic_sidebar("company-under-main"); ?>
+									</div> 
+								<?php }
+						}
 					}
 					
 					elseif (is_search() ) { ?>
-							<?php 					
-								if 
-									( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); }
-								elseif
-									( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID()); }
-								else { ?>
-											<div id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
-												<?php echo '<img class="entry-icon" src=' . ROLOPRESS_IMAGES . '/icons/rolo-default.jpg />' ?>
-												<a class="entry-title" href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a>
-											</div>
-								<?php }
+						<?php 					
+                            if 
+                                ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); }
+                            elseif
+                                ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID()); }
+                            else { ?>
+                                        <div id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
+                                            <?php echo '<img class="entry-icon" src=' . ROLOPRESS_IMAGES . '/icons/rolo-default.jpg />' ?>
+                                            <a class="entry-title" href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a>
+                                        </div>
+                            <?php }
 					}
 									
 					elseif (is_page() ) {
-								the_content(); // show the page content
-								
-								if (is_page_template('widgets.php') || is_page_template('widgets-no-sidebar.php')) { // is this a widget page
-								
-									if ( is_active_sidebar("widget-page") ) { // is the widget area active ?>
-										<div class="widget-area">
-										<ul class="xoxo">
-										<?php dynamic_sidebar("widget-page");?>
-										</div> 
-										</div><!-- #widget-area -->	
-										<?php }
-									else {
-										rolo_add_some_widgets_message(); // if not, show a message
-									}
-								}
+						the_content(); // show the page content
+						
+						if (is_page_template('widgets.php') || is_page_template('widgets-no-sidebar.php')) { // is this a widget page
+						
+							if ( is_active_sidebar("widget-page") ) { // is the widget area active ?>
+								<div class="widget-area">
+								<ul class="xoxo">
+								<?php dynamic_sidebar("widget-page");?>
+								</div> 
+								</div><!-- #widget-area -->	
+								<?php }
+							else {
+								rolo_add_some_widgets_message(); // if not, show a message
+							}
+						}
 					}
 							
 					else { ?>
@@ -560,13 +560,14 @@ function rolo_loop() { ?>
 					<?php }; ?>
 					
 				</div><!-- .entry-main -->
-					
+
 				<?php // rolo_entry_footer(); ?>
 
 				<?php rolopress_after_entry(); // After entry hook ?>
 				
-		</div><!-- #entry-<?php the_ID(); ?> -->
-<?php endwhile; ?>
+	</div><!-- #entry-<?php the_ID(); ?> -->
+	<?php endwhile; ?>
+</li>
 
 <?php if (!is_single() ) { // not needed on single pages ?>
 	</div><!-- item-list-->
