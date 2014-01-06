@@ -231,6 +231,11 @@ h2.title_single {
     font-weight: normal;    
 }
 
+h2.page-title-light{
+    font-size: 1.8em;
+    font-weight: normal;
+	margin-left: 20px;
+}
 
 .item-list > li {
     overflow: hidden;

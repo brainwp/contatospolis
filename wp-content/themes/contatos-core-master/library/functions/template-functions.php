@@ -98,7 +98,7 @@ function rolo_contact_header($contact_id) {
    }
 
     ?>
-    
+
     <div class="bloco card-<?php echo basename( get_permalink() );?>">
 
     <h2 class="title_single">
@@ -179,6 +179,7 @@ function rolo_contact_header($contact_id) {
         
     </div><!-- .item-col-2 -->
 </div><!-- .bloco -->
+</a>
 
 
 <?php
@@ -346,22 +347,23 @@ function rolo_company_header($company_id) {
    }
 
     ?>
-    <?php //* Inicio do Bloco de Company */?>
+    <?php //* Inicio do Bloco de Company Single */?>
     <div class="bloco">
 
     	<div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-    		<h2 class="title_single">
-    			<?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
-    		</h2>
+            <h2 class="title_single">
+                <?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
+            </h2>
 
-    		<div id="image-click" class="item-image <?php echo $enable; ?>">
-    			<?php echo rolo_get_avatar_image($company_id, $size = array(96,96) ); ?>
-    		</div><!-- .item-image -->
-    		<div class="item-col-1 item-form">
+            <div class="item-image <?php echo $enable; ?>">
+                <?php echo rolo_get_avatar_image($contact_id); ?>
+            </div><!-- .item-image -->
+    
+    		<div class="item-col-1 width-40 item-form">
     			<div class="cada-linha">
     				<div class="email">
-    					<span class="title title-bloco-2 grey"><?php _e('E-mail ', 'rolopress'); ?></span><span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><?php echo $company_email;?></span>
+    					<span class="title title-bloco-2 grey"><?php _e( 'E-mail ', 'rolopress' ); ?></span><span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><?php echo $company_email;?></span>
     				</div>
     			</div><!-- .cada-linha -->
 
@@ -407,7 +409,8 @@ function rolo_company_header($company_id) {
     			</div><!-- .cada-linha -->
     			<div class="cada-linha">
     				<div class="obs">
-    					<span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo $company_others; ?></span>
+    					<span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
+                        <span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo $company_others; ?></span>
     				</div>
     			</div><!-- .cada-linha -->
     			<div class="cada-linha">
@@ -469,7 +472,7 @@ function rolo_company_header($company_id) {
 					</div>
 					<hr>
 					<div class="taxonomias item-form">
-						<div class="item-col-1">
+						<div class="item-col-1 width-50">
 							<?php 
 							require_once(ABSPATH . 'wp-admin/includes/template.php');
 
@@ -477,10 +480,13 @@ function rolo_company_header($company_id) {
 							echo '<h3>Caracterização institucional</h3>';
 
 							wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) );
+							
 							echo '</div>';
 							echo '<div class="interesse">';
 							echo '<h3>Áreas de interesse</h3>';
+							
 							wp_terms_checklist( $company_id, array( 'taxonomy' => 'interesse', 'checked_ontop' => false ) );
+							
 							echo '</div>';
 							?>
 						</div>
@@ -636,9 +642,10 @@ function rolo_company_header_list($company_id) {
     			<?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
     		</h2>
 
-    		<div class="item-image <?php echo $enable; ?>">
-    			<?php echo rolo_get_avatar_image($company_id, $size = array(96,96) ); ?>
-    		</div><!-- .item-image -->
+    <div class="item-image <?php echo $enable; ?>">
+        <?php echo rolo_get_avatar_image($contact_id); ?>
+    </div>
+    
     		<div class="item-col-1 width-40 item-form">
     			<div class="cada-linha">
     				<div class="email url-field">
