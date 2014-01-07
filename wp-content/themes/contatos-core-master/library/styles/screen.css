@@ -291,6 +291,10 @@ h2.page-title-light{
 	clear: both;
 }
 
+.cada-linha a {
+	color: #444;
+}
+
 .title-bloco-1,
 .title-bloco-2,
 .title-bloco-3,
