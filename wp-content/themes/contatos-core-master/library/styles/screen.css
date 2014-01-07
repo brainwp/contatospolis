@@ -313,6 +313,11 @@ h2.page-title-light{
     float: left;
 }
 
+.resposta-endereco {
+    float: left;
+	max-width: 280px;
+}
+
 .resposta-textarea {
 	max-width: 300px;
 }
