@@ -295,6 +295,19 @@ h2.page-title-light{
 	color: #444;
 }
 
+.cada-linha.add {
+	font-size: 1.3em;
+	margin: 0 0 15px 0;
+}
+
+.botao-add-contact {
+	background: url("../../img/add.png") no-repeat #023f7b;
+	padding: 10px 10px 10px 50px;
+	color: #FFF;
+	border: 0;
+	cursor: pointer;
+}
+
 .title-bloco-1,
 .title-bloco-2,
 .title-bloco-3,
@@ -317,6 +330,18 @@ h2.page-title-light{
     float: left;
 	max-width: 280px;
 }
+
+.resposta-add {
+	width: 80%;
+	float: left;
+}
+
+.resposta-add input {
+	padding: 5px 8px;
+	width: 100%;
+	border: 2px solid rgb(223, 223, 223);
+}
+
 
 .resposta-textarea {
 	max-width: 300px;

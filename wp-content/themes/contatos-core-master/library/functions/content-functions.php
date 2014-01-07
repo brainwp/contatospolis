@@ -218,7 +218,7 @@ function rolo_pageheader() {
     if (is_single() && rolo_type_is( 'company' )){
         $pagetitle = '<h2 class="page-title"><span class="grey">' . __('Company ','rolopress') . '</span><span class="blue">' .  __(get_the_title(),'rolopress') . "</span></h2>\n";
 	} elseif (is_page()) {    
-        $pagetitle = '<h2 class="page-title page">' . __(get_the_title(),'rolopress') . "</h2>\n";
+        $pagetitle = '<h2 class="page-title-light">' . __(get_the_title(),'rolopress') . "</h2>\n";
     } elseif (is_404()) {    
         $pagetitle = '<h2 class="page-title 404">' . __('Not Found', 'rolopress') . "</h2>\n";
 	} elseif (is_home()) {    
