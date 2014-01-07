@@ -32,7 +32,7 @@ function rolo_get_avatar_image($avatar_id, $size = array(120,120) ) {
 			$email = "contato@brasa.art.br";
 		}
 
-		$image = get_avatar( ($email), $size[0], rolo_get_twitter_profile_image($contact_twitter, ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg"));
+		$image = get_avatar( ($email), $size[0], rolo_get_twitter_profile_image($contact_twitter, ROLOPRESS_IMAGES . "/icons/gravatar-default.jpg"));
 
 	}
 
