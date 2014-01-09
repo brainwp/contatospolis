@@ -44,9 +44,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			max_rows			: 10,
 			cols				: 60,
 
-			savebutton_text		: "SAVE",
+			savebutton_text		: "Salver",
 			savebutton_class	: "jeip-savebutton",
-			cancelbutton_text	: "CANCEL",
+			cancelbutton_text	: "Cancelar",
 			cancelbutton_class	: "jeip-cancelbutton",
 
 			mouseover_class		: "jeip-mouseover",
@@ -59,7 +59,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			saving				: '<span id="saving-#{id}" class="#{saving_class}" style="display: none;">#{saving_text}</span>',
 
 			start_form			: '<span id="editor-#{id}" class="#{editor_class}" style="display: none;">',
-			form_buttons		: '<span><input type="button" id="save-#{id}" class="#{savebutton_class}" value="#{savebutton_text}" /> OR <input type="button" id="cancel-#{id}" class="#{cancelbutton_class}" value="#{cancelbutton_text}" /></span>',
+			form_buttons		: '<span><input type="button" id="save-#{id}" class="#{savebutton_class}" value="#{savebutton_text}" /><input type="button" id="cancel-#{id}" class="#{cancelbutton_class}" value="#{cancelbutton_text}" /></span>',
 			stop_form			: '</span>',
 
 			text_form			: '<input type="text" id="edit-#{id}" class="#{editfield_class}" value="#{value}" /> <br />',

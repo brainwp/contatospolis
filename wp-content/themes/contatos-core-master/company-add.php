@@ -29,12 +29,12 @@ get_header(); ?>
 
     <fieldset class="inlineLabels">
 
-        <div class="ctrlHolder name mandatory">
-            <label for="rolo_company_name">
-<em>*</em>Company Name			</label>
-
-            <input type="text" class="textInput name" tabindex="1000" size="55" value="" name="rolo_company_name">
-        </div>
+        <div class="cada-linha add">
+            <div class="add">
+                <span class="title title-bloco-1 grey"><?php _e('* Company Name', 'rolopress'); ?></span>
+				<span class="resposta-add"><input type="text" class="first_name" tabindex="1000" size="" value="" name="rolo_company_name" style="cursor: auto;"></span>
+            </div>
+        </div><!-- .cada-linha -->
     
 <?php /*
         <div class="ctrlHolder year mandatory">
@@ -852,10 +852,9 @@ Others			</label>
         </div>
     */ ?>
     </fieldset>
-   <div class="buttonHolder">
-      <input type="hidden" value="add_company" name="rp_add_company">
-      <button tabindex="1107" class="submitButton" id="add_company" name="submit" type="submit">Add company</button>
-   </div>
+
+	<input type="hidden" value="add_company" name="rp_add_company">
+	<button tabindex="1107" class="botao-add-contact submitButton" id="add_company" name="submit" type="submit">Adicionar Instituição</button>
    
 </form>
 <?php

@@ -301,11 +301,20 @@ h2.page-title-light{
 }
 
 .botao-add-contact {
-	background: url("../../img/add.png") no-repeat #023f7b;
-	padding: 10px 10px 10px 50px;
-	color: #FFF;
-	border: 0;
+	background: url("../../img/sprite.png") no-repeat scroll -60px 5px #023f7b;
+	padding: 20px 20px 20px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 	cursor: pointer;
+	margin-top: 20px;
+}
+
+.botao-add-contact:hover {
+	background-position: -60px -43px;
+	color: #FFF;
 }
 
 .title-bloco-1,
@@ -345,6 +354,38 @@ h2.page-title-light{
 
 .resposta-textarea {
 	max-width: 300px;
+}
+
+/* Quando clicado em um item para editar */
+.jeip-editor {
+	width: 300px;
+	float: left;
+	margin: 0 0 20px 0;
+}
+
+.jeip-savebutton {
+	background: url("../../img/sprite.png") no-repeat scroll -68px -101px #023f7b;
+	padding: 11px 10px 12px 42px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.jeip-savebutton:hover {
+	background-position: -68px -147px;
+	color: #FFF;
+}
+
+.jeip-cancelbutton {
+	color: red;
+	padding: 12px 15px;
+	background: none;
+	border: 0;
+	cursor: pointer;
 }
 
 /* =Footer
