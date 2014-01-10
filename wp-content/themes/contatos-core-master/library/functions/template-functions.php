@@ -150,7 +150,7 @@ function rolo_contact_header($contact_id) {
 
        	<div class="cada-linha endereco">
         <span class="title title-bloco-4"><?php _e('Endereço ', 'rolopress'); ?></span>
-        <span id="rolo_contact_endereco" class="resposta-endereco <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
+        <span id="rolo_contact_endereco" class="resposta-endereco resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
         </div><!-- .cada-linha -->
        	
         <div class="cada-linha telefone">
