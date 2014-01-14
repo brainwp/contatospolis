@@ -16,6 +16,11 @@ Styles for RoloPress admin screens
 #login h1 a {
     background:url(../../images/admin/rolo-login.gif) no-repeat top;
 }
+.login h1 a {
+	width: auto;
+	margin: 0 auto;
+	height: 50px;
+}
 
 /* =Header
 -------------------------------------------------------------- */ 
