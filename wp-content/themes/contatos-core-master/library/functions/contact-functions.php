@@ -22,15 +22,20 @@ function rolo_add_contact() {
 
         if (isset($_POST['rp_add_contact']) && $_POST['rp_add_contact'] == 'add_contact') {
             $contact_id = _rolo_save_contact_fields();
-            if ($contact_id) {
+           /*
+		   
+		   // Comentamos esse trecho pois estava imprimindo erro no header.
+		   
+		   if ($contact_id) {
                 echo __("Contact information successfully added.", 'rolopress');
             } else {
                 echo __("There was some problem in inserting the contact info", 'rolopress');
-    //            TODO - Handle Error properly
+			//TODO - Handle Error properly
             }
+			
+			*/
             $permalink = get_permalink( $contact_id );
-
-            header('Location: '.$permalink);
+            header( 'Location: ' . $permalink );
             
         } elseif (isset($_POST['rp_add_notes']) && $_POST['rp_add_notes'] == 'add_notes') {
             if (_rolo_save_contact_notes()) {
