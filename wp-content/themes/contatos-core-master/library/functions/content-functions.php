@@ -220,11 +220,11 @@ function rolo_pageheader() {
 	} elseif (is_page()) {    
         $pagetitle = '<h2 class="page-title-light">' . __(get_the_title(),'rolopress') . "</h2>\n";
     } elseif (is_404()) {    
-        $pagetitle = '<h2 class="page-title 404">' . __('Not Found', 'rolopress') . "</h2>\n";
+        $pagetitle = '<h2 class="page-title-light 404">' . __('Not Found', 'rolopress') . "</h2>\n";
 	} elseif (is_home()) {    
         $pagetitle = '<h2 class="page-title-light home">' . __('All Items', 'rolopress') . "</h2>\n";
 	} elseif (is_search()) {    
-        $pagetitle = '<h2 class="page-title search">' . __('Search Results for: ', 'rolopress') . '"' . get_search_query() . '"' . "</h2>\n";
+        $pagetitle = '<h2 class="page-title-light search">' . __('Search Results for: ', 'rolopress') . '<span class="blue">"' . get_search_query() . '"</spam>' . "</h2>\n";
 	} elseif (is_category()) {
 			$current_category = single_cat_title("", false);
 			$pagedesc = category_description();
