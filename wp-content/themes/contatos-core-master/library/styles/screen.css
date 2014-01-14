@@ -280,6 +280,17 @@ h2.page-title-light{
     width:100px;
 }
 
+.cada-linha input[type="text"] {
+    padding: 7px 12px;
+    background: #FFF;
+    border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #919191;
+    font-size: 14px;
+
+}
 
 .item-form {
     font-size: 1.3em;
