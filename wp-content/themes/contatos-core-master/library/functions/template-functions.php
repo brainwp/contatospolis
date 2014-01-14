@@ -102,14 +102,12 @@ function rolo_contact_header($contact_id) {
     <div class="bloco card-<?php echo basename( get_permalink() );?>">
 
     <h2 class="title_single">
-        <?php echo __( 'Contact ','rolopress' ); ?>
-        <a class="fn blue"
-        <?php if ( is_single() ) : // show proper links on single or archive contact pages ?>
-        href="<?php // echo get_term_link($contact_name, 'contact'); ?>"><?php echo $contact_name; ?>
-    <?php else: ?>
-    	href="<?php the_permalink(); ?>"><?php echo $contact_name; ?>
-    <?php endif; ?>
-    </a>
+	    <?php echo __( 'Contact ','rolopress' ); ?>
+        <?php if ( is_single() ) : ?>
+			<span class="blue"><?php echo $contact_name;?></span>
+        <?php else : ?>
+    		<a class="blue" href="<?php the_permalink(); ?>"><?php echo $contact_name;?></a>
+	    <?php endif; ?>    
     </h2>
 
     <div class="item-image <?php echo $enable; ?>">
@@ -365,7 +363,7 @@ function rolo_company_header($company_id) {
     	<div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
             <h2 class="title_single">
-                <?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
+                <?php echo __('Company ','rolopress') ?><span class="blue"><?php echo $company_name;?></span>
             </h2>
 
             <div class="item-image <?php echo $enable; ?>">
