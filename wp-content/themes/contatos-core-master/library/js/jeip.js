@@ -44,7 +44,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			max_rows			: 10,
 			cols				: 60,
 
-			savebutton_text		: "Salver",
+			savebutton_text		: "Salvar",
 			savebutton_class	: "jeip-savebutton",
 			cancelbutton_text	: "Cancelar",
 			cancelbutton_class	: "jeip-cancelbutton",
@@ -53,7 +53,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			editor_class		: "jeip-editor",
 			editfield_class		: "jeip-editfield",
 
-			saving_text			: "Saving ...",
+			saving_text			: "Salvando...",
 			saving_class		: "jeip-saving",
 
 			saving				: '<span id="saving-#{id}" class="#{saving_class}" style="display: none;">#{saving_text}</span>',
