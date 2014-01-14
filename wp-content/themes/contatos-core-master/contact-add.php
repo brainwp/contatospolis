@@ -28,6 +28,10 @@ get_header(); ?>
     <div id="errorMsg">
         <h3>Mandatory fields are not filled.</h3>
     </div>
+    
+    <div class="instrucoes">
+    	<?php _e('Adicione o Primeiro e Último Nome do indivíduo que pretende cadastrar. Após clicar em Adicionar Contato você será redirecionado para a página onde poderá completar o preenchimento de todos os campos desse contato.', 'rolopress'); ?>
+    </div><!-- .instrucoes -->
 
     <fieldset class="inlineLabels">
 

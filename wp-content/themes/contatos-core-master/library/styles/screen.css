@@ -371,6 +371,20 @@ h2.page-title-light{
 	max-width: 300px;
 }
 
+.instrucoes {
+	width: 88%;
+	margin: 0 0 30px 25px;
+	font-size: 14px;
+	font-style: italic;
+	color: #666;
+	border: 1px solid #900;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	padding: 15px;
+	background: #ffdfdf;
+}
+
 /* Quando clicado em um item para editar */
 .jeip-editor {
 	width: 300px;
