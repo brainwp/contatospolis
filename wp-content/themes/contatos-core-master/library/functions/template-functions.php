@@ -117,28 +117,40 @@ function rolo_contact_header($contact_id) {
     </div>
 
     <div class="item-col-1 width-40 item-form">
-        <div class="cada-linha">
-            <div class="ano">
-                <span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span><span id="rolo_contact_city" class="resposta <?php echo ($contact_city ? '' : 'vazio'); ?>"><?php echo $contact_city; ?></span>
-            </div>
+        <div class="cada-linha ano">
+			<span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span>
+            <span id="rolo_contact_city" class="resposta <?php echo ($contact_city ? '' : 'vazio'); ?>"><?php echo $contact_city; ?></span>
         </div><!-- .cada-linha -->
-        <div class="cada-linha">
-            <div class="legal">
-                <div class="obs"><span class="title title-bloco-1 grey"><?php _e('Instituição que Atua ', 'rolopress'); ?></span><span id="rolo_contact_company" class="resposta <?php echo ($contact_company ? '' : 'vazio'); ?>"><?php echo $contact_company; ?></span></div>
-                <span class="title title-bloco-1 grey"><?php _e('Cargo ', 'rolopress'); ?></span><span id="rolo_contact_role" class="resposta <?php echo ($contact_role ? '' : 'vazio'); ?>"><?php echo $contact_role; ?></span>
-            </div>
+        
+        <div class="cada-linha legal">
+            <span class="title title-bloco-1 grey"><?php _e('Instituição que Atua ', 'rolopress'); ?></span>
+            <span id="rolo_contact_company" class="resposta <?php echo ($contact_company ? '' : 'vazio'); ?>"><?php echo $contact_company; ?></span>
         </div><!-- .cada-linha -->
-        <div class="cada-linha">
-            <div class="obs"><span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span><span id="rolo_contact_others" class="resposta <?php echo ($contact_others ? '' : 'vazio'); ?>"><?php echo $contact_others; ?></span></div>
+        
+        <div class="cada-linha cargo">
+			<span class="title title-bloco-1 grey"><?php _e('Cargo ', 'rolopress'); ?></span>
+            <span id="rolo_contact_role" class="resposta <?php echo ($contact_role ? '' : 'vazio'); ?>"><?php echo $contact_role; ?></span>
         </div><!-- .cada-linha -->
+
+        <div class="cada-linha obs">
+            <span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
+            <span id="rolo_contact_others" class="resposta <?php echo ($contact_others ? '' : 'vazio'); ?>"><?php echo $contact_others; ?></span>
+        </div><!-- .cada-linha -->
+        
     <?php if(is_single()) : ?>
-        <div class="cada-linha">
-            <div class="data"><span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span><span id="rolo_contact_update" class="resposta <?php echo ($contact_update ? '' : 'vazio'); ?>"><?php echo $contact_update; ?></span></div>
+        
+        <div class="cada-linha data">
+            <span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
+            <span id="rolo_contact_update" class="resposta <?php echo ($contact_update ? '' : 'vazio'); ?>"><?php echo $contact_update; ?></span>
         </div><!-- .cada-linha -->
-        <div class="cada-linha">
-            <div class="data"><span class="title title-bloco-1 grey"><?php _e('Posicionamento político ', 'rolopress'); ?></span><span id="rolo_contact_party" class="resposta <?php echo ($contact_party ? '' : 'vazio'); ?>"><?php echo $contact_party; ?></span></div>
+
+        <div class="cada-linha data">
+            <span class="title title-bloco-1 grey"><?php _e('Posicionamento político ', 'rolopress'); ?></span>
+            <span id="rolo_contact_party" class="resposta <?php echo ($contact_party ? '' : 'vazio'); ?>"><?php echo $contact_party; ?></span>
         </div><!-- .cada-linha -->
+        
     <?php endif; ?>	
+    
     </div><!-- .item-col-1 -->
         
     <div class="item-col-2 width-40 item-form">
@@ -149,21 +161,22 @@ function rolo_contact_header($contact_id) {
         </div><!-- .cada-linha -->
 
        	<div class="cada-linha endereco">
-        <span class="title title-bloco-4"><?php _e('Endereço ', 'rolopress'); ?></span>
-        <span id="rolo_contact_endereco" class="resposta-endereco resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
+            <span class="title title-bloco-4"><?php _e('Endereço ', 'rolopress'); ?></span>
+            <span id="rolo_contact_endereco" class="resposta-endereco resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
         </div><!-- .cada-linha -->
        	
         <div class="cada-linha telefone">
-        <span class="title title-bloco-4"><?php _e('Telefone ', 'rolopress'); ?></span>
-        <span id="rolo_contact_telefone" class="resposta <?php echo ($contact_tel ? '' : 'vazio'); ?>"><?php echo $contact_tel;?></span>      
+            <span class="title title-bloco-4"><?php _e('Telefone ', 'rolopress'); ?></span>
+            <span id="rolo_contact_telefone" class="resposta <?php echo ($contact_tel ? '' : 'vazio'); ?>"><?php echo $contact_tel;?></span>      
         </div><!-- .cada-linha -->
        	
 
-		<?php if(is_single()) : ?>
-        	<div class="cada-linha website url-field group">
-               <span class="title title-bloco-4"><?php _e('Website ', 'rolopress'); ?></span>
-               <span id="rolo_contact_website" class="resposta <?php echo ($contact_website ? '' : 'vazio'); ?>"><?php echo $contact_website; ?></span>
-        	</div><!-- .cada-linha -->
+	<?php if(is_single()) : ?>
+    
+        <div class="cada-linha website url-field group">
+           <span class="title title-bloco-4"><?php _e('Website ', 'rolopress'); ?></span>
+           <span id="rolo_contact_website" class="resposta <?php echo ($contact_website ? '' : 'vazio'); ?>"><?php echo $contact_website; ?></span>
+        </div><!-- .cada-linha -->
        	
 	<?php endif; ?>
 		
@@ -180,7 +193,6 @@ function rolo_contact_header($contact_id) {
     </div><!-- .item-col-2 -->
 </div><!-- .bloco -->
 </a>
-
 
 <?php
 }
