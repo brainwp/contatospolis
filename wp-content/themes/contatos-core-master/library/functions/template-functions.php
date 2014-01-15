@@ -483,15 +483,15 @@ function rolo_company_header($company_id) {
 
 							echo '<div class="caracterizacao">';
 							echo '<h3>Caracterização institucional</h3>';
-
-							wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) );
-							
+							echo '<ul>';
+								wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) );
+							echo '</ul>';
 							echo '</div>';
 							echo '<div class="interesse">';
 							echo '<h3>Áreas de interesse</h3>';
-							
-							wp_terms_checklist( $company_id, array( 'taxonomy' => 'interesse', 'checked_ontop' => false ) );
-							
+							echo '<ul>';
+								wp_terms_checklist( $company_id, array( 'taxonomy' => 'interesse', 'checked_ontop' => false ) );
+							echo '</ul>';
 							echo '</div>';
 							?>
 						</div>
@@ -499,11 +499,15 @@ function rolo_company_header($company_id) {
 							<?php
 							echo '<div class="abrangencia">';
 							echo '<h3>Abrangência da atuação</h3>';
-							wp_terms_checklist( $company_id, array( 'taxonomy' => 'abrangencia', 'checked_ontop' => false ) );
+							echo '<ul>';
+								wp_terms_checklist( $company_id, array( 'taxonomy' => 'abrangencia', 'checked_ontop' => false ) );
+							echo '</ul>';
 							echo '</div>';
 							echo '<div class="participacao">';
 							echo '<h3>Espaços de participação</h3>';
-							wp_terms_checklist( $company_id, array( 'taxonomy' => 'participacao', 'checked_ontop' => false ) );
+							echo '<ul>';
+								wp_terms_checklist( $company_id, array( 'taxonomy' => 'participacao', 'checked_ontop' => false ) );
+							echo '</ul>';
 							echo '</div>';
 							?>
 						</div>

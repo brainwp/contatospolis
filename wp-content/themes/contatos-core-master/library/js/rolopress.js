@@ -286,6 +286,8 @@ jQuery(document).ready(function() {
 
         var ajax_data = { area: area, val: val, postid: ajax_url.postid }
 
+        // console.log(ajax_data);
+
         jQuery.post( 
                 ajax_url.ajaxurl, { 
                     action : 'rolo_ajax_edit_taxonomy',
