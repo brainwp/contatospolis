@@ -130,13 +130,15 @@ function rolo_ajax_autocomplete() {
 	$term = $_POST['data'];
 
 	if($tipo == 'nomes') {
-		$response = get_posts( array('type' => 'contact') );	
+		// $response = get_posts( array('type' => 'contact') );	
+		$term = '%' . $term . '%';
+		$sql = "SELECT ID,post_title FROM {$wpdb->prefix}posts WHERE post_title LIKE %s";
+		$response = $wpdb->get_results($wpdb->prepare($sql, $term));
 	}
 	if($tipo == 'instituicoes') {
 		$term = '%' . $term . '%';
 		$sql = "SELECT ID,post_title FROM {$wpdb->prefix}posts WHERE post_title LIKE %s";
-		// $sql = "SELECT * FROM {$wpdb->prefix}posts WHERE (post_title LIKE %s)";
-        $response = $wpdb->get_results($wpdb->prepare($sql, $term));
+		$response = $wpdb->get_results($wpdb->prepare($sql, $term));
         // $response = $wpdb->query($sql);
 	}	
 

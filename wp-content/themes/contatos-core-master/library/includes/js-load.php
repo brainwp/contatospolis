@@ -21,7 +21,7 @@ function rolo_add_script() {
 //    }
     
     if(is_single()) {
-        wp_enqueue_script( 'mask', '//raw.github.com/digitalBush/jquery.maskedinput/1.3.1/dist/jquery.maskedinput.min.js', array('jquery'), '', true );
+        wp_enqueue_script( 'mask', ROLOPRESS_JS . '/jquery.maskedinput.min.js', array('jquery'), '', true );
         wp_enqueue_script( 'autocomplete', '//code.jquery.com/ui/1.10.3/jquery-ui.js', array('jquery'), '', true );
         wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );    
     }
