@@ -49,7 +49,10 @@ jQuery(document).ready(function($){
 // Auto set on page load...
 jQuery(document).ready(function() {
     // Uniform
-    jQuery('form.uniForm').uniform();
+    jQuery('form.uniForm').uniform({
+        prevent_submit : true,
+        valid_class : 'valid'
+    });
 
     // Hide all hidden elements
     jQuery('.ctrlHidden').hide();
@@ -161,7 +164,7 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place - Contatos Polis
-    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil, #rolo_contact_telefone').eip(ajax_url.ajaxurl, {
+    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil, #rolo_contact_telefone, #rolo_contact_uf, #rolo_company_uf').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid,
         after_save: function(self) {
@@ -198,6 +201,41 @@ jQuery(document).ready(function() {
                         "Sim" : "Sim"
                 }
     });
+
+    jQuery('#rolo_company_uf, #rolo_contact_uf').eip(ajax_url.ajaxurl, {
+        action: 'rolo_ajax_edit_company',
+        data: ajax_url.postid,
+         form_type: "select",
+                select_options: {
+                    "AC" : "AC",
+                    "AL" : "AL",
+                    "AM" : "AM",
+                    "AP" : "AP",
+                    "BA" : "BA",
+                    "CE" : "CE",
+                    "DF" : "DF",
+                    "ES" : "ES",
+                    "GO" : "GO",
+                    "MA" : "MA",
+                    "MG" : "MG",
+                    "MS" : "MS",
+                    "MT" : "MT",
+                    "PA" : "PA",
+                    "PB" : "PB",
+                    "PE" : "PE",
+                    "PI" : "PI",
+                    "PR" : "PR",
+                    "RJ" : "RJ",
+                    "RN" : "RN",
+                    "RO" : "RO",
+                    "RR" : "RR",
+                    "RS" : "RS",
+                    "SC" : "SC",
+                    "SE" : "SE",
+                    "SP" : "SP",
+                    "TO" : "TO"
+                }
+    });    
 
     jQuery('#rolo_company_others').eip(ajax_url.ajaxurl, {
         data: ajax_url.postid,

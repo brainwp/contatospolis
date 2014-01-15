@@ -68,7 +68,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			select_option_form	: '<option id="edit-option-#{id}-#{option_value}" value="#{option_value}" #{selected}>#{option_text}</option>',
 			stop_select_form	: '</select>',
 			before_save			: function( self ) {
-				console.log(self);
+				return self;
 			},
 			after_save			: function( self ) {
 				for( var i = 0; i < 2; i++ ) {

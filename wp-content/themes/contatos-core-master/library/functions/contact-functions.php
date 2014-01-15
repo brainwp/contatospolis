@@ -246,9 +246,6 @@ function _rolo_save_contact_fields() {
         $new_post = array();
 
         $new_post['post_title'] = $_POST['rolo_contact_first_name'];
-        if (isset($_POST['rolo_contact_last_name'])) {
-            $new_post['post_title'] .= ' ' . $_POST['rolo_contact_last_name'];
-        }
 
         $new_post['post_type'] = 'post';
         $new_post['post_status'] = 'publish';
@@ -258,7 +255,7 @@ function _rolo_save_contact_fields() {
 
     // Store only first name and last name as seperate custom fields
     update_post_meta($post_id, 'rolo_contact_first_name', $_POST['rolo_contact_first_name']);
-    update_post_meta($post_id, 'rolo_contact_last_name', $_POST['rolo_contact_last_name']);
+    update_post_meta($post_id, 'rolo_contact_email', $_POST['rolo_contact_email']);
     wp_set_post_terms($post_id, $_POST['rolo_contact_post_tag']);
 
     if ($post_id) {

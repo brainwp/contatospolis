@@ -13,7 +13,7 @@ function rolo_add_script() {
     //TODO: Need to include JS only in required pages.
     
 //    if (is_page(array('Add Contact','Add Company', 'Edit Company', 'Edit Contact'))) {
-        wp_enqueue_script( 'uni-form', ROLOPRESS_JS . '/uni-form.jquery.js', array('jquery'), '', true );
+        wp_enqueue_script( 'uni-form', ROLOPRESS_JS . '/uni-form-validation.jquery.js', array('jquery'), '', true );
         wp_enqueue_script( 'rolopress-js', ROLOPRESS_JS . '/rolopress.js', array('jquery', 'uni-form'), '', true );
 		wp_enqueue_script( 'align-form', ROLOPRESS_JS . '/align-form.js' );
         // Build in tag auto complete script - Code explanation at http://bit.ly/2vbemR

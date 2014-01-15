@@ -73,6 +73,8 @@ function rolo_contact_header($contact_id) {
 	$contact_address = $contact['rolo_contact_address'][0];
 	$contact_phone = $contact['rolo_contact_phone'][0];
 
+	$contact_uf = $contact['rolo_contact_uf'][0];
+
 	$contact_redes = unserialize($contact['rolo_contact_redes'][0]);
 
 	if($contact_redes) {
@@ -118,6 +120,11 @@ function rolo_contact_header($contact_id) {
         <div class="cada-linha ano">
 			<span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span>
             <span id="rolo_contact_city" class="resposta <?php echo ($contact_city ? '' : 'vazio'); ?>"><?php echo $contact_city; ?></span>
+        </div><!-- .cada-linha -->
+
+        <div class="cada-linha uf">
+			<span class="title title-bloco-1 grey"><?php _e('Estado', 'rolopress'); ?></span>
+            <span id="rolo_contact_uf" class="resposta <?php echo ($contact_uf ? '' : 'vazio'); ?>"><?php echo $contact_uf; ?></span>
         </div><!-- .cada-linha -->
         
         <div class="cada-linha legal">
@@ -332,6 +339,9 @@ function rolo_company_header($company_id) {
 	$company_address = $company['rolo_company_address'][0];
 	$company_phone = $company['rolo_company_phone'][0];
 
+	$company_city = $company['rolo_company_city'][0];
+	$company_uf = $company['rolo_company_uf'][0];
+
 	$company_redes = unserialize($company['rolo_company_redes'][0]);
 
 	if($company_redes) {
@@ -382,6 +392,16 @@ function rolo_company_header($company_id) {
     					<span class="title title-bloco-2 grey"><?php _e('Endereço ', 'rolopress'); ?></span><span id="rolo_company_endereco" class="resposta <?php echo ($company_end ? '' : 'vazio'); ?>"><?php echo $company_end; ?></span>
     				</div>
     			</div><!-- .cada-linha -->
+
+		        <div class="cada-linha ano">
+					<span class="title title-bloco-1 grey"><?php _e('Cidade', 'rolopress'); ?></span>
+		            <span id="rolo_company_city" class="resposta <?php echo ($company_city ? '' : 'vazio'); ?>"><?php echo $company_city; ?></span>
+		        </div><!-- .cada-linha -->			
+
+		        <div class="cada-linha uf">
+					<span class="title title-bloco-1 grey"><?php _e('Estado', 'rolopress'); ?></span>
+		            <span id="rolo_company_uf" class="resposta <?php echo ($company_uf ? '' : 'vazio'); ?>"><?php echo $company_uf; ?></span>
+		        </div><!-- .cada-linha -->    			
 
     			<div class="cada-linha">
     				<div class="telefone">
