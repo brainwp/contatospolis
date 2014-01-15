@@ -278,6 +278,7 @@ jQuery(document).ready(function() {
 
     });
 */
+
     jQuery('.selectit input').on('change', function() {
 
         var area = jQuery(this).parents('div').attr('class');
@@ -296,6 +297,42 @@ jQuery(document).ready(function() {
 
                     });
     });
+
+    // Autocomplete instituicoes
+    var autocomp_inst = {
+         source: function(request, response) {
+             jQuery.post( 
+                ajax_url.ajaxurl, { 
+                    action : 'rolo_ajax_autocomplete',
+                    type: 'instituicoes',
+                    data   : request.term
+                }, function( resp ) {
+
+                    response(jQuery.map(resp, function(item) {
+
+                        var split = item.post_title.slice(0,request.term.length);
+
+                        if (split == request.term) {
+                            return {
+                                label: item.post_title,
+                                value: item.ID
+                            }    
+                        }
+                        
+                    }), 'json');
+                })        
+        },
+        minLength: 2,
+        delay: 500,
+        select: function(event, ui) {
+                this.value = ui.item.label;
+
+                var tr = jQuery(event.target).parents('tr');
+                jQuery(tr).children().eq(0).children('button').html('OK').attr('name',ui.item.value);
+                
+            return false;
+            }
+    };
 
     // Autocomplete nomes
     var autocomp_nomes = {
@@ -332,6 +369,14 @@ jQuery(document).ready(function() {
             return false;
             }
     };
+
+    jQuery('input').on('keypress', function() {
+        console.log('key');
+        // var newrow = jQuery('<tr><td><button>-</button></td><td class="insertname" colspan="4"><input type="text" /></td></tr>');
+        // jQuery('input', newrow).autocomplete(autocomp_inst);
+        // jQuery(this).parents('span').append(newrow);
+
+    });
 
     jQuery('.contatos').on('click', 'button', function() {
 
@@ -376,4 +421,44 @@ jQuery(document).ready(function() {
             }
         });
     });
+
+    var m, este;
+
+    jQuery('.telefone').on('click', function() {
+        es = jQuery(this);
+        window.setTimeout(function() {
+            este = es.find('input').eq(0);
+            m = este.mask("(99) 9999-9999?9");
+        }, 500);
+
+    });
+
+    jQuery('.website').on('click', function() {
+        es = jQuery(this);
+        window.setTimeout(function() {
+            este = es.find('input').eq(0);
+            
+            if(este.val() = "") {
+                este.val("http://");
+            }
+            
+        }, 500);
+
+    });    
+
+    // Máscara de telefone para campos
+    // jQuery('.telefone input').mask("(99) 9999-9999?9");
+    /*
+    .ready(function(event) {
+        var target, phone, element;
+        target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+        phone = target.value.replace(/\D/g, '');
+        element = $(target);
+        element.unmask();
+        if(phone.length > 10) {
+            element.mask("(99) 99999-999?9");
+        } else {
+            element.mask("(99) 9999-9999?9");
+        }
+    });*/
 });

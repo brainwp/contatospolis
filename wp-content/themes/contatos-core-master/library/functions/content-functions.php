@@ -127,7 +127,12 @@ function rolo_ajax_autocomplete() {
 	$tipo = $_POST['type'];
 	$term = $_POST['term'];
 
-	$response = get_posts( array('type' => 'contact') );
+	if($tipo == 'nomes') {
+		$response = get_posts( array('type' => 'contact') );	
+	}
+	if($tipo == 'instituicoes') {
+		$response = get_posts( array('type' => 'company') );
+	}	
 
 	header( "Content-Type: application/json" );
 	echo json_encode($response);
