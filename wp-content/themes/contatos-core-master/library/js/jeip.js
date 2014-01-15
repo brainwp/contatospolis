@@ -72,6 +72,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				for( var i = 0; i < 2; i++ ) {
 					$( self ).fadeOut( "fast" );
 					$( self ).fadeIn( "fast" );
+
+					if($(self).html() === "") {
+						$(self).addClass('vazio');
+					}
+
 				}
 			},
 			on_error			: function( msg ) {
