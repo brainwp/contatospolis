@@ -455,7 +455,7 @@ function rolo_company_header($company_id) {
     						if(has_term( 'Contact', 'type', $user )) { ?>
 
     						<tr>
-    							<td><button>+</button></td>
+    							<td><button>-</button></td>
     							<td><?php echo $user->post_title; ?></td>
     							<td><?php echo get_post_meta( $user->ID, 'rolo_contato_cargo', true ); ?></td>
     							<td><?php echo get_post_meta( $user->ID, 'rolo_contato_telefone', true ); ?></td>
@@ -465,19 +465,14 @@ function rolo_company_header($company_id) {
 
     						<?php }
 
-
-
     					}
-
+    					
     					endif;
-					/*
-				?>
-							<tr>
-								<td><button>+</button></td>
-								<td colspan="4" class="insertname"><input type="text" ></td>
-							</tr>
 
-							*/ ?>
+    					echo '<tr><td><button>+</button></td><td class="insertname" colspan="4"></td></tr>';
+    					?>
+    					
+						
 						</table>
 					</div>
 					<hr>

@@ -124,14 +124,20 @@ add_action( 'wp_ajax_nopriv_rolo_ajax_autocomplete', 'rolo_ajax_autocomplete' );
 add_action( 'wp_ajax_rolo_ajax_autocomplete', 'rolo_ajax_autocomplete' );
 function rolo_ajax_autocomplete() {
 
+	global $wpdb;
+
 	$tipo = $_POST['type'];
-	$term = $_POST['term'];
+	$term = $_POST['data'];
 
 	if($tipo == 'nomes') {
 		$response = get_posts( array('type' => 'contact') );	
 	}
 	if($tipo == 'instituicoes') {
-		$response = get_posts( array('type' => 'company') );
+		$term = '%' . $term . '%';
+		$sql = "SELECT ID,post_title FROM {$wpdb->prefix}posts WHERE post_title LIKE %s";
+		// $sql = "SELECT * FROM {$wpdb->prefix}posts WHERE (post_title LIKE %s)";
+        $response = $wpdb->get_results($wpdb->prepare($sql, $term));
+        // $response = $wpdb->query($sql);
 	}	
 
 	header( "Content-Type: application/json" );

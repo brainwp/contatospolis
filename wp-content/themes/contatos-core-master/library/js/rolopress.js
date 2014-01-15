@@ -371,7 +371,7 @@ jQuery(document).ready(function() {
     };
 
     jQuery('input').on('keypress', function() {
-        console.log('key');
+        // console.log('key');
         // var newrow = jQuery('<tr><td><button>-</button></td><td class="insertname" colspan="4"><input type="text" /></td></tr>');
         // jQuery('input', newrow).autocomplete(autocomp_inst);
         // jQuery(this).parents('span').append(newrow);
@@ -384,7 +384,7 @@ jQuery(document).ready(function() {
 
             var newrow = jQuery('<tr><td><button>-</button></td><td class="insertname" colspan="4"><input type="text" /></td></tr>');
             jQuery('input', newrow).autocomplete(autocomp_nomes);
-            jQuery(this).parents('tbody').append(newrow);  
+            jQuery(this).parents('tr').before(newrow);
 
 
         } else if(jQuery(this).html() == "-") {
@@ -407,6 +407,14 @@ jQuery(document).ready(function() {
     });
 
     // jQuery(".contatos input").autocomplete(ajax_url.ajaxurl);
+    jQuery('#rolo_contact_company').on('click', function() {
+        es = jQuery(this);
+        window.setTimeout(function() {
+            este = jQuery('#edit-rolo_contact_company');
+            este.autocomplete(autocomp_inst);
+        }, 500);
+
+    });
         
 
     // Validation for mandatory fields
@@ -432,19 +440,7 @@ jQuery(document).ready(function() {
         }, 500);
 
     });
-
-    jQuery('.website').on('click', function() {
-        es = jQuery(this);
-        window.setTimeout(function() {
-            este = es.find('input').eq(0);
-            
-            if(este.val() = "") {
-                este.val("http://");
-            }
-            
-        }, 500);
-
-    });    
+  
 
     // Máscara de telefone para campos
     // jQuery('.telefone input').mask("(99) 9999-9999?9");
