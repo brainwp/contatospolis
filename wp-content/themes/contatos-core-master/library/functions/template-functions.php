@@ -132,7 +132,7 @@ function rolo_contact_header($contact_id) {
 
         <div class="cada-linha obs">
             <span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
-            <span id="rolo_contact_others" class="resposta <?php echo ($contact_others ? '' : 'vazio'); ?>"><?php echo $contact_others; ?></span>
+            <span id="rolo_contact_others" class="resposta <?php echo ($contact_others ? '' : 'vazio'); ?>"><?php echo wpautop( $contact_others ); ?></span>
         </div><!-- .cada-linha -->
         
     <?php if(is_single()) : ?>
@@ -420,7 +420,7 @@ function rolo_company_header($company_id) {
     			<div class="cada-linha">
     				<div class="obs">
     					<span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
-                        <span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo $company_others; ?></span>
+                        <span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo wpautop( $company_others ); ?></span>
     				</div>
     			</div><!-- .cada-linha -->
     			<div class="cada-linha">

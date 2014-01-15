@@ -97,21 +97,32 @@ add_action( 'wp_ajax_nopriv_rolo_ajax_edit_contacts', 'rolo_ajax_edit_contacts' 
 add_action( 'wp_ajax_rolo_ajax_edit_contacts', 'rolo_ajax_edit_contacts' );
 function rolo_ajax_edit_contacts() {
 
-	$id = $_POST['data'];
+	$vars = $_POST['data'];
 	$postid = $_POST['company'];
 	$mode = $_POST['mode'];
 
 	if($mode == 'add') {
 		$contatos = get_post_meta( $postid, 'rolo_contatos', true );
 		
-		if(!in_array($id, $contatos))
+		if(!in_array($vars, $contatos))
 			$contatos[] = $id;
 		
 		$meta = update_post_meta( $postid, 'rolo_contatos', $contatos );
-		$safe = 'ok';
+		$status = 'ok';
+	} else {
+
+		$meta = update_post_meta( $vars['data'], $vars['id'], esc_attr($vars['new_value']) );
+
+		if($meta == (int) $meta && $meta != 0) {
+			$status = 'sucesso';
+			$value = $vars['new_value'];
+		} else {
+			$status = 'erro';
+			$erro = $meta;
+		}
 	}
 
-	$response = array('status' => $safe);
+	$response = array( 'status' => $status, 'erro' => $erro, 'value' => $value );
 
 	header( "Content-Type: application/json" );
 	echo json_encode($response);
@@ -160,12 +171,13 @@ function rolo_ajax_edit_company() {
 	if(!in_array($vars['id'], $restrict)) :
 
 		if($vars['new_value'] == $vars['orig_value']) {
-			$status = 'sucesso';
+			$status = 'mesmo valor';
 			$value = $vars['new_value'];
-		} else {
-			$meta = update_post_meta( $vars['data'], $vars['id'], $vars['new_value'], $vars['orig_value'] );
 
-			if($meta == (int) $meta) {
+		} else {
+			$meta = update_post_meta( $vars['data'], $vars['id'], esc_attr($vars['new_value']) );
+
+			if($meta == (int) $meta && $meta != 0) {
 				$status = 'sucesso';
 				$value = $vars['new_value'];
 			} else {
@@ -173,7 +185,7 @@ function rolo_ajax_edit_company() {
 				$erro = $meta;
 			}
 		}
-
+		
 	else :
 		$status = 'dev';
 

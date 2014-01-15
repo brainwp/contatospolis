@@ -161,7 +161,7 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place - Contatos Polis
-    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao').eip(ajax_url.ajaxurl, {
+    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid
     });
@@ -175,6 +175,32 @@ jQuery(document).ready(function() {
                         "Não" : "Não",
                         "Sim" : "Sim"
                 }
+    });
+
+    jQuery('#rolo_company_others').eip(ajax_url.ajaxurl, {
+        data: ajax_url.postid,
+        action: 'rolo_ajax_edit_company', 
+        form_type: "textarea"
+    });
+
+    jQuery('#rolo_contact_others').eip(ajax_url.ajaxurl, {
+        data: ajax_url.postid,
+        action: 'rolo_ajax_edit_contacts',
+        form_type: "textarea"
+    });
+
+    jQuery('#rolo_company_others, #rolo_contact_others').on('click', function() {
+        es = jQuery(this);
+        window.setTimeout(function() {
+            elem = es.next('span').find('textarea'); 
+            val = elem.val();
+            // lines = val.replace(/(<br>)/ig,"\n\n");
+            breaks = val.replace(/(<\/p>)/ig,"\n");
+            newval = breaks.replace(/(<([^>]+)>)/ig,"");
+            
+            elem.val(newval);
+        }, 500);
+
     });
 
     jQuery('input.rolo_conflito.check').on('change', function() {
