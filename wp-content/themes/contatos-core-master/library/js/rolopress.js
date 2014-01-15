@@ -8,7 +8,7 @@ jQuery(document).ready(function($){
   var _custom_media = true,
       _orig_send_attachment = wp.media.editor.send.attachment;
 
-  jQuery('.item-image.enabled').click(function(e) {
+  jQuery('.item-image.enabled').on('click', function(e) {
     var send_attachment_bkp = wp.media.editor.send.attachment;
     var button = jQuery(this);
     var id = button.attr('id').replace('_button', '');
@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
                 att   : attachment.id
             }, function( resp ) {
                 
-                    jQuery("#"+id).html(resp);
+                    jQuery("#_button"+id).html(resp);
 
                 });
 

@@ -110,7 +110,7 @@ function rolo_contact_header($contact_id) {
 	    <?php endif; ?>    
     </h2>
 
-    <div class="item-image <?php echo $enable; ?>">
+    <div id="_button<?php echo get_the_id(); ?>" class="item-image <?php echo $enable; ?>">
         <?php echo rolo_get_avatar_image($contact_id); ?>
     </div>
 
@@ -366,7 +366,7 @@ function rolo_company_header($company_id) {
                 <?php echo __('Company ','rolopress') ?><span class="blue"><?php echo $company_name;?></span>
             </h2>
 
-            <div class="item-image <?php echo $enable; ?>">
+            <div id="_button<?php echo get_the_id(); ?>" class="item-image <?php echo $enable; ?>">
                 <?php echo rolo_get_avatar_image($contact_id); ?>
             </div><!-- .item-image -->
     
