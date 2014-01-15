@@ -161,7 +161,7 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place - Contatos Polis
-    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others').eip(ajax_url.ajaxurl, {
+    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid
     });
@@ -202,6 +202,28 @@ jQuery(document).ready(function() {
         }, 500);
 
     });
+
+    jQuery('#rolo_company_contato_facil').eip(ajax_url.ajaxurl, {
+        action: 'rolo_ajax_edit_company',
+        data: ajax_url.postid,
+         form_type: "select",
+                select_options: {
+                        "Telefone" : "Telefone",
+                        "E-mail" : "E-mail",
+                        "Redes Sociais" : "Redes Sociais"
+                }
+    });
+
+    jQuery('#rolo_contact_contato_facil').eip(ajax_url.ajaxurl, {
+        action: 'rolo_ajax_edit_company',
+        data: ajax_url.postid,
+         form_type: "select",
+                select_options: {
+                        "Telefone" : "Telefone",
+                        "E-mail" : "E-mail",
+                        "Redes Sociais" : "Redes Sociais"
+                }
+    });    
 
     jQuery('input.rolo_conflito.check').on('change', function() {
 
