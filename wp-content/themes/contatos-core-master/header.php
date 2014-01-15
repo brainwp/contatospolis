@@ -9,8 +9,6 @@
 <?php rolopress_head(); // rolopress head hook ?>
 <?php wp_head(); // wordpress head hook ?>
 
-
-<script type="text/javascript" src="https://raw.github.com/digitalBush/jquery.maskedinput/1.3.1/dist/jquery.maskedinput.min.js"></script>
 </head>
 
 <body class="<?php rolopress_body_class() ?>">
