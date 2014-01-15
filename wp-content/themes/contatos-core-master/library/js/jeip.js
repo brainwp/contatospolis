@@ -67,15 +67,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			start_select_form	: '<select id="edit-#{id}" class="#{editfield_class}">',
 			select_option_form	: '<option id="edit-option-#{id}-#{option_value}" value="#{option_value}" #{selected}>#{option_text}</option>',
 			stop_select_form	: '</select>',
-
+			before_save			: function( self ) {
+				console.log(self);
+			},
 			after_save			: function( self ) {
 				for( var i = 0; i < 2; i++ ) {
 					$( self ).fadeOut( "fast" );
 					$( self ).fadeIn( "fast" );
-
-					if($(self).html() === "") {
-						$(self).addClass('vazio');
-					}
 
 				}
 			},
@@ -286,6 +284,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				ajax_data.orig_option_value = orig_option_value;
 				ajax_data.orig_option_text = orig_value;
 				ajax_data.new_option_text = $( "#edit-option-" + self.id + "-" + new_value ).html( );
+			}
+
+			if( opt.before_save != false ) {
+				ajax_data = opt.before_save( ajax_data );
 			}
 
 	        $.post( 
