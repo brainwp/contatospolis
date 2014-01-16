@@ -5,8 +5,31 @@
 
 // Media upload front-end
 jQuery(document).ready(function($){
-  var _custom_media = true,
-      _orig_send_attachment = wp.media.editor.send.attachment;
+
+    if( typeof wp != 'undefined' ) {
+        var _custom_media = true,
+        _orig_send_attachment = wp.media.editor.send.attachment;      
+
+          var oldPost = wp.media.view.MediaFrame.Post;
+            wp.media.view.MediaFrame.Post = oldPost.extend({
+                initialize: function() {
+                    oldPost.prototype.initialize.apply( this, arguments );
+                    this.states.get('insert').get('library').props.set('uploadedTo', wp.media.view.settings.post.id);
+                }
+            });
+    }
+        
+
+  
+
+    var called = 0;
+    $('.media-modal').ajaxStop(function() {
+        if ( 0 == called ) {
+            $('[value="uploaded"]').attr( 'selected', true ).parent().trigger('change');
+            called = 1;
+        }
+    });
+
 
   jQuery('.item-image.enabled').on('click', function(e) {
     var send_attachment_bkp = wp.media.editor.send.attachment;
@@ -548,6 +571,16 @@ jQuery(document).ready(function() {
             este = es.find('input').eq(0);
             m = este.mask("(99) 9999-9999?9");
         }, 500);
+
+    });
+
+    // Formulário de busca avançada
+    jQuery('select').on('change', function() {
+        
+        cls = jQuery(this).val();
+
+        jQuery('fieldset').not('.geral').hide();
+        jQuery('fieldset.'+cls).show();
 
     });
   

@@ -600,3 +600,25 @@ ol.notelist li .comment-reply-link a {
 .inside .tags li {
     display: inline;
 }
+
+/* = WP Media Manager
+-------------------------------------------------------------- */
+
+.media-modal {
+    bottom: 20%;
+    left: 20%;
+    position: fixed;
+    right: 20%;
+    top: 20%;
+    z-index: 160000;
+}
+
+.media-frame > div {
+    left: 0;
+}
+
+.media-frame-menu, /* menu esquerdo */
+.media-sidebar .setting, .attachment-display-settings /* forms desnecessários */
+{
+    display: none;
+}
