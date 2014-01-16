@@ -121,6 +121,7 @@ require_once( ROLOPRESS_FUNCTIONS . '/dynamic-classes.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/messages.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/header-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/content-functions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/search-functions.php' );
 
 // Load widget areas and custom widgets
 require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );
