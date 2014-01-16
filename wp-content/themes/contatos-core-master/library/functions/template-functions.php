@@ -539,14 +539,14 @@ function rolo_company_header($company_id) {
 							<?php 
 							$edit = 'OK';
 							$out = 'out';
-							$company_conflito = unserialize($company['rolo_conflito'][0]); 
+							// $company_conflito = unserialize($company['rolo_conflito'][0]); 
 
-							$checked = ''; if($company_conflito[0]) { $checked = 'checked="checked"'; $edit = 'editar'; $out = ''; }
-							$projeto = ''; if($company_conflito[1]) { $projeto = $company_conflito[1]; }
-							$desde = ''; if($company_conflito[2]) { $desde = $company_conflito[2]; }
-							$instancia = ''; if($company_conflito[3]) { $instancia = $company_conflito[3]; }
-							$fim = ''; if($company_conflito[4]) { $fim = 'checked="checked"'; }
-							$obs = ''; if($company_conflito[5]) { $obs = $company_conflito[5]; }		
+							$checked = ''; if($company['rolo_conflito_check'][0]) { $checked = 'checked="checked"'; $edit = 'editar'; $out = ''; }
+							$projeto = ''; if($company['rolo_conflito_projeto'][0]) { $projeto = $company['rolo_conflito_projeto'][0]; }
+							$desde = ''; if($company['rolo_conflito_desde'][0]) { $desde = $company['rolo_conflito_desde'][0]; }
+							$instancia = ''; if($company['rolo_conflito_instancia'][0]) { $instancia = $company['rolo_conflito_instancia'][0]; }
+							$fim = ''; if($company['rolo_conflito_equacionado'][0]) { $fim = 'checked="checked"'; }
+							$obs = ''; if($company['rolo_conflito_observacoes'][0]) { $obs = $company['rolo_conflito_observacoes'][0]; }		
 
 							?>
 
@@ -563,11 +563,12 @@ function rolo_company_header($company_id) {
 							<?php 
 							$edit = 'OK';
 							$out = 'out';
-							$company_relacao = unserialize($company['rolo_relacao'][0]); 
-							$checked = ''; if($company_relacao[0]) { $checked = 'checked="checked"'; $edit = 'editar'; $out = ''; }
-							$local = ''; if($company_relacao[1]) { $local = $company_relacao[1]; }
-							$apoio = ''; if($company_relacao[2]) { $apoio = 'checked="checked"'; }
-							$conflito = ''; if($company_relacao[3]) { $conflito = $company_relacao[3]; }
+							// $company_relacao = unserialize($company['rolo_relacao'][0]); 
+
+							$checked = ''; if($company['rolo_relacao_check'][0]) { $checked = 'checked="checked"'; $edit = 'editar'; $out = ''; }
+							$local = ''; if($company['rolo_relacao_local'][0]) { $local = $company['rolo_relacao_local'][0]; }
+							$apoio = ''; if($company['rolo_relacao_apoio'][0]) { $apoio = 'checked="checked"'; }
+							$conflito = ''; if($company['rolo_relacao_conflito'][0]) { $conflito = $company['rolo_relacao_conflito'][0]; }
 							?>
 							<div><span class="title">Participou de algum evento do projeto?</span><span class="rolo_relacao resposta"> <input type="checkbox" class="rolo_relacao check" <?php echo $checked; ?> /> Sim</span></div>
 							<div><span class="title">Local</span><span class="rolo_relacao resposta <?php echo ($local ? '' : 'vazio'); ?>"><?php echo $local; ?></span><input type="text" class="input_relacao out" value="<?php echo $local; ?>"/></div>

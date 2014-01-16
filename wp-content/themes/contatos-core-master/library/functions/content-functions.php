@@ -81,7 +81,7 @@ function rolo_ajax_edit_company_other() {
 		if($vars[4] != 'checked')
 			$vars[4] = false;
 
-		update_post_meta( $id, 'rolo_conflito', $vars );
+		// update_post_meta( $id, 'rolo_conflito', $vars );
 
 		if($vars[0])
 			update_post_meta( $id, 'rolo_conflito_check', true );
@@ -94,13 +94,14 @@ function rolo_ajax_edit_company_other() {
 		if($vars[4])
 			update_post_meta( $id, 'rolo_conflito_equacionado', true );
 		if($vars[5])
-			update_post_meta( $id, 'rolo_conflito_equacionado', $vars[5] );
+			update_post_meta( $id, 'rolo_conflito_observacoes', $vars[5] );
 
 		$safe = 'sucesso';
 	} else {
 		if($vars[2] != 'checked')
 			$vars[2] = false;
-		update_post_meta( $id, 'rolo_relacao', $vars );
+		
+		// update_post_meta( $id, 'rolo_relacao', $vars );
 
 		if($vars[0])
 			update_post_meta( $id, 'rolo_relacao_check', true );
