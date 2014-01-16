@@ -575,7 +575,7 @@ jQuery(document).ready(function() {
     });
 
     // Formulário de busca avançada
-    jQuery('select').on('change', function() {
+    jQuery('select.publicos').on('change', function() {
         
         cls = jQuery(this).val();
 

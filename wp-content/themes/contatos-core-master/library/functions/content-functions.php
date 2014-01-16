@@ -10,6 +10,12 @@
  
 add_theme_support( 'post-thumbnails' ); 
 
+function rolo_busca_avancada($post) {
+
+	dump($post);
+
+}
+
 function rolo_get_avatar_image($avatar_id, $size = array(120,120) ) {
 
 
