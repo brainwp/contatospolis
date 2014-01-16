@@ -112,9 +112,17 @@ function rolo_contact_header($contact_id) {
 	    <?php endif; ?>    
     </h2>
 
-    <div id="_button<?php echo get_the_id(); ?>" class="item-image <?php echo $enable; ?>">
-        <?php echo rolo_get_avatar_image($contact_id); ?>
-    </div>
+    <div id="item-avatar" class="item-image <?php echo $enable; ?>" data-overlayid="alterar-avatar">
+
+		<?php echo rolo_get_avatar_image($contact_id); ?>
+
+		<div class="alterar-avatar">
+			<span>Alterar Imagem</span>
+		</div><!-- http://www.backslash.gr/demos/contenthover-jquery-plugin/ .alterar-avatar -->
+
+    </div><!-- .item-image -->
+
+
 
     <div class="item-col-1 width-40 item-form">
         <div class="cada-linha ano">
@@ -376,8 +384,13 @@ function rolo_company_header($company_id) {
                 <?php echo __('Company ','rolopress') ?><span class="blue"><?php echo $company_name;?></span>
             </h2>
 
-            <div id="_button<?php echo get_the_id(); ?>" class="item-image <?php echo $enable; ?>">
+            <div id="item-avatar" class="item-image <?php echo $enable; ?>"  data-overlayid="alterar-avatar">
                 <?php echo rolo_get_avatar_image($contact_id); ?>
+
+			<div id="alterar-avatar">
+				<span>Alterar Imagem</span>
+			</div><!-- #alterar-avatar -->
+
             </div><!-- .item-image -->
     
     		<div class="item-col-1 width-40 item-form">
@@ -670,8 +683,9 @@ function rolo_company_header_list($company_id) {
     			<?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
     		</h2>
 
-    <div class="item-image <?php echo $enable; ?>">
+    <div id="item-avatar" class="item-image <?php echo $enable; ?>" data-overlayid="alterar-avatar">
         <?php echo rolo_get_avatar_image($contact_id); ?>
+
     </div>
     
     		<div class="item-col-1 width-40 item-form">

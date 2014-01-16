@@ -191,7 +191,7 @@ li {
     text-decoration:none;
 }
 #menu .menu_item  a:hover {
-    color:#FFFFFF;
+    color:#FFF;
     text-decoration:underline;
 }
 #menu .widget-title {
@@ -207,9 +207,35 @@ li {
 /* */
 
 .item-image {
-    width: 110px;
+    width: 120px;
+	height: 120px;
     margin: 0 20px 0 0;
     float: left;
+	padding: 5px;
+	background: #f7f7f7;
+	cursor: pointer
+}
+
+.item-image img {
+	max-height: 120px;
+}
+
+.item-image:hover {
+}
+
+.alterar-avatar {
+    width: 125px;
+	height: 125px;
+	clear: both;
+	background: url("../../img/sprite.png") no-repeat scroll -563px -1px #FFF;
+	color: #023f7b;
+	text-align: center;
+}
+
+.alterar-avatar span {
+	width: 100%;
+	margin: 80px auto 0;
+	display: block;
 }
 
 .item-col-1 {

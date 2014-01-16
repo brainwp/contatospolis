@@ -29,6 +29,7 @@ function rolo_css_standard() {
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/rebuild.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/wp.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/screen.css" media="screen,projection,print" />' . "\n";
+	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/jcaption.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/widgets.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/uni-form.css" media="screen,projection,print" />' . "\n";
 
