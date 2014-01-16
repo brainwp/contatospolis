@@ -108,7 +108,7 @@ get_header(); ?>
 
     </fieldset>
 
-    <fieldset class="inlineLabels company width-content">
+    <fieldset class="inlineLabels company margin-busca">
 
 		<div class="item-col-1 width-50">
 

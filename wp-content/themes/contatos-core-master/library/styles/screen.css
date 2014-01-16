@@ -458,10 +458,10 @@ h2.page-title-light{
 }
 
 .ul-checkbox {
-	margin: 10px 0 20px 0;
 }
 
 .ul-checkbox h3 {
+	margin-top: 0;
 	color: #000;
 }
 
@@ -471,6 +471,10 @@ h2.page-title-light{
 
 .ul-checkbox ul li ul {
 	margin: 10px 0 15px 30px;
+}
+
+.margin-busca {
+	margin-left: 15px;
 }
 
 
