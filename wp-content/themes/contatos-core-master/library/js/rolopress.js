@@ -119,7 +119,7 @@ jQuery(document).ready(function() {
     });
 
     //on focus tricks
-    jQuery('div.ctrlHolder input[name="rolo_contact_city"], div.ctrlHolder input[name="rolo_company_city"]').focus(function () {
+    jQuery('div.ctrlHolder input[name="rolo_city"], div.ctrlHolder input[name="rolo_city"]').focus(function () {
         var $this = jQuery(this);
         if ($this.val() == 'City') {
             $this.val('');
@@ -176,7 +176,7 @@ jQuery(document).ready(function() {
 
     // Edit in place for company
     /*
-    jQuery('#rolo_company_name,#rolo_company_address, #rolo_company_city, #rolo_company_state, #rolo_company_zip, #rolo_company_country, #rolo_company_email, #rolo_company_phone_Mobile, #rolo_company_phone_Home, #rolo_company_phone_Work, #rolo_company_phone_Other, #rolo_company_phone_Fax, #rolo_company_im_Yahoo, #rolo_company_im_MSN, #rolo_company_im_AOL, #rolo_company_im_GTalk, #rolo_company_im_Skype, #rolo_company_twitter, #rolo_company_website').eip(ajax_url, {
+    jQuery('#rolo_company_name,#rolo_company_address, #rolo_city, #rolo_company_state, #rolo_company_zip, #rolo_company_country, #rolo_company_email, #rolo_company_phone_Mobile, #rolo_company_phone_Home, #rolo_company_phone_Work, #rolo_company_phone_Other, #rolo_company_phone_Fax, #rolo_company_im_Yahoo, #rolo_company_im_MSN, #rolo_company_im_AOL, #rolo_company_im_GTalk, #rolo_company_im_Skype, #rolo_company_twitter, #rolo_company_website').eip(ajax_url, {
         action: 'rolo_edit_company',
         id_field: 'rolo_post_id'
     });
@@ -187,7 +187,7 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place - Contatos Polis
-    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil, #rolo_contact_telefone, #rolo_contact_uf, #rolo_company_uf').eip(ajax_url.ajaxurl, {
+    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil, #rolo_contact_telefone, #rolo_uf, #rolo_uf').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid,
         after_save: function(self) {
@@ -225,7 +225,7 @@ jQuery(document).ready(function() {
                 }
     });
 
-    jQuery('#rolo_company_uf, #rolo_contact_uf').eip(ajax_url.ajaxurl, {
+    jQuery('#rolo_uf, #rolo_uf').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid,
          form_type: "select",

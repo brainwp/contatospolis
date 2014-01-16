@@ -209,7 +209,7 @@ Address            </label>
         </div>
 
         <div class="ctrlHolder">
-            <input type="text" class="textInput city" tabindex="1025" size="30" value="City" name="rolo_company_city" autocomplete="off">
+            <input type="text" class="textInput city" tabindex="1025" size="30" value="City" name="rolo_city" autocomplete="off">
             <input type="text" class="textInput state" tabindex="1026" size="15" value="State" name="rolo_company_state" autocomplete="off">
             <input type="text" class="textInput zip" tabindex="1027" size="10" value="Zip" name="rolo_company_zip" autocomplete="off">
         </div>

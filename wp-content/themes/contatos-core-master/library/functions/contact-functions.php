@@ -366,7 +366,7 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index, $contact_id =
         $country = ($country == '') ? 'Country' : $country;
 ?>
         <div class="ctrlHolder nolabel">
-            <input type="text" name="rolo_contact_city" value="<?php echo $city ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
+            <input type="text" name="rolo_city" value="<?php echo $city ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
 			<input type="text" name="rolo_contact_state" value="<?php echo $state ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
             <input type="text" name="rolo_contact_zip" value="<?php echo $zip ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
 		</div>
@@ -392,7 +392,7 @@ function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
     $new_contact['rolo_contact_address'] = $_POST['rolo_contact_address'];
 
     // store the rest as custom taxonomies
-    wp_set_post_terms($post_id, ($_POST['rolo_contact_city'] == 'City') ? '' : $_POST['rolo_contact_city'], 'city');
+    wp_set_post_terms($post_id, ($_POST['rolo_city'] == 'City') ? '' : $_POST['rolo_city'], 'city');
     wp_set_post_terms($post_id, ($_POST['rolo_contact_state'] == 'State') ? '' : $_POST['rolo_contact_state'], 'state');
     wp_set_post_terms($post_id, ($_POST['rolo_contact_zip'] == 'Zip') ? '' : $_POST['rolo_contact_zip'], 'zip');
     wp_set_post_terms($post_id, ($_POST['rolo_contact_country'] == 'Country') ? '' : $_POST['rolo_contact_country'], 'country');

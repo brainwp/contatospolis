@@ -154,7 +154,7 @@ get_header(); ?>
 				</span>
             </div>
         </div><!-- .cada-linha -->        
-<?php /*
+
         <div class="cada-linha add">
             <div >
                 <span class="title title-bloco-1 grey"><?php _e('Impactos Socioambientais', 'rolopress'); ?></span>
@@ -177,7 +177,7 @@ get_header(); ?>
 				</span>
             </div>
         </div><!-- .cada-linha -->        
-*/ ?>
+
     </fieldset>        
       
 			<input type="hidden" value="submit_busca" name="rp_submit_busca">

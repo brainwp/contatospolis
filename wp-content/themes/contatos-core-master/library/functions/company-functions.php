@@ -409,7 +409,7 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index, $company_id =
         $country = ($country == '') ? 'Country' : $country;
 ?>
         <div class="ctrlHolder">
-            <input type="text" name="rolo_company_city" value="<?php echo $city ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
+            <input type="text" name="rolo_city" value="<?php echo $city ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
             <input type="text" name="rolo_company_state" value="<?php echo $state ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
             <input type="text" name="rolo_company_zip" value="<?php echo $zip ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
         </div>
@@ -434,7 +434,7 @@ function rolo_save_company_address($field_name, $post_id, &$new_company) {
     $new_company['rolo_company_address'] = $_POST['rolo_company_address'];
     
     // store the rest as custom taxonomies
-    wp_set_post_terms($post_id, ($_POST['rolo_company_city'] == 'City') ? '' : $_POST['rolo_company_city'], 'city');
+    wp_set_post_terms($post_id, ($_POST['rolo_city'] == 'City') ? '' : $_POST['rolo_city'], 'city');
     wp_set_post_terms($post_id, ($_POST['rolo_company_state'] == 'State') ? '' : $_POST['rolo_company_state'], 'state');
     wp_set_post_terms($post_id, ($_POST['rolo_company_zip'] == 'Zip') ? '' : $_POST['rolo_company_zip'], 'zip');
     wp_set_post_terms($post_id, ($_POST['rolo_company_country'] == 'Country') ? '' : $_POST['rolo_company_country'], 'country');
