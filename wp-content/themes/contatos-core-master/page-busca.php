@@ -154,13 +154,13 @@ get_header(); ?>
 				</span>
             </div>
         </div><!-- .cada-linha -->        
-
+<?php /*
         <div class="cada-linha add">
             <div >
                 <span class="title title-bloco-1 grey"><?php _e('Impactos Socioambientais', 'rolopress'); ?></span>
 				<span class="busca">
 					<ul>
-						<li id="impactos"><label class="selectit"><input type="checkbox" id="in-impactos" name="tax_input[impactos][]" value="44">Encontra-se em situação de conflito?</label></li>
+						<li id="impactos"><label class="selectit"><input type="checkbox" id="in-impactos" name="tax_input[impactos]" value="conflito">Encontra-se em situação de conflito?</label></li>
 					</ul>
 				</span>
             </div>
@@ -171,13 +171,13 @@ get_header(); ?>
                 <span class="title title-bloco-1 grey"><?php _e('Espaços de Participação', 'rolopress'); ?></span>
 				<span class="busca">
 					<ul>
-						<li id="evento"><label class="selectit"><input type="checkbox" id="in-espaco-evento" name="tax_input[espacos][evento]" value="44">Participou de algum evento do projeto?</label></li>
-						<li id="apoio"><label class="selectit"><input type="checkbox" id="in-espacos-apoio" name="tax_input[espacos][apoio]" value="44">Tem apoiado/divulgado o projeto?</label></li>
+						<li id="evento"><label class="selectit"><input type="checkbox" id="in-espaco-evento" name="tax_input[espacos][evento]" value="evento">Participou de algum evento do projeto?</label></li>
+						<li id="apoio"><label class="selectit"><input type="checkbox" id="in-espacos-apoio" name="tax_input[espacos][apoio]" value="apoio">Tem apoiado/divulgado o projeto?</label></li>
 					</ul>
 				</span>
             </div>
         </div><!-- .cada-linha -->        
-
+*/ ?>
     </fieldset>        
       
 			<input type="hidden" value="submit_busca" name="rp_submit_busca">
