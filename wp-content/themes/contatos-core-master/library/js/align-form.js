@@ -26,4 +26,23 @@ jQuery(function() {
             max4 = jQuery(this).width();   
     });
     jQuery('.title-bloco-4').width(max4);
+	
+	var max5 = 0;
+	jQuery('.title-bloco-5').each(function(){
+        if (jQuery(this).width() > max5)
+            max5 = jQuery(this).width();   
+    });
+    jQuery('.title-bloco-5').width(max5);
+	
+	var max6 = 0;
+	jQuery('.title-bloco-6').each(function(){
+        if (jQuery(this).width() > max6)
+            max6 = jQuery(this).width();   
+    });
+    jQuery('.title-bloco-6').width(max6);
+});
+
+jQuery(window).load(function() {
+	jQuery('.inlineLabels.contact').css('display','none');
+	jQuery('.inlineLabels.company').css('display','none');
 });
