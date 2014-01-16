@@ -30,14 +30,13 @@ get_header(); ?>
     </div>
     
     <div class="instrucoes">
-    	<?php _e('Selecione o público para ver o formulário completo.', 'rolopress'); ?>
+    	<?php _e('Selecione o público para ver o formulário completo. Lembre-se, quanto mais campos preencher mais específico será o seu resultado.', 'rolopress'); ?>
     </div><!-- .instrucoes -->
 
-    <fieldset class="inlineLabels geral">
+    <fieldset class="inlineLabels geral width-content">
 
         <div class="cada-linha add">
-            <div >
-                <span class="title title-bloco-1 grey"><?php _e('Buscar por:', 'rolopress'); ?></span>
+                <span class="title title-bloco-1 grey"><?php _e('Buscar por', 'rolopress'); ?></span>
 				<span class="busca inicial">
 					<select name="busca_publicos" class="publicos">
 					    <option value="geral">Todos</option>
@@ -45,25 +44,19 @@ get_header(); ?>
 					    <option value="company">Entidades</option>
 					</select>
 				</span>
-            </div>
         </div><!-- .cada-linha -->   
 
         <div class="cada-linha add">
-            <div >
                 <span class="title title-bloco-1 grey"><?php _e('Nome', 'rolopress'); ?></span>
-				<span class="busca"><input type="text" class="name" tabindex="1000" size="" value="" name="busca_nome" style="cursor: auto;"></span>
-            </div>
+				<span class="busca busca-resposta"><input type="text" class="name" tabindex="1000" size="" value="" name="busca_nome"></span>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha add">
-            <div >
                 <span class="title title-bloco-1 grey"><?php _e('Município', 'rolopress'); ?></span>
-				<span class="busca"><input type="text" class="city" tabindex="1001" size="" value="" name="busca_municipio"></span>
-            </div>
+				<span class="busca busca-resposta"><input type="text" class="city" tabindex="1001" size="" value="" name="busca_municipio"></span>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha add">
-            <div >
                 <span class="title title-bloco-1 grey"><?php _e('UF', 'rolopress'); ?></span>
 				<span class="busca">
 					<select name="busca_uf">
@@ -97,91 +90,85 @@ get_header(); ?>
 					    <option value="TO">TO</option>
 					</select>
 				</span>
-            </div>
         </div><!-- .cada-linha -->        
 
     </fieldset>
 
-    <fieldset class="inlineLabels contact">
+    <fieldset class="inlineLabels contact width-content">
 
         <div class="cada-linha add">
-            <div >
-                <span class="title title-bloco-1 grey"><?php _e('Cargo', 'rolopress'); ?></span>
-				<span class="busca"><input type="text" class="cargo" tabindex="1000" size="" value="" name="busca_cargo" style="cursor: auto;"></span>
-            </div>
+                <span class="title title-bloco-5 grey"><?php _e('Cargo', 'rolopress'); ?></span>
+				<span class="busca busca-resposta"><input type="text" class="cargo" tabindex="1000" size="" value="" name="busca_cargo" style="cursor: auto;"></span>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha add">
-            <div >
-                <span class="title title-bloco-1 grey"><?php _e('Instituição em que atua', 'rolopress'); ?></span>
-				<span class="busca"><input type="text" class="instituicao" tabindex="1001" size="" value="" name="busca_instituicao"></span>
-            </div>
+                <span class="title title-bloco-5 grey"><?php _e('Instituição em que atua', 'rolopress'); ?></span>
+				<span class="busca busca-resposta"><input type="text" class="instituicao" tabindex="1001" size="" value="" name="busca_instituicao"></span>
         </div><!-- .cada-linha -->
 
-    </fieldset>    
+    </fieldset>
 
-    <fieldset class="inlineLabels company">
+    <fieldset class="inlineLabels company margin-busca">
+
+		<div class="item-col-1 width-50">
+
     	<?php require_once(ABSPATH . 'wp-admin/includes/template.php'); ?>
-        <div class="cada-linha add">
-            <div >
-                <span class="title title-bloco-1 grey"><?php _e('Caracterização institucional', 'rolopress'); ?></span>
+        <div class="cada-linha add ul-checkbox">
+                <span class="title grey"><h3><?php _e('Caracterização Institucional', 'rolopress'); ?></h3></span>
 				<span class="busca">
 					<ul>
 						<?php wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) ); ?>
 					</ul>
 				</span>
-            </div>
         </div><!-- .cada-linha -->
 
-        <div class="cada-linha add">
-            <div >
-                <span class="title title-bloco-1 grey"><?php _e('Área de interesse', 'rolopress'); ?></span>
+        <div class="cada-linha add ul-checkbox">
+                <span class="title grey"><h3><?php _e('Áreas de interesse', 'rolopress'); ?></h3></span>
 				<span class="busca">
 					<ul>
 						<?php wp_terms_checklist( $company_id, array( 'taxonomy' => 'interesse', 'checked_ontop' => false ) ); ?>
 					</ul>
 				</span>
-            </div>
-        </div><!-- .cada-linha -->        
+        </div><!-- .cada-linha -->
 
-        <div class="cada-linha add">
-            <div >
-                <span class="title title-bloco-1 grey"><?php _e('Abrangência de atuação', 'rolopress'); ?></span>
-				<span class="busca">
+        </div><!-- .item-col-1 width-50 -->
+
+		<div class="item-col-1 width-40">
+
+        <div class="cada-linha add ul-checkbox">
+                <span class="title title-bloco-6 grey"><h3><?php _e('Abrangência de atuação', 'rolopress'); ?></h3></span>
+				<span class="busca busca-resposta">
 					<ul>
 						<?php wp_terms_checklist( $company_id, array( 'taxonomy' => 'abrangencia', 'checked_ontop' => false ) ); ?>
 					</ul>
 				</span>
-            </div>
-        </div><!-- .cada-linha -->        
+        </div><!-- .cada-linha -->
 
-        <div class="cada-linha add">
-            <div >
-                <span class="title title-bloco-1 grey"><?php _e('Impactos Socioambientais', 'rolopress'); ?></span>
-				<span class="busca">
+        <div class="cada-linha add ul-checkbox">
+                <span class="title title-bloco-6 grey"><h3><?php _e('Impactos Socioambientais', 'rolopress'); ?></h3></span>
+				<span class="busca busca-resposta">
 					<ul>
 						<li id="impactos"><label class="selectit"><input type="checkbox" id="in-impactos" name="tax_input[impactos]" value="conflito">Encontra-se em situação de conflito?</label></li>
 					</ul>
 				</span>
-            </div>
-        </div><!-- .cada-linha -->        
+        </div><!-- .cada-linha -->
 
-        <div class="cada-linha add">
-            <div >
-                <span class="title title-bloco-1 grey"><?php _e('Espaços de Participação', 'rolopress'); ?></span>
+        <div class="cada-linha add ul-checkbox">
+                <span class="title grey"><h3><?php _e('Espaços de Participação', 'rolopress'); ?></h3></span>
 				<span class="busca">
 					<ul>
 						<li id="evento"><label class="selectit"><input type="checkbox" id="in-espaco-evento" name="tax_input[espacos][evento]" value="evento">Participou de algum evento do projeto?</label></li>
 						<li id="apoio"><label class="selectit"><input type="checkbox" id="in-espacos-apoio" name="tax_input[espacos][apoio]" value="apoio">Tem apoiado/divulgado o projeto?</label></li>
 					</ul>
 				</span>
-            </div>
-        </div><!-- .cada-linha -->        
+        </div><!-- .cada-linha -->
 
-    </fieldset>        
-      
-			<input type="hidden" value="submit_busca" name="rp_submit_busca">
-			<button tabindex="1038" class="botao-submit-busca submitButton" id="submit_busca" name="submit" type="submit">Buscar</button>
+		</div><!-- item-col-1 width-40 -->
+
+    </fieldset>
+
+			<input type="hidden" value="submit_busca add_contact" name="rp_submit_busca">
+			<button tabindex="1038" class="botao-submit-busca submitButton" id="submit_busca" name="submit" type="submit">Pesquisar</button>      
 
 </form>
 

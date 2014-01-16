@@ -291,9 +291,8 @@ h2.page-title-light{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    color: #919191;
-    font-size: 14px;
-
+    color: #444;
+    font-size: 15px;
 }
 
 .item-form {
@@ -302,8 +301,9 @@ h2.page-title-light{
 
 .cada-linha {
     width: 100%;
-    min-height: 30px;
+	min-height: 30px;
 	clear: both;
+	overflow: hidden;
 }
 
 .cada-linha a {
@@ -335,7 +335,9 @@ h2.page-title-light{
 .title-bloco-1,
 .title-bloco-2,
 .title-bloco-3,
-.title-bloco-4 {
+.title-bloco-4,
+.title-bloco-5,
+.title-bloco-6 {
 	float: left;
 }
 
@@ -366,23 +368,22 @@ h2.page-title-light{
 	border: 2px solid rgb(223, 223, 223);
 }
 
-
 .resposta-textarea {
 	max-width: 300px;
 }
 
 .instrucoes {
 	width: 88%;
-	margin: 0 0 30px 25px;
-	font-size: 14px;
+	margin: 0 0 30px 40px;
+	font-size: 15px;
 	font-style: italic;
-	color: #666;
-	border: 1px solid #900;
+	color: #FFF;
+	border: 1px solid #023f7b;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 	padding: 15px;
-	background: #ffdfdf;
+	background: #9ab2ca;
 }
 
 /* Quando clicado em um item para editar */
@@ -416,6 +417,66 @@ h2.page-title-light{
 	border: 0;
 	cursor: pointer;
 }
+
+.width-content {
+	width: 96%;
+	margin: 0 auto;
+}
+
+/* =Busca Avançada
+-------------------------------------------------------------- */
+.cada-linha select {
+    background: #FFF;
+    border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #444;
+    font-size: 14px;
+	margin-top: 1px;
+}
+
+.busca-resposta {
+    float: left;
+}
+
+.botao-submit-busca{
+	background: url("../../img/sprite.png") no-repeat scroll -283px 5px #023f7b;
+	padding: 18px 20px 18px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin: 10px 0 0 28px;
+}
+
+.botao-submit-busca:hover {
+	background-position: -283px -43px;
+	color: #FFF;
+}
+
+.ul-checkbox {
+}
+
+.ul-checkbox h3 {
+	margin-top: 0;
+	color: #000;
+}
+
+.ul-checkbox ul {
+	margin: 0 0 0 10px;
+}
+
+.ul-checkbox ul li ul {
+	margin: 10px 0 15px 30px;
+}
+
+.margin-busca {
+	margin-left: 15px;
+}
+
 
 /* =Footer
 -------------------------------------------------------------- */
