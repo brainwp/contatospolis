@@ -82,11 +82,35 @@ function rolo_ajax_edit_company_other() {
 			$vars[4] = false;
 
 		update_post_meta( $id, 'rolo_conflito', $vars );
+
+		if($vars[0])
+			update_post_meta( $id, 'rolo_conflito_check', true );
+		if($vars[1])
+			update_post_meta( $id, 'rolo_conflito_projeto', $vars[1] );
+		if($vars[2])
+			update_post_meta( $id, 'rolo_conflito_desde', $vars[2] );
+		if($vars[3])
+			update_post_meta( $id, 'rolo_conflito_instancia', $vars[3] );
+		if($vars[4])
+			update_post_meta( $id, 'rolo_conflito_equacionado', true );
+		if($vars[5])
+			update_post_meta( $id, 'rolo_conflito_equacionado', $vars[5] );
+
 		$safe = 'sucesso';
 	} else {
 		if($vars[2] != 'checked')
 			$vars[2] = false;
 		update_post_meta( $id, 'rolo_relacao', $vars );
+
+		if($vars[0])
+			update_post_meta( $id, 'rolo_relacao_check', true );
+		if($vars[1])
+			update_post_meta( $id, 'rolo_relacao_local', $vars[1] );
+		if($vars[2])
+			update_post_meta( $id, 'rolo_relacao_apoio', true );
+		if($vars[3])
+			update_post_meta( $id, 'rolo_relacao_conflito', $vars[3] );
+
 		$safe = 'sucesso';
 	}
 

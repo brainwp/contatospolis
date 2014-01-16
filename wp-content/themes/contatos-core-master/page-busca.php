@@ -102,7 +102,7 @@ get_header(); ?>
 
     </fieldset>
 
-    <fieldset class="inlineLabels contact" style="display:none;">
+    <fieldset class="inlineLabels contact">
 
         <div class="cada-linha add">
             <div >
@@ -120,7 +120,7 @@ get_header(); ?>
 
     </fieldset>    
 
-    <fieldset class="inlineLabels company" style="display:none;">
+    <fieldset class="inlineLabels company">
     	<?php require_once(ABSPATH . 'wp-admin/includes/template.php'); ?>
         <div class="cada-linha add">
             <div >

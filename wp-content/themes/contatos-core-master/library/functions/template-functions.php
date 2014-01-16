@@ -548,7 +548,6 @@ function rolo_company_header($company_id) {
 							$fim = ''; if($company_conflito[4]) { $fim = 'checked="checked"'; }
 							$obs = ''; if($company_conflito[5]) { $obs = $company_conflito[5]; }		
 
-
 							?>
 
 							<div><span class="title">Encontra-se em situação de conflito com grandes projetos e/ou áreas de proteção ambiental?</span><span id="rolo_conflito" class="rolo_conflito resposta"> <input type="checkbox" class="rolo_conflito check" <?php echo $checked; ?> /> Sim</span></div>
