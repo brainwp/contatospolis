@@ -16,38 +16,35 @@ function rolo_busca_avancada($post) {
 
 }
 
-function rolo_get_avatar_image($avatar_id, $size = array(120,120) ) {
-
-
-
-	if(has_post_thumbnail( $avatar_id )) {
-
-		$image = get_the_post_thumbnail( $avatar_id, $size );
-
+function rolo_get_avatar_image( $avatar_id, $size = array(120,120) ) {
+	
+	$size = apply_filters( 'post_thumbnail_size', $size );
+	
+	/* Usar imagem destacada caso houver */
+	if ( has_post_thumbnail( $avatar_id ) ) {
+		$image = get_the_post_thumbnail( $avatar_id, $size, array( 'class' => 'avatar' ) );
 	} else {
-
 		$contact_twitter = '';
 
-		if(has_term( 'Company', 'type', $avatar_id )) {
+	if ( has_term( 'Company', 'type', $avatar_id ) ) {
 			$email = get_post_meta( $avatar_id, 'rolo_company_email', true );
 		} else {
 			$email = get_post_meta( $avatar_id, 'rolo_contact_email', true );
-		}
+	}
 
-		if(!$email) {
-			$email = "contato@brasa.art.br";
-		}
+	if ( !$email ) {
+		$email = "contato@brasa.art.br";
+	}
 
 		$image = get_avatar( ($email), $size[0], rolo_get_twitter_profile_image($contact_twitter, ROLOPRESS_IMAGES . "/icons/gravatar-default.jpg"));
-
 	}
 
 	return $image;
-
 }
 
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_thumbnail', 'rolo_ajax_edit_thumbnail' );
 add_action( 'wp_ajax_rolo_ajax_edit_thumbnail', 'rolo_ajax_edit_thumbnail' );
+
 function rolo_ajax_edit_thumbnail() {
 
 	$attid = $_POST['att'];
