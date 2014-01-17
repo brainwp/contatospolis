@@ -58,6 +58,10 @@ if (!current_user_can( 'administrator' )) :
 	show_admin_bar( false );
 endif;
 
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'avatar', 130, 9999 ); //300 pixels wide (and unlimited height)
+}
+
 // Make theme available for translation
 // Translations can be filed in the /languages/ directory
 load_theme_textdomain( 'rolopress', TEMPLATEPATH . '/languages' );
