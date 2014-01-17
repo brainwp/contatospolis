@@ -280,7 +280,7 @@ function rolo_pageheader() {
 	} elseif (is_home()) {    
         $pagetitle = '<h2 class="page-title-light home">' . __('All Items', 'rolopress') . "</h2>\n";
 	} elseif (is_search()) {    
-        $pagetitle = '<h2 class="page-title-light search">' . __('Search Results for: ', 'rolopress') . '<span class="blue">"' . get_search_query() . '"</spam>' . "</h2>\n";
+        $pagetitle = '<h2 class="page-title-light search">' . __('Search Results for: ', 'rolopress') . '<span class="blue">"' . rolo_search_query() . '"</spam>' . "</h2>\n";
 	} elseif (is_category()) {
 			$current_category = single_cat_title("", false);
 			$pagedesc = category_description();
@@ -553,11 +553,13 @@ function rolo_loop() { ?>
 				<?php 
 					
 					if (is_archive() || is_home()) { 
+
 								if ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID());}
 								if ( rolo_type_is( 'company' ) ) { rolo_company_header_list(get_the_ID());} ?>
 					<?php }
 					
 					elseif (is_single() ) { 
+
 						if ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); the_content();
 								if ( is_active_sidebar("contact-under-main")){ ?>
 									<div class="widget-area contact-under-main">
@@ -580,7 +582,7 @@ function rolo_loop() { ?>
                             if 
                                 ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); }
                             elseif
-                                ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID()); }
+                                ( rolo_type_is( 'company' ) ) { rolo_company_header_list(get_the_ID());}
                             else { ?>
                                         <div id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
                                             <?php echo '<img class="entry-icon" src=' . ROLOPRESS_IMAGES . '/icons/rolo-default.jpg />' ?>

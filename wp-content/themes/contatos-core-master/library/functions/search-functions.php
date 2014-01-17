@@ -14,8 +14,71 @@ add_action( 'pre_get_posts', 'rolo_search_filter_geral' );
 add_action( 'pre_get_posts', 'rolo_search_filter_contact' );
 add_action( 'pre_get_posts', 'rolo_search_filter_company' );
 add_filter( 'posts_where', 'rolo_search_filter_name', 10, 2 );
+
+function rolo_search_query() {
+
+	$string .= 'Público: '.$_POST['busca_publicos'].' | ';
+
+	if($_POST['busca_nome'])
+		$string .= 'Nome: '.$_POST['busca_nome'].' | ';
+	if($_POST['busca_municipio'])
+		$string .= 'Município: '.$_POST['busca_municipio'].' | ';
+	if($_POST['busca_uf'])
+		$string .= 'UF: '.$_POST['busca_uf'].' | ';	
+	if($_POST['busca_cargo'])
+		$string .= 'Cargo: '.$_POST['busca_cargo'].' | ';
+	if($_POST['busca_instituicao'])
+		$string .= 'Instituição: '.$_POST['busca_instituicao'].' | ';
+	
+	if($_POST['tax_input']) {
+		if($_POST['tax_input']['caracterizacao']) {
+		   $caracterizacao = get_terms( 'caracterizacao', array('include' => $_POST['tax_input']['caracterizacao'] ) );
+		   foreach($caracterizacao as $term) {
+				$caracterizacoes[] = $term->name;
+		   }
+		   $string .= 'Caracterização Institucional: ' . implode('; ', $caracterizacoes) . ' | ';
+		}
+		if($_POST['tax_input']['abrangencia']) {
+		   $abrangencia = get_terms( 'abrangencia', array('include' => $_POST['tax_input']['abrangencia'] ) );
+		   foreach($abrangencia as $term) {
+				$abrangencias[] = $term->name;
+		   }
+		   $string .= 'Abrangência de atuação: ' . implode('; ', $abrangencias) . ' | ';
+		}
+		if($_POST['tax_input']['interesse']) {
+		   $interesse = get_terms( 'interesse', array('include' => $_POST['tax_input']['interesse'] ) );
+		   foreach($interesse as $term) {
+				$interesses[] = $term->name;
+		   }
+		   $string .= 'Áreas de Interesse: ' . implode('; ', $interesses) . ' | ';
+		}
+		if($_POST['tax_input']['impactos']) {
+			$string .= 'Em situação de conflito | ';
+		}
+		if($_POST['tax_input']['impactos']['evento']) {
+			$string .= 'Participou de evento do projeto | ';
+		}
+		if($_POST['tax_input']['espacos']['apoio']) {
+			$string .= 'Tem apoiado/divulgado o projeto | ';
+		}
+	}
+		
+
+	$arr = preg_split("|\s\|\s|", $string );
+
+	array_pop( $arr );
+
+	$string = implode(' | ',  $arr );
+
+	return $string;
+}
  	
 function rolo_search_filter_geral($query) {
+
+	if( $query->is_main_query() && $_POST['busca_publicos'] ) {
+		$query->is_search = true;
+		$query->is_home = false;
+	}
 
 	if($query->is_main_query() && $_POST['busca_publicos'] == 'geral') :
 
