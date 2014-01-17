@@ -216,12 +216,6 @@ li {
 	cursor: pointer
 }
 
-.item-image img {
-}
-
-.item-image:hover {
-}
-
 .alterar-avatar {
     width: 120px;
 	height: 120px;
@@ -242,7 +236,6 @@ li {
 	background: url("../../img/avatar-default.jpg") no-repeat;
     float: left;
     margin: 0 0 0 0;
-    border: 2px solid #CCC;
     height:120px;
     width:120px;
 }
