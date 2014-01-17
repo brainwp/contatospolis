@@ -456,45 +456,8 @@ function rolo_company_header($company_id) {
     		<?php if(is_single()) : ?>
     		<hr>
 
-    		<div class="contatos item-form">
-    			<table>
-    				<tr>
-    					<th></th>
-    					<th>Contatos</th>
-    					<th>Cargo</th>
-    					<th>Telefone</th>
-    					<th>E-mail</th>
-    				</tr>
-    				<?php 
+    		<?php rolo_company_members_list($company_id); ?>
 
-    				if($company_contatos) :
-    					foreach($company_contatos as $contato) {
-
-    						$user = get_post( $contato );
-
-    						if(has_term( 'Contact', 'type', $user )) { ?>
-
-    						<tr>
-    							<td><button>-</button></td>
-    							<td><?php echo $user->post_title; ?></td>
-    							<td><?php echo get_post_meta( $user->ID, 'rolo_contato_cargo', true ); ?></td>
-    							<td><?php echo get_post_meta( $user->ID, 'rolo_contato_telefone', true ); ?></td>
-    							<td><?php echo get_post_meta( $user->ID, 'rolo_contato_email', true ); ?></td>
-    						</tr>
-
-
-    						<?php }
-
-    					}
-    					
-    					endif;
-
-    					echo '<tr><td><button>+</button></td><td class="insertname" colspan="4"></td></tr>';
-    					?>
-    					
-						
-						</table>
-					</div>
 					<hr>
 					<div class="taxonomias item-form">
 						<div class="item-col-1 width-50">
@@ -584,8 +547,11 @@ function rolo_company_header($company_id) {
 				<?php rolopress_after_company_header();?>
 			<?php endif; ?>
 			</div><!-- .bloco -->
-		</div><!-- hcard -->
+		</div><!-- hcard -->		
 		<?php
+
+
+		
 	}
 
 function rolo_company_header_list($company_id) {
@@ -637,12 +603,11 @@ function rolo_company_header_list($company_id) {
 		$participacao_terms = join(', ', $participacao_terms);	
 	}	
 
-	$relacao = unserialize($company['rolo_relacao'][0]); 
+	// $relacao = unserialize($company['rolo_relacao_check'][0]); 
 	
-	if($relacao) {
-		$participou = 'Não'; if($relacao[0]) { $participou = 'Sim'; }
-		$apoio = 'Não'; if($relacao[2]) { $apoio = 'Sim'; }	
-	}
+	$participou = 'Não'; if($company['rolo_relacao_check'][0]) { $participou = 'Sim'; }
+	$apoio = 'Não'; if($company['rolo_relacao_apoio'][0]) { $apoio = 'Sim'; }	
+	
 	
 
 	$company_tel = $company['rolo_company_telefone'][0];
@@ -739,12 +704,12 @@ function rolo_company_header_list($company_id) {
     			</div><!-- .cada-linha -->    			
     			<div class="cada-linha">
     				<div class="obs">
-    					<span class="title title-bloco-3 grey"><?php _e('Participou do projeto? ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta <?php echo ($relacao ? '' : 'vazio'); ?>"><?php echo $participou; ?></span>
+    					<span class="title title-bloco-3 grey"><?php _e('Participou do projeto? ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta"><?php echo $participou; ?></span>
     				</div>
     			</div><!-- .cada-linha -->    			
     			<div class="cada-linha">
     				<div class="obs">
-    					<span class="title title-bloco-3 grey"><?php _e('Apoia/Divulga o projeto? ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta <?php echo ($relacao ? '' : 'vazio'); ?>"><?php echo $apoio; ?></span>
+    					<span class="title title-bloco-3 grey"><?php _e('Apoia/Divulga o projeto? ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta"><?php echo $apoio; ?></span>
     				</div>
     			</div><!-- .cada-linha -->    			
     		</div>
@@ -752,7 +717,75 @@ function rolo_company_header_list($company_id) {
 			</div><!-- .bloco -->
 		</div><!-- hcard -->
 		<?php
+		if(is_search()) {
+			rolo_company_members_list($company_id, $_POST['busca_municipio'], $_POST['busca_uf']);
+		 } 
+		
 	}
+
+function rolo_company_members_list($company_id, $city = false, $uf = false) {
+
+	$company_contatos = get_post_meta( $company_id, 'rolo_contatos', true );
+
+	if(is_search() && !$company_contatos)
+		return;
+?>
+	<div class="contatos item-form">
+	<table>
+		<tr>
+			<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<th></th>" : "" ?>
+			<th>Contatos</th>
+			<th>Cargo</th>
+			<th>Telefone</th>
+			<th>E-mail</th>
+		</tr>
+		<?php 
+			if(!$company_contatos) {
+				$company_contatos = array();
+			}
+				
+		
+			foreach($company_contatos as $contato) {
+
+				$user = get_post( $contato );
+
+				if(has_term( 'Contact', 'type', $user )) { 
+					if($city) {
+						if ($city != get_post_meta( $user->ID, 'rolo_city', true ) )
+							continue;
+					}
+					if($uf != 'todos') {
+						if ($uf != get_post_meta( $user->ID, 'rolo_uf', true ) )
+							continue;
+					}
+
+				?>
+
+				<tr>
+					<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<td><button name='".$user->ID."'>-</button></td>" : "" ?>
+					<td><a href="<?php echo get_permalink($user->ID); ?>"><?php echo $user->post_title; ?></a></td>
+					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_role', true ); ?></td>
+					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_telefone', true ); ?></td>
+					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_email', true ); ?></td>
+				</tr>
+
+
+				<?php }
+
+			}
+			
+			
+			
+			if(is_single() && current_user_can( 'publish_posts' ))
+				echo '<tr><td><button>+</button></td><td class="insertname" colspan="4"></td></tr>';
+			
+			?>
+			
+			</table>
+		</div>
+	<?php
+	// endif;
+}
 
 /**
  * Displays company detail information

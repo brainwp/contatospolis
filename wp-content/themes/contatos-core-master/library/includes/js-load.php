@@ -23,10 +23,11 @@ function rolo_add_script() {
     if(is_single()) {
         wp_enqueue_script( 'mask', ROLOPRESS_JS . '/jquery.maskedinput.min.js', array('jquery'), '', true );
         wp_enqueue_script( 'autocomplete', '//code.jquery.com/ui/1.10.3/jquery-ui.js', array('jquery'), '', true );
-        
+        wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );
+        wp_enqueue_script( 'jeip-set', ROLOPRESS_JS . '/jeip-set.js', array('jquery'), '', true );
     }
     
-        wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );
+        
         
     if(is_singular( 'post' ) && current_user_can( 'edit_posts' )) {
         wp_enqueue_media();

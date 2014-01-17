@@ -134,12 +134,24 @@ function rolo_ajax_edit_contacts() {
 
 	if($mode == 'add') {
 		$contatos = get_post_meta( $postid, 'rolo_contatos', true );
+		// $contatos = array();
 		
 		if(!in_array($vars, $contatos))
-			$contatos[] = $id;
-		
+			$contatos[] = $vars;
+
 		$meta = update_post_meta( $postid, 'rolo_contatos', $contatos );
 		$status = 'ok';
+	} elseif($mode == 'remove') {
+		$contatos = get_post_meta( $postid, 'rolo_contatos', true );
+
+		$keys = array_keys($contatos, $vars);
+		foreach($keys as $k) {
+			unset($contatos[$k]);
+		}
+
+		$meta = update_post_meta( $postid, 'rolo_contatos', $contatos );
+		$status = 'ok';
+
 	} else {
 
 		$meta = update_post_meta( $vars['data'], $vars['id'], esc_attr($vars['new_value']) );
@@ -582,7 +594,7 @@ function rolo_loop() { ?>
                             if 
                                 ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); }
                             elseif
-                                ( rolo_type_is( 'company' ) ) { rolo_company_header_list(get_the_ID());}
+                                ( rolo_type_is( 'company' ) ) { rolo_company_header_list(get_the_ID()); }
                             else { ?>
                                         <div id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
                                             <?php echo '<img class="entry-icon" src=' . ROLOPRESS_IMAGES . '/icons/rolo-default.jpg />' ?>

@@ -436,7 +436,7 @@ function rolopress_document_title() {
 	}
 
 	elseif ( is_search() )
-		$doctitle = sprintf( __( 'Search results for &quot;%1$s&quot;', 'rolopress' ), esc_attr( get_search_query() ) );
+		$doctitle = sprintf( __( 'Search results for &quot;%1$s&quot;', 'rolopress' ), esc_attr( rolo_search_query() ) );
 
 	elseif ( is_404() )
 		$doctitle = __( '404 Not Found', 'rolopress' );
