@@ -112,18 +112,20 @@ function rolo_contact_header($contact_id) {
 	    <?php endif; ?>    
     </h2>
 
-    <div id="item-avatar" class="item-image <?php echo $enable; ?>" data-overlayid="alterar-avatar">
-
-		<?php echo rolo_get_avatar_image($contact_id); ?>
-
-		<div class="alterar-avatar">
-			<span>Alterar Imagem</span>
-		</div><!-- http://www.backslash.gr/demos/contenthover-jquery-plugin/ .alterar-avatar -->
-
+	<?php if ( is_single() ) : ?>
+    <div id="item-avatar" class="item-image <?php echo $enable; ?>"  data-overlayid="alterar-avatar">
+			<?php /* Contact */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
+    
+        <div class="contenthover alterar-avatar">
+            <span>Alterar Imagem</span>
+        </div><!-- #alterar-avatar -->
+	</div><!-- .item-image -->
+    <?php else : ?>
+    <div id="item-avatar" class="item-image <?php echo $enable; ?>">
+		<?php /* Contact */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
     </div><!-- .item-image -->
-
-
-
+	<?php endif; ?> 
+    
     <div class="item-col-1 width-40 item-form">
         <div class="cada-linha ano">
 			<span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span>
@@ -385,12 +387,11 @@ function rolo_company_header($company_id) {
             </h2>
 
             <div id="item-avatar" class="item-image <?php echo $enable; ?>"  data-overlayid="alterar-avatar">
-                <?php echo rolo_get_avatar_image($contact_id); ?>
+                <?php /* Company */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
 
-			<div id="alterar-avatar">
+			<div id="contenthover alterar-avatar">
 				<span>Alterar Imagem</span>
 			</div><!-- #alterar-avatar -->
-
             </div><!-- .item-image -->
     
     		<div class="item-col-1 width-40 item-form">
@@ -466,7 +467,8 @@ function rolo_company_header($company_id) {
     			
 
     		</div>
-    		<?php if(is_single()) : ?>
+    		
+			<?php if( is_single() ) : ?>
     		<hr>
 
     		<div class="contatos item-form">
@@ -683,10 +685,9 @@ function rolo_company_header_list($company_id) {
     			<?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
     		</h2>
 
-    <div id="item-avatar" class="item-image <?php echo $enable; ?>" data-overlayid="alterar-avatar">
-        <?php echo rolo_get_avatar_image($contact_id); ?>
-
-    </div>
+    <div id="item-avatar" class="item-image <?php echo $enable; ?>">
+		<?php /* Company */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
+    </div><!-- .item-image -->
     
     		<div class="item-col-1 width-40 item-form">
     			<div class="cada-linha">

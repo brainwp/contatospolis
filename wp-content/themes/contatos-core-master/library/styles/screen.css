@@ -217,25 +217,34 @@ li {
 }
 
 .item-image img {
-	max-height: 120px;
 }
 
 .item-image:hover {
 }
 
 .alterar-avatar {
-    width: 125px;
-	height: 125px;
+    width: 120px;
+	height: 120px;
 	clear: both;
 	background: url("../../img/sprite.png") no-repeat scroll -563px -1px #FFF;
 	color: #023f7b;
 	text-align: center;
+	overflow: hidden;
 }
 
 .alterar-avatar span {
 	width: 100%;
 	margin: 80px auto 0;
 	display: block;
+}
+
+.avatar, .entry-icon  {
+	background: url("../../img/avatar-default.jpg") no-repeat;
+    float: left;
+    margin: 0 0 0 0;
+    border: 2px solid #CCC;
+    height:120px;
+    width:120px;
 }
 
 .item-col-1 {
@@ -299,15 +308,6 @@ h2.page-title-light{
 	width: 100%;
 	clear: both;
 	overflow: hidden;
-}
-
-.avatar, .entry-icon  {
-	background: url("../../img/avatar-default.jpg") no-repeat;
-    float: left;
-    margin: 7px 10px 0 0;
-    border: 2px solid #CCC;
-    height:100px;
-    width:100px;
 }
 
 .cada-linha input[type="text"] {
