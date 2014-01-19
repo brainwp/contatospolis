@@ -10,6 +10,35 @@
  
 add_theme_support( 'post-thumbnails' ); 
 
+add_action( 'pre_get_posts', 'rolo_post_order' );
+add_action('update_postmeta', 'rolo_update_modified_date_on_meta_update');
+
+function rolo_post_order($query) {
+
+	if( $query->is_main_query() ) {
+		
+		$query->query_vars['orderby'] = 'title';
+		$query->query_vars['order'] = 'ASC';
+
+	}
+}
+
+function rolo_update_modified_date_on_meta_update( $meta_id ) {
+
+	$meta = get_post_meta_by_id( $meta_id );
+	$p = get_post($meta->post_id, ARRAY_A);
+
+	$p['post_modified'] = date( 'Y-m-d H:i:s',  time() );
+	$p['post_modified_gmt'] = gmdate( 'Y-m-d H:i:s',  time() );
+
+	$id = wp_update_post( $p, true );
+
+	if(is_wp_error( $id )) {
+		wp_die( dump($id) );
+	}
+
+}
+
 function rolo_busca_avancada($post) {
 
 	dump($post);
@@ -206,7 +235,7 @@ function rolo_ajax_edit_company() {
 
 	$vars = $_POST['data'];
 	$erro = false;
-	$restrict = array('rolo_conflito', 'rolo_relacao', 'rolo_company_redes', 'rolo_company_update');
+	$restrict = array('rolo_conflito', 'rolo_relacao', 'rolo_company_redes' );
 
 	if(!in_array($vars['id'], $restrict)) :
 
@@ -225,7 +254,7 @@ function rolo_ajax_edit_company() {
 				$erro = $meta;
 			}
 		}
-		
+
 	else :
 		$status = 'dev';
 

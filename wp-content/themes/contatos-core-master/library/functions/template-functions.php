@@ -90,7 +90,11 @@ function rolo_contact_header($contact_id) {
 
 	$contact_contato = $contact['rolo_contact_contato_facil'][0];
 
-	$contact_update = get_the_time( 'd/m/Y', $contact_id );
+	$contact_update = $contact['rolo_contact_update'][0];
+		if(!$contact_update) {
+			$contact_update = get_the_time( 'd/m/Y', $contact_id );		
+		}
+	
 
 	$post_id = get_post($post->ID); // get current contact id
     $slug = $post_id->post_name; // define slug as $slug
@@ -365,7 +369,11 @@ function rolo_company_header($company_id) {
 	$company_tel = $company['rolo_company_telefone'][0];
 	$company_end = $company['rolo_company_endereco'][0];
 	$company_contato = $company['rolo_company_contato_facil'][0];
-	$company_update = get_the_time( 'd/m/Y', $company_id );
+
+	$company_update = $company['rolo_company_update'][0];
+		if(!$company_update) {
+			$company_update = get_the_time( 'd/m/Y', $company_id );		
+		}
 
 	$post_id = get_post($post->ID); // get current company id
     $slug = $post_id->post_name; // define slug as $slug
@@ -628,7 +636,12 @@ function rolo_company_header_list($company_id) {
 	$company_tel = $company['rolo_company_telefone'][0];
 	$company_end = $company['rolo_company_endereco'][0];
 	$company_contato = $company['rolo_company_contato_facil'][0];
-	$company_update = get_the_time( 'd/m/Y', $company_id );
+	
+	$company_update = $company['rolo_company_update'][0];
+		if(!$company_update) {
+			$company_update = get_the_time( 'd/m/Y', $company_id );		
+		}
+
 
 	$post_id = get_post($post->ID); // get current company id
     $slug = $post_id->post_name; // define slug as $slug
