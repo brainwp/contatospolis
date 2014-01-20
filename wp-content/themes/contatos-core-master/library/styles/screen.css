@@ -102,7 +102,7 @@ li {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    color: #919191;
+    color: #666;
     font-size: 16px;
 }
 .busca-header input#searchsubmit {
@@ -205,7 +205,6 @@ li {
 }
 
 /* */
-
 .item-image {
     width: 120px;
 	height: 120px;
@@ -215,7 +214,6 @@ li {
 	background: #f7f7f7;
 	cursor: pointer
 }
-
 .alterar-avatar {
     width: 120px;
 	height: 120px;
@@ -225,13 +223,11 @@ li {
 	text-align: center;
 	overflow: hidden;
 }
-
 .alterar-avatar span {
 	width: 100%;
 	margin: 80px auto 0;
 	display: block;
 }
-
 .avatar, .entry-icon  {
 	background: url("../../img/avatar-default.jpg") no-repeat;
     float: left;
@@ -239,7 +235,6 @@ li {
     height:120px;
     width:120px;
 }
-
 .item-col-1 {
 	margin: 0 15px 0 10px;
     float: left;
@@ -251,7 +246,7 @@ li {
 }
 
 .cada-linha span.title {
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .title_single a:hover {
@@ -261,6 +256,16 @@ li {
 h2.title_single {
     font-size: 1.8em;
     font-weight: normal;    
+}
+
+.title_single_contact {
+	background: url("../../img/sprite.png") no-repeat scroll 4px -111px transparent;
+	padding-left: 45px;
+}
+
+.title_single_company {
+	background: url("../../img/sprite.png") no-repeat scroll 4px -77px transparent;
+	padding-left: 45px;
 }
 
 h2.page-title-light{
@@ -312,6 +317,19 @@ h2.page-title-light{
     border-radius: 5px;
     color: #444;
     font-size: 15px;
+}
+
+.cada-linha textarea {
+    background: #FFF;
+    border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #444;
+    font-size: 15px;
+}
+
+.cada-linha textarea p {
 }
 
 .item-form {
@@ -369,11 +387,13 @@ h2.page-title-light{
 
 .resposta {
     float: left;
+	max-width: 50%;
+	margin-left: 20px;
 }
 
 .resposta-endereco {
     float: left;
-	max-width: 280px;
+    margin-bottom: 10px;
 }
 
 .resposta-add {
@@ -407,9 +427,9 @@ h2.page-title-light{
 
 /* Quando clicado em um item para editar */
 .jeip-editor {
-	width: 300px;
+	width: 50%;
 	float: left;
-	margin: 0 0 20px 0;
+	margin: 0 0 20px 20px;
 }
 
 .jeip-savebutton {
@@ -422,6 +442,13 @@ h2.page-title-light{
     border-radius: 5px;
 	cursor: pointer;
 	margin-top: 10px;
+}
+
+.jeip-saving {
+    background: url("../../img/loading-saving.gif") no-repeat scroll 0 0 transparent;
+    font-style: italic;
+    margin-left: 20px;
+    padding: 0 0 0 30px;
 }
 
 .jeip-savebutton:hover {

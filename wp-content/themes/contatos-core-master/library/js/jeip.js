@@ -54,7 +54,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			editfield_class		: "jeip-editfield",
 
 			saving_text			: "Salvando...",
-			saving_class		: "jeip-saving",
+			saving_class		: "jeip-saving blue",
 
 			saving				: '<span id="saving-#{id}" class="#{saving_class}" style="display: none;">#{saving_text}</span>',
 

@@ -108,7 +108,7 @@ function rolo_contact_header($contact_id) {
     <div class="bloco card-<?php echo basename( get_permalink() );?>">
 
     <h2 class="title_single">
-	    <?php echo __( 'Contact ','rolopress' ); ?>
+    	<span class="title_single_contact"></span>
         <?php if ( is_single() ) : ?>
 			<span class="blue"><?php echo $contact_name;?></span>
         <?php else : ?>
@@ -143,7 +143,7 @@ function rolo_contact_header($contact_id) {
         
         <div class="cada-linha legal">
             <span class="title title-bloco-1 grey"><?php _e('Instituição que Atua ', 'rolopress'); ?></span>
-            <span id="rolo_contact_company" class="resposta <?php echo ($contact_company ? '' : 'vazio'); ?>"><?php echo $contact_company; ?></span>
+            <span id="rolo_contact_company" class="resposta blue <?php echo ($contact_company ? '' : 'vazio'); ?>"><?php echo $contact_company; ?></span>
         </div><!-- .cada-linha -->
         
         <div class="cada-linha cargo">
@@ -205,7 +205,7 @@ function rolo_contact_header($contact_id) {
         </div><!-- .cada-linha -->
         
 		<div class="cada-linha contato">
-        	<span class="title title-bloco-4"><?php _e('Forma mais fácil de contactar ', 'rolopress'); ?></span>
+        	<span class="title title-bloco-4"><?php _e('Forma mais fácil <br /> de contactar ', 'rolopress'); ?></span>
             <span id="rolo_contact_contato_facil" class="resposta <?php echo ($contact_contato ? '' : 'vazio'); ?>"><?php echo $contact_contato; ?></span>
         </div><!-- .cada-linha -->
         
@@ -391,7 +391,7 @@ function rolo_company_header($company_id) {
     	<div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
             <h2 class="title_single">
-                <?php echo __('Company ','rolopress') ?><span class="blue"><?php echo $company_name;?></span>
+                <span class="title_single_company"></span><span class="blue"><?php echo $company_name;?></span>
             </h2>
 
             <div id="item-avatar" class="item-image <?php echo $enable; ?>"  data-overlayid="alterar-avatar">
@@ -572,8 +572,6 @@ function rolo_company_header($company_id) {
 			</div><!-- .bloco -->
 		</div><!-- hcard -->		
 		<?php
-
-
 		
 	}
 
@@ -630,8 +628,6 @@ function rolo_company_header_list($company_id) {
 	
 	$participou = 'Não'; if($company['rolo_relacao_check'][0]) { $participou = 'Sim'; }
 	$apoio = 'Não'; if($company['rolo_relacao_apoio'][0]) { $apoio = 'Sim'; }	
-	
-	
 
 	$company_tel = $company['rolo_company_telefone'][0];
 	$company_end = $company['rolo_company_endereco'][0];
@@ -661,7 +657,7 @@ function rolo_company_header_list($company_id) {
     	<div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
     		<h2 class="title_single">
-    			<?php echo __('Company ','rolopress') ?><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
+    			<span class="title_single_company"></span><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
     		</h2>
 
     <div id="item-avatar" class="item-image <?php echo $enable; ?>">
@@ -707,7 +703,7 @@ function rolo_company_header_list($company_id) {
     			</div><!-- .cada-linha -->
 
     		</div>
-    		<div class="item-col-2 width-45 item-form">
+    		<div class="item-col-2 width-40 item-form">
     			<div class="cada-linha">
     				<div class="obs">
     					<span class="title title-bloco-2 grey"><?php _e('Atuação ', 'rolopress'); ?></span>
