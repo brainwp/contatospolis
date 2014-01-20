@@ -35,8 +35,9 @@ h5 { font-size: .83em; margin: 1.5em 0 }
 h6  { font-size: .75em; margin: 1.67em 0 }
 
 hr {
-    background-color: #999;
-    border:0;
+    background-color: #999999;
+    border: 0 none;
+    clear: both;
     height: 1px;
     margin-bottom: 1.5em;
 }
