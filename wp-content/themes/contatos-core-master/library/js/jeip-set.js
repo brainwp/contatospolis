@@ -116,6 +116,16 @@ jQuery(document).ready(function() {
         form_type: "textarea"
     });
 
+    jQuery('#rolo_company_redes > #tw').eip(ajax_url.ajaxurl, {
+        data: ajax_url.postid,
+        action: 'rolo_ajax_edit_redes'
+    });
+    
+    jQuery('#rolo_company_redes > #fb').eip(ajax_url.ajaxurl, {
+        data: ajax_url.postid,
+        action: 'rolo_ajax_edit_redes'
+    });    
+
     jQuery('#rolo_company_others, #rolo_contact_others').on('click', function() {
         es = jQuery(this);
         window.setTimeout(function() {
