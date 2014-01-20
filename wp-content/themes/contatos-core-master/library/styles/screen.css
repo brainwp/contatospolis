@@ -235,13 +235,8 @@ li {
     height:120px;
     width:120px;
 }
-.item-col-1 {
-	margin: 0 15px 0 10px;
-    float: left;
-}
-
-.item-col-2 {
-	margin: 0 15px 0 10px;
+.item-col-1, .item-col-2 {
+	margin: 0 15px 25px 10px;
     float: left;
 }
 
@@ -369,12 +364,31 @@ h2.page-title-light{
 	color: #FFF;
 }
 
+.botao-edit {
+	background: url("../../img/sprite.png") no-repeat scroll -285px -90px #023f7b;
+	padding: 20px 20px 20px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+.botao-edit:hover {
+	background-position: -285px -139px;
+	color: #FFF;
+}
+
 .title-bloco-1,
 .title-bloco-2,
 .title-bloco-3,
 .title-bloco-4,
 .title-bloco-5,
-.title-bloco-6 {
+.title-bloco-6, 
+.title-bloco-7, 
+.title-bloco-8 {
 	float: left;
 }
 

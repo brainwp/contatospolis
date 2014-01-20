@@ -402,99 +402,94 @@ function rolo_company_header($company_id) {
 			</div><!-- #alterar-avatar -->
             </div><!-- .item-image -->
     
-    		<div class="item-col-1 width-40 item-form">
+    		<div class="item-col-1 width-45 item-form">
     			<div class="cada-linha">
-    				<div class="email">
-    					<span class="title title-bloco-2 grey"><?php _e( 'E-mail ', 'rolopress' ); ?></span><span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><?php echo $company_email;?></span>
-    				</div>
+                    <span class="title title-bloco-1 grey"><?php _e('Ano de Criação ', 'rolopress'); ?></span>
+                    <span id="rolo_company_year" class="resposta <?php echo ($company_year ? '' : 'vazio'); ?>"><?php echo $company_year; ?></span>
+    			</div><!-- .cada-linha -->
+                <div class="cada-linha">
+                    <span class="title title-bloco-1 grey"><?php _e('Constituída Legalmente? ', 'rolopress'); ?></span>
+                    <span id="rolo_company_legal" class="resposta <?php echo ($company_legal ? '' : 'vazio'); ?>"><?php echo $company_legal; ?></span>
+    			</div><!-- .cada-linha -->
+      			<div class="cada-linha">
+                    <span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
+                    <span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo wpautop( $company_others ); ?></span>
+    			</div><!-- .cada-linha -->
+    			<div class="cada-linha">
+                    <span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
+                    <span id="rolo_company_update" class="resposta <?php echo ($company_update ? '' : 'vazio'); ?>"><?php echo $company_update; ?></span>
     			</div><!-- .cada-linha -->
 
+            </div><!-- .item-col-1 width-45 item-form -->
+            <div class="item-col-2 item-form">
+                
     			<div class="cada-linha">
-    				<div class="endereco">
-    					<span class="title title-bloco-2 grey"><?php _e('Endereço ', 'rolopress'); ?></span><span id="rolo_company_endereco" class="resposta <?php echo ($company_end ? '' : 'vazio'); ?>"><?php echo $company_end; ?></span>
-    				</div>
+                    <span class="title title-bloco-2 grey"><?php _e( 'E-mail ', 'rolopress' ); ?></span>
+                    <span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><?php echo $company_email;?></span>
+    			</div><!-- .cada-linha -->
+
+    			<div class="cada-linha endereco">
+                    <span class="title title-bloco-2 grey"><?php _e('Endereço ', 'rolopress'); ?></span>
+                    <span id="rolo_company_endereco" class="resposta <?php echo ($company_end ? '' : 'vazio'); ?>"><?php echo $company_end; ?></span>
     			</div><!-- .cada-linha -->
 
 		        <div class="cada-linha ano">
-					<span class="title title-bloco-1 grey"><?php _e('Cidade', 'rolopress'); ?></span>
+					<span class="title title-bloco-2 grey"><?php _e('Cidade', 'rolopress'); ?></span>
 		            <span id="rolo_city" class="resposta <?php echo ($company_city ? '' : 'vazio'); ?>"><?php echo $company_city; ?></span>
 		        </div><!-- .cada-linha -->			
 
 		        <div class="cada-linha uf">
-					<span class="title title-bloco-1 grey"><?php _e('Estado', 'rolopress'); ?></span>
+					<span class="title title-bloco-2 grey"><?php _e('Estado', 'rolopress'); ?></span>
 		            <span id="rolo_uf" class="resposta <?php echo ($company_uf ? '' : 'vazio'); ?>"><?php echo $company_uf; ?></span>
 		        </div><!-- .cada-linha -->    			
 
     			<div class="cada-linha">
-    				<div class="telefone">
-    					<span class="title title-bloco-2 grey"><?php _e('Telefone ', 'rolopress'); ?></span><span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?></span>
-    				</div>
+                    <span class="title title-bloco-2 grey"><?php _e('Telefone ', 'rolopress'); ?></span>
+                    <span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?></span>
     			</div><!-- .cada-linha -->
 
     			<div class="cada-linha">
     				<div class="website url-field group">
-    					<span class="title title-bloco-2 grey"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><?php echo $company_website; ?></span>
+    					<span class="title title-bloco-2 grey"><?php _e('Website ', 'rolopress'); ?></span>
+                        <span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><?php echo $company_website; ?></span>
     				</div>
     			</div><!-- .cada-linha -->
+
     			<?php if(is_single()) : ?>
     			<div class="cada-linha">
     				<div class="redes">
-    					<span class="title title-bloco-2 grey"><?php _e('Redes Sociais ', 'rolopress'); ?></span><span id="rolo_company_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
+    					<span class="title title-bloco-2 grey"><?php _e('Redes Sociais ', 'rolopress'); ?></span>
+                        <span id="rolo_company_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
     				</div>
     			</div><!-- .cada-linha -->
 				<?php endif; ?>
+                
     			<div class="cada-linha">
     				<div class="contato">
     					<span class="title title-bloco-2 grey"><?php _e('Forma mais fácil <br /> de contactar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
     				</div>
     			</div><!-- .cada-linha -->
 
-    			<div class="cada-linha">
-    				<div class="ano">
-    					<span class="title title-bloco-1 grey"><?php _e('Ano de Criação ', 'rolopress'); ?></span><span id="rolo_company_year" class="resposta <?php echo ($company_year ? '' : 'vazio'); ?>"><?php echo $company_year; ?></span>
-    				</div>
-    			</div><!-- .cada-linha -->
-    			<div class="cada-linha">
-    				<div class="legal">
-    					<span class="title title-bloco-1 grey"><?php _e('Constituída Legalmente? ', 'rolopress'); ?></span><span id="rolo_company_legal" class="resposta <?php echo ($company_legal ? '' : 'vazio'); ?>"><?php echo $company_legal; ?></span>
-    				</div>
-    			</div><!-- .cada-linha -->
-    			<div class="cada-linha">
-    				<div class="obs">
-    					<span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
-                        <span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo wpautop( $company_others ); ?></span>
-    				</div>
-    			</div><!-- .cada-linha -->
-    			<div class="cada-linha">
-    				<div class="data">
-    					<span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span><span id="rolo_company_update" class="resposta <?php echo ($company_update ? '' : 'vazio'); ?>"><?php echo $company_update; ?></span>
-    				</div>
-    			</div><!-- .cada-linha -->
-    		</div>
-    		<div class="item-col-2 item-form">
-    			
-
-    		</div>
+    		</div><!-- .item-col-2 item-form -->
     		
 			<?php if( is_single() ) : ?>
-    		<hr>
-
-    		<?php rolo_company_members_list($company_id); ?>
-
-					<hr>
+            	<hr>
+		    		<?php rolo_company_members_list($company_id); ?>
+				<hr>
+                
 					<div class="taxonomias item-form">
-						<div class="item-col-1 width-50">
+						<div class="item-col-1 width-45">
 							<?php 
 							require_once(ABSPATH . 'wp-admin/includes/template.php');
 
 							echo '<div class="caracterizacao">';
-							echo '<h3>Caracterização institucional</h3>';
+							echo '<h3>Caracterização Institucional</h3>';
 							echo '<ul>';
 								wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) );
 							echo '</ul>';
 							echo '</div>';
 							echo '<div class="interesse">';
-							echo '<h3>Áreas de interesse</h3>';
+							echo '<h3>Áreas de Interesse</h3>';
 							echo '<ul>';
 								wp_terms_checklist( $company_id, array( 'taxonomy' => 'interesse', 'checked_ontop' => false ) );
 							echo '</ul>';
@@ -504,13 +499,13 @@ function rolo_company_header($company_id) {
 						<div class="item-col-2">
 							<?php
 							echo '<div class="abrangencia">';
-							echo '<h3>Abrangência da atuação</h3>';
+							echo '<h3>Abrangência da Atuação</h3>';
 							echo '<ul>';
 								wp_terms_checklist( $company_id, array( 'taxonomy' => 'abrangencia', 'checked_ontop' => false ) );
 							echo '</ul>';
 							echo '</div>';
 							echo '<div class="participacao">';
-							echo '<h3>Espaços de participação</h3>';
+							echo '<h3>Espaços de Participação</h3>';
 							echo '<ul>';
 								wp_terms_checklist( $company_id, array( 'taxonomy' => 'participacao', 'checked_ontop' => false ) );
 							echo '</ul>';
@@ -520,14 +515,14 @@ function rolo_company_header($company_id) {
 					</div>
 					<hr>
 					<div class="impactos">
-						<div class="item-col-1">
+						<div class="item-col-1 width-45 item-form">
 							<h3>Impactos Socioambientais</h3>
 							<?php 
 							$edit = 'OK';
 							$out = 'out';
 							// $company_conflito = unserialize($company['rolo_conflito'][0]); 
 
-							$checked = ''; if($company['rolo_conflito_check'][0]) { $checked = 'checked="checked"'; $edit = 'editar'; $out = ''; }
+							$checked = ''; if($company['rolo_conflito_check'][0]) { $checked = 'checked="checked"'; $edit = 'Editar'; $out = ''; }
 							$projeto = ''; if($company['rolo_conflito_projeto'][0]) { $projeto = $company['rolo_conflito_projeto'][0]; }
 							$desde = ''; if($company['rolo_conflito_desde'][0]) { $desde = $company['rolo_conflito_desde'][0]; }
 							$instancia = ''; if($company['rolo_conflito_instancia'][0]) { $instancia = $company['rolo_conflito_instancia'][0]; }
@@ -535,16 +530,47 @@ function rolo_company_header($company_id) {
 							$obs = ''; if($company['rolo_conflito_observacoes'][0]) { $obs = $company['rolo_conflito_observacoes'][0]; }		
 
 							?>
+                            
+                            <div class="cada-linha">
+							    <span class="title title-bloco-8 grey">Encontra-se em situação de conflito com grandes<br />projetos e/ou áreas de proteção ambiental?</span>
+                                <span id="rolo_conflito" class="rolo_conflito resposta">
+                                <input type="checkbox" class="rolo_conflito check" <?php echo $checked; ?> /> Sim</span>
+							</div><!-- .cada-linha -->
 
-							<div><span class="title">Encontra-se em situação de conflito com grandes projetos e/ou áreas de proteção ambiental?</span><span id="rolo_conflito" class="rolo_conflito resposta"> <input type="checkbox" class="rolo_conflito check" <?php echo $checked; ?> /> Sim</span></div>
-							<div><span class="title">Qual projeto?</span><span class="rolo_conflito resposta <?php echo ($projeto ? '' : 'vazio'); ?>"><?php echo $projeto; ?></span><input type="text" class="input_conflito out" value="<?php echo $projeto; ?>"/></div>
-							<div><span class="title">Desde quando isso ocorre?</span><span class="rolo_conflito resposta <?php echo ($desde ? '' : 'vazio'); ?>"><?php echo $desde; ?></span><input type="text" class="input_conflito out" value="<?php echo $desde; ?>"/></div>
-							<div><span class="title">O caso foi levado a alguma instância?</span><span class="rolo_conflito resposta <?php echo ($instancia ? '' : 'vazio'); ?>"><?php echo $instancia; ?></span><input type="text" class="input_conflito out" value="<?php echo $instancia; ?>"/></div>
-							<div><span class="title">A situação foi equacionada?</span><span class="rolo_conflito resposta"> <input type="checkbox" class="input_conflito" <?php echo $fim; ?>/> Sim</span></div>
-							<div><span class="title">Outras observações relativas ao caso em questão</span><span class="rolo_conflito resposta <?php echo ($obs ? '' : 'vazio'); ?>"><?php echo $obs; ?></span><input type="text" class="input_conflito out" value="<?php echo $obs; ?>"/></div>
-							<div><input type="button" class="input_conflito <?php echo $out; ?> button" value="<?php echo $edit; ?>" /></div>
-						</div>
-						<div class="item-col-2">
+							<div class="cada-linha">
+                            	<span class="title title-bloco-8 grey">Qual projeto?</span>
+                                <span class="rolo_conflito resposta <?php echo ($projeto ? '' : 'vazio'); ?>"><?php echo $projeto; ?></span>
+                                <input type="text" class="input_conflito out" value="<?php echo $projeto; ?>"/>
+                            </div><!-- .cada-linha -->
+
+							<div class="cada-linha">
+								<span class="title title-bloco-8 grey">Desde quando isso ocorre?</span>
+                                <span class="rolo_conflito resposta <?php echo ($desde ? '' : 'vazio'); ?>"><?php echo $desde; ?></span>
+                                <input type="text" class="input_conflito out" value="<?php echo $desde; ?>"/>
+                            </div><!-- .cada-linha -->
+
+                            <div class="cada-linha">
+                                <span class="title title-bloco-8 grey">O caso foi levado a alguma instância?</span>
+                                <span class="rolo_conflito resposta <?php echo ($instancia ? '' : 'vazio'); ?>"><?php echo $instancia; ?></span>
+                                <input type="text" class="input_conflito out" value="<?php echo $instancia; ?>"/>
+                            </div><!-- .cada-linha -->
+                            
+                            <div class="cada-linha">
+	                            <span class="title title-bloco-8 grey">A situação foi equacionada?</span>
+                                <span class="rolo_conflito resposta"><input type="checkbox" class="input_conflito" <?php echo $fim; ?>/> Sim</span>
+                            </div><!-- .cada-linha -->
+                            
+                            <div class="cada-linha">
+								<span class="title title-bloco-8 grey">Outras observações relativas ao caso em questão</span>
+                                <span class="rolo_conflito resposta <?php echo ($obs ? '' : 'vazio'); ?>"><?php echo $obs; ?></span>
+                                <input type="text" class="input_conflito out" value="<?php echo $obs; ?>"/>
+                            </div><!-- .cada-linha -->
+
+								<input type="button" class="input_conflito botao-edit <?php echo $out; ?> button" value="<?php echo $edit; ?>" />
+                            
+						</div><!-- item-col-1 -->
+                        
+						<div class="item-col-2 width-45 item-form">
 							<h3>Relação com o projeto Litoral Sustentável</h3>
 							<?php 
 							$edit = 'OK';
@@ -556,13 +582,31 @@ function rolo_company_header($company_id) {
 							$apoio = ''; if($company['rolo_relacao_apoio'][0]) { $apoio = 'checked="checked"'; }
 							$conflito = ''; if($company['rolo_relacao_conflito'][0]) { $conflito = $company['rolo_relacao_conflito'][0]; }
 							?>
-							<div><span class="title">Participou de algum evento do projeto?</span><span class="rolo_relacao resposta"> <input type="checkbox" class="rolo_relacao check" <?php echo $checked; ?> /> Sim</span></div>
-							<div><span class="title">Local</span><span class="rolo_relacao resposta <?php echo ($local ? '' : 'vazio'); ?>"><?php echo $local; ?></span><input type="text" class="input_relacao out" value="<?php echo $local; ?>"/></div>
-							<div><span class="title">Tem apoiado/divulgado o projeto?</span><span class="rolo_relacao resposta"> <input type="checkbox" class="input_relacao" <?php echo $apoio; ?> /> Sim</span></div>
-							<div><span class="title">Tem algum histórico de conflito com o projeto? Qual motivo?</span><span class="rolo_relacao resposta <?php echo ($conflito ? '' : 'vazio'); ?>"><?php echo $conflito; ?></span><input type="text" class="input_relacao out" value="<?php echo $conflito; ?>" /></div>
-							<div><input type="button" class="input_relacao <?php echo $out; ?> button" value="<?php echo $edit; ?>" /></div>
-						</div>
-					</div>
+                            <div class="cada-linha">
+								<span class="title title-bloco-7 grey">Participou de algum evento do projeto?</span>
+                                <span class="rolo_relacao resposta"> <input type="checkbox" class="rolo_relacao check" <?php echo $checked; ?> /> Sim</span>
+							</div><!-- .cada-linha -->
+                            
+                            <div class="cada-linha">
+	                            <span class="title title-bloco-7 grey">Local</span>
+                                <span class="rolo_relacao resposta <?php echo ($local ? '' : 'vazio'); ?>"><?php echo $local; ?></span><input type="text" class="input_relacao out" value="<?php echo $local; ?>"/>
+							</div><!-- .cada-linha -->
+							
+							<div class="cada-linha">
+	                            <span class="title title-bloco-7 grey">Tem apoiado/divulgado o projeto?</span>
+                                <span class="rolo_relacao resposta"> <input type="checkbox" class="input_relacao" <?php echo $apoio; ?> /> Sim</span>
+                            </div><!-- .cada-linha -->
+                            
+							<div class="cada-linha">
+                                <span class="title title-bloco-7 grey">Tem algum histórico de conflito com o projeto?<br />Qual motivo?</span>
+                                <span class="rolo_relacao resposta <?php echo ($conflito ? '' : 'vazio'); ?>"><?php echo $conflito; ?></span><input type="text" class="input_relacao out" value="<?php echo $conflito; ?>" />
+                            </div><!-- .cada-linha -->
+
+                            <input type="button" class="input_relacao botao-edit <?php echo $out; ?> button" value="<?php echo $edit; ?>" />
+						
+                        </div><!-- .item-col-2 -->
+                        
+					</div><!-- .impactos -->				
 
 
 				<?php //* Fim do Bloco de Company */?>
@@ -637,7 +681,6 @@ function rolo_company_header_list($company_id) {
 		if(!$company_update) {
 			$company_update = get_the_time( 'd/m/Y', $company_id );		
 		}
-
 
 	$post_id = get_post($post->ID); // get current company id
     $slug = $post_id->post_name; // define slug as $slug
