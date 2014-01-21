@@ -210,16 +210,10 @@ function rolo_ajax_autocomplete() {
 	$term = $_POST['data'];
 
 	if($tipo == 'nomes') {
-		// $response = get_posts( array('type' => 'contact') );	
-		$term = '%' . $term . '%';
-		$sql = "SELECT ID,post_title FROM {$wpdb->prefix}posts WHERE post_title LIKE %s";
-		$response = $wpdb->get_results($wpdb->prepare($sql, $term));
+		$response = get_posts( array( 'type' => 'contact', 'numberposts' => -1 ) );
 	}
 	if($tipo == 'instituicoes') {
-		$term = '%' . $term . '%';
-		$sql = "SELECT ID,post_title FROM {$wpdb->prefix}posts WHERE post_title LIKE %s";
-		$response = $wpdb->get_results($wpdb->prepare($sql, $term));
-        // $response = $wpdb->query($sql);
+        $response = get_posts( array( 'type' => 'company', 'numberposts' => -1 ) );
 	}	
 
 	header( "Content-Type: application/json" );
