@@ -643,7 +643,7 @@ function rolo_company_header_list($company_id) {
 	$company_address = $company['rolo_company_address'][0];
 	$company_phone = $company['rolo_company_phone'][0];
 
-	$atuacao = get_the_terms( $company_id, 'caracterizacao' );
+	$atuacao = get_the_terms( $company_id, 'abrangencia' );
 
 	if($atuacao) {
 		foreach ($atuacao as $a) {
@@ -690,7 +690,7 @@ function rolo_company_header_list($company_id) {
 	$post_id = get_post($post->ID); // get current company id
     $slug = $post_id->post_name; // define slug as $slug
 
-    $atuacao = get_post_taxonomies( $post );
+    // $atuacao = get_post_taxonomies( $post );
 
     $company_contatos = unserialize($company['rolo_contatos'][0]);
 
@@ -754,8 +754,7 @@ function rolo_company_header_list($company_id) {
     		<div class="item-col-2 width-40 item-form">
     			<div class="cada-linha">
     				<div class="obs">
-    					<span class="title title-bloco-2 grey"><?php _e('Atuação ', 'rolopress'); ?></span>
-                        <span id="rolo_company_others" class="resposta <?php echo ($atuacao ? '' : 'vazio'); ?>"><?php echo $atuacao_terms; ?></span>
+    					<span class="title title-bloco-2 grey"><?php _e('Atuação ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta <?php echo ($atuacao ? '' : 'vazio'); ?>"><?php echo $atuacao_terms; ?></span>
     				</div>
     			</div><!-- .cada-linha -->    			
 				<div class="cada-linha">
