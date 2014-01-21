@@ -22,15 +22,17 @@
 				<a class="a-logo-header" href="<?php echo home_url(); ?>"></a>
 			</div><!-- .logo-header -->
 			<div class="busca-header">
-				<form id="searchform" method="get" action="<?php bloginfo('url') ?>">
+				<form id="searchform" method="post" action="<?php echo home_url('/'); ?>">
 					<?php
-						if (isset($_GET['s'])) {
-							$s = $_GET['s'];
+						if (isset($_POST['busca_nome'])) {
+							$s = $_POST['busca_nome'];
 						} else {
 							$s = '';
 						}
 					?>
-                    <input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($s), true) ?>" size="20" tabindex="1" placeholder="Buscar" />
+					<input type="hidden" value="geral" name="busca_publicos">
+					<input type="hidden" value="submit_busca add_contact" name="rp_submit_busca">
+                    <input id="s" name="busca_nome" type="text" value="<?php echo wp_specialchars(stripslashes($s), true) ?>" size="20" tabindex="1" placeholder="Buscar" />
                     <input id="searchsubmit" name="searchsubmit" type="submit" value="" tabindex="2" />
                 </form>
 			</div><!--  .busca-header -->

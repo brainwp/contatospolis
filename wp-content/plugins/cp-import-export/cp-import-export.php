@@ -14,6 +14,29 @@ Author URI: http://brasa.art.br/
 add_action( 'admin_menu', 'cp_create_plugin_page' );
 add_action( 'admin_enqueue_scripts', 'cp_enqueue_scripts' );
 add_action( 'admin_head', 'cp_check_post' );
+register_activation_hook( __FILE__, 'cp_activate_script' );
+// register_uninstall_hook( __FILE__, 'cp_uninstall_script' );
+
+function cp_activate_script() {
+
+	if(!is_dir(ABSPATH . 'wp-content/export')) {
+		mkdir(ABSPATH . 'wp-content/export', 755);
+	}
+
+}
+
+function cp_uninstall_script($dir = false) {
+
+   if($dir)
+   	$dir = ABSPATH . 'wp-content/export';
+
+   $files = array_diff(scandir($dir), array('.','..'));
+    foreach ($files as $file) {
+      (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
+    }
+
+	rmdir($dir);
+}
 
 function cp_enqueue_scripts() {
 	wp_register_script( 'extrajs', plugin_dir_url( __FILE__ ) . '/cp-import-export.js', array('jquery'), false, true );
