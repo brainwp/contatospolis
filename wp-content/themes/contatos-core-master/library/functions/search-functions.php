@@ -200,4 +200,3 @@ function rolo_search_filter_name( $where, &$wp_query )
 endif;
 
 ?>
-
