@@ -260,6 +260,10 @@ jQuery(document).ready(function() {
 
     jQuery('.selectit input').on('change', function() {
 
+        jQuery('body').append('<div id="salvando">Salvando</div>').delay(100);
+
+        jQuery('#salvando').animate({opacity: '0.5'});
+
         var area = jQuery(this).parents('div').attr('class');
         var val = jQuery(this).val();
 
@@ -275,6 +279,8 @@ jQuery(document).ready(function() {
                         var data = ajax_data;
                         if(resp.status == 'sucesso') {
                         }
+
+                        jQuery('#salvando').animate({opacity: '0'}, 'slow').detach();
 
                     });
     });
