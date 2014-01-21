@@ -20,7 +20,13 @@ function rolo_add_contact() {
         //TODO - Check user capabilites
         //TODO - Verify nounce here
 
-        if (isset($_POST['rp_add_contact']) && $_POST['rp_add_contact'] == 'add_contact') {
+        if (isset($_POST['rp_add_contact']) 
+            && $_POST['rp_add_contact'] == 'add_contact'
+            && isset($_POST['rolo_contact_name']) && $_POST['rolo_contact_name'] != ''
+            && isset($_POST['rolo_contact_email']) && $_POST['rolo_contact_email'] != ''
+            && isset($_POST['rolo_city']) && $_POST['rolo_city'] != ''
+            && isset($_POST['rolo_uf']) && $_POST['rolo_uf'] != '' ) {
+
             $contact_id = _rolo_save_contact_fields();
            /*
 		   
@@ -256,6 +262,8 @@ function _rolo_save_contact_fields() {
     // Store only first name and last name as seperate custom fields
     update_post_meta($post_id, 'rolo_contact_first_name', $_POST['rolo_contact_first_name']);
     update_post_meta($post_id, 'rolo_contact_email', $_POST['rolo_contact_email']);
+    update_post_meta($post_id, 'rolo_city', $_POST['rolo_city']);
+    update_post_meta($post_id, 'rolo_uf', $_POST['rolo_uf']);
     wp_set_post_terms($post_id, $_POST['rolo_contact_post_tag']);
 
     if ($post_id) {

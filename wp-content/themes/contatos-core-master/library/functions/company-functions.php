@@ -20,7 +20,13 @@ function rolo_add_company() {
         //TODO - Check user capabilites
         //TODO - Verify nounce here
 
-        if (isset($_POST['rp_add_company']) && $_POST['rp_add_company'] == 'add_company') {
+        if ( isset($_POST['rp_add_company']) 
+            && $_POST['rp_add_company'] == 'add_company' 
+            && isset($_POST['rolo_company_name']) && $_POST['rolo_company_name'] != ''
+            && isset($_POST['rolo_company_email'])  && $_POST['rolo_company_email'] != ''
+            && isset($_POST['rolo_city'])  && $_POST['rolo_city'] != ''
+            && isset($_POST['rolo_uf']) && $_POST['rolo_uf'] != '' ) {
+
             $company_id = _rolo_save_company_fields();
 			/*            
 			// Comentamos esse trecho pois estava imprimindo erro no header.
@@ -249,7 +255,11 @@ function _rolo_save_company_fields() {
 
     // Store only company name as seperate custom field
     update_post_meta($post_id, 'rolo_company_name', $_POST['rolo_company_name']);
+    update_post_meta($post_id, 'rolo_contact_email', $_POST['rolo_company_email']);
+    update_post_meta($post_id, 'rolo_city', $_POST['rolo_city']);
+    update_post_meta($post_id, 'rolo_uf', $_POST['rolo_uf']);    
     wp_set_post_terms($post_id, $_POST['rolo_company_post_tag']);
+
     if ($post_id) {
         $new_company = array();
 
