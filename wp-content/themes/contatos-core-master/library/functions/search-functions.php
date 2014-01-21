@@ -15,6 +15,17 @@ add_action( 'pre_get_posts', 'rolo_search_filter_contact' );
 add_action( 'pre_get_posts', 'rolo_search_filter_company' );
 add_filter( 'posts_where', 'rolo_search_filter_name', 10, 2 );
 
+// add_filter( 'posts_where', 'rolo_test_where', 10, 2 );
+// add_filter( 'posts_request', 'rolo_test_where', 10, 2 );
+
+// $wh = new WP_Query(array('post_title' => 'Ricardo', 'tax_query' => array(array( 'term' => 'contact', 'taxonomy' => 'type', 'field' => 'slug' ) ) ));
+
+function rolo_test_where($where) {
+
+	dump($where);
+
+}
+
 function rolo_search_query() {
 
 	$string .= 'Público: '.$_POST['busca_publicos'].' | ';

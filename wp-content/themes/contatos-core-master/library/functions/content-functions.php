@@ -178,6 +178,15 @@ function rolo_ajax_edit_contacts() {
 		$meta = update_post_meta( $postid, 'rolo_contatos', $contatos );
 		$status = 'ok';
 
+	} elseif($vars['id'] == 'rolo_contact_company') {
+		
+		$p = get_page_by_title( $vars['new_value'], false, 'post' );
+
+		$meta = update_post_meta( $vars['data'], 'rolo_contatos', $p->ID );
+		
+		$value = $vars['new_value'];
+		$status = 'ok';
+
 	} else {
 
 		$meta = update_post_meta( $vars['data'], $vars['id'], esc_attr($vars['new_value']) );
