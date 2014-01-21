@@ -803,14 +803,14 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
         if(is_search() && !$company_contatos)
                 return;
 ?>
-	<div class="contatos-btn item-form">
+	<div class="contatos-btn item-form contatos-in-company">
 	<table>
 		<tr>
 			<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<th></th>" : "" ?>
-			<th>Contatos</th>
-			<th>Cargo</th>
-			<th>Telefone</th>
-			<th>E-mail</th>
+			<th class="contatos-item-form"><h3>Contatos</h3></th>
+			<th class="contatos-item-form"><h3>Cargo</h3></th>
+			<th class="contatos-item-form"><h3>Telefone</h3></th>
+			<th class="contatos-item-form"><h3>E-mail</h3></th>
 		</tr>
 		<?php 
 			if(!$company_contatos) {
@@ -837,11 +837,11 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
 				?>
 
 				<tr>
-					<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<td><button name='".$user->ID."'>-</button></td>" : "" ?>
-					<td><a href="<?php echo get_permalink($user->ID); ?>"><?php echo $user->post_title; ?></a></td>
-					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_role', true ); ?></td>
-					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_telefone', true ); ?></td>
-					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_email', true ); ?></td>
+					<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<td><button class='remove-contact-in-company' name='".$user->ID."'>-</button></td>" : "" ?>
+					<td class="contatos-item-form-td"><a href="<?php echo get_permalink($user->ID); ?>"><?php echo $user->post_title; ?></a></td>
+					<td class="contatos-item-form-td"><?php echo get_post_meta( $user->ID, 'rolo_contact_role', true ); ?></td>
+					<td class="contatos-item-form-td"><?php echo get_post_meta( $user->ID, 'rolo_contact_telefone', true ); ?></td>
+					<td class="contatos-item-form-td"><?php echo get_post_meta( $user->ID, 'rolo_contact_email', true ); ?></td>
 				</tr>
 
 
@@ -852,7 +852,7 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
 			
 			
 			if(is_single() && current_user_can( 'publish_posts' ))
-				echo '<tr><td><button>+</button></td><td class="insertname" colspan="4"></td></tr>';
+				echo '<tr><td><button class="add-contact-in-company">+</button></td><td class="insertname" colspan="4"></td></tr>';
 			
 			?>
 			
