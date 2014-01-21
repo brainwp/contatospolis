@@ -258,7 +258,7 @@ jQuery(document).ready(function() {
     });
 */
 
-    jQuery('.selectit input').on('change', function() {
+    jQuery('.hentry .selectit input').on('change', function() {
 
         jQuery('body').append('<div id="salvando">Salvando</div>').delay(100);
 
