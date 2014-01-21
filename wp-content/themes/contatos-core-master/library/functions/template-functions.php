@@ -63,7 +63,13 @@ function rolo_contact_header($contact_id) {
 	$contact_local = $contact['rolo_contact_local'][0];
 	$contact_local_city = $contact['rolo_contact_local_city'][0];
 	$contact_role = $contact['rolo_contact_role'][0];
+	
 	$contact_company = $contact['rolo_contatos'][0];
+	if($contact_company) {
+		$p = get_post($contact_company);
+		$contact_company = $p->post_title;
+	}
+
 	$contact_party = $contact['rolo_contact_party'][0];
 
 	$contact_email = $contact['rolo_contact_email'][0];
