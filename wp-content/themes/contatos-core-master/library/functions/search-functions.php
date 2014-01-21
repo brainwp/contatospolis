@@ -10,9 +10,9 @@
 
 if($_POST['rp_submit_busca']) :
 
-add_action( 'pre_get_posts', 'rolo_search_filter_geral' );
-add_action( 'pre_get_posts', 'rolo_search_filter_contact' );
-add_action( 'pre_get_posts', 'rolo_search_filter_company' );
+add_action( 'pre_get_posts', 'rolo_search_filter_geral', 800 );
+add_action( 'pre_get_posts', 'rolo_search_filter_contact', 900 );
+add_action( 'pre_get_posts', 'rolo_search_filter_company', 900 );
 add_filter( 'posts_where', 'rolo_search_filter_name', 10, 2 );
 
 // add_filter( 'posts_where', 'rolo_test_where', 10, 2 );
@@ -120,6 +120,8 @@ function rolo_search_filter_contact($query) {
 
 		$meta = array('relation' => 'AND');
 
+		$tax[] = array( 'terms' => 'contact',  'taxonomy' => 'type', 'field' => 'slug' );
+
 		if( !empty( $_POST['busca_nome'] ) ) {
 			$query->query_vars['rolo_title'] = $_POST['busca_nome'];
 		}
@@ -141,6 +143,7 @@ function rolo_search_filter_contact($query) {
 		}
 
 		$query->query_vars['meta_query'] = $meta;
+		$query->query_vars['tax_query'] = $tax;
 
 	endif;
 
@@ -153,6 +156,8 @@ function rolo_search_filter_company($query) {
 
 		$meta = array('relation' => 'AND');
 		$tax = array('relation' => 'AND');
+
+		$tax[] = array( 'terms' => 'company',  'taxonomy' => 'type', 'field' => 'slug' );
 
 		if( !empty( $_POST['busca_nome'] ) ) {
 			$query->query_vars['rolo_title'] = $_POST['busca_nome'];
