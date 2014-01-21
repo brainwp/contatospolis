@@ -60,11 +60,11 @@ function rolo_contact_header($contact_id) {
         $contact_name = $contact['rolo_contact_first_name'][0].' '.$contact['rolo_contact_last_name'][0];
         $contact_city = $contact['rolo_city'][0];
 
-        $contact_local = $contact['rolo_contact_local'][0];
-        $contact_local_city = $contact['rolo_contact_local_city'][0];
-        $contact_role = $contact['rolo_contact_role'][0];
-        $contact_company = $contact['rolo_contact_company'][0];
-        $contact_party = $contact['rolo_contact_party'][0];
+	$contact_local = $contact['rolo_contact_local'][0];
+	$contact_local_city = $contact['rolo_contact_local_city'][0];
+	$contact_role = $contact['rolo_contact_role'][0];
+	$contact_company = $contact['rolo_contatos'][0];
+	$contact_party = $contact['rolo_contact_party'][0];
 
         $contact_email = $contact['rolo_contact_email'][0];
         $contact_website = $contact['rolo_contact_website'][0];
@@ -803,63 +803,63 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
         if(is_search() && !$company_contatos)
                 return;
 ?>
-        <div class="contatos item-form contatos-in-company">
-        <table>
-                <tr>
-                        <?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<th></th>" : "" ?>
-                        <th class="contatos-item-form"><h3>Contatos</h3></th>
-                        <th class="contatos-item-form"><h3>Cargo</h3></th>
-                        <th class="contatos-item-form"><h3>Telefone</h3></th>
-                        <th class="contatos-item-form"><h3>E-mail</h3></th>
-                </tr>
-                <?php 
-                        if(!$company_contatos) {
-                                $company_contatos = array();
-                        }
-                                
-                
-                        foreach($company_contatos as $contato) {
+	<div class="contatos-btn item-form">
+	<table>
+		<tr>
+			<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<th></th>" : "" ?>
+			<th>Contatos</th>
+			<th>Cargo</th>
+			<th>Telefone</th>
+			<th>E-mail</th>
+		</tr>
+		<?php 
+			if(!$company_contatos) {
+				$company_contatos = array();
+			}
+				
+		
+			foreach($company_contatos as $contato) {
 
-                                $user = get_post( $contato );
+				$user = get_post( $contato );
 
-                                if(has_term( 'contact', 'type', $user )) { 
-                                        
-                                        if(is_search()) :
-                                                if($city) {
-                                                        if ($city != get_post_meta( $user->ID, 'rolo_city', true ) )
-                                                                continue;
-                                                }
-                                                if($uf != 'todos') {
-                                                        if ($uf != get_post_meta( $user->ID, 'rolo_uf', true ) )
-                                                                continue;
-                                                }
-                                        endif;
-                                ?>
+				if(has_term( 'contact', 'type', $user )) { 
+					
+					if(is_search()) :
+						if($city) {
+							if ($city != get_post_meta( $user->ID, 'rolo_city', true ) )
+								continue;
+						}
+						if($uf != 'todos') {
+							if ($uf != get_post_meta( $user->ID, 'rolo_uf', true ) )
+								continue;
+						}
+					endif;
+				?>
 
-                                <tr>
-                                        <?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<td><button class='remove-contact-in-company' name='".$user->ID."'>-</button></td>" : "" ?>
-                                        <td class="contatos-item-form-td"><a href="<?php echo get_permalink($user->ID); ?>"><?php echo $user->post_title; ?></a></td>
-                                        <td class="contatos-item-form-td"><?php echo get_post_meta( $user->ID, 'rolo_contact_role', true ); ?></td>
-                                        <td class="contatos-item-form-td"><?php echo get_post_meta( $user->ID, 'rolo_contact_telefone', true ); ?></td>
-                                        <td class="contatos-item-form-td"><?php echo get_post_meta( $user->ID, 'rolo_contact_email', true ); ?></td>
-                                </tr>
+				<tr>
+					<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<td><button name='".$user->ID."'>-</button></td>" : "" ?>
+					<td><a href="<?php echo get_permalink($user->ID); ?>"><?php echo $user->post_title; ?></a></td>
+					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_role', true ); ?></td>
+					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_telefone', true ); ?></td>
+					<td><?php echo get_post_meta( $user->ID, 'rolo_contact_email', true ); ?></td>
+				</tr>
 
 
-                                <?php }
+				<?php }
 
-                        }
-                        
-                        
-                        
-                        if(is_single() && current_user_can( 'publish_posts' ))
-                                echo '<tr><td><button class="add-contact-in-company">+</button></td><td class="insertname" colspan="4"></td></tr>';
-                        
-                        ?>
-                        
-                        </table>
-                </div>
-        <?php
-        // endif;
+			}
+			
+			
+			
+			if(is_single() && current_user_can( 'publish_posts' ))
+				echo '<tr><td><button>+</button></td><td class="insertname" colspan="4"></td></tr>';
+			
+			?>
+			
+			</table>
+		</div>
+	<?php
+	// endif;
 }
 
 /**
