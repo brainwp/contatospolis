@@ -331,6 +331,72 @@ h2.page-title-light{
     font-size: 1.3em;
 }
 
+
+/* =Contatos in Company
+-------------------------------------------------------------- */
+th.contatos-item-form {
+	width: 25%;
+}
+
+td.contatos-item-form-td {
+	text-align: center;
+}
+
+.contatos-in-company {
+	margin: 0 0 35px 0;
+}
+
+.contatos-in-company h3 {
+	color: #023f7b;
+}
+
+.contatos-in-company td {
+	padding: 8px 0 10px 0;
+}
+.contatos-in-company tr {
+	border-bottom: 1px solid #ccc;
+}
+
+.contatos-in-company a {
+	color: #023f7b;
+}
+
+.contatos-in-company a:hover {
+	text-decoration: none;
+	color: #002a54;
+}
+
+.add-contact-in-company {
+	background: url("../../img/sprite.png") no-repeat scroll -49px -224px transparent;
+	padding: 12px;
+	color: #9ab2ca;
+	cursor: pointer;
+	border: 0;
+	text-indent: -999px;
+	width: 22px;
+	height: 20px;
+	
+}
+
+.add-contact-in-company:hover {
+	background-position: -49px -250px;
+}
+
+.remove-contact-in-company {
+	background: url("../../img/sprite.png") no-repeat scroll -14px -224px transparent;
+	padding: 12px;
+	color: #9ab2ca;
+	cursor: pointer;
+	border: 0;
+	text-indent: -999px;
+	width: 22px;
+	height: 20px;
+}
+
+.remove-contact-in-company:hover {
+	background-position: -14px -250px;
+}
+
 .cada-linha {
     width: 100%;
 	min-height: 30px;
