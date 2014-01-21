@@ -63,7 +63,7 @@ function rolo_contact_header($contact_id) {
 	$contact_local = $contact['rolo_contact_local'][0];
 	$contact_local_city = $contact['rolo_contact_local_city'][0];
 	$contact_role = $contact['rolo_contact_role'][0];
-	$contact_company = $contact['rolo_contact_company'][0];
+	$contact_company = $contact['rolo_contatos'][0];
 	$contact_party = $contact['rolo_contact_party'][0];
 
 	$contact_email = $contact['rolo_contact_email'][0];
@@ -803,7 +803,7 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
 	if(is_search() && !$company_contatos)
 		return;
 ?>
-	<div class="contatos item-form">
+	<div class="contatos-btn item-form">
 	<table>
 		<tr>
 			<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<th></th>" : "" ?>

@@ -365,7 +365,7 @@ jQuery(document).ready(function() {
 
     });
 
-    jQuery('.contatos').on('click', 'button', function() {
+    jQuery('.contatos-btn').on('click', 'button', function() {
 
         if(jQuery(this).html() == "+") {
 
