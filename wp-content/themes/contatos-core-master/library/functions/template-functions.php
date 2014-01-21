@@ -462,12 +462,9 @@ function rolo_company_header($company_id) {
     			<?php if(is_single()) : ?>
     			<div class="cada-linha">
     				<div class="redes">
-<<<<<<< HEAD
     					<span class="title title-bloco-2 grey">Redes Sociais: <?php echo $redes; ?></span>
-=======
     					<span class="title title-bloco-2 grey"><?php _e('Redes Sociais ', 'rolopress'); ?></span>
                         <span id="rolo_company_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
->>>>>>> eb40d266f2a7533219cc43843f3fb63a6200b164
     				</div>
     			</div><!-- .cada-linha -->
 				<?php endif; ?>
@@ -802,6 +799,8 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
 
 	$company_contatos = get_post_meta( $company_id, 'rolo_contatos', true );
 
+
+
 	if(is_search() && !$company_contatos)
 		return;
 ?>
@@ -824,16 +823,18 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
 
 				$user = get_post( $contato );
 
-				if(has_term( 'Contact', 'type', $user )) { 
-					if($city) {
-						if ($city != get_post_meta( $user->ID, 'rolo_city', true ) )
-							continue;
-					}
-					if($uf != 'todos') {
-						if ($uf != get_post_meta( $user->ID, 'rolo_uf', true ) )
-							continue;
-					}
-
+				if(has_term( 'contact', 'type', $user )) { 
+					
+					if(is_search()) :
+						if($city) {
+							if ($city != get_post_meta( $user->ID, 'rolo_city', true ) )
+								continue;
+						}
+						if($uf != 'todos') {
+							if ($uf != get_post_meta( $user->ID, 'rolo_uf', true ) )
+								continue;
+						}
+					endif;
 				?>
 
 				<tr>
