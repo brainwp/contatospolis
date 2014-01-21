@@ -20,9 +20,11 @@ function rolo_add_contact() {
         //TODO - Check user capabilites
         //TODO - Verify nounce here
 
+
+
         if (isset($_POST['rp_add_contact']) 
             && $_POST['rp_add_contact'] == 'add_contact'
-            && isset($_POST['rolo_contact_name']) && $_POST['rolo_contact_name'] != ''
+            && isset($_POST['rolo_contact_first_name']) && $_POST['rolo_contact_first_name'] != ''
             && isset($_POST['rolo_contact_email']) && $_POST['rolo_contact_email'] != ''
             && isset($_POST['rolo_city']) && $_POST['rolo_city'] != ''
             && isset($_POST['rolo_uf']) && $_POST['rolo_uf'] != '' ) {
