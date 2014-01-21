@@ -22,13 +22,15 @@ function rolo_add_company() {
 
         if (isset($_POST['rp_add_company']) && $_POST['rp_add_company'] == 'add_company') {
             $company_id = _rolo_save_company_fields();
-            if ($company_id) {
+			/*            
+			// Comentamos esse trecho pois estava imprimindo erro no header.
+			if ($company_id) {
                 echo __("Company information successfully added.", 'rolopress');
-//                _rolo_show_company_notes($company_id);
+			//_rolo_show_company_notes($company_id);
             } else {
                 echo __("There was some problem in inserting the company info", 'rolopress');
-    //            TODO - Handle Error properly
-            }
+			//TODO - Handle Error properly
+            }*/
 
             $permalink = get_permalink( $company_id );
 
