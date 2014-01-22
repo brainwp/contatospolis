@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Content Functions
  *
@@ -484,6 +484,7 @@ global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1
 
 				<div id="nav-above" class="navigation">
 					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
+						<div class="navegacao"><?php the_paginate_link(); ?></div><!-- .navegacao -->
 					<div class="nav-previous"><?php previous_posts_link(__( '<span class="meta-nav">&laquo;</span> Previous', 'rolopress' )) ?></div>
 				</div><!-- #nav-above -->
 <?php }
@@ -500,8 +501,9 @@ function rolo_navigation_below() {
 global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 
 				<div id="nav-below" class="navigation">
-					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 					<div class="nav-previous"><?php previous_posts_link(__( '<span class="meta-nav">&laquo;</span> Previous', 'rolopress' )) ?></div>
+						<div class="navegacao"><?php the_paginate_link(); ?></div><!-- .navegacao -->
+					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 				</div><!-- #nav-below -->
 <?php }
 }

@@ -57,7 +57,7 @@ get_header(); ?>
 
         <div class="cada-linha add">
 			<span class="title title-bloco-1 grey"><?php _e('* Estado', 'rolopress'); ?></span>
-            		<select name="rolo_uf">
+            		<select class="resposta-uf" name="rolo_uf">
 					    <option value="">Selecione</option>
 					    <option value="AC">AC</option>
 					    <option value="AL">AL</option>

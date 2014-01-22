@@ -180,15 +180,15 @@ function rolo_contact_header($contact_id) {
         
     <div class="item-col-2 width-40 item-form">
                 
-               <div class="cada-linha email">
-                <span class="title title-bloco-4"><?php _e('E-mail ', 'rolopress'); ?></span>
-            <span id="rolo_contact_email" class="resposta <?php echo ($contact_email ? '' : 'vazio'); ?>"><?php echo $contact_email;?></span>
-        </div><!-- .cada-linha -->
+		<div class="cada-linha email">
+			<span class="title title-bloco-4"><?php _e('E-mail ', 'rolopress'); ?></span>
+			<span id="rolo_contact_email" class="resposta <?php echo ($contact_email ? '' : 'vazio'); ?>"><?php echo $contact_email;?></span>
+		</div><!-- .cada-linha -->
 
-               <div class="cada-linha endereco">
-            <span class="title title-bloco-4"><?php _e('Endereço ', 'rolopress'); ?></span>
-            <span id="rolo_contact_endereco" class="resposta-endereco resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
-        </div><!-- .cada-linha -->
+		<div class="cada-linha endereco">
+			<span class="title title-bloco-4"><?php _e('Endereço ', 'rolopress'); ?></span>
+			<span id="rolo_contact_endereco" class="resposta-endereco resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
+		</div><!-- .cada-linha -->
                
         <div class="cada-linha telefone">
             <span class="title title-bloco-4"><?php _e('Telefone ', 'rolopress'); ?></span>
@@ -211,7 +211,7 @@ function rolo_contact_header($contact_id) {
         </div><!-- .cada-linha -->
         
                 <div class="cada-linha contato">
-                <span class="title title-bloco-4"><?php _e('Forma mais fácil <br /> de contactar ', 'rolopress'); ?></span>
+                <span class="title title-bloco-4"><?php _e('Forma mais fácil <br /> de contatar ', 'rolopress'); ?></span>
             <span id="rolo_contact_contato_facil" class="resposta <?php echo ($contact_contato ? '' : 'vazio'); ?>"><?php echo $contact_contato; ?></span>
         </div><!-- .cada-linha -->
         
@@ -477,7 +477,7 @@ function rolo_company_header($company_id) {
                 
                             <div class="cada-linha">
                                     <div class="contato">
-                                            <span class="title title-bloco-2 grey"><?php _e('Forma mais fácil <br /> de contactar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
+                                            <span class="title title-bloco-2 grey"><?php _e('Forma mais fácil <br /> de contatar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
                                     </div>
                             </div><!-- .cada-linha -->
 
@@ -745,7 +745,7 @@ function rolo_company_header_list($company_id) {
 
                             <div class="cada-linha">
                                     <div class="contato">
-                                            <span class="title title-bloco-1 grey"><?php _e('Forma mais fácil <br /> de contactar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
+                                            <span class="title title-bloco-1 grey"><?php _e('Forma mais fácil <br /> de contatar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
                                     </div>
                             </div><!-- .cada-linha -->
                             

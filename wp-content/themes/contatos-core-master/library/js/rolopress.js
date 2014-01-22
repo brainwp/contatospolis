@@ -467,4 +467,8 @@ jQuery(document).ready(function() {
             element.mask("(99) 9999-9999?9");
         }
     });*/
+	
+	jQuery(document).ready(function(){
+		jQuery('#rolo_company_website a').attr('target', '_blank');
+});
 });
