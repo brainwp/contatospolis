@@ -468,9 +468,8 @@ function rolo_company_header($company_id) {
                             <?php if(is_single()) : ?>
                             <div class="cada-linha">
                                     <div class="redes">
-                                            <span class="title title-bloco-2 grey">Redes Sociais: <?php echo $redes; ?></span>
                                             <span class="title title-bloco-2 grey"><?php _e('Redes Sociais ', 'rolopress'); ?></span>
-                        <span id="rolo_company_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
+                                            <span id="rolo_company_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
                                     </div>
                             </div><!-- .cada-linha -->
                                 <?php endif; ?>
