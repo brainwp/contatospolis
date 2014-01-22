@@ -592,6 +592,11 @@ select.resposta-uf {
 
 .busca-resposta {
     float: left;
+	margin-left: 15px;
+}
+
+.busca-resposta select {
+	padding: 5px;
 }
 
 .botao-submit-busca{
