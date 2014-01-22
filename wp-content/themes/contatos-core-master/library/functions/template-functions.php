@@ -86,7 +86,7 @@ function rolo_contact_header($contact_id) {
         if($contact_redes) {
                 foreach ($contact_redes as $key => $value) {
                         if($value) {
-                                $redes .= $key . '.com/' . $value . '<br>';
+                                $redes .= $key . '.com/' . $value;
                         }
                 }        
         }
@@ -367,13 +367,13 @@ function rolo_company_header($company_id) {
         if($company_redes) {
                 foreach ($company_redes as $key => $value) {
                         if($value) {
-                                $redes .= $key . '.com/' . $value . '<br>';
+                                $redes .= $key . '.com/' . $value;
                         }
                 }        
         } else {
                 // $redes = '<span id="fb">Facebook: </span><br><span id="tw">Twitter: </span>';
-                $redes = '<br><span id="rolo_company_redes_fb" class="resposta">Facebook: </span>';
-                $redes .= '<br><span id="rolo_company_redes_tw" class="resposta">Twitter: </span>';
+                $redes = '<span id="rolo_company_redes_fb" class="resposta resposta-redes">Link para Facebook</span>';
+                $redes .= '<span id="rolo_company_redes_tw" class="resposta resposta-redes">Link para Twitter</span>';
         }
 
         $company_tel = $company['rolo_company_telefone'][0];
@@ -468,9 +468,8 @@ function rolo_company_header($company_id) {
                             <?php if(is_single()) : ?>
                             <div class="cada-linha">
                                     <div class="redes">
-                                            <span class="title title-bloco-2 grey">Redes Sociais: <?php echo $redes; ?></span>
-                                            <span class="title title-bloco-2 grey"><?php _e('Redes Sociais ', 'rolopress'); ?></span>
-                        <span id="rolo_company_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
+                                            <span class="title title-bloco-2 grey"><?php _e('Redes Sociais: ', 'rolopress'); ?></span>
+											<div class="box-redes"><?php echo $redes; ?></div>
                                     </div>
                             </div><!-- .cada-linha -->
                                 <?php endif; ?>

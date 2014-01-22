@@ -470,7 +470,7 @@ td.contatos-item-form-td {
 
 .resposta {
     float: left;
-	max-width: 50%;
+	max-width: 65%;
 	margin-left: 15px;
 	font-family: Source Sans Pro;
 	margin-bottom: 2px;
@@ -487,6 +487,17 @@ td.contatos-item-form-td {
 	width: 80%;
 	float: left;
 	margin-left: 15px;
+}
+
+.resposta-redes {
+	float: left;
+	/*width: 250px;*/
+	clear: both;
+}
+
+.box-redes {
+	overflow: hidden;
+	width: 80%;
 }
 
 .resposta-uf {
