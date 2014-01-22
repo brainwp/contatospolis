@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Content Functions
  *
@@ -7,7 +7,6 @@
  * @package RoloPress
  * @subpackage Functions
  */
- 
 add_theme_support( 'post-thumbnails' ); 
 
 add_action( 'pre_get_posts', 'rolo_post_order' );
