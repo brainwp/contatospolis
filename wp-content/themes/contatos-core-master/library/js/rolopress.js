@@ -470,5 +470,13 @@ jQuery(document).ready(function() {
 	
 	jQuery(document).ready(function(){
 		jQuery('#rolo_company_website a').attr('target', '_blank');
-});
+	});
+	
+	jQuery(document).ready(function(){
+		jQuery('.ajuda-in').tooltipster( {
+			animation: 'fade',
+			position: 'top-right',
+		});
+	});
+	
 });

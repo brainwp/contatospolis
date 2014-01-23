@@ -86,7 +86,7 @@ function rolo_contact_header($contact_id) {
         if($contact_redes) {
                 foreach ($contact_redes as $key => $value) {
                         if($value) {
-                                $redes .= $key . '.com/' . $value . '<br>';
+                                $redes .= $key . '.com/' . $value;
                         }
                 }        
         }
@@ -110,40 +110,45 @@ function rolo_contact_header($contact_id) {
    }
 
     ?>
+	
+<!-- Bloco Contatos -->
 
     <div class="bloco card-<?php echo basename( get_permalink() );?>">
-
     <h2 class="title_single">
-            <span class="title_single_contact"></span>
+        <span class="title_single_contact"></span>
         <?php if ( is_single() ) : ?>
-                        <span class="blue"><?php echo $contact_name;?></span>
+			<span class="blue"><?php echo $contact_name;?></span>
         <?php else : ?>
-                    <a class="blue" href="<?php the_permalink(); ?>"><?php echo $contact_name;?></a>
-            <?php endif; ?>    
+			<a class="blue" href="<?php the_permalink(); ?>"><?php echo $contact_name;?></a>
+		<?php endif; ?>    
     </h2>
 
-        <?php if ( is_single() ) : ?>
-    <div id="item-avatar" class="item-image <?php echo $enable; ?>"  data-overlayid="alterar-avatar">
-                        <?php /* Contact */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
+    <?php if ( is_single() ) : ?>
+		
+		<div id="item-avatar" class="item-image <?php echo $enable; ?>"  data-overlayid="alterar-avatar">
+        <?php /* Contact */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
     
         <div class="contenthover alterar-avatar">
             <span>Alterar Imagem</span>
         </div><!-- #alterar-avatar -->
         </div><!-- .item-image -->
+
     <?php else : ?>
-    <div id="item-avatar" class="item-image <?php echo $enable; ?>">
-                <?php /* Contact */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
-    </div><!-- .item-image -->
-        <?php endif; ?> 
+
+		<div id="item-avatar" class="item-image <?php echo $enable; ?>">
+			<?php /* Contact */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
+		</div><!-- .item-image -->
+
+    <?php endif; ?>
     
     <div class="item-col-1 width-40 item-form">
         <div class="cada-linha ano">
-                        <span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span>
+			<span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span>
             <span id="rolo_city" class="resposta <?php echo ($contact_city ? '' : 'vazio'); ?>"><?php echo $contact_city; ?></span>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha uf">
-                        <span class="title title-bloco-1 grey"><?php _e('Estado', 'rolopress'); ?></span>
+			<span class="title title-bloco-1 grey"><?php _e('Estado', 'rolopress'); ?></span>
             <span id="rolo_uf" class="resposta <?php echo ($contact_uf ? '' : 'vazio'); ?>"><?php echo $contact_uf; ?></span>
         </div><!-- .cada-linha -->
         
@@ -153,7 +158,7 @@ function rolo_contact_header($contact_id) {
         </div><!-- .cada-linha -->
         
         <div class="cada-linha cargo">
-                        <span class="title title-bloco-1 grey"><?php _e('Cargo ', 'rolopress'); ?></span>
+			<span class="title title-bloco-1 grey"><?php _e('Cargo ', 'rolopress'); ?></span>
             <span id="rolo_contact_role" class="resposta <?php echo ($contact_role ? '' : 'vazio'); ?>"><?php echo $contact_role; ?></span>
         </div><!-- .cada-linha -->
 
@@ -162,62 +167,62 @@ function rolo_contact_header($contact_id) {
             <span id="rolo_contact_others" class="resposta <?php echo ($contact_others ? '' : 'vazio'); ?>"><?php echo wpautop( $contact_others ); ?></span>
         </div><!-- .cada-linha -->
         
-    <?php if(is_single()) : ?>
-        
-        <div class="cada-linha data">
-            <span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
-            <span id="rolo_contact_update" class="resposta <?php echo ($contact_update ? '' : 'vazio'); ?>"><?php echo $contact_update; ?></span>
-        </div><!-- .cada-linha -->
+		<?php if(is_single()) : ?>
+			
+			<div class="cada-linha data">
+				<span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
+				<span id="rolo_contact_update" class="resposta <?php echo ($contact_update ? '' : 'vazio'); ?>"><?php echo $contact_update; ?></span>
+				<div class="ajuda-in" title="Essa data é gerada automaticamente ao criar o contato, mas caso seja necessário poderá alterá-la posteriormente."></div>
+			</div><!-- .cada-linha -->
 
-        <div class="cada-linha data">
-            <span class="title title-bloco-1 grey"><?php _e('Posicionamento político ', 'rolopress'); ?></span>
-            <span id="rolo_contact_party" class="resposta <?php echo ($contact_party ? '' : 'vazio'); ?>"><?php echo $contact_party; ?></span>
-        </div><!-- .cada-linha -->
-        
-    <?php endif; ?>        
+			<div class="cada-linha data">
+				<span class="title title-bloco-1 grey"><?php _e('Posicionamento político ', 'rolopress'); ?></span>
+				<span id="rolo_contact_party" class="resposta <?php echo ($contact_party ? '' : 'vazio'); ?>"><?php echo $contact_party; ?></span>
+			</div><!-- .cada-linha -->
+			
+		<?php endif; ?>        
     
     </div><!-- .item-col-1 -->
         
     <div class="item-col-2 width-40 item-form">
                 
-               <div class="cada-linha email">
-                <span class="title title-bloco-4"><?php _e('E-mail ', 'rolopress'); ?></span>
-            <span id="rolo_contact_email" class="resposta <?php echo ($contact_email ? '' : 'vazio'); ?>"><?php echo $contact_email;?></span>
-        </div><!-- .cada-linha -->
+		<div class="cada-linha email">
+			<span class="title title-bloco-4"><?php _e('E-mail ', 'rolopress'); ?></span>
+			<span id="rolo_contact_email" class="resposta <?php echo ($contact_email ? '' : 'vazio'); ?>"><?php echo $contact_email;?></span>
+		</div><!-- .cada-linha -->
 
-               <div class="cada-linha endereco">
-            <span class="title title-bloco-4"><?php _e('Endereço ', 'rolopress'); ?></span>
-            <span id="rolo_contact_endereco" class="resposta-endereco resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
-        </div><!-- .cada-linha -->
+		<div class="cada-linha endereco">
+			<span class="title title-bloco-4"><?php _e('Endereço ', 'rolopress'); ?></span>
+			<span id="rolo_contact_endereco" class="resposta-endereco resposta <?php echo ($contact_end ? '' : 'vazio'); ?>"><?php echo $contact_end; ?></span>
+		</div><!-- .cada-linha -->
                
         <div class="cada-linha telefone">
             <span class="title title-bloco-4"><?php _e('Telefone ', 'rolopress'); ?></span>
             <span id="rolo_contact_telefone" class="resposta <?php echo ($contact_tel ? '' : 'vazio'); ?>"><?php echo $contact_tel;?></span>      
         </div><!-- .cada-linha -->
-               
 
-        <?php if(is_single()) : ?>
-    
-        <div class="cada-linha website url-field group">
-           <span class="title title-bloco-4"><?php _e('Website ', 'rolopress'); ?></span>
-           <span id="rolo_contact_website" class="resposta <?php echo ($contact_website ? '' : 'vazio'); ?>"><?php echo $contact_website; ?></span>
-        </div><!-- .cada-linha -->
-               
-        <?php endif; ?>
+			<?php if(is_single()) : ?>
+		
+			<div class="cada-linha website url-field group">
+			   <span class="title title-bloco-4"><?php _e('Website ', 'rolopress'); ?></span>
+			   <span id="rolo_contact_website" class="resposta <?php echo ($contact_website ? '' : 'vazio'); ?>"><?php echo $contact_website; ?></span>
+			</div><!-- .cada-linha -->
+				   
+			<?php endif; ?>
                 
         <div class="cada-linha redes">
             <span class="title title-bloco-4"><?php _e('Redes Sociais ', 'rolopress'); ?></span>
             <span id="rolo_contact_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
         </div><!-- .cada-linha -->
         
-                <div class="cada-linha contato">
-                <span class="title title-bloco-4"><?php _e('Forma mais fácil <br /> de contactar ', 'rolopress'); ?></span>
+        <div class="cada-linha contato">
+            <span class="title title-bloco-4"><?php _e('Forma mais fácil <br /> de contatar ', 'rolopress'); ?></span>
             <span id="rolo_contact_contato_facil" class="resposta <?php echo ($contact_contato ? '' : 'vazio'); ?>"><?php echo $contact_contato; ?></span>
         </div><!-- .cada-linha -->
         
-    </div><!-- .item-col-2 -->
+    </div><!-- .item-col-2 width-40 item-form -->
 </div><!-- .bloco -->
-</a>
+
 
 <?php
 }
@@ -367,13 +372,13 @@ function rolo_company_header($company_id) {
         if($company_redes) {
                 foreach ($company_redes as $key => $value) {
                         if($value) {
-                                $redes .= $key . '.com/' . $value . '<br>';
+                                $redes .= $key . '.com/' . $value;
                         }
                 }        
         } else {
                 // $redes = '<span id="fb">Facebook: </span><br><span id="tw">Twitter: </span>';
-                $redes = '<br><span id="rolo_company_redes_fb" class="resposta">Facebook: </span>';
-                $redes .= '<br><span id="rolo_company_redes_tw" class="resposta">Twitter: </span>';
+                $redes = '<span id="rolo_company_redes_fb" class="resposta resposta-redes">Link para Facebook</span>';
+                $redes .= '<span id="rolo_company_redes_tw" class="resposta resposta-redes">Link para Twitter</span>';
         }
 
         $company_tel = $company['rolo_company_telefone'][0];
@@ -412,26 +417,28 @@ function rolo_company_header($company_id) {
                         </div><!-- #alterar-avatar -->
             </div><!-- .item-image -->
     
-                    <div class="item-col-1 width-45 item-form">
-                            <div class="cada-linha">
-                    <span class="title title-bloco-1 grey"><?php _e('Ano de Criação ', 'rolopress'); ?></span>
-                    <span id="rolo_company_year" class="resposta <?php echo ($company_year ? '' : 'vazio'); ?>"><?php echo $company_year; ?></span>
-                            </div><!-- .cada-linha -->
-                <div class="cada-linha">
-                    <span class="title title-bloco-1 grey"><?php _e('Constituída Legalmente? ', 'rolopress'); ?></span>
-                    <span id="rolo_company_legal" class="resposta <?php echo ($company_legal ? '' : 'vazio'); ?>"><?php echo $company_legal; ?></span>
-                            </div><!-- .cada-linha -->
-                              <div class="cada-linha">
-                    <span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
-                    <span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo wpautop( $company_others ); ?></span>
-                            </div><!-- .cada-linha -->
-                            <div class="cada-linha">
-                    <span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
-                    <span id="rolo_company_update" class="resposta <?php echo ($company_update ? '' : 'vazio'); ?>"><?php echo $company_update; ?></span>
-                            </div><!-- .cada-linha -->
+                    <div class="item-col-1 width-40 item-form">
+						<div class="cada-linha">
+							<span class="title title-bloco-1 grey"><?php _e('Ano de Criação ', 'rolopress'); ?></span>
+							<span id="rolo_company_year" class="resposta <?php echo ($company_year ? '' : 'vazio'); ?>"><?php echo $company_year; ?></span>
+							<div class="ajuda-in" title="Ano em que a Instituição foi criada."></div>
+						</div><!-- .cada-linha -->
+						<div class="cada-linha">
+							<span class="title title-bloco-1 grey"><?php _e('Constituída Legalmente? ', 'rolopress'); ?></span>
+							<span id="rolo_company_legal" class="resposta <?php echo ($company_legal ? '' : 'vazio'); ?>"><?php echo $company_legal; ?></span>
+                        </div><!-- .cada-linha -->
+						<div class="cada-linha">
+							<span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
+							<span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo wpautop( $company_others ); ?></span>
+						</div><!-- .cada-linha -->
+                        <div class="cada-linha">
+							<span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
+							<span id="rolo_company_update" class="resposta <?php echo ($company_update ? '' : 'vazio'); ?>"><?php echo $company_update; ?></span>
+							<div class="ajuda-in" title="Data gerada automaticamente ao adicionar o contato. Poderá alterar a mesma posteriormente."></div>
+						</div><!-- .cada-linha -->
 
-            </div><!-- .item-col-1 width-45 item-form -->
-            <div class="item-col-2 item-form">
+            </div><!-- .item-col-1 width-40 item-form -->
+            <div class="item-col-2 width-40 item-form">
                 
                             <div class="cada-linha">
                     <span class="title title-bloco-2 grey"><?php _e( 'E-mail ', 'rolopress' ); ?></span>
@@ -468,15 +475,15 @@ function rolo_company_header($company_id) {
                             <?php if(is_single()) : ?>
                             <div class="cada-linha">
                                     <div class="redes">
-                                            <span class="title title-bloco-2 grey"><?php _e('Redes Sociais ', 'rolopress'); ?></span>
-                                            <span id="rolo_company_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
+                                            <span class="title title-bloco-2 grey"><?php _e('Redes Sociais: ', 'rolopress'); ?></span>
+											<div class="box-redes"><?php echo $redes; ?></div>
                                     </div>
                             </div><!-- .cada-linha -->
                                 <?php endif; ?>
                 
                             <div class="cada-linha">
                                     <div class="contato">
-                                            <span class="title title-bloco-2 grey"><?php _e('Forma mais fácil <br /> de contactar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
+                                            <span class="title title-bloco-2 grey"><?php _e('Forma mais fácil <br /> de contatar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
                                     </div>
                             </div><!-- .cada-linha -->
 
@@ -614,7 +621,7 @@ function rolo_company_header($company_id) {
 
                             <input type="button" class="input_relacao botao-edit <?php echo $out; ?> button" value="<?php echo $edit; ?>" />
                                                 
-                        </div><!-- .item-col-2 -->
+                        </div><!-- .item-col-2 width-40 -->
                         
                                         </div><!-- .impactos -->                                
 
@@ -693,7 +700,7 @@ function rolo_company_header_list($company_id) {
                 }
 
         $post_id = get_post($post->ID); // get current company id
-    $slug = $post_id->post_name; // define slug as $slug
+		$slug = $post_id->post_name; // define slug as $slug
 
     // $atuacao = get_post_taxonomies( $post );
 
@@ -705,94 +712,86 @@ function rolo_company_header_list($company_id) {
 
     ?>
     <?php //* Inicio do Bloco de Company */?>
-    <div class="bloco">
+            <div id="hcard-<?php echo basename(get_permalink());?>" class="bloco item-header">
 
-            <div id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
+				<h2 class="title_single">
+					<span class="title_single_company"></span><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
+				</h2>
 
-                    <h2 class="title_single">
-                            <span class="title_single_company"></span><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
-                    </h2>
-
-    <div id="item-avatar" class="item-image <?php echo $enable; ?>">
-                <?php /* Company */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
-    </div><!-- .item-image -->
+				<div id="item-avatar" class="item-image <?php echo $enable; ?>">
+					<?php /* Company */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
+				</div><!-- .item-image -->
     
-                    <div class="item-col-1 width-40 item-form">
-                            <div class="cada-linha">
-                                    <div class="email url-field">
-                                            <span class="title title-bloco-1 grey"><?php _e('E-mail ', 'rolopress'); ?></span><span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><a class="email" href="mailto:<?php echo $company_email;?>"><?php echo $company_email;?> </a></span>
-                                    </div>
-                            </div><!-- .cada-linha -->
+				<div class="item-col-1 width-40 item-form">
+					<div class="cada-linha">
+						<div class="email url-field">
+							<span class="title title-bloco-1 grey"><?php _e('E-mail ', 'rolopress'); ?></span><span id="rolo_company_email" class="resposta <?php echo ($company_email ? '' : 'vazio'); ?>"><a class="email" href="mailto:<?php echo $company_email;?>"><?php echo $company_email;?> </a></span>
+						</div>
+					</div><!-- .cada-linha -->
 
-                            <div class="cada-linha">
-                                    <div class="endereco">
-                                            <span class="title title-bloco-1 grey"><?php _e('Endereço ', 'rolopress'); ?></span><span id="rolo_company_endereco" class="resposta <?php echo ($company_end ? '' : 'vazio'); ?>"><?php echo $company_end; ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->
+					<div class="cada-linha">
+						<div class="endereco">
+							<span class="title title-bloco-1 grey"><?php _e('Endereço ', 'rolopress'); ?></span><span id="rolo_company_endereco" class="resposta <?php echo ($company_end ? '' : 'vazio'); ?>"><?php echo $company_end; ?></span>
+						</div>
+					</div><!-- .cada-linha -->
 
-                            <div class="cada-linha">
-                                    <div class="telefone">
-                                            <span class="title title-bloco-1 grey"><?php _e('Telefone ', 'rolopress'); ?></span><span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->
+					<div class="cada-linha">
+						<div class="telefone">
+							<span class="title title-bloco-1 grey"><?php _e('Telefone ', 'rolopress'); ?></span><span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?></span>
+						</div>
+					</div><!-- .cada-linha -->
 
-                            <div class="cada-linha">
-                                    <div class="website url-field group">
-                                            <span class="title title-bloco-1 grey"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><a class="url" href="http://<?php echo $company_website; ?>"><?php echo $company_website; ?></a></span>
-                                    </div>
-                            </div><!-- .cada-linha -->
+					<div class="cada-linha">
+						<div class="website url-field group">
+							<span class="title title-bloco-1 grey"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><a class="url" href="http://<?php echo $company_website; ?>"><?php echo $company_website; ?></a></span>
+						</div>
+					</div><!-- .cada-linha -->
 
-                            <div class="cada-linha">
-                                    <div class="contato">
-                                            <span class="title title-bloco-1 grey"><?php _e('Forma mais fácil <br /> de contactar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->
-                            
-                            <div class="cada-linha">
-                                    <div class="obs">
-                                            <span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
-                        <span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo $company_others; ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->
+					<div class="cada-linha">
+						<div class="contato">
+							<span class="title title-bloco-1 grey"><?php _e('Forma mais fácil <br /> de contatar ', 'rolopress'); ?></span><span id="rolo_company_contato_facil" class="resposta <?php echo ($company_contato ? '' : 'vazio'); ?>"><?php echo $company_contato; ?></span>
+						</div>
+					</div><!-- .cada-linha -->
+						
+					<div class="cada-linha obs">
+						<span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
+						<span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo $company_others; ?></span>
+					</div><!-- .cada-linha -->
 
-                    </div>
-                    <div class="item-col-2 width-40 item-form">
-                            <div class="cada-linha">
-                                    <div class="obs">
-                                            <span class="title title-bloco-2 grey"><?php _e('Atuação ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta <?php echo ($atuacao ? '' : 'vazio'); ?>"><?php echo $atuacao_terms; ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->                            
-                                <div class="cada-linha">
-                                    <div class="obs">
-                                            <span class="title title-bloco-2 grey"><?php _e('Interesses ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta <?php echo ($interesses ? '' : 'vazio'); ?>"><?php echo $interesse_terms; ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->                                                        
-                            <div class="cada-linha">
-                                    <div class="obs">
-                                            <span class="title title-bloco-2 grey"><?php _e('Participação ', 'rolopress'); ?></span>
-                        <span id="rolo_company_others" class="resposta <?php echo ($participacao ? '' : 'vazio'); ?>"><?php echo $participacao_terms; ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->                            
-                            <div class="cada-linha">
-                                    <div class="obs">
-                                            <span class="title sub-titulo-form grey"><?php _e('Relação com o projeto Litoral Sustentável ', 'rolopress'); ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->                            
-                            <div class="cada-linha">
-                                    <div class="obs">
-                                            <span class="title title-bloco-3 grey"><?php _e('Participou do projeto? ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta"><?php echo $participou; ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->                            
-                            <div class="cada-linha">
-                                    <div class="obs">
-                                            <span class="title title-bloco-3 grey"><?php _e('Apoia/Divulga o projeto? ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta"><?php echo $apoio; ?></span>
-                                    </div>
-                            </div><!-- .cada-linha -->                            
-                    </div>
-                    
-                        </div><!-- .bloco -->
-                </div><!-- hcard -->
-                <?php
+				</div><!-- .item-col-1 width-40 item-form -->
+				<div class="item-col-2 width-40 item-form">
+					<div class="cada-linha obs">
+						<span class="title title-bloco-2 grey"><?php _e('Atuação ', 'rolopress'); ?></span>
+						<span id="rolo_company_others" class="resposta <?php echo ($atuacao ? '' : 'vazio'); ?>"><?php echo $atuacao_terms; ?></span>
+					</div><!-- .cada-linha -->   
+                         
+					<div class="cada-linha obs">
+						<span class="title title-bloco-2 grey"><?php _e('Interesses ', 'rolopress'); ?></span>
+						<span id="rolo_company_others" class="resposta <?php echo ($interesses ? '' : 'vazio'); ?>"><?php echo $interesse_terms; ?></span>
+					</div><!-- .cada-linha --> 
+                                                       
+					<div class="cada-linha obs">
+						<span class="title title-bloco-2 grey"><?php _e('Participação ', 'rolopress'); ?></span>
+						<span id="rolo_company_others" class="resposta <?php echo ($participacao ? '' : 'vazio'); ?>"><?php echo $participacao_terms; ?></span>
+					</div><!-- .cada-linha --> 
+                           
+					<div class="cada-linha obs">
+						<span class="title sub-titulo-form grey"><?php _e('Relação com o projeto Litoral Sustentável ', 'rolopress'); ?></span>
+					</div><!-- .cada-linha -->                            
+
+					<div class="cada-linha obs">
+						<span class="title title-bloco-3 grey"><?php _e('Participou do projeto? ', 'rolopress'); ?></span>
+						<span id="rolo_company_others" class="resposta"><?php echo $participou; ?></span>
+					</div><!-- .cada-linha -->                            
+
+					<div class="cada-linha">
+						<span class="title title-bloco-3 grey"><?php _e('Apoia/Divulga o projeto? ', 'rolopress'); ?></span><span id="rolo_company_others" class="resposta"><?php echo $apoio; ?></span>
+					</div><!-- .cada-linha -->                            
+				</div><!-- .item-col-2 width-40 item-form -->
+
+			</div><!-- hcard .bloco -->
+	</a>                
+<?php
                 if(is_search()) {
                         rolo_company_members_list($company_id, $_POST['busca_municipio'], $_POST['busca_uf']);
                  } 
