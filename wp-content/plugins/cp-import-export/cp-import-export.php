@@ -19,8 +19,11 @@ register_activation_hook( __FILE__, 'cp_activate_script' );
 
 function cp_activate_script() {
 
-	if(!is_dir(ABSPATH . 'wp-content/export')) {
-		mkdir(ABSPATH . 'wp-content/export', 755);
+	if(!is_dir(WP_CONTENT_DIR . '/export/')) {
+		mkdir(WP_CONTENT_DIR . '/export/', 755);
+	}
+	if(!is_dir(WP_CONTENT_DIR . '/import/')) {
+		mkdir(WP_CONTENT_DIR . '/import/', 755);
 	}
 
 }
@@ -75,9 +78,9 @@ function cp_ferramentas_page() {
 
 	<h3>Importar</h3>
 
-	<form id="import-filters" method="post" action="">
+	<form  enctype="multipart/form-data" id="import-filters" method="post" action="">
 		<input type="hidden" value="true" name="upload">
-		<p><label><input type="file" name="import_file" disabled="disabled" /></label></p>
+		<p><label><input type="file" name="import_file" /></label></p>
 		<p class="description">Apenas arquivos em formato .csv. <a href="<?php echo home_url('export/exemplo.csv'); ?>">Clique aqui para fazer download de um exemplo.</a></p>
 
 		<p class="submit">
@@ -93,7 +96,7 @@ function cp_check_post() {
 	if($_POST['download']) {
 		cp_download_data($_POST);
 	} elseif($_POST['upload']) {
-		// cp_upload_data($_POST);
+		cp_upload_data($_POST, $_FILES);
 	} else {
 		return;
 	}
@@ -346,12 +349,21 @@ function cp_download_data($tipo) {
    		$i++;
 	}
 	
-	file_put_contents(ABSPATH . 'export/last_export.csv', $csv);
+	file_put_contents(WP_CONTENT_DIR . '/export/last_export.csv', $csv);
+    header('Location: '. WP_CONTENT_URL . '/export/last_export.csv');
+
+}
+
+function cp_upload_data($data, $files) {
+
+	$newfile = WP_CONTENT_DIR . '/import/import-'.date('d-m-Y-G-i', time()).'.txt';
+	$up = move_uploaded_file($files['import_file']['tmp_name'], $newfile);
+
+	$cont = file_get_contents($newfile);
+
+	// dump(explode("\n", $cont));
 
 	
-    header('Location: '.home_url('export/last_export.csv'));
-	// dump($export_data);
-
 
 }
 

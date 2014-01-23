@@ -313,7 +313,7 @@ function rolo_ajax_edit_taxonomy() {
 function rolo_pageheader() {
     
     if (is_single() && rolo_type_is( 'company' )){
-        $pagetitle = '<h2 class="page-title"><span class="grey">' . __('Company ','rolopress') . '</span><span class="blue">' .  __(get_the_title(),'rolopress') . "</span></h2>\n";
+        $pagetitle = '<h2 class="page-title-light"><span class="grey">' . __('Company ','rolopress') . '</span><span class="blue">' .  __(get_the_title(),'rolopress') . "</span></h2>\n";
 	} elseif (is_page()) {    
         $pagetitle = '<h2 class="page-title-light">' . __(get_the_title(),'rolopress') . "</h2>\n";
     } elseif (is_404()) {    
@@ -325,32 +325,31 @@ function rolo_pageheader() {
 	} elseif (is_category()) {
 			$current_category = single_cat_title("", false);
 			$pagedesc = category_description();
-        $pagetitle = '<h2 class="page-title category">' . __('Items Categorized As: ', 'rolopress') . '"' . $current_category . '"' . "</h2>\n";
+        $pagetitle = '<h2 class="page-title-light category">' . __('Items Categorized As: ', 'rolopress') . '"' . $current_category . '"' . "</h2>\n";
 	} elseif (is_tag()) {
 			$current_tag = single_tag_title("", false);
 			$pagedesc = tag_description();
-        $pagetitle = '<h2 class="page-title tag">' . __('Items Tagged As: ', 'rolopress') . '"' . $current_tag . '"' . "</h2>\n";
+        $pagetitle = '<h2 class="page-title-light tag">' . __('Items Tagged As: ', 'rolopress') . '"' . $current_tag . '"' . "</h2>\n";
 	} elseif (is_tax()) {
 			global $term; 
 			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 			$pagedesc = $term->description;
-        $pagetitle = '<h2 class="page-title taxonomy">' . __($term->name,'rolopress') . __(' List', 'rolopress') . "</h2>\n";
+        $pagetitle = '<h2 class="page-title-light taxonomy">' . __($term->name,'rolopress') . __(' List', 'rolopress') . "</h2>\n";
     } elseif (is_author()) {
 			global $wp_query;
 			$curauth = $wp_query->get_queried_object(); // get the authors name
-		$pagetitle = '<h2 class="page-title author">' . __('Owned by: ', 'rolopress') . $curauth->display_name . "</h2>\n";
+		$pagetitle = '<h2 class="page-title-light author">' . __('Owned by: ', 'rolopress') . $curauth->display_name . "</h2>\n";
 	} elseif (is_archive()) {
 				if ( is_day() ) :
-					$pagetitle = '<h2 class="page-title day">' . __( 'Items Created On: ', 'rolopress' ) . get_the_time(get_option('date_format')) . "</h2>\n";
+					$pagetitle = '<h2 class="page-title-light day">' . __( 'Items Created On: ', 'rolopress' ) . get_the_time(get_option('date_format')) . "</h2>\n";
 				elseif ( is_month() ) :
-					$pagetitle = '<h2 class="page-title month">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('F Y') . "</h2>\n";
+					$pagetitle = '<h2 class="page-title-light month">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('F Y') . "</h2>\n";
 				elseif ( is_year() ) :
-					$pagetitle = '<h2 class="page-title year">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('Y') . "</h2>\n";
+					$pagetitle = '<h2 class="page-title-light year">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('Y') . "</h2>\n";
 				endif;
     } else 
-				$pagetitle = '<h2 class="page-title page">' . __(get_the_title(),'rolopress') . "</h2>\n";
+				$pagetitle = '<h2 class="page-title-light page">' . __(get_the_title(),'rolopress') . "</h2>\n";
 
-	
 	
 // show the page title
 echo $pagetitle; 
@@ -484,6 +483,7 @@ global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1
 
 				<div id="nav-above" class="navigation">
 					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
+						<div class="navegacao"><?php the_paginate_link(); ?></div><!-- .navegacao -->
 					<div class="nav-previous"><?php previous_posts_link(__( '<span class="meta-nav">&laquo;</span> Previous', 'rolopress' )) ?></div>
 				</div><!-- #nav-above -->
 <?php }
@@ -500,8 +500,9 @@ function rolo_navigation_below() {
 global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 
 				<div id="nav-below" class="navigation">
-					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 					<div class="nav-previous"><?php previous_posts_link(__( '<span class="meta-nav">&laquo;</span> Previous', 'rolopress' )) ?></div>
+						<div class="navegacao"><?php the_paginate_link(); ?></div><!-- .navegacao -->
+					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 				</div><!-- #nav-below -->
 <?php }
 }

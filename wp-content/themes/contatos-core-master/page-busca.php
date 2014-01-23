@@ -37,7 +37,7 @@ get_header(); ?>
 
         <div class="cada-linha add">
                 <span class="title title-bloco-1 grey"><?php _e('Buscar por', 'rolopress'); ?></span>
-				<span class="busca inicial">
+				<span class="busca busca-resposta inicial">
 					<select name="busca_publicos" class="publicos">
 					    <option value="geral">Todos</option>
 					    <option value="contact">Contatos</option>
@@ -58,7 +58,7 @@ get_header(); ?>
 
         <div class="cada-linha add">
                 <span class="title title-bloco-1 grey"><?php _e('UF', 'rolopress'); ?></span>
-				<span class="busca">
+				<span class="busca busca-resposta">
 					<select name="busca_uf">
 					    <option value="todos">Todas</option>
 					    <option value="AC">AC</option>

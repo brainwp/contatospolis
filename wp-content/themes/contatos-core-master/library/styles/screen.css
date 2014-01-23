@@ -71,8 +71,8 @@ li {
 -------------------------------------------------------------- */
 .wrapper-header {
     background: url('../../img/bg-header.jpg') repeat scroll center center rgba(0, 0, 0, 0);
-    height: 230px;
-    overflow: hidden;
+    height: 175px;
+	width: 100%;
 }
 .wrapper-header-content {
     margin: 0 auto;
@@ -82,7 +82,7 @@ li {
     width: 806px;
     height: 46px;
     background: url('../../img/logo-contatos.png') no-repeat;
-    margin: 85px 0 0;
+    margin: 60px 0 0;
     float: left;
 }
 .a-logo-header {
@@ -92,7 +92,7 @@ li {
 }
 .busca-header {
     float: right;
-    margin: 91px 0 0;
+    margin: 61px 0 0;
     max-width: 300px;
 }
 .busca-header input {
@@ -121,9 +121,9 @@ li {
     display: none;
 }
 #menu {
-    height: 60px;
+    height: 50px;
     background: #023f7b;
-    padding:5px 15px;
+    padding: 3px 15px;
 }
 
 .wrapper-menu {
@@ -134,13 +134,13 @@ li {
 #menu .menu {
     color: #FFFFFF;
     float: left;
-    margin: 11px 0;
+    margin: 7px 0;
     max-width: 900px;
     overflow: hidden;
 }
 #menu .default_menu_right {
     float: right;
-    margin: 12px 0;
+    margin: 7px 0;
     max-width: 400px;
 }
 #menu ul {
@@ -402,6 +402,8 @@ td.contatos-item-form-td {
 	min-height: 30px;
 	clear: both;
 	overflow: hidden;
+	border-bottom: 1px solid #CCC;
+	padding: 7px 0;
 }
 
 .cada-linha a {
@@ -410,10 +412,11 @@ td.contatos-item-form-td {
 
 .cada-linha.add {
 	font-size: 1.3em;
-	margin: 0 0 15px 0;
+	border: 0;
 }
 
 .botao-add-contact {
+	float: right;
 	background: url("../../img/sprite.png") no-repeat scroll -60px 5px #023f7b;
 	padding: 20px 20px 20px 55px;
 	color: #9ab2ca;
@@ -422,7 +425,7 @@ td.contatos-item-form-td {
     -moz-border-radius: 5px;
     border-radius: 5px;
 	cursor: pointer;
-	margin-top: 20px;
+	margin: 20px 50px 0 0;
 }
 
 .botao-add-contact:hover {
@@ -467,18 +470,43 @@ td.contatos-item-form-td {
 
 .resposta {
     float: left;
-	max-width: 50%;
-	margin-left: 20px;
+	max-width: 65%;
+	margin-left: 15px;
+	font-family: Source Sans Pro;
+	margin-bottom: 2px;
+	color: #000;
 }
 
 .resposta-endereco {
     float: left;
     margin-bottom: 10px;
+	margin-left: 15px;
 }
 
 .resposta-add {
 	width: 80%;
 	float: left;
+	margin-left: 15px;
+}
+
+.resposta-redes {
+	float: left;
+	/*width: 250px;*/
+	clear: both;
+}
+
+.box-redes {
+	overflow: hidden;
+	width: 80%;
+}
+
+.resposta-uf {
+	float: left;
+	margin-left: 15px;
+}
+
+select.resposta-uf {
+	padding: 5px;
 }
 
 .resposta-add input {
@@ -564,6 +592,11 @@ td.contatos-item-form-td {
 
 .busca-resposta {
     float: left;
+	margin-left: 15px;
+}
+
+.busca-resposta select {
+	padding: 5px;
 }
 
 .botao-submit-busca{
@@ -840,6 +873,54 @@ ol.notelist li.pingback div.vcard {
 }
 #main  .widget-area  br {
     clear:left;
+}
+
+.navigation {
+	position: relative;
+}
+
+.navegacao {
+	width: 80%;
+	text-align: center;
+	margin: 20px auto 25px auto;
+	float: left;
+}
+
+a.prev.page-numbers, a.next.page-numbers  {
+	display: none;
+}
+
+.navegacao .page-numbers {
+    border: 1px solid #023f7b;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+	margin: 0 1px;
+}
+
+.navegacao .page-numbers, .nav-previous a, .nav-next a {
+	color: #023f7b;
+	padding: 5px 10px;
+	font-size: 17px;
+}
+
+span.page-numbers.current {
+	color: #666;
+	border: 1px solid #666;
+}
+
+.nav-next {
+	width: 10%;
+	float: left;
+	text-align: center;
+	margin: 20px auto;
+}
+
+.nav-previous {
+	width: 10%;
+	float: left;
+	text-align: center;
+	margin: 20px auto 25px auto;
 }
 
 

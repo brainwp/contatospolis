@@ -153,4 +153,18 @@ function contatos_clean_default_avatar( $avatar ) {
 if ( current_user_can('edit_posts') ) {
 	require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); }
 
+function the_paginate_link() {
+	global $wp_query;
+	$big = 999999999; // need an unlikely integer
+
+	echo paginate_links( array(
+		'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+		'format' => '?paged=%#%',
+		'current' => max( 1, get_query_var('paged') ),
+		'total' => $wp_query->max_num_pages,
+		'prev_text'    => __(''),
+		'next_text'    => __(''),
+	) );
+}
+
 ?>

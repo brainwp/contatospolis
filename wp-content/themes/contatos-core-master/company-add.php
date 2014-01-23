@@ -35,7 +35,7 @@ get_header(); ?>
 
         <div class="cada-linha add">
             <div class="add">
-                <span class="title title-bloco-1 grey"><?php _e('* Nome', 'rolopress'); ?></span>
+                <span class="title title-bloco-1 grey"><?php _e('* Nome (Razão Social)', 'rolopress'); ?></span>
 				<span class="resposta-add"><input type="text" class="first_name" tabindex="1000" size="" value="" name="rolo_company_name" style="cursor: auto;"></span>
             </div>
         </div><!-- .cada-linha -->
@@ -54,7 +54,7 @@ get_header(); ?>
 
         <div class="cada-linha add">
             <span class="title title-bloco-1 grey"><?php _e('* Estado', 'rolopress'); ?></span>
-                    <select name="rolo_uf">
+                    <select class="resposta-uf" name="rolo_uf">
                         <option value="">Selecione</option>
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
