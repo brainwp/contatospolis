@@ -671,6 +671,14 @@ select.resposta-uf {
     background: url("../../img/logos-footer.png") no-repeat;
 }
 
+.logo-petro-gov {
+    float: right;
+    height: 45px;
+    width: 310px;
+	margin: 25px 30px 0 0;
+	background: url("../../img/petro-gov.png") no-repeat;
+}
+
 /* =main
 -------------------------------------------------------------- */
 h3.section-heading {
