@@ -584,8 +584,8 @@ function rolo_loop() { ?>
 <ul class="item-list">
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
 <li>
+
 	<div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 		
 		<?php rolopress_before_entry(); // Before entry hook ?>
@@ -641,7 +641,7 @@ function rolo_loop() { ?>
 								<div class="widget-area">
 								<ul class="xoxo">
 								<?php dynamic_sidebar("widget-page");?>
-								</div> 
+								</ul> 
 								</div><!-- #widget-area -->	
 								<?php }
 							else {
@@ -662,10 +662,11 @@ function rolo_loop() { ?>
 
 				<?php // rolo_entry_footer(); ?>
 
-				<?php rolopress_after_entry(); // After entry hook ?>
+				
 				
 	</div><!-- #entry-<?php the_ID(); ?> -->
 	<?php endwhile; ?>
+
 </li>
 
 <?php if (!is_single() ) { // not needed on single pages ?>
@@ -690,14 +691,11 @@ function rolo_loop() { ?>
 					
 				</div><!-- .entry-main -->
 			<?php rolopress_after_entry(); // After entry hook ?>
-		</li><!-- #entry-0 -->
+		</li></a><!-- #entry-0 -->
 
 <?php endif;
 
-
 }; // end rolo_loop
-
-
  
  
 ?>

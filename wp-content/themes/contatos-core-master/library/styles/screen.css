@@ -273,6 +273,11 @@ h2.page-title-light{
     overflow: hidden;
 }
 
+.link-bloco {
+	overflow: hidden;
+	background: #000;
+}
+
 .hentry {
 }
 
