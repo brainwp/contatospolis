@@ -662,7 +662,7 @@ function rolo_loop() { ?>
 
 				<?php // rolo_entry_footer(); ?>
 
-				
+				<?php rolopress_after_entry(); // After entry hook ?>
 				
 	</div><!-- #entry-<?php the_ID(); ?> -->
 	<?php endwhile; ?>
@@ -691,7 +691,7 @@ function rolo_loop() { ?>
 					
 				</div><!-- .entry-main -->
 			<?php rolopress_after_entry(); // After entry hook ?>
-		</li></a><!-- #entry-0 -->
+		</li><!-- #entry-0 -->
 
 <?php endif;
 
