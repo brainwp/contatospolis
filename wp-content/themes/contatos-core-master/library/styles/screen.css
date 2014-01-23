@@ -924,6 +924,16 @@ span.page-numbers.current {
 }
 
 
+/* Tooltip Ajuda */
+.ajuda-in {
+	width: 25px;
+	height: 25px;
+	float: right;
+	background: url("../../img/sprite.png") no-repeat scroll -97px -229px transparent;
+	margin: 0 0 0 20px;
+}
+
+
 
 /* Ajustes Moraleida */
 .title-bloco-1 {

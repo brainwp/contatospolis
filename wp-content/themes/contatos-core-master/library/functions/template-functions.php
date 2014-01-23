@@ -138,12 +138,12 @@ function rolo_contact_header($contact_id) {
     
     <div class="item-col-1 width-40 item-form">
         <div class="cada-linha ano">
-                        <span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span>
+			<span class="title title-bloco-1 grey"><?php _e('Cidade de Moradia', 'rolopress'); ?></span>
             <span id="rolo_city" class="resposta <?php echo ($contact_city ? '' : 'vazio'); ?>"><?php echo $contact_city; ?></span>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha uf">
-                        <span class="title title-bloco-1 grey"><?php _e('Estado', 'rolopress'); ?></span>
+			<span class="title title-bloco-1 grey"><?php _e('Estado', 'rolopress'); ?></span>
             <span id="rolo_uf" class="resposta <?php echo ($contact_uf ? '' : 'vazio'); ?>"><?php echo $contact_uf; ?></span>
         </div><!-- .cada-linha -->
         
@@ -167,6 +167,7 @@ function rolo_contact_header($contact_id) {
         <div class="cada-linha data">
             <span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
             <span id="rolo_contact_update" class="resposta <?php echo ($contact_update ? '' : 'vazio'); ?>"><?php echo $contact_update; ?></span>
+			<div class="ajuda-in" title="Essa data é gerada automaticamente ao criar o contato, mas caso seja necessário poderá alterá-la posteriormente."></div>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha data">
@@ -412,26 +413,28 @@ function rolo_company_header($company_id) {
                         </div><!-- #alterar-avatar -->
             </div><!-- .item-image -->
     
-                    <div class="item-col-1 width-45 item-form">
-                            <div class="cada-linha">
-                    <span class="title title-bloco-1 grey"><?php _e('Ano de Criação ', 'rolopress'); ?></span>
-                    <span id="rolo_company_year" class="resposta <?php echo ($company_year ? '' : 'vazio'); ?>"><?php echo $company_year; ?></span>
-                            </div><!-- .cada-linha -->
-                <div class="cada-linha">
-                    <span class="title title-bloco-1 grey"><?php _e('Constituída Legalmente? ', 'rolopress'); ?></span>
-                    <span id="rolo_company_legal" class="resposta <?php echo ($company_legal ? '' : 'vazio'); ?>"><?php echo $company_legal; ?></span>
-                            </div><!-- .cada-linha -->
-                              <div class="cada-linha">
-                    <span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
-                    <span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo wpautop( $company_others ); ?></span>
-                            </div><!-- .cada-linha -->
-                            <div class="cada-linha">
-                    <span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
-                    <span id="rolo_company_update" class="resposta <?php echo ($company_update ? '' : 'vazio'); ?>"><?php echo $company_update; ?></span>
-                            </div><!-- .cada-linha -->
+                    <div class="item-col-1 width-40 item-form">
+						<div class="cada-linha">
+							<span class="title title-bloco-1 grey"><?php _e('Ano de Criação ', 'rolopress'); ?></span>
+							<span id="rolo_company_year" class="resposta <?php echo ($company_year ? '' : 'vazio'); ?>"><?php echo $company_year; ?></span>
+							<div class="ajuda-in" title="Ano em que a Instituição foi criada."></div>
+						</div><!-- .cada-linha -->
+						<div class="cada-linha">
+							<span class="title title-bloco-1 grey"><?php _e('Constituída Legalmente? ', 'rolopress'); ?></span>
+							<span id="rolo_company_legal" class="resposta <?php echo ($company_legal ? '' : 'vazio'); ?>"><?php echo $company_legal; ?></span>
+                        </div><!-- .cada-linha -->
+						<div class="cada-linha">
+							<span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
+							<span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo wpautop( $company_others ); ?></span>
+						</div><!-- .cada-linha -->
+                        <div class="cada-linha">
+							<span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
+							<span id="rolo_company_update" class="resposta <?php echo ($company_update ? '' : 'vazio'); ?>"><?php echo $company_update; ?></span>
+							<div class="ajuda-in" title="Data gerada automaticamente ao adicionar o contato. Poderá alterar a mesma posteriormente."></div>
+						</div><!-- .cada-linha -->
 
-            </div><!-- .item-col-1 width-45 item-form -->
-            <div class="item-col-2 item-form">
+            </div><!-- .item-col-1 width-40 item-form -->
+            <div class="item-col-2 width-40 item-form">
                 
                             <div class="cada-linha">
                     <span class="title title-bloco-2 grey"><?php _e( 'E-mail ', 'rolopress' ); ?></span>
@@ -614,7 +617,7 @@ function rolo_company_header($company_id) {
 
                             <input type="button" class="input_relacao botao-edit <?php echo $out; ?> button" value="<?php echo $edit; ?>" />
                                                 
-                        </div><!-- .item-col-2 -->
+                        </div><!-- .item-col-2 width-40 -->
                         
                                         </div><!-- .impactos -->                                
 

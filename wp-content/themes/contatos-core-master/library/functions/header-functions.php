@@ -32,6 +32,7 @@ function rolo_css_standard() {
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/jcaption.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/widgets.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/uni-form.css" media="screen,projection,print" />' . "\n";
+	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/tooltipster.css" media="screen,projection,print" />' . "\n";
 
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/extras.css" media="screen,projection,print" />' . "\n";
 }
