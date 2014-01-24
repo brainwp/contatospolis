@@ -299,7 +299,7 @@ jQuery(document).ready(function() {
 
                         var split = item.post_title.slice(0,request.term.length);
 
-                        if (split == request.term) {
+                        if (split.toLowerCase() == request.term.toLowerCase()) {
                             return {
                                 label: item.post_title,
                                 value: item.ID
@@ -335,7 +335,7 @@ jQuery(document).ready(function() {
 
                         var split = item.post_title.slice(0,request.term.length);
 
-                        if (split == request.term) {
+                        if (split.toLowerCase() == request.term.toLowerCase()) {
                             return {
                                 label: item.post_title,
                                 value: item.ID
