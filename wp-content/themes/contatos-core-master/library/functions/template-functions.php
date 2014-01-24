@@ -440,7 +440,7 @@ function rolo_company_header($company_id) {
             </div><!-- .item-image -->
     
                     <div class="item-col-1 width-40 item-form">
-						<div class="cada-linha">
+						<div class="cada-linha ano-alt">
 							<span class="title title-bloco-1 grey"><?php _e('Ano de Criação ', 'rolopress'); ?></span>
 							<span id="rolo_company_year" class="resposta <?php echo ($company_year ? '' : 'vazio'); ?>"><?php echo $company_year; ?></span>
 							<div class="ajuda-in" title="Ano em que a Instituição foi criada."></div>

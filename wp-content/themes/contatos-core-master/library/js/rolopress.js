@@ -452,7 +452,16 @@ jQuery(document).ready(function() {
             m = este.mask("99/99/9999");
         }, 500);
 
-    });    
+    }); 
+
+    jQuery('.ano-alt').on('click', function() {
+        es = jQuery(this);
+        window.setTimeout(function() {
+            este = es.find('input').eq(0);
+            m = este.mask("9999");
+        }, 500);
+
+    });        
 
     // Formulário de busca avançada
     jQuery('select.publicos').on('change', function() {
