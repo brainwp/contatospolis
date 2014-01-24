@@ -107,7 +107,7 @@ function rolo_contact_header($contact_id) {
                 if(!$contact_update) {
                         $contact_update = get_the_time( 'd/m/Y', $contact_id );                
                 }
-        
+        $contact_update_src = $contact['rolo_contact_update_src'][0];
 
         $post_id = get_post($post->ID); // get current contact id
     $slug = $post_id->post_name; // define slug as $slug
@@ -176,11 +176,16 @@ function rolo_contact_header($contact_id) {
         
 		<?php if(is_single()) : ?>
 			
-			<div class="cada-linha data">
+			<div class="cada-linha data data-alt">
 				<span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
 				<span id="rolo_contact_update" class="resposta <?php echo ($contact_update ? '' : 'vazio'); ?>"><?php echo $contact_update; ?></span>
 				<div class="ajuda-in" title="Essa data é gerada automaticamente ao criar o contato, mas caso seja necessário poderá alterá-la posteriormente."></div>
 			</div><!-- .cada-linha -->
+
+            <div class="cada-linha data">
+                <span class="title title-bloco-1 grey"><?php _e('Fonte Consultada ', 'rolopress'); ?></span>
+                <span id="rolo_contact_update_src" class="resposta <?php echo ($contact_update_src ? '' : 'vazio'); ?>"><?php echo $contact_update_src; ?></span>
+            </div><!-- .cada-linha -->
 
 			<div class="cada-linha data">
 				<span class="title title-bloco-1 grey"><?php _e('Posicionamento político ', 'rolopress'); ?></span>
@@ -405,6 +410,8 @@ function rolo_company_header($company_id) {
                         $company_update = get_the_time( 'd/m/Y', $company_id );                
                 }
 
+        $company_update_src = $company['rolo_company_update_src'][0];
+
         $post_id = get_post($post->ID); // get current company id
     $slug = $post_id->post_name; // define slug as $slug
 
@@ -446,11 +453,16 @@ function rolo_company_header($company_id) {
 							<span class="title title-bloco-1 grey"><?php _e('Observações ', 'rolopress'); ?></span>
 							<span id="rolo_company_others" class="resposta resposta-textarea <?php echo ($company_others ? '' : 'vazio'); ?>"><?php echo wpautop( $company_others ); ?></span>
 						</div><!-- .cada-linha -->
-                        <div class="cada-linha">
+                        <div class="cada-linha data-alt">
 							<span class="title title-bloco-1 grey"><?php _e('Data das Informações ', 'rolopress'); ?></span>
 							<span id="rolo_company_update" class="resposta <?php echo ($company_update ? '' : 'vazio'); ?>"><?php echo $company_update; ?></span>
 							<div class="ajuda-in" title="Data gerada automaticamente ao adicionar o contato. Poderá alterar a mesma posteriormente."></div>
 						</div><!-- .cada-linha -->
+
+                        <div class="cada-linha">
+                            <span class="title title-bloco-1 grey"><?php _e('Fonte Consultada ', 'rolopress'); ?></span>
+                            <span id="rolo_company_update_src" class="resposta <?php echo ($company_update_src ? '' : 'vazio'); ?>"><?php echo $company_update_src; ?></span>
+                        </div><!-- .cada-linha -->                        
 
             </div><!-- .item-col-1 width-40 item-form -->
             <div class="item-col-2 width-40 item-form">
