@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place - Contatos Polis
-    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil, #rolo_contact_telefone, #rolo_uf, #rolo_uf, #rolo_contact_company, #rolo_company_redes').eip(ajax_url.ajaxurl, {
+    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil, #rolo_contact_telefone, #rolo_uf, #rolo_uf, #rolo_contact_company, #rolo_company_redes, #rolo_contact_telefone_alt').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid,
         after_save: function(self) {
@@ -41,18 +41,20 @@ jQuery(document).ready(function() {
             }
     });
 
-    jQuery('#rolo_contact_telefone').eip(ajax_url.ajaxurl, {
+    jQuery('#rolo_contact_telefone, #rolo_contact_telefone_alt').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid,
-        before_save: function(self) {            
-            var nu = self.new_value.replace('_','').split('-');
+        before_save: function(self) {          
 
-            if(nu[1].length > 4) {
-                nu[0] = nu[0]+nu[1][0];
-                nu[1] = nu[1].substr(1);
-            }
+                var nu = self.new_value.replace('_','').split('-');
 
-            self.new_value = nu[0]+'-'+nu[1]
+                if(nu[1].length > 4) {
+                    nu[0] = nu[0]+nu[1][0];
+                    nu[1] = nu[1].substr(1);
+                }
+
+                self.new_value = nu[0]+'-'+nu[1];
+            
             return self;
             // var newstr = val.replace(re, "oranges");
         }

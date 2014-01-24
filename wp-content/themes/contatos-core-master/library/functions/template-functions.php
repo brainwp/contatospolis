@@ -92,6 +92,13 @@ function rolo_contact_header($contact_id) {
         }
 
         $contact_tel = $contact['rolo_contact_telefone'][0];
+        $contact_tel_alt = $contact['rolo_contact_telefone_alt'][0];
+
+        if($contact_tel == "(_) _____-____")
+            $contact_tel = '';
+        if($contact_tel_alt == "(_) _____-____")
+            $contact_tel_alt = '';
+
         $contact_end = $contact['rolo_contact_endereco'][0];
 
         $contact_contato = $contact['rolo_contact_contato_facil'][0];
@@ -197,8 +204,9 @@ function rolo_contact_header($contact_id) {
 		</div><!-- .cada-linha -->
                
         <div class="cada-linha telefone">
-            <span class="title title-bloco-4"><?php _e('Telefone ', 'rolopress'); ?></span>
+            <span class="title title-bloco-4"><?php _e('Telefones ', 'rolopress'); ?></span>
             <span id="rolo_contact_telefone" class="resposta <?php echo ($contact_tel ? '' : 'vazio'); ?>"><?php echo $contact_tel;?></span>      
+            <span id="rolo_contact_telefone_alt" class="resposta <?php echo ($contact_tel_alt ? '' : 'vazio'); ?>"><?php echo $contact_tel_alt;?></span>      
         </div><!-- .cada-linha -->
 
 			<?php if(is_single()) : ?>
@@ -382,6 +390,13 @@ function rolo_company_header($company_id) {
         }
 
         $company_tel = $company['rolo_company_telefone'][0];
+        $company_tel_alt = $company['rolo_company_telefone_alt'][0];
+
+        if($company_tel == "(_) _____-____")
+            $company_tel = '';
+        if($company_tel_alt == "(_) _____-____")
+            $company_tel_alt = '';
+
         $company_end = $company['rolo_company_endereco'][0];
         $company_contato = $company['rolo_company_contato_facil'][0];
 
@@ -460,10 +475,11 @@ function rolo_company_header($company_id) {
                             <span id="rolo_uf" class="resposta <?php echo ($company_uf ? '' : 'vazio'); ?>"><?php echo $company_uf; ?></span>
                         </div><!-- .cada-linha -->                            
 
-                            <div class="cada-linha">
-                    <span class="title title-bloco-2 grey"><?php _e('Telefone ', 'rolopress'); ?></span>
-                    <span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?></span>
-                            </div><!-- .cada-linha -->
+                        <div class="cada-linha telefone">
+                            <span class="title title-bloco-2 grey"><?php _e('Telefone ', 'rolopress'); ?></span>
+                            <span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?></span>
+                            <span id="rolo_company_telefone_alt" class="resposta <?php echo ($company_tel_alt ? '' : 'vazio'); ?>"><?php echo $company_tel_alt;?></span>
+                        </div><!-- .cada-linha -->
 
                             <div class="cada-linha">
                                     <div class="website url-field group">
@@ -691,6 +707,13 @@ function rolo_company_header_list($company_id) {
         $apoio = 'Não'; if($company['rolo_relacao_apoio'][0]) { $apoio = 'Sim'; }        
 
         $company_tel = $company['rolo_company_telefone'][0];
+        $company_tel_alt = $company['rolo_company_telefone_alt'][0];
+
+        if($company_tel == "(_) _____-____")
+            $company_tel = '';
+        if($company_tel_alt == "(_) _____-____")
+            $company_tel_alt = '';
+
         $company_end = $company['rolo_company_endereco'][0];
         $company_contato = $company['rolo_company_contato_facil'][0];
         
@@ -737,7 +760,7 @@ function rolo_company_header_list($company_id) {
 
 					<div class="cada-linha">
 						<div class="telefone">
-							<span class="title title-bloco-1 grey"><?php _e('Telefone ', 'rolopress'); ?></span><span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?></span>
+							<span class="title title-bloco-1 grey"><?php _e('Telefone ', 'rolopress'); ?></span><span id="rolo_company_telefone" class="resposta <?php echo ($company_tel ? '' : 'vazio'); ?>"><?php echo $company_tel;?><span id="rolo_company_telefone_alt" class="resposta <?php echo ($company_tel_alt ? '' : 'vazio'); ?>"><?php echo $company_tel_alt;?></span>
 						</div>
 					</div><!-- .cada-linha -->
 
