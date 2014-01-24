@@ -954,3 +954,7 @@ span.page-numbers.current {
     display: block;
     float: left;
 }
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
