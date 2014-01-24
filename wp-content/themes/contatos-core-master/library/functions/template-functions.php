@@ -382,17 +382,25 @@ function rolo_company_header($company_id) {
 
         $company_redes = unserialize($company['rolo_company_redes'][0]);
 
-        if($company_redes) {
-                foreach ($company_redes as $key => $value) {
-                        if($value) {
-                                $redes .= $key . '.com/' . $value;
-                        }
-                }        
-        } else {
-                // $redes = '<span id="fb">Facebook: </span><br><span id="tw">Twitter: </span>';
-                $redes = '<span id="rolo_company_redes_fb" class="resposta resposta-redes">Link para Facebook</span>';
-                $redes .= '<span id="rolo_company_redes_tw" class="resposta resposta-redes">Link para Twitter</span>';
-        }
+        $company_redes_fb = $company['rolo_company_redes_fb'][0];
+        $company_redes_tw = $company['rolo_company_redes_tw'][0];
+        $company_redes_in = $company['rolo_company_redes_in'][0];
+        $company_redes_out = $company['rolo_company_redes_out'][0];
+
+        if(!$company_redes_fb)
+            $company_redes_fb = 'Link para Facebook';
+        if(!$company_redes_tw)
+            $company_redes_tw = 'Link para Twitter';
+        if(!$company_redes_in)
+            $company_redes_in = 'Link para LinkedIn';
+        if(!$company_redes_out)
+            $company_redes_out = 'Link para Outra Rede';
+
+        $redes  = '<span id="rolo_company_redes_fb" class="resposta resposta-redes">'.$company_redes_fb.'</span>';
+        $redes .= '<span id="rolo_company_redes_tw" class="resposta resposta-redes">'.$company_redes_tw.'</span>';
+        $redes .= '<span id="rolo_company_redes_in" class="resposta resposta-redes">'.$company_redes_in.'</span>';
+        $redes .= '<span id="rolo_company_redes_out" class="resposta resposta-redes">'.$company_redes_out.'</span>';
+
 
         $company_tel = $company['rolo_company_telefone'][0];
         $company_tel_alt = $company['rolo_company_telefone_alt'][0];
