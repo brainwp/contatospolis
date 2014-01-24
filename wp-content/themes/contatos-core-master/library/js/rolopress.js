@@ -379,20 +379,26 @@ jQuery(document).ready(function() {
 
 
         } else if(jQuery(this).html() == "-") {
-            jQuery(this).parents('tr').detach();
 
-            jQuery.post( 
-                ajax_url.ajaxurl, { 
-                    action : 'rolo_ajax_edit_contacts',
-                    mode   : 'remove',
-                    data   : jQuery(this).attr('name'),
-                    company: ajax_url.postid
-                }, function( resp ) {
+            var name = jQuery(this).parent().next('td').find('a').html();
 
-                    if (resp.status == 'ok') {
-                        // window.location.reload();
-                    };
-                })
+            if(confirm('Remover usuário '+name+'?')) {
+                jQuery(this).parents('tr').detach();
+
+                jQuery.post( 
+                    ajax_url.ajaxurl, { 
+                        action : 'rolo_ajax_edit_contacts',
+                        mode   : 'remove',
+                        data   : jQuery(this).attr('name'),
+                        company: ajax_url.postid
+                    }, function( resp ) {
+
+                        if (resp.status == 'ok') {
+                            // window.location.reload();
+                        };
+                    })    
+            }
+            
         } else if(jQuery(this).html() == "OK") {
             
             jQuery.post( 
