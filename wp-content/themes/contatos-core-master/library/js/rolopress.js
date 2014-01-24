@@ -311,9 +311,11 @@ jQuery(document).ready(function() {
         },
         minLength: 2,
         delay: 500,
+        focus: function(event, ui) {
+            jQuery('.ui-autocomplete-input').val(ui.item.label);
+            return false;
+        },
         select: function(event, ui) {
-                // this.value = ui.item.label;
-
                 var tr = jQuery(event.target).parents('tr');
                 jQuery(tr).children().eq(0).children('button').html('OK').attr('name',ui.item.value);
                 
@@ -348,14 +350,10 @@ jQuery(document).ready(function() {
         minLength: 2,
         delay: 500,
         focus: function(event, ui) {
-            
             jQuery('.ui-autocomplete-input').val(ui.item.label);
-
             return false;
         },
         select: function(event, ui) {
-                // this.value = ui.item.label;
-
                 var tr = jQuery(event.target).parents('tr');
                 jQuery(tr).children().eq(0).children('button').html('OK').attr('name',ui.item.value);
                 
