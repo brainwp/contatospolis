@@ -36,7 +36,8 @@ get_header(); ?>
     <fieldset class="inlineLabels geral width-content">
 
         <div class="cada-linha add">
-                <span class="title title-bloco-1 grey"><?php _e('Buscar por', 'rolopress'); ?></span>
+			<div class="item-cada-linha">
+                <span class="title grey"><?php _e('Buscar por', 'rolopress'); ?></span>
 				<span class="busca busca-resposta inicial">
 					<select name="busca_publicos" class="publicos">
 					    <option value="geral">Todos</option>
@@ -44,20 +45,20 @@ get_header(); ?>
 					    <option value="company">Entidades</option>
 					</select>
 				</span>
-        </div><!-- .cada-linha -->   
+			</div><!-- .item-cada-linha -->   
 
-        <div class="cada-linha add">
-                <span class="title title-bloco-1 grey"><?php _e('Nome', 'rolopress'); ?></span>
+			<div class="item-cada-linha">
+                <span class="title grey"><?php _e('Nome', 'rolopress'); ?></span>
 				<span class="busca busca-resposta"><input type="text" class="name" tabindex="1000" size="" value="" name="busca_nome"></span>
-        </div><!-- .cada-linha -->
+			</div><!-- .item-cada-linha -->
 
-        <div class="cada-linha add">
-                <span class="title title-bloco-1 grey"><?php _e('Município', 'rolopress'); ?></span>
+			<div class="item-cada-linha">
+                <span class="title grey"><?php _e('Município', 'rolopress'); ?></span>
 				<span class="busca busca-resposta"><input type="text" class="city" tabindex="1001" size="" value="" name="busca_municipio"></span>
-        </div><!-- .cada-linha -->
+			</div><!-- .item-cada-linha -->
 
-        <div class="cada-linha add">
-                <span class="title title-bloco-1 grey"><?php _e('UF', 'rolopress'); ?></span>
+			<div class="item-cada-linha">
+                <span class="title grey"><?php _e('UF', 'rolopress'); ?></span>
 				<span class="busca busca-resposta">
 					<select name="busca_uf">
 					    <option value="todos">Todas</option>
@@ -90,7 +91,8 @@ get_header(); ?>
 					    <option value="TO">TO</option>
 					</select>
 				</span>
-        </div><!-- .cada-linha -->        
+			</div><!-- .item-cada-linha -->     
+	</div><!-- .cada-linha -->
 
     </fieldset>
 

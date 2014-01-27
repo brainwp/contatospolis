@@ -676,7 +676,8 @@ function rolo_loop() { ?>
 
 <?php else : // 404 or no search results ?>
 
-		<div id="entry-0" class="<?php rolopress_entry_class(); ?>">
+	<div class="main-search <?php rolopress_entry_class(); ?>">
+
 			<?php rolopress_before_entry(); // Before entry hook ?>
 				<div class="entry-main">
 				
@@ -688,9 +689,13 @@ function rolo_loop() { ?>
 					if ($referring_page == "/type") rolo_type_tax_message();
 				
 					else { rolo_404_message(); }?>
-					
-				</div><!-- .entry-main -->
+
+				</div>
+
 			<?php rolopress_after_entry(); // After entry hook ?>
+
+	</div><!-- .main-search .<?php rolopress_entry_class(); ?> -->
+	
 		</li><!-- #entry-0 -->
 
 <?php endif;
