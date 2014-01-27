@@ -415,6 +415,17 @@ td.contatos-item-form-td {
 	color: #444;
 }
 
+.item-cada-linha {
+	width: auto;
+	float: left;
+	margin: 0 30px 30px 0;
+}
+
+.item-cada-linha .title {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
 .cada-linha.add {
 	font-size: 1.3em;
 	border: 0;
@@ -613,7 +624,8 @@ select.resposta-uf {
     -moz-border-radius: 5px;
     border-radius: 5px;
 	cursor: pointer;
-	margin: 10px 0 0 28px;
+	margin: 20px 50px 20px 0px;
+	float: right;
 }
 
 .botao-submit-busca:hover {
