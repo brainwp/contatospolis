@@ -38,10 +38,8 @@ function rolo_update_modified_date_on_meta_update( $meta_id ) {
 
 }
 
-function rolo_busca_avancada($post) {
-
-	dump($post);
-
+function rolo_busca_avancada( $post ) {
+	dump( $post );
 }
 
 function rolo_get_avatar_image( $avatar_id, $size = array(120,120) ) {
@@ -90,6 +88,7 @@ function rolo_ajax_edit_thumbnail() {
 
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_company_other', 'rolo_ajax_edit_company_other' );
 add_action( 'wp_ajax_rolo_ajax_edit_company_other', 'rolo_ajax_edit_company_other' );
+
 function rolo_ajax_edit_company_other() {
 
 	$vars = $_POST['data'];
@@ -122,6 +121,7 @@ function rolo_ajax_edit_company_other() {
 			update_post_meta( $id, 'rolo_conflito_observacoes', $vars[5] );
 
 		$safe = 'sucesso';
+
 	} else {
 		if($vars[2] != 'checked')
 			$vars[2] = false;
@@ -151,6 +151,7 @@ function rolo_ajax_edit_company_other() {
 
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_contacts', 'rolo_ajax_edit_contacts' );
 add_action( 'wp_ajax_rolo_ajax_edit_contacts', 'rolo_ajax_edit_contacts' );
+
 function rolo_ajax_edit_contacts() {
 
 	$vars = $_POST['data'];
@@ -205,11 +206,11 @@ function rolo_ajax_edit_contacts() {
 	echo json_encode($response);
 	exit;
 
-
 }
 
 add_action( 'wp_ajax_nopriv_rolo_ajax_autocomplete', 'rolo_ajax_autocomplete' );
 add_action( 'wp_ajax_rolo_ajax_autocomplete', 'rolo_ajax_autocomplete' );
+
 function rolo_ajax_autocomplete() {
 
 	global $wpdb;
@@ -228,11 +229,11 @@ function rolo_ajax_autocomplete() {
 	echo json_encode($response);
 	exit;
 
-
 }
 
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_company', 'rolo_ajax_edit_company' );
 add_action( 'wp_ajax_rolo_ajax_edit_company', 'rolo_ajax_edit_company' );
+
 function rolo_ajax_edit_company() {
 
 	$vars = $_POST['data'];
@@ -260,7 +261,6 @@ function rolo_ajax_edit_company() {
 	else :
 		$status = 'dev';
 
-	
 /*
 		switch ($vars['id']) {
 			case 'rolo_company_update':
@@ -274,7 +274,6 @@ function rolo_ajax_edit_company() {
 	endif;
 
 	$response = array( 'status' => $status, 'erro' => $erro, 'value' => $value );
-
  	
  	header( "Content-Type: application/json" );
 	echo json_encode($response);
@@ -283,6 +282,7 @@ function rolo_ajax_edit_company() {
 
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_taxonomy', 'rolo_ajax_edit_taxonomy' );
 add_action( 'wp_ajax_rolo_ajax_edit_taxonomy', 'rolo_ajax_edit_taxonomy' );
+
 function rolo_ajax_edit_taxonomy() {
 
 	$vars = $_POST['data'];
@@ -303,7 +303,8 @@ function rolo_ajax_edit_taxonomy() {
 	echo json_encode($terms);
 	exit;
 
-} 
+}
+
 /**
  * Shows appropriate title for each page
  *
@@ -358,7 +359,6 @@ if ( !empty($pagedesc) )
 	echo ('<div class="archive-meta">' . $pagedesc . '</div>' );
 }			
 			
-
 /**
  * For category lists on category archives: Returns other categories except the current one (redundant)
  *
