@@ -535,6 +535,28 @@ select.resposta-uf {
 	max-width: 300px;
 }
 
+#rolo_contact_telefone_alt, #rolo_company_telefone_alt {
+	margin-top: 8px;
+	margin-bottom: 6px;
+	clear: both;
+}
+
+span#editor-rolo_contact_telefone_alt.jeip-editor, span#editor-rolo_company_telefone_alt.jeip-editor  {
+	clear: both;
+	margin: 10px 0px 0px 15px;
+	width: 60%;
+}
+
+span#editor-rolo_company_telefone.jeip-editor {
+	width: 65%;
+	margin-bottom: 15px;
+}
+
+.box-telefone {
+	float: left;
+	width: 60%;
+}
+
 .instrucoes {
 	width: 88%;
 	margin: 0 0 30px 40px;
