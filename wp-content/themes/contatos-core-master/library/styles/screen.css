@@ -392,6 +392,10 @@ td.contatos-item-form-td {
 	background-position: -49px -250px;
 }
 
+td.td-remove {
+	padding-top: 10px;
+}
+
 .remove-contact-in-company {
 	background: url("../../img/sprite.png") no-repeat scroll -14px -224px transparent;
 	padding: 12px;
@@ -405,6 +409,33 @@ td.contatos-item-form-td {
 
 .remove-contact-in-company:hover {
 	background-position: -14px -250px;
+}
+
+.ui-autocomplete-input {
+    background: #FFF;
+    border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #444;
+    font-size: 14px;
+    margin: 0 0 0 25px;
+    padding: 6px 10px;
+}
+
+.ui-autocomplete {
+	background-color: #f1f1f1;
+	max-width: 250px;
+	width: auto;
+	cursor: pointer;
+	 border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.ui-autocomplete li {
+	padding: 10px;
 }
 
 .cada-linha {

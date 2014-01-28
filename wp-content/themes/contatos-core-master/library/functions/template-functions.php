@@ -891,7 +891,7 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
 				?>
 
 				<tr>
-					<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<td><button class='remove-contact-in-company' name='".$user->ID."'>-</button></td>" : "" ?>
+					<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<td class='td-remove'><button class='remove-contact-in-company' name='".$user->ID."'>-</button></td>" : "" ?>
 					<td class="contatos-item-form-td"><a href="<?php echo get_permalink($user->ID); ?>"><?php echo $user->post_title; ?></a></td>
 					<td class="contatos-item-form-td"><?php echo get_post_meta( $user->ID, 'rolo_contact_role', true ); ?></td>
 					<td class="contatos-item-form-td"><?php echo get_post_meta( $user->ID, 'rolo_contact_telefone', true ); ?></td>
