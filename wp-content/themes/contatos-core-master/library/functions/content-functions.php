@@ -185,7 +185,7 @@ function rolo_ajax_edit_contacts() {
 		$meta = update_post_meta( $vars['data'], 'rolo_contatos', $p->ID );
 		
 		$value = $vars['new_value'];
-		$status = 'ok';
+		$status = 'sucesso';
 
 	} else {
 

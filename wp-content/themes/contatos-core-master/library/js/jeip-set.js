@@ -166,8 +166,7 @@ jQuery(document).ready(function() {
 
     jQuery('#rolo_contact_company').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_contacts',
-        data: ajax_url.postid,
-        mode: 'company'
+        data: ajax_url.postid
     });        
 
 });

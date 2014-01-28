@@ -46,7 +46,6 @@ jQuery(document).ready(function($){
                 att   : attachment.id
             }, function( resp ) {
                 
-                    // jQuery("#_button"+id).html(resp);
                     jQuery("#item-avatar").html(resp);
 
                 });
