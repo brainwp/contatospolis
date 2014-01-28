@@ -46,7 +46,8 @@ jQuery(document).ready(function($){
                 att   : attachment.id
             }, function( resp ) {
                 
-                    jQuery("#_button"+id).html(resp);
+                    // jQuery("#_button"+id).html(resp);
+                    jQuery("#item-avatar").html(resp);
 
                 });
 
@@ -373,7 +374,7 @@ jQuery(document).ready(function() {
 
         if(jQuery(this).html() == "+") {
 
-            var newrow = jQuery('<tr><td><button>-</button></td><td class="insertname" colspan="4"><input type="text" /></td></tr>');
+            var newrow = jQuery('<tr><td><button class="remove-contact-in-company">-</button></td><td class="insertname" colspan="4"><input type="text" /></td></tr>');
             jQuery('input', newrow).autocomplete(autocomp_nomes);
             jQuery(this).parents('tr').before(newrow);
 

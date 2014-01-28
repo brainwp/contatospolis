@@ -78,7 +78,7 @@ function rolo_ajax_edit_thumbnail() {
 
 	update_post_meta( $postid, '_thumbnail_id', $attid );
 	
-	$image = get_the_post_thumbnail( $postid, array(96,96) );
+	$image = get_the_post_thumbnail( $postid, array(120,120) );
 
 	header( "Content-Type: application/json" );
 	echo json_encode($image);
