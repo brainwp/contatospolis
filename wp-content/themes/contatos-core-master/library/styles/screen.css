@@ -997,3 +997,30 @@ span.page-numbers.current {
 .ui-helper-hidden-accessible {
     display: none;
 }
+
+.taxonomias, .taxonomias ul, .taxonomias ul li {
+    position: relative;
+}
+
+.taxonomias .parent span {
+    background: url("../../img/sprite.png") no-repeat scroll -48px -226px rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: block;
+    height: 26px;
+    left: -30px;
+    position: absolute;
+    width: 27px;
+}
+
+.taxonomias .parent span:hover {
+    background: url("../../img/sprite.png") no-repeat scroll -48px -252px rgba(0, 0, 0, 0);
+}
+.taxonomias .parent span.open {
+    background: url("../../img/sprite.png") no-repeat scroll -13px -226px rgba(0, 0, 0, 0);
+}
+.taxonomias .parent span.open:hover {
+    background: url("../../img/sprite.png") no-repeat scroll -13px -252px rgba(0, 0, 0, 0);
+}
+.taxonomias .children {
+    display: none;
+}

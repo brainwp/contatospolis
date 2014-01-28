@@ -258,6 +258,29 @@ jQuery(document).ready(function() {
     });
 */
 
+    var taxes = jQuery('.taxonomias li');
+
+    jQuery.each(taxes, function(e,v) {
+
+        if(jQuery(this).children('ul.children').length > 0) {
+            jQuery(this).addClass('parent');
+            jQuery(this).prepend('<span></span>');
+        }
+
+    });
+
+    jQuery('.taxonomias .parent span').on('click', function() {
+
+        if(jQuery(this).hasClass('open')) {
+            jQuery(this).removeClass('open');
+            jQuery(this).parent().children('.children').hide();
+        } else {
+            jQuery(this).addClass('open');
+            jQuery(this).parent().children('.children').show();
+        }
+
+    });
+
     jQuery('.hentry .selectit input').on('change', function() {
 
         jQuery('body').append('<div id="salvando">Salvando</div>').delay(100);
