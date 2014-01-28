@@ -86,9 +86,13 @@ function rolo_search_query() {
  	
 function rolo_search_filter_geral($query) {
 
+	
+
 	if( $query->is_main_query() && $_POST['busca_publicos'] ) {
 		$query->is_search = true;
 		$query->is_home = false;
+
+		$query->set('post_type', 'post');
 	}
 
 	if($query->is_main_query() && $_POST['busca_publicos'] == 'geral') :
