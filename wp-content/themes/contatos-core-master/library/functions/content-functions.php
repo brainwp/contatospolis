@@ -286,21 +286,36 @@ add_action( 'wp_ajax_rolo_ajax_edit_taxonomy', 'rolo_ajax_edit_taxonomy' );
 function rolo_ajax_edit_taxonomy() {
 
 	$vars = $_POST['data'];
+	$check = (int) $_POST['check'];
 
-	$meta = wp_get_post_terms( $vars['postid'], $vars['area'], $args );
+	// $meta = wp_get_post_terms( $vars['postid'], $vars['area'] );
 
-	$meta = has_term( $vars['val'], $vars['area'], $vars['postid'] );
+	$p = get_term( $vars['val'], $vars['area'] );
+	$parent = $p->parent;
+	$t = array();
 
-	if($meta) {
-		$terms = wp_remove_object_terms( $vars['postid'], $vars['val'], $vars['area'] );
+	if($check == 0) {
+		$terms = wp_remove_object_terms( $vars['postid'], (int) $vars['val'], $vars['area'] );
+		$meta = $parent;
+
 	} else {
 		$terms = wp_set_object_terms( $vars['postid'], (int) $vars['val'], $vars['area'], true );
+		$check = false;
+		if($parent > 0) {
+			$p = get_term( $parent, $vars['area'] );
+			$meta[] = $p->term_id;
+			$check = true;			
+		}
+
 	}
 
-	$response = array( 'status' => $status, 'erro' => $erro, 'value' => $value );
+	// $response = array( 'status' => $status, 'erro' => $erro, 'value' => $value );
  	
  	header( "Content-Type: application/json" );
-	echo json_encode($terms);
+
+ 	$response = array('atualizados' => $terms, 'parents' => $meta, 'check' => $check);
+	
+	echo json_encode($response);
 	exit;
 
 }

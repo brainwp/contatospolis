@@ -287,19 +287,24 @@ jQuery(document).ready(function() {
 
         var area = jQuery(this).parents('div').attr('class');
         var val = jQuery(this).val();
-
+        var checked = jQuery(this).parent().find(':checked').length;
         var ajax_data = { area: area, val: val, postid: ajax_url.postid }
 
         jQuery.post( 
                 ajax_url.ajaxurl, { 
                     action : 'rolo_ajax_edit_taxonomy',
-                    data   : ajax_data
+                    data   : ajax_data,
+                    check: checked
                 }, function( resp ) {
                         var data = ajax_data;
-                        if(resp.status == 'sucesso') {
+                        if(resp.check.toString() == 'true') {
+                            for(i=0;i<resp.parents.length;i++) {
+                                jQuery('#'+data.area+'-'+resp.parents[i]).children('.selectit').children('input').click();
+                            }
+
                         }
 
-                        
+                        // jQuery('#'+area+'-'+data.val).parents('.parent').find('').click();
                         jQuery('#'+area+'-'+data.val).find('label').removeClass('jeip-saving');
 
                     });
