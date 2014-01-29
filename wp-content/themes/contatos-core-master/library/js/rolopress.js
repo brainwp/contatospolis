@@ -378,7 +378,7 @@ jQuery(document).ready(function() {
         },
         select: function(event, ui) {
                 var tr = jQuery(event.target).parents('tr');
-                jQuery(tr).children().eq(0).children('button').html('OK').attr('name',ui.item.value);
+                jQuery(tr).children().eq(0).children('button').html('OK').attr('name',ui.item.value).removeClass('remove-contact-in-company').addClass('save-contact-in-company');
                 
             return false;
             }
