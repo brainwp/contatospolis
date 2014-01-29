@@ -283,16 +283,12 @@ jQuery(document).ready(function() {
 
     jQuery('.hentry .selectit input').on('change', function() {
 
-        jQuery('body').append('<div id="salvando">Salvando</div>').delay(100);
-
-        jQuery('#salvando').animate({opacity: '0.5'});
+        jQuery(this).parent().addClass('jeip-saving');
 
         var area = jQuery(this).parents('div').attr('class');
         var val = jQuery(this).val();
 
         var ajax_data = { area: area, val: val, postid: ajax_url.postid }
-
-        // console.log(ajax_data);
 
         jQuery.post( 
                 ajax_url.ajaxurl, { 
@@ -303,7 +299,8 @@ jQuery(document).ready(function() {
                         if(resp.status == 'sucesso') {
                         }
 
-                        jQuery('#salvando').animate({opacity: '0'}, 'slow').detach();
+                        
+                        jQuery('#'+area+'-'+data.val).find('label').removeClass('jeip-saving');
 
                     });
     });
@@ -372,9 +369,20 @@ jQuery(document).ready(function() {
         },
         minLength: 2,
         delay: 500,
+        search: function(event, ui) {
+            jQuery('.ui-helper-hidden-accessible').css('display: none');
+        },
         focus: function(event, ui) {
             jQuery('.ui-autocomplete-input').val(ui.item.label);
             return false;
+        },
+        response: function( event, ui ) {
+            
+            if(ui.content.length == 0) {
+                var tr = jQuery(event.target).parents('tr');
+                jQuery(tr).children().eq(1).find('span').css('display: block');
+            }
+
         },
         select: function(event, ui) {
                 var tr = jQuery(event.target).parents('tr');
@@ -383,6 +391,7 @@ jQuery(document).ready(function() {
             return false;
             }
     };
+
 
     jQuery('input').on('keypress', function() {
         // console.log('key');
