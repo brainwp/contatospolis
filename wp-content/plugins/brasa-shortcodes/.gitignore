@@ -1,0 +1,12 @@
+error_log
+.htaccess
+
+.vagrant
+Vagrantfile
+
+*.swp
+*.swo
+*.zip
+*.tar
+*.tar.gz
+*~
