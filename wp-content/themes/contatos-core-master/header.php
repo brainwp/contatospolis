@@ -31,6 +31,7 @@
 						}
 					?>
 					<input type="hidden" value="geral" name="busca_publicos">
+					<input type="hidden" value="true" name="busca_header">
 					<input type="hidden" value="submit_busca add_contact" name="rp_submit_busca">
                     <input id="s" name="busca_nome" type="text" value="<?php echo wp_specialchars(stripslashes($s), true) ?>" size="20" tabindex="1" placeholder="Buscar" />
                     <input id="searchsubmit" name="searchsubmit" type="submit" value="" tabindex="2" />

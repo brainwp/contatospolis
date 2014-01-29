@@ -14,15 +14,24 @@ add_action( 'pre_get_posts', 'rolo_search_filter_geral', 800 );
 add_action( 'pre_get_posts', 'rolo_search_filter_contact', 900 );
 add_action( 'pre_get_posts', 'rolo_search_filter_company', 900 );
 add_filter( 'posts_where', 'rolo_search_filter_name', 10, 2 );
+add_filter( 'posts_request', 'rolo_search_all_meta_data', 10, 2 );
 
-// add_filter( 'posts_where', 'rolo_test_where', 10, 2 );
-// add_filter( 'posts_request', 'rolo_test_where', 10, 2 );
+function rolo_search_all_meta_data($where) {
 
-// $wh = new WP_Query(array('post_title' => 'Ricardo', 'tax_query' => array(array( 'term' => 'contact', 'taxonomy' => 'type', 'field' => 'slug' ) ) ));
+	global $wpdb;
 
-function rolo_test_where($where) {
+	// Somente na busca do header
+	if($_POST['busca_header'] == 'true') {
 
-	dump($where);
+		$where = str_replace("FROM ".$wpdb->posts, "FROM ".$wpdb->posts.','.$wpdb->postmeta, $where);
+		// Agrupa os IDs iguais
+		$where = str_replace("WHERE 1=1","WHERE ".$wpdb->posts.".ID = ".$wpdb->postmeta.".post_id", $where);
+		$where = str_replace("ORDER BY ".$wpdb->postmeta.".meta_value", "GROUP BY ".$wpdb->posts.".ID", $where);
+		// Busca pelo meta_value
+		$where = str_replace($wpdb->posts.'.post_title', $wpdb->postmeta.'.meta_value', $where);	
+	}
+	
+	return $where;
 
 }
 
