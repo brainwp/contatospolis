@@ -449,11 +449,25 @@ td.contatos-item-form-td {
 	text-indent: -999px;
 	width: 22px;
 	height: 20px;
-	
 }
 
 .add-contact-in-company:hover {
 	background-position: -49px -250px;
+}
+
+.save-contact-in-company {
+	background: url("../../img/sprite.png") no-repeat scroll -13px -292px transparent;
+	padding: 12px;
+	color: rgb(154, 178, 202);
+	cursor: pointer;
+	border: 0px none;
+	text-indent: -999px;
+	width: 30px;
+	height: 30px;
+}
+
+.save-contact-in-company:hover {
+	background-position: -13px -321px; /* Horizontal - Vertical */
 }
 
 td.td-remove {
