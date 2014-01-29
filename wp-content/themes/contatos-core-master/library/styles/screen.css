@@ -136,8 +136,48 @@ li {
     float: left;
     margin: 7px 0;
     max-width: 900px;
+	height: 33px;
     overflow: hidden;
 }
+
+.menu-item-contatos, .menu-item-instituicoes, .menu-item-add-contatos, .menu-item-add-instituicoes, .menu-item-busca-avancada, .menu-item-faq {
+	float: left;
+	overflow: hidden;
+	width: 42px;
+	height: 33px;
+	margin-right: 25px;
+}
+
+.menu-item-contatos a {
+	padding: 30px 22px;
+	background: url("../../img/sprite.png") no-repeat scroll -13px -410px transparent;
+}
+
+.menu-item-instituicoes a {
+	padding: 30px 22px;
+	background: url("../../img/sprite.png") no-repeat scroll -63px -410px transparent;
+}
+
+.menu-item-add-contatos a {
+	padding: 30px 22px;
+	background: url("../../img/sprite.png") no-repeat scroll -114px -410px transparent;
+}
+
+.menu-item-add-instituicoes a {
+	padding: 30px 22px;
+	background: url("../../img/sprite.png") no-repeat scroll -174px -410px transparent;
+}
+
+.menu-item-busca-avancada a {
+	padding: 30px 22px;
+	background: url("../../img/sprite.png") no-repeat scroll -222px -410px transparent;
+}
+
+.menu-item-faq a {
+	padding: 30px 22px;
+	background: url("../../img/sprite.png") no-repeat scroll -276px -410px transparent;
+}
+
 #menu .default_menu_right {
     float: right;
     margin: 7px 0;
@@ -151,12 +191,12 @@ li {
     display: none;
 }
 #menu li {
-    display: inline;
+    /*display: inline;*/
 }
 #menu a {
-    display: block;
-    float: left;
-    padding:0 10px 0 0;
+    /*display: block;*/
+    /*float: left;*/
+    /*padding:0 10px 0 0;*/
     color:#FFFFFF;
     text-decoration:none;
 }

@@ -129,13 +129,36 @@ add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
  * Assembles menu and places before wrapper
  * @since 1.4
  */
+function rolopress_default_top_menu() {
+	$url = home_url();
+	echo "<div id=\"menu\"><div class=\"wrapper-menu\">";
+	echo "<ul id=\"menu-default-menu\" class=\"menu\">";
+	echo "<li id=\"menu-item\" class=\"menu-item-contatos\"><a href=\"".$url."/type/contact\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-instituicoes\"><a href=\"".$url."/type/company\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-add-contatos\"><a href=\"".$url."/add-contact\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-add-instituicoes\"><a href=\"".$url."/add-company\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-busca-avancada\"><a href=\"".$url."/busca-avancada\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-faq\"><a href=\"".$url."/perguntas-frequentes-faq\"></a></li>";
+	echo "</ul></div></div>";
+	
+	rolopress_default_top_menu_right(); // call function to create right side of menu.
+	echo "</div>";
+};
+add_action('rolopress_before_wrapper', 'rolopress_default_top_menu');
+
+/**
+ * Create default menu
+ *
+ * Assembles menu and places before wrapper
+ * @since 1.4
+ *
 function rolopress_default_top_menu() { 
 	echo "<div id=\"menu\"><div class=\"wrapper-menu\">";
 	wp_nav_menu( array( 'menu' => 'default-menu') ); // display menu built in Appearance > Menus
 	rolopress_default_top_menu_right(); // call function to create right side of menu.
 	echo "</div>";
 };
-add_action('rolopress_before_wrapper', 'rolopress_default_top_menu');
+add_action('rolopress_before_wrapper', 'rolopress_default_top_menu');*/
 
 
 /**
