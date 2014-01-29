@@ -139,10 +139,9 @@ function rolopress_default_top_menu() {
 	echo "<li id=\"menu-item\" class=\"menu-item-add-instituicoes\"><a href=\"".$url."/add-company\"></a></li>";
 	echo "<li id=\"menu-item\" class=\"menu-item-busca-avancada\"><a href=\"".$url."/busca-avancada\"></a></li>";
 	echo "<li id=\"menu-item\" class=\"menu-item-faq\"><a href=\"".$url."/perguntas-frequentes-faq\"></a></li>";
-	echo "</ul></div></div>";
-	
+	echo "</ul>";
 	rolopress_default_top_menu_right(); // call function to create right side of menu.
-	echo "</div>";
+	echo "</div></div>";
 };
 add_action('rolopress_before_wrapper', 'rolopress_default_top_menu');
 

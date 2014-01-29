@@ -153,9 +153,17 @@ li {
 	background: url("../../img/sprite.png") no-repeat scroll -13px -410px transparent;
 }
 
+.menu-item-contatos a:hover {
+	background-position: -13px -455px;
+}
+
 .menu-item-instituicoes a {
 	padding: 30px 22px;
 	background: url("../../img/sprite.png") no-repeat scroll -63px -410px transparent;
+}
+
+.menu-item-instituicoes a:hover {
+	background-position: -63px -455px;
 }
 
 .menu-item-add-contatos a {
@@ -163,9 +171,17 @@ li {
 	background: url("../../img/sprite.png") no-repeat scroll -114px -410px transparent;
 }
 
+.menu-item-add-contatos a:hover {
+	background-position: -114px -455px;
+}
+
 .menu-item-add-instituicoes a {
 	padding: 30px 22px;
 	background: url("../../img/sprite.png") no-repeat scroll -174px -410px transparent;
+}
+
+.menu-item-add-instituicoes a:hover {
+	background-position: -174px -455px;
 }
 
 .menu-item-busca-avancada a {
@@ -173,9 +189,17 @@ li {
 	background: url("../../img/sprite.png") no-repeat scroll -222px -410px transparent;
 }
 
+.menu-item-busca-avancada a:hover {
+	background-position: -222px -455px;
+}
+
 .menu-item-faq a {
 	padding: 30px 22px;
 	background: url("../../img/sprite.png") no-repeat scroll -276px -410px transparent;
+}
+
+.menu-item-faq a:hover {
+	background-position: -276px -455px;
 }
 
 #menu .default_menu_right {
