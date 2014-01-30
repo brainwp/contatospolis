@@ -154,7 +154,7 @@ li {
 }
 
 .menu-item-contatos a:hover {
-	background-position: -13px -455px;
+	background-position: -13px -456px;
 }
 
 .menu-item-instituicoes a {
@@ -163,7 +163,7 @@ li {
 }
 
 .menu-item-instituicoes a:hover {
-	background-position: -63px -455px;
+	background-position: -63px -456px;
 }
 
 .menu-item-add-contatos a {
@@ -172,16 +172,16 @@ li {
 }
 
 .menu-item-add-contatos a:hover {
-	background-position: -114px -455px;
+	background-position: -114px -456px;
 }
 
 .menu-item-add-instituicoes a {
 	padding: 30px 22px;
-	background: url("../../img/sprite.png") no-repeat scroll -174px -410px transparent;
+	background: url("../../img/sprite.png") no-repeat scroll -168px -410px transparent;
 }
 
 .menu-item-add-instituicoes a:hover {
-	background-position: -174px -455px;
+	background-position: -168px -456px;
 }
 
 .menu-item-busca-avancada a {
@@ -190,7 +190,7 @@ li {
 }
 
 .menu-item-busca-avancada a:hover {
-	background-position: -222px -455px;
+	background-position: -222px -456px;
 }
 
 .menu-item-faq a {
@@ -199,7 +199,7 @@ li {
 }
 
 .menu-item-faq a:hover {
-	background-position: -276px -455px;
+	background-position: -276px -456px;
 }
 
 #menu .default_menu_right {
