@@ -1133,3 +1133,8 @@ span.page-numbers.current {
 .taxonomias .children {
     display: none;
 }
+
+.invalid:after {
+    color: #FF0000;
+    content: " - valor inv\00e1lido, tente novamente";
+}

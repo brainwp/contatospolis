@@ -47,7 +47,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			savebutton_text		: "Salvar",
 			savebutton_class	: "jeip-savebutton",
 			cancelbutton_text	: "Cancelar",
-			cancelbutton_class	: "jeip-cancelbutton",
+			cancelbutton_class	: "jeip-cancelbutton",		
 
 			mouseover_class		: "jeip-mouseover",
 			editor_class		: "jeip-editor",
@@ -58,7 +58,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 			saving				: '<span id="saving-#{id}" class="#{saving_class}" style="display: none;">#{saving_text}</span>',
 
-			start_form			: '<span id="editor-#{id}" class="#{editor_class}" style="display: none;">',
+			start_form			: '<span id="editor-#{id}" class="#{editor_class} uniForm" style="display: none;">',
 			form_buttons		: '<span><input type="button" id="save-#{id}" class="#{savebutton_class}" value="#{savebutton_text}" /><input type="button" id="cancel-#{id}" class="#{cancelbutton_class}" value="#{cancelbutton_text}" /></span>',
 			stop_form			: '</span>',
 
@@ -67,6 +67,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			start_select_form	: '<select id="edit-#{id}" class="#{editfield_class}">',
 			select_option_form	: '<option id="edit-option-#{id}-#{option_value}" value="#{option_value}" #{selected}>#{option_text}</option>',
 			stop_select_form	: '</select>',
+			validate			: function( self ) {
+				return true;
+			},
 			before_save			: function( self ) {
 				return self;
 			},
@@ -262,6 +265,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				return true;
 			}
 
+			if( opt.validate != false ) {
+				valid = opt.validate( new_value );
+			}
+
+			if(valid === true) {
+
 			$( "#editor-" + self.id ).after( _template( opt.saving, {
 				id			: self.id,
 				saving_class: opt.saving_class,
@@ -290,42 +299,63 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				ajax_data = opt.before_save( ajax_data );
 			}
 
-	        $.post( 
-	            opt.save_url, { 
-	                action : opt.action,
-	                data   : ajax_data
-	            }, function( resp ) {
-	                    
-	                    var data = ajax_data;
-	                    
-	                    if(resp.status == 'sucesso') {
 
-	                    	$(self).removeClass('vazio');
-	                    	$(self).html(resp.value);
 
-	                    	$( "#editor-" + self.id ).fadeOut( "fast" );
-							$( "#editor-" + self.id ).detach();
+			
+		        $.post( 
+		            opt.save_url, { 
+		                action : opt.action,
+		                data   : ajax_data
+		            }, function( resp ) {
+		                    
+		                    var data = ajax_data;
+		                    
+		                    if(resp.status == 'sucesso') {
 
-							$( "#saving-" + self.id ).fadeOut( "fast" );
-							$( "#saving-" + self.id ).detach();
+		                    	$(self).removeClass('vazio');
+		                    	$(self).html(resp.value);
 
-							$( self ).bind( opt.edit_event, function( e ) {
-								_editMode( self );
-							} );
+		                    	$( "#editor-" + self.id ).fadeOut( "fast" );
+								$( "#editor-" + self.id ).detach();
 
-							$( self ).addClass( opt.mouseover_class );
-							$( self ).fadeIn( "fast" );
+								$( "#saving-" + self.id ).fadeOut( "fast" );
+								$( "#saving-" + self.id ).detach();
 
-							if( opt.after_save != false ) {
-								opt.after_save( self );
-							}
+								$( self ).bind( opt.edit_event, function( e ) {
+									_editMode( self );
+								} );
 
-							$( self ).removeClass( opt.mouseover_class );
-	                    } else {
-	                    	$( self ).html( resp.status );	
-	                    }
-            	}
-            );
+								$( self ).addClass( opt.mouseover_class );
+								$( self ).fadeIn( "fast" );
+
+								if( opt.after_save != false ) {
+									opt.after_save( self );
+								}
+
+								$( self ).removeClass( opt.mouseover_class );
+								$( self ).removeClass('invalid');
+		                    } else {
+		                    	$( self ).html( resp.status );	
+		                    }
+	            	}
+	            );
+			} else {
+				$( "#editor-" + self.id ).fadeOut( "fast" );
+				$( "#editor-" + self.id ).detach();
+
+				$( "#saving-" + self.id ).fadeOut( "fast" );
+				$( "#saving-" + self.id ).detach();
+
+				$( self ).bind( opt.edit_event, function( e ) {
+					_editMode( self );
+				} );
+
+				$( self ).addClass( opt.mouseover_class );
+				$( self ).fadeIn( "fast" );
+
+				$( self ).removeClass( opt.mouseover_class );
+				$( self ).addClass('invalid');
+			}
 			/*
 			$.ajax( {
 				url		: opt.save_url,

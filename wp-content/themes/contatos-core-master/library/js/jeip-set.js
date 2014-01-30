@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place - Contatos Polis
-    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil, #rolo_contact_telefone, #rolo_uf, #rolo_uf, #rolo_contact_company, #rolo_company_redes, #rolo_contact_telefone_alt').eip(ajax_url.ajaxurl, {
+    jQuery('.resposta').not('#rolo_company_legal, .rolo_conflito, .rolo_relacao, #rolo_company_others, #rolo_contact_others, #rolo_company_contato_facil, #rolo_contact_contato_facil, #rolo_contact_telefone, #rolo_uf, #rolo_uf, #rolo_contact_company, #rolo_company_redes, #rolo_contact_telefone_alt, #rolo_company_email, #rolo_contact_email, #rolo_company_website, #rolo_contact_website').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',
         data: ajax_url.postid,
         after_save: function(self) {
@@ -70,6 +70,32 @@ jQuery(document).ready(function() {
                         "Sim" : "Sim"
                 }
     });
+
+    jQuery('#rolo_company_email, #rolo_contact_email').eip(ajax_url.ajaxurl, {
+        action: 'rolo_ajax_edit_company',
+        data: ajax_url.postid,
+        validate: function (new_value) {
+            
+            if (new_value.match(/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });    
+
+    jQuery('#rolo_company_website, #rolo_contact_website').eip(ajax_url.ajaxurl, {
+        action: 'rolo_ajax_edit_company',
+        data: ajax_url.postid,
+        validate: function (new_value) {
+            
+            if (new_value.match(/^(http|https|ftp):\/\/(([A-Z0-9][A-Z0-9_\-]*)(\.[A-Z0-9][A-Z0-9_\-]*)+)(:(\d+))?\/?/i)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });        
 
     jQuery('#rolo_uf, #rolo_uf').eip(ajax_url.ajaxurl, {
         action: 'rolo_ajax_edit_company',

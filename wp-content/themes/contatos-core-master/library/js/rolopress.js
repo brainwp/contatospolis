@@ -74,7 +74,8 @@ jQuery(document).ready(function() {
     // Uniform
     jQuery('form.uniForm').uniform({
         prevent_submit : true,
-        valid_class : 'valid'
+        valid_class : 'valid',
+        validation_class : 'validateEmail'
     });
 
     // Hide all hidden elements
