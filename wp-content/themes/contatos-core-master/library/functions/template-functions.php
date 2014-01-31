@@ -441,13 +441,13 @@ function rolo_company_header($company_id) {
                 <span class="title_single_company"></span><span class="blue"><?php echo $company_name;?></span>
             </h2>
 
-            <div id="item-avatar" class="item-image <?php echo $enable; ?>"  data-overlayid="alterar-avatar">
-                <?php /* Company */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
-
-                        <div id="contenthover alterar-avatar">
-                                <span><?php _e('Change Image', 'rolopress'); ?></span>
-                        </div><!-- #alterar-avatar -->
-            </div><!-- .item-image -->
+		<div id="item-avatar" class="item-image <?php echo $enable; ?>"  data-overlayid="alterar-avatar">
+        <?php /* Contact */ echo rolo_get_avatar_image( $contact_id, 'avatar' ); ?>
+    
+        <div class="contenthover alterar-avatar">
+            <span><?php _e('Change Image', 'rolopress'); ?></span>
+        </div><!-- #alterar-avatar -->
+        </div><!-- .item-image -->
     
                     <div class="item-col-1 width-40 item-form">
 						<div class="cada-linha ano-alt">
@@ -614,7 +614,7 @@ function rolo_company_header($company_id) {
                             
                             <div class="cada-linha">
                                     <span class="title title-bloco-8 grey"><?php _e('The situation was equated?', 'rolopress'); ?></span>
-                                <span class="rolo_conflito resposta"><input type="checkbox" class="input_conflito" <?php echo $fim; ?>/> Sim</span>
+                                <span class="rolo_conflito resposta"><input type="checkbox" class="input_conflito" <?php echo $fim; ?>/> <?php _e('Yes', 'rolopress'); ?></span>
                             </div><!-- .cada-linha -->
                             
                             <div class="cada-linha">
@@ -634,7 +634,7 @@ function rolo_company_header($company_id) {
 								$out = 'out';
 								// $company_relacao = unserialize($company['rolo_relacao'][0]); 
 
-								$checked = ''; if($company['rolo_relacao_check'][0]) { $checked = 'checked="checked"'; $edit = 'editar'; $out = ''; }
+								$checked = ''; if($company['rolo_relacao_check'][0]) { $checked = 'checked="checked"'; $edit = __('Edit', 'rolopress'); $out = ''; }
 								$local = ''; if($company['rolo_relacao_local'][0]) { $local = $company['rolo_relacao_local'][0]; }
 								$apoio = ''; if($company['rolo_relacao_apoio'][0]) { $apoio = 'checked="checked"'; }
 								$conflito = ''; if($company['rolo_relacao_conflito'][0]) { $conflito = $company['rolo_relacao_conflito'][0]; }
