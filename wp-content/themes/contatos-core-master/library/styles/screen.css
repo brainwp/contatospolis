@@ -340,6 +340,7 @@ h2.page-title-light{
 
 .item-list > li {
     overflow: hidden;
+    position: relative;
 }
 
 .link-bloco {
@@ -348,6 +349,7 @@ h2.page-title-light{
 }
 
 .hentry {
+    position: relative;
 }
 
 .bloco {
@@ -1140,4 +1142,12 @@ span.page-numbers.current {
 .invalid:after {
     color: #FF0000;
     content: " - valor inv\00e1lido, tente novamente";
+}
+
+
+.list-link {
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
 }
