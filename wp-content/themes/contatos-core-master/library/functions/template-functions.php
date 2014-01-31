@@ -365,6 +365,9 @@ function rolo_company_header($company_id) {
                 return false;
         }
 
+        if($_POST['taxonomia'] && is_single())
+            rolo_update_modified_taxonomy( $_POST, $company_id );
+
     // $company = get_post_meta($company_id, 'rolo_company', true);
         $company = get_post_custom($company_id);
 

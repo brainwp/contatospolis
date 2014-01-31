@@ -22,6 +22,28 @@ function rolo_post_order($query) {
 	}
 }
 
+function rolo_update_modified_taxonomy( $tax, $id ) {
+
+	dump($tax);
+	dump($id);
+
+	if($tax['cat'] == -1)
+		$tax['cat'] = 0;
+
+	$exists = term_exists( $tax['nova'], $tax['taxonomia'], (int) $tax['cat'] );
+
+	if( $exists ) {
+		// Se o termo já existe naquela hierarquia, marca como pertencente ao ID
+		$set_object = wp_set_object_terms( $id, array( (int) $exists['term_id'] ), $tax['taxonomia'], true );
+	} else {
+		// Se o termo não existe naquela hierarquia, cria o termo, depois marca como pertencente ao ID
+		$new_term = wp_insert_term( $tax['nova'], $tax['taxonomia'], array( 'parent' => (int) $tax['cat'] ) );
+		$set_object = wp_set_object_terms( $id, array( (int) $new_term['term_id'] ), $tax['taxonomia'], true );
+	}
+
+	return;
+}
+
 function rolo_update_modified_date_on_meta_update( $meta_id ) {
 
 	$meta = get_post_meta_by_id( $meta_id );
