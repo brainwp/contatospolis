@@ -102,6 +102,7 @@ function rolo_search_filter_geral($query) {
 		$query->is_home = false;
 
 		$query->set('post_type', 'post');
+		$query->set('posts_per_page', -1); // sem paginação na busca
 	}
 
 	if($query->is_main_query() && $_POST['busca_publicos'] == 'geral') :
