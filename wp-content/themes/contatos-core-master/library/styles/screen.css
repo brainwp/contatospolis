@@ -458,7 +458,7 @@ td.contatos-item-form-td {
 }
 
 .save-contact-in-company {
-	background: url("../../img/sprite.png") no-repeat scroll -13px -292px transparent;
+	background: url("../../img/sprite.png") no-repeat scroll -17px -340px transparent;
 	padding: 12px;
 	color: rgb(154, 178, 202);
 	cursor: pointer;
@@ -469,7 +469,7 @@ td.contatos-item-form-td {
 }
 
 .save-contact-in-company:hover {
-	background-position: -13px -321px; /* Horizontal - Vertical */
+	background-position: -49px -340px; /* Horizontal - Vertical */
 }
 
 td.td-remove {
@@ -714,6 +714,13 @@ span#editor-rolo_company_telefone.jeip-editor {
     font-style: italic;
     margin-left: 20px;
     padding: 0 0 0 30px;
+}
+
+.box-telefone .jeip-saving {
+	width: 100%;
+	display: block;
+	clear: both;
+	margin: 5px 0 5px 20px;
 }
 
 .jeip-savebutton:hover {
@@ -1143,7 +1150,6 @@ span.page-numbers.current {
     color: #FF0000;
     content: " - valor inv\00e1lido, tente novamente";
 }
-
 
 .list-link {
     display: block;
