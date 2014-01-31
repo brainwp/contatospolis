@@ -533,7 +533,7 @@ function rolo_company_header($company_id) {
                     <hr>
                                     <?php rolo_company_members_list($company_id); ?>
                                 <hr>
-                
+                                        
                                         <div class="taxonomias item-form">
                                                 <div class="item-col-1 width-45">
                                                         <?php 
@@ -545,12 +545,23 @@ function rolo_company_header($company_id) {
                                                                 wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) );
                                                         echo '</ul>';
                                                         echo '</div>';
+
+                                                            echo '<form name="caracterizacao" action="" method="post" ><input type="text" name="nova" placeholder="Outro" value"" />';
+                                                                wp_dropdown_categories(array('taxonomy' => 'caracterizacao', 'hierarchical' => true, 'show_option_none' => 'Nenhuma Taxonomia Mãe' ));
+                                                            echo '<input type="hidden" name="taxonomia" value="caracterizacao" />';
+                                                            echo '<input type="submit" value="OK" /></form>';
+
                                                         echo '<div class="interesse">';
                                                         echo '<h3>'. _e('Areas of Interest', 'rolopress').'</h3>';
                                                         echo '<ul>';
                                                                 wp_terms_checklist( $company_id, array( 'taxonomy' => 'interesse', 'checked_ontop' => false ) );
                                                         echo '</ul>';
                                                         echo '</div>';
+
+                                                            echo '<form name="interesse" action="" method="post" ><input type="text" name="nova" placeholder="Outro" value"" />';
+                                                                wp_dropdown_categories(array('taxonomy' => 'interesse', 'hierarchical' => true, 'show_option_none' => 'Nenhuma Taxonomia Mãe' ));
+                                                            echo '<input type="hidden" name="taxonomia" value="interesse" />';
+                                                            echo '<input type="submit" value="OK" /></form>';
                                                         ?>
                                                 </div>
                                                 <div class="item-col-2">
@@ -561,12 +572,23 @@ function rolo_company_header($company_id) {
                                                                 wp_terms_checklist( $company_id, array( 'taxonomy' => 'abrangencia', 'checked_ontop' => false ) );
                                                         echo '</ul>';
                                                         echo '</div>';
+
+                                                            echo '<form name="abrangencia" action="" method="post" ><input type="text" name="nova" placeholder="Outro" value"" />';
+                                                                wp_dropdown_categories(array('taxonomy' => 'abrangencia', 'hierarchical' => true, 'show_option_none' => 'Nenhuma Taxonomia Mãe' ));
+                                                            echo '<input type="hidden" name="taxonomia" value="abrangencia" />';
+                                                            echo '<input type="submit" value="OK" /></form>';
+
                                                         echo '<div class="participacao">';
                                                         echo '<h3>'. _e('Spaces of Participation', 'rolopress').'</h3>';
                                                         echo '<ul>';
                                                                 wp_terms_checklist( $company_id, array( 'taxonomy' => 'participacao', 'checked_ontop' => false ) );
                                                         echo '</ul>';
                                                         echo '</div>';
+
+                                                            echo '<form name="participacao" action="" method="post" ><input type="text" name="nova" placeholder="Outro" value"" />';
+                                                                wp_dropdown_categories(array('taxonomy' => 'participacao', 'hierarchical' => true, 'show_option_none' => 'Nenhuma Taxonomia Mãe' ));
+                                                            echo '<input type="hidden" name="taxonomia" value="participacao" />';
+                                                            echo '<input type="submit" value="OK" /></form>';                                                        
                                                         ?>
                                                 </div>
                                         </div>
