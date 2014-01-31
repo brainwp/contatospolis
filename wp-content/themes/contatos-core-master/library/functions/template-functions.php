@@ -81,15 +81,38 @@ function rolo_contact_header($contact_id) {
 
         $contact_uf = $contact['rolo_uf'][0];
 
-        $contact_redes = unserialize($contact['rolo_contact_redes'][0]);
+        $contact_redes_fb = $contact['rolo_contact_redes_fb'][0];
+        $contact_redes_tw = $contact['rolo_contact_redes_tw'][0];
+        $contact_redes_in = $contact['rolo_contact_redes_in'][0];
+        $contact_redes_out = $contact['rolo_contact_redes_out'][0];
 
-        if($contact_redes) {
-                foreach ($contact_redes as $key => $value) {
-                        if($value) {
-                                $redes .= $key . '.com/' . $value;
-                        }
-                }        
+        if(is_single()) {
+            if(!$contact_redes_fb)
+                $contact_redes_fb = 'Link para Facebook';
+            if(!$contact_redes_tw)
+                $contact_redes_tw = 'Link para Twitter';
+            if(!$contact_redes_in)
+                $contact_redes_in = 'Link para LinkedIn';
+            if(!$contact_redes_out)
+                $contact_redes_out = 'Link para Outra Rede';    
         }
+        
+        if(!is_single()) {
+            $redes  = ($contact_redes_fb ? '<span id="rolo_contact_redes_fb" class="resposta resposta-redes">'.$contact_redes_fb.'</span>' : '');
+            $redes .= ($contact_redes_tw ? '<span id="rolo_contact_redes_tw" class="resposta resposta-redes">'.$contact_redes_tw.'</span>' : '');
+            $redes .= ($contact_redes_in ? '<span id="rolo_contact_redes_in" class="resposta resposta-redes">'.$contact_redes_in.'</span>' : '');
+            $redes .= ($contact_redes_out ? '<span id="rolo_contact_redes_out" class="resposta resposta-redes">'.$contact_redes_out.'</span>' : '');
+            
+            if(!$redes)
+                $redes = '<span id="rolo_contact_redes" class="resposta vazio"></span>';
+        } else {
+            $redes  = '<span id="rolo_contact_redes_fb" class="resposta resposta-redes">'.$contact_redes_fb.'</span>';
+            $redes .= '<span id="rolo_contact_redes_tw" class="resposta resposta-redes">'.$contact_redes_tw.'</span>';
+            $redes .= '<span id="rolo_contact_redes_in" class="resposta resposta-redes">'.$contact_redes_in.'</span>';
+            $redes .= '<span id="rolo_contact_redes_out" class="resposta resposta-redes">'.$contact_redes_out.'</span>';
+        }
+
+        
 
         $contact_tel = $contact['rolo_contact_telefone'][0];
         $contact_tel_alt = $contact['rolo_contact_telefone_alt'][0];
@@ -228,7 +251,7 @@ function rolo_contact_header($contact_id) {
                 
         <div class="cada-linha redes">
             <span class="title title-bloco-4"><?php _e('Social Networks ', 'rolopress'); ?></span>
-            <span id="rolo_contact_redes" class="resposta <?php echo ($redes ? '' : 'vazio'); ?>"><?php echo $redes; ?></span>
+            <div class="box-redes"><?php echo $redes; ?></div>
         </div><!-- .cada-linha -->
         
         <div class="cada-linha contato">
