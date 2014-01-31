@@ -221,6 +221,7 @@ function rolo_contact_header($contact_id) {
 			<div class="cada-linha website url-field group">
 			   <span class="title title-bloco-4"><?php _e('Website ', 'rolopress'); ?></span>
 			   <span id="rolo_contact_website" class="resposta <?php echo ($contact_website ? '' : 'vazio'); ?>"><?php echo $contact_website; ?></span>
+               <div class="ajuda-in" title="Adicione o endereço completo, com o http:// e o retante do endereço."></div>
 			</div><!-- .cada-linha -->
 				   
 			<?php endif; ?>
@@ -509,6 +510,7 @@ function rolo_company_header($company_id) {
 					<div class="website url-field group">
 						<span class="title title-bloco-2 grey"><?php _e('Website ', 'rolopress'); ?></span>
 						<span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><?php echo $company_website; ?></span>
+                        <div class="ajuda-in" title="Adicione o endereço completo, com o http:// e o retante do endereço."></div>
 					</div>
 				</div><!-- .cada-linha -->
 
@@ -794,6 +796,7 @@ function rolo_company_header_list($company_id) {
 					<div class="cada-linha">
 						<div class="website url-field group">
 							<span class="title title-bloco-1 grey"><?php _e('Website ', 'rolopress'); ?></span><span id="rolo_company_website" class="resposta <?php echo ($company_website ? '' : 'vazio'); ?>"><a class="url" href="http://<?php echo $company_website; ?>"><?php echo $company_website; ?></a></span>
+                            <div class="ajuda-in" title="Adicione o endereço completo, com o http:// e o retante do endereço."></div>
 						</div>
 					</div><!-- .cada-linha -->
 
