@@ -103,7 +103,7 @@ function rolo_ajax_delete() {
 		}
 	}
 
-	$response = array('status' => $ok);
+	$response = array('status' => $ok, 'affected' => $ids);
 
 	header( "Content-Type: application/json" );
 	echo json_encode($response);

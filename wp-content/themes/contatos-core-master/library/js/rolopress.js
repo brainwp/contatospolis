@@ -570,13 +570,15 @@ jQuery(document).ready(function() {
 
                     if (resp.status == 'ok') {
                         alert('Registros excluidos com sucesso');
+
+                        for(i=0;i<resp.affected.length;i++) {
+                            jQuery('#entry-'+resp.affected[i]).parent('li').detach();
+                        }
+
                     };
                 })  
 
         }
-
-        // console.log(group);
-        // console.log(names);
 
     });
 	
