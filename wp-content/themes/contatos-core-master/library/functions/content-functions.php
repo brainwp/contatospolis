@@ -24,9 +24,6 @@ function rolo_post_order($query) {
 
 function rolo_update_modified_taxonomy( $tax, $id ) {
 
-	dump($tax);
-	dump($id);
-
 	if($tax['cat'] == -1)
 		$tax['cat'] = 0;
 
