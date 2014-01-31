@@ -30,7 +30,6 @@ jQuery(document).ready(function($){
         }
     });
 
-
   jQuery('.item-image.enabled').on('click', function(e) {
     var send_attachment_bkp = wp.media.editor.send.attachment;
     var button = jQuery(this);
@@ -544,5 +543,41 @@ jQuery(document).ready(function() {
 			position: 'top-right',
 		});
 	});
+
+
+    // Group delete posts
+    jQuery('#group-del').on('click', function() {
+
+        var checks = jQuery('li input:checked');
+        var group = [];
+        var names = [];
+
+        jQuery.each(checks, function(e,i) {
+
+            group.push(jQuery(this).val());
+            names.push(jQuery(this).attr('rel'));
+
+        });
+
+
+        if( confirm('Tem certeza que deseja excluir \n'+names.join(', ')+'?') ) {
+
+            jQuery.post( 
+                ajax_url.ajaxurl, { 
+                    action : 'rolo_ajax_delete',
+                    data   : group.join(','),
+                }, function( resp ) {
+
+                    if (resp.status == 'ok') {
+                        alert('Registros excluidos com sucesso');
+                    };
+                })  
+
+        }
+
+        // console.log(group);
+        // console.log(names);
+
+    });
 	
 });

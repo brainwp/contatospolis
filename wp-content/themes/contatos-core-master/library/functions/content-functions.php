@@ -87,6 +87,30 @@ function rolo_get_avatar_image( $avatar_id, $size = array(120,120) ) {
 	return $image;
 }
 
+add_action( 'wp_ajax_nopriv_rolo_ajax_delete', 'rolo_ajax_delete' );
+add_action( 'wp_ajax_rolo_ajax_delete', 'rolo_ajax_delete' );
+
+function rolo_ajax_delete() {
+
+	$ids = explode(',', $_POST['data']);
+	$ok = 'ok';
+
+	foreach ($ids as $i) {
+		$test = wp_delete_post( $i, false );
+
+		if(!$test) {
+			$ok = 'Ocorreu um erro';
+		}
+	}
+
+	$response = array('status' => $ok);
+
+	header( "Content-Type: application/json" );
+	echo json_encode($response);
+	exit;
+
+}
+
 add_action( 'wp_ajax_nopriv_rolo_ajax_edit_thumbnail', 'rolo_ajax_edit_thumbnail' );
 add_action( 'wp_ajax_rolo_ajax_edit_thumbnail', 'rolo_ajax_edit_thumbnail' );
 
@@ -615,13 +639,15 @@ return $query;
  */
 function rolo_loop() { ?>
 <?php if (!is_single() ) { // This class is not needed on single pages ?>
+<?php echo (is_search() ? '<input id="group-del" type="button" value="Excluir Selecionados" />' : ''); ?>
 <ul class="item-list">
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <li>
-	
+	<?php echo (is_search() ? '<input type="checkbox" name="multiple[]" rel="'.get_the_title().'" value="'.get_the_ID().'" />' : ''); ?>
 	<div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 		<?php echo (is_single() ? '' : '<a class="list-link" href="'.get_permalink().'"></a>'); ?>
+
 		<?php rolopress_before_entry(); // Before entry hook ?>
 
 				<div class="entry-main group">
