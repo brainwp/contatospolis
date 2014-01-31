@@ -544,13 +544,6 @@ function rolo_company_header($company_id) {
                                                         echo '<ul>';
                                                                 wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) );
                                                         echo '</ul>';
-                                                        echo '<h4>'. _e('Institutional Characterization - Other', 'rolopress').'</h4>';
-                                                                foreach ( get_the_terms( $company_id, 'caracterizacao-outros' ) as $t ) {
-                                                                    $ts[] = $t->name;
-                                                                }
-                                                                echo "<div class='cada-linha'><span id='rolo_company_caracterizacao-outros' class='resposta '".($company_website ? '' : 'vazio')."'>".join(', ', $ts)."</span></div>";
-                                                                // echo 
-                                                                // get_the_terms( $post, $taxonomy );
                                                         echo '</div>';
                                                         echo '<div class="interesse">';
                                                         echo '<h3>'. _e('Areas of Interest', 'rolopress').'</h3>';
