@@ -623,13 +623,16 @@ td.td-remove {
 
 .resposta-redes {
 	float: left;
-	/*width: 250px;*/
+	width: 100%;
 	clear: both;
+	margin: 0 0 10px 0;
 }
 
 .box-redes {
-	overflow: hidden;
-	width: 80%;
+    float: left;
+    margin-left: 15px;
+    overflow: hidden;
+    width: 70%;
 }
 
 .resposta-uf {

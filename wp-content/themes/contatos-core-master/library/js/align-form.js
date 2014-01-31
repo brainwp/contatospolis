@@ -47,6 +47,13 @@ jQuery(function() {
             max7 = jQuery(this).width();   
     });
     jQuery('.title-bloco-7').width(max7);
+	
+	var max8 = 0;
+	jQuery('.title-bloco-8').each(function(){
+        if (jQuery(this).width() > max8)
+            max7 = jQuery(this).width();   
+    });
+    jQuery('.title-bloco-8').width(max7);
 });
 
 jQuery(window).load(function() {
