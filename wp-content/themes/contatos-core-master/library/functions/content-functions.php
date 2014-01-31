@@ -600,12 +600,13 @@ function rolo_loop() { ?>
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <li>
-
+	
 	<div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
-		
+		<?php echo (is_single() ? '' : '<a class="list-link" href="'.get_permalink().'"></a>'); ?>
 		<?php rolopress_before_entry(); // Before entry hook ?>
 
 				<div class="entry-main group">
+
 				<?php 
 					
 					if (is_archive() || is_home()) { 
@@ -678,10 +679,11 @@ function rolo_loop() { ?>
 				<?php // rolo_entry_footer(); ?>
 
 				<?php rolopress_after_entry(); // After entry hook ?>
-				
+	
 	</div><!-- #entry-<?php the_ID(); ?> -->
-	<?php endwhile; ?>
 
+	<?php endwhile; ?>
+	
 </li>
 
 <?php if (!is_single() ) { // not needed on single pages ?>
