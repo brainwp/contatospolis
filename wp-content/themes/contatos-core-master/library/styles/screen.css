@@ -1115,7 +1115,7 @@ span.page-numbers.current {
 }
 
 .taxonomias .parent span {
-    background: url("../../img/sprite.png") no-repeat scroll -48px -226px rgba(0, 0, 0, 0);
+    background: url("../../img/sprite.png") no-repeat scroll -67px -308px rgba(0, 0, 0, 0);
     cursor: pointer;
     display: block;
     height: 26px;
@@ -1125,13 +1125,13 @@ span.page-numbers.current {
 }
 
 .taxonomias .parent span:hover {
-    background: url("../../img/sprite.png") no-repeat scroll -48px -252px rgba(0, 0, 0, 0);
+    background: url("../../img/sprite.png") no-repeat scroll -67px -280px rgba(0, 0, 0, 0);
 }
 .taxonomias .parent span.open {
-    background: url("../../img/sprite.png") no-repeat scroll -13px -226px rgba(0, 0, 0, 0);
+    background: url("../../img/sprite.png") no-repeat scroll -13px -280px rgba(0, 0, 0, 0);
 }
 .taxonomias .parent span.open:hover {
-    background: url("../../img/sprite.png") no-repeat scroll -13px -252px rgba(0, 0, 0, 0);
+    background: url("../../img/sprite.png") no-repeat scroll -13px -280px rgba(0, 0, 0, 0);
 }
 .taxonomias .children {
     display: none;
