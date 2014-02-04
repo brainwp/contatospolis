@@ -576,7 +576,7 @@ function rolo_company_header($company_id) {
                                                         echo '</div>';
 
                                                             echo '<form class="form-outros" name="caracterizacao" action="" method="post" ><input class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
-                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'caracterizacao', 'hierarchical' => true, 'show_option_none' => 'Nenhuma Taxonomia Mãe' ));
+                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'caracterizacao', 'hierarchical' => true, 'show_option_none' => 'Sem Categoria Mãe' ));
                                                             echo '<input type="hidden" name="taxonomia" value="caracterizacao" />';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
 
@@ -588,7 +588,7 @@ function rolo_company_header($company_id) {
                                                         echo '</div>';
 
                                                             echo '<form class="form-outros" name="interesse" action="" method="post" ><input class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
-                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'interesse', 'hierarchical' => true, 'show_option_none' => 'Nenhuma Taxonomia Mãe' ));
+                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'interesse', 'hierarchical' => true, 'show_option_none' => 'Sem Categoria Mãe' ));
                                                             echo '<input type="hidden" name="taxonomia" value="interesse" />';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
                                                         ?>
@@ -603,7 +603,7 @@ function rolo_company_header($company_id) {
                                                         echo '</div>';
 
                                                             echo '<form class="form-outros" name="abrangencia" action="" method="post" ><input class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
-                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'abrangencia', 'hierarchical' => true, 'show_option_none' => 'Nenhuma Taxonomia Mãe' ));
+                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'abrangencia', 'hierarchical' => true, 'show_option_none' => 'Sem Categoria Mãe' ));
                                                             echo '<input type="hidden" name="taxonomia" value="abrangencia" />';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
 
@@ -615,7 +615,7 @@ function rolo_company_header($company_id) {
                                                         echo '</div>';
 
                                                             echo '<form class="form-outros" name="participacao" action="" method="post" ><input class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
-                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'participacao', 'hierarchical' => true, 'show_option_none' => 'Nenhuma Categoria Mãe' ));
+                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'participacao', 'hierarchical' => true, 'show_option_none' => 'Sem Categoria Mãe' ));
                                                             echo '<input type="hidden" name="taxonomia" value="participacao" />';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';                                                        
                                                         ?>
