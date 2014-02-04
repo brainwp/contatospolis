@@ -413,6 +413,35 @@ h2.page-title-light{
     font-size: 15px;
 }
 
+.form-outros {
+	overflow: hidden;
+	margin: 0 0 40px 0;
+}
+
+.input-outros {
+    padding: 7px 12px;
+    background: #FFF;
+    border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #444;
+    font-size: 15px;
+	margin-left: 42px;
+}
+
+.select-outros {
+    background: #FFF;
+    border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #444;
+    font-size: 14px;
+	margin: 1px 0 0 5px;
+	padding: 7px 5px;
+}
+
 .cada-linha textarea p {
 }
 
@@ -592,6 +621,23 @@ td.td-remove {
 
 .botao-edit:hover {
 	background-position: -285px -139px;
+	color: #FFF;
+}
+
+.botao-ok {
+	background: url("../../img/sprite.png") no-repeat scroll -286px -290px #023f7b;
+	padding: 10px 10px 10px 35px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin: 5px 0 0 42px;
+}
+
+.botao-ok:hover {
+	background-position: -286px -320px;
 	color: #FFF;
 }
 
