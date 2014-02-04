@@ -322,6 +322,19 @@ h2.title_single {
     font-weight: normal;    
 }
 
+.div-deleta {
+	float: left;
+    height: 20px;
+    margin: 9px 10px 0 0;
+    position: relative;
+    width: 22px;
+}
+
+.deleta {
+	position: absolute;
+	cursor: pointer;
+}
+
 .title_single_contact {
 	background: url("../../img/sprite.png") no-repeat scroll 4px -111px transparent;
 	padding-left: 45px;
@@ -579,6 +592,23 @@ td.td-remove {
 
 .botao-edit:hover {
 	background-position: -285px -139px;
+	color: #FFF;
+}
+
+.botao-deletar {
+	background: url("../../img/sprite.png") no-repeat scroll -285px -190px #023f7b;
+	padding: 20px 20px 20px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin: 10px 20px 20px 30px;
+}
+
+.botao-deletar:hover {
+	background-position: -285px -239px;
 	color: #FFF;
 }
 

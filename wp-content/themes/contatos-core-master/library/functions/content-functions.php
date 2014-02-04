@@ -639,12 +639,12 @@ return $query;
  */
 function rolo_loop() { ?>
 <?php if (!is_single() ) { // This class is not needed on single pages ?>
-<?php echo (is_search() ? '<input id="group-del" type="button" value="Excluir Selecionados" />' : ''); ?>
+<?php echo (is_search() ? '<input class="botao-deletar" id="group-del" type="button" value="Excluir Selecionados" />' : ''); ?>
 <ul class="item-list">
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <li>
-	<?php echo (is_search() ? '<input type="checkbox" name="multiple[]" rel="'.get_the_title().'" value="'.get_the_ID().'" />' : ''); ?>
+	
 	<div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 		<?php echo (is_single() ? '' : '<a class="list-link" href="'.get_permalink().'"></a>'); ?>
 

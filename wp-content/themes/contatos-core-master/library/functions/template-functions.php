@@ -145,6 +145,7 @@ function rolo_contact_header($contact_id) {
 
     <div class="bloco card-<?php echo basename( get_permalink() );?>">
     <h2 class="title_single">
+    <?php echo (is_search() ? '<div class="div-deleta"><input class="deleta" type="checkbox" name="multiple[]" rel="'.get_the_title().'" value="'.get_the_ID().'" /></div>' : ''); ?>
         <span class="title_single_contact"></span>
         <?php if ( is_single() ) : ?>
 			<span class="blue"><?php echo $contact_name;?></span>
@@ -813,6 +814,7 @@ function rolo_company_header_list($company_id) {
             <div id="hcard-<?php echo basename(get_permalink());?>" class="bloco item-header">
 
 				<h2 class="title_single">
+					<?php echo (is_search() ? '<div class="div-deleta"><input class="deleta" type="checkbox" name="multiple[]" rel="'.get_the_title().'" value="'.get_the_ID().'" /></div>' : ''); ?>
 					<span class="title_single_company"></span><a class="fn blue" href="<?php the_permalink();?>"><?php echo $company_name;?></a>
 				</h2>
 
