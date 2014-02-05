@@ -583,3 +583,13 @@ jQuery(document).ready(function() {
     });
 	
 });
+
+function verificar(form){
+	with (form) {
+		if ( outro.value ==""){
+		alert("Preencha o campo para poder salvá-lo.");
+		outro.focus();
+		return false;
+		}
+	}
+}

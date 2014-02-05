@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Contatos Polis\n"
 "POT-Creation-Date: 2014-01-30 22:22-0300\n"
-"PO-Revision-Date: 2014-01-31 19:50-0300\n"
+"PO-Revision-Date: 2014-02-04 18:37-0300\n"
 "Last-Translator: Diego Rojas <diego@brasa.art.br>\n"
 "Language-Team: brasa.art.br <contato@brasa.art.br>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: __;_e;_ngettext;_n;_n_ngettext_noop;_n_noop;_x;_nx;"
 "_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;"
 "esc_html_x;_c;_nc\n"
@@ -45,9 +45,8 @@ msgid "* Nome (Razão Social)"
 msgstr "* Nome (Razão Social)"
 
 #: ../company-add.php:45 ../contact-add.php:48
-#, fuzzy
 msgid "* E-mail"
-msgstr "Email"
+msgstr "* E-mail"
 
 #: ../company-add.php:51
 msgid "* Cidade"
@@ -536,9 +535,8 @@ msgstr "Cooperativa de coletores de papel"
 #: ../library/setup/setup-fields.php:470 ../library/setup/setup-fields.php:485
 #: ../library/setup/setup-fields.php:504 ../library/setup/setup-fields.php:514
 #: ../library/setup/setup-fields.php:529
-#, fuzzy
 msgid "Others"
-msgstr "Outro"
+msgstr "Outros"
 
 #: ../library/setup/setup-fields.php:430
 msgid "Workers Represented"
@@ -627,9 +625,8 @@ msgid "Businessmen"
 msgstr "Empresário"
 
 #: ../library/setup/setup-fields.php:514
-#, fuzzy
 msgid "Forum"
-msgstr "Fóruns"
+msgstr "Fórum"
 
 #: ../library/setup/setup-fields.php:514 ../library/setup/setup-fields.php:529
 msgid "Comitee"
@@ -1275,69 +1272,63 @@ msgstr "Mudar imagem"
 
 #: ../library/functions/template-functions.php:153
 msgid "City of Residence "
-msgstr "Cidade que reside"
+msgstr "Cidade que Reside"
 
 #: ../library/functions/template-functions.php:158
 #: ../library/functions/template-functions.php:496
-#, fuzzy
 msgid "State "
-msgstr "Estado"
+msgstr "Estado "
 
 #: ../library/functions/template-functions.php:163
 msgid "Company that Operates "
-msgstr "Instituição Operante"
+msgstr "Instituição que Atua "
 
 #: ../library/functions/template-functions.php:168
 msgid "Role "
-msgstr "Papel"
+msgstr "Cargo "
 
 #: ../library/functions/template-functions.php:173
 #: ../library/functions/template-functions.php:463
 #: ../library/functions/template-functions.php:807
 msgid "Observation "
-msgstr "Observação"
+msgstr "Observação "
 
 #: ../library/functions/template-functions.php:180
 #: ../library/functions/template-functions.php:467
-#, fuzzy
 msgid "Date of Information "
-msgstr "Formato da Data:"
+msgstr "Data da Informação "
 
 #: ../library/functions/template-functions.php:186
 #: ../library/functions/template-functions.php:473
 msgid "Asked Source "
-msgstr "Fonte"
+msgstr "Fonte de Consulta"
 
 #: ../library/functions/template-functions.php:191
 msgid "Political Positioning "
-msgstr "Posição Política"
+msgstr "Posição Política "
 
 #: ../library/functions/template-functions.php:202
 #: ../library/functions/template-functions.php:481
 #: ../library/functions/template-functions.php:776
-#, fuzzy
 msgid "E-mail "
-msgstr "Email"
+msgstr "Email "
 
 #: ../library/functions/template-functions.php:207
 #: ../library/functions/template-functions.php:486
 #: ../library/functions/template-functions.php:782
-#, fuzzy
 msgid "Address "
-msgstr "Endereço"
+msgstr "Endereço "
 
 #: ../library/functions/template-functions.php:212
 #: ../library/functions/template-functions.php:787
-#, fuzzy
 msgid "Phones "
-msgstr "Telefone"
+msgstr "Telefones "
 
 #: ../library/functions/template-functions.php:222
 #: ../library/functions/template-functions.php:510
 #: ../library/functions/template-functions.php:796
-#, fuzzy
 msgid "Website "
-msgstr "Website"
+msgstr "Website "
 
 #: ../library/functions/template-functions.php:229
 #: ../library/functions/template-functions.php:518
@@ -1381,14 +1372,12 @@ msgid "Legally Constituted? "
 msgstr "Legalmente constituído?"
 
 #: ../library/functions/template-functions.php:491
-#, fuzzy
 msgid "City "
-msgstr "Cidade"
+msgstr "Cidade "
 
 #: ../library/functions/template-functions.php:501
-#, fuzzy
 msgid "Phone "
-msgstr "Telefone"
+msgstr "Telefone "
 
 #: ../library/functions/template-functions.php:526
 msgid "Easiest way<br />to Contact "
@@ -1404,15 +1393,15 @@ msgstr "Áreas de Interesse"
 
 #: ../library/functions/template-functions.php:559
 msgid "Scope of Practice"
-msgstr "Âmbito de Prática"
+msgstr "Abrangência da Atuação"
 
 #: ../library/functions/template-functions.php:565
 msgid "Spaces of Participation"
-msgstr "Áreas de participação"
+msgstr "Espaços de Participação"
 
 #: ../library/functions/template-functions.php:576
 msgid "Social and Environmental Impacts"
-msgstr "Impacto social e ambiental"
+msgstr "Impactos Socioambientais"
 
 #: ../library/functions/template-functions.php:592
 msgid ""
@@ -1479,11 +1468,11 @@ msgstr "Easiest way<br />to contact "
 
 #: ../library/functions/template-functions.php:814
 msgid "Acting "
-msgstr "Atuação"
+msgstr "Atuação "
 
 #: ../library/functions/template-functions.php:819
 msgid "Interests "
-msgstr "Interesses"
+msgstr "Interesses "
 
 #: ../library/functions/template-functions.php:824
 msgid "Participation "
@@ -1503,7 +1492,7 @@ msgstr ""
 
 #: ../library/functions/template-functions.php:865
 msgid "Role"
-msgstr "Papel"
+msgstr "Cargo"
 
 #: ../library/functions/template-functions.php:867
 #, fuzzy
@@ -1512,12 +1501,11 @@ msgstr "Email"
 
 #: ../library/functions/template-functions.php:1213
 msgid "Page "
-msgstr "Página"
+msgstr "Página "
 
 #: ../library/functions/template-functions.php:1264
-#, fuzzy
 msgid "No categories"
-msgstr "Categorias"
+msgstr "Sem Categorias"
 
 #: ../library/functions/messages.php:21
 msgid "Sorry, you don't have permission to view this page."
@@ -1590,7 +1578,7 @@ msgstr "Perfil"
 
 #: ../library/functions/header-functions.php:186
 msgid "Hello "
-msgstr "Olá"
+msgstr "Olá "
 
 #: ../library/functions/company-functions.php:47
 #: ../library/functions/contact-functions.php:50
@@ -1656,9 +1644,8 @@ msgid "Add another"
 msgstr "Adicionar outra"
 
 #: ../library/functions/content-functions.php:331
-#, fuzzy
 msgid "Company "
-msgstr "Instituição"
+msgstr "Instituição "
 
 #: ../library/functions/content-functions.php:335
 msgid "Not Found"
@@ -1704,7 +1691,7 @@ msgstr "Também designado para %s"
 
 #: ../library/functions/content-functions.php:416
 msgid "Tagged: "
-msgstr ""
+msgstr "Tags: "
 
 #: ../library/functions/content-functions.php:427
 msgid "Write a Note"
