@@ -235,6 +235,10 @@ li {
     width: 30px;
 }
 
+#menu li.profile-user {
+	margin-right: 15px;
+}
+
 #menu li.icon-logout {
     background: url("../../img/sprite.png") no-repeat scroll -31px 5px transparent;
     height: 25px;
@@ -531,6 +535,10 @@ td.td-remove {
 
 .remove-contact-in-company:hover {
 	background-position: -14px -250px;
+}
+
+#editor-rolo_contact_company .ui-autocomplete-input {
+	margin-left: 0;
 }
 
 .ui-autocomplete-input {

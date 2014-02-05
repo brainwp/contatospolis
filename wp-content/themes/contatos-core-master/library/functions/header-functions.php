@@ -175,7 +175,7 @@ function rolopress_default_top_menu_right() { ?>
             <li class="icon-logout"></li>
             
             <?php if ( $user_level >= 1 ) : ?>
-                <li><a title="settings" href="<?php echo get_edit_user_link() ?>"><span><?php _e('Profile', 'rolopress') ?></span></a></li>
+                <li class="profile-user"><a title="settings" href="<?php echo get_edit_user_link() ?>"><span><?php _e('Profile', 'rolopress') ?></span></a></li>
 				<li class="icon-user"></li>
             <?php endif // $user_level >= 1 ?>
                                    
