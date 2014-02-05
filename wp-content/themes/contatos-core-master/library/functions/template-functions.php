@@ -607,6 +607,7 @@ function rolo_company_header($company_id) {
                                                             echo '<input type="hidden" name="taxonomia" value="abrangencia" />';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
 
+														// Espaços de Participação
                                                         echo '<div class="participacao">';
                                                         echo '<h3>'. _e('Spaces of Participation', 'rolopress').'</h3>';
                                                         echo '<ul>';
@@ -614,8 +615,8 @@ function rolo_company_header($company_id) {
                                                         echo '</ul>';
                                                         echo '</div>';
 
-                                                            echo '<form class="form-outros" name="participacao" action="" method="post" onsubmit="return verificar(this)"><input id="outro"  class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
-                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'participacao', 'hierarchical' => true, 'show_option_none' => 'Sem Categoria Mãe', 'depth' => 1 ));
+                                                            echo '<form class="form-outros" name="participacao" action="" method="post" onsubmit="return verificar(this)"><input id="outro"  class="input-outros" type="text" name="nova" placeholder="Especifique" value"" />';
+                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'participacao', 'hierarchical' => true, 'show_option_none' => 'Espaço de Participação', 'depth' => 1 ));
                                                             echo '<input type="hidden" name="taxonomia" value="participacao" />';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';                                                        
                                                         ?>
