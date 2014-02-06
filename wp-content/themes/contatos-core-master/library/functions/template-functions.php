@@ -576,8 +576,9 @@ function rolo_company_header($company_id) {
                                                         echo '</div>';
 
                                                             echo '<form class="form-outros" name="caracterizacao" action="" method="post" onsubmit="return verificar(this)"><input id="outro" class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
-                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'caracterizacao', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Sem Categoria Mãe', 'depth' => 1 ));
+                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'caracterizacao', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Escolha uma Opção', 'depth' => 1 ));
                                                             echo '<input type="hidden" name="taxonomia" value="caracterizacao" />';
+															echo '<div class="ajuda-in" title="Preencha esse campo caso os itens acima não contemplem sua categorização."></div>';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
 
                                                         echo '<div class="interesse">';
@@ -588,8 +589,9 @@ function rolo_company_header($company_id) {
                                                         echo '</div>';
 
                                                             echo '<form class="form-outros" name="interesse" action="" method="post" onsubmit="return verificar(this)"><input id="outro"  class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
-                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'interesse', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Sem Categoria Mãe', 'depth' => 1 ));
+                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'interesse', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Escolha uma Opção', 'depth' => 1 ));
                                                             echo '<input type="hidden" name="taxonomia" value="interesse" />';
+															echo '<div class="ajuda-in" title="Preencha esse campo caso os itens acima não contemplem sua categorização."></div>';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
                                                         ?>
                                                 </div>
@@ -603,8 +605,9 @@ function rolo_company_header($company_id) {
                                                         echo '</div>';
 
                                                             echo '<form class="form-outros" name="abrangencia" action="" method="post" onsubmit="return verificar(this)"><input id="outro"  class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
-                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'abrangencia', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Sem Categoria Mãe', 'depth' => 1));
+                                                                wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'abrangencia', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Escolha uma Opção', 'depth' => 1));
                                                             echo '<input type="hidden" name="taxonomia" value="abrangencia" />';
+															echo '<div class="ajuda-in" title="Preencha esse campo caso os itens acima não contemplem sua categorização."></div>';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
 
 														// Espaços de Participação
@@ -618,6 +621,7 @@ function rolo_company_header($company_id) {
                                                             echo '<form class="form-outros" name="participacao" action="" method="post" onsubmit="return verificar(this)"><input id="outro"  class="input-outros" type="text" name="nova" placeholder="Especifique" value"" />';
                                                                 wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'participacao', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Espaço de Participação', 'depth' => 1 ));
                                                             echo '<input type="hidden" name="taxonomia" value="participacao" />';
+															echo '<div class="ajuda-in" title="Especifique o Espaço de Participação."></div>';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';                                                        
                                                         ?>
                                                 </div>

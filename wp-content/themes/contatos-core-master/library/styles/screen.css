@@ -444,6 +444,7 @@ h2.page-title-light{
     font-size: 14px;
 	margin: 1px 0 0 5px;
 	padding: 7px 5px;
+	max-width: 260px;
 }
 
 .cada-linha textarea p {
