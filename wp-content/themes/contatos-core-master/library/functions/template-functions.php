@@ -215,7 +215,15 @@ function rolo_contact_header($contact_id) {
 				<span class="title title-bloco-1 grey"><?php _e('Political Positioning ', 'rolopress'); ?></span>
 				<span id="rolo_contact_party" class="resposta <?php echo ($contact_party ? '' : 'vazio'); ?>"><?php echo $contact_party; ?></span>
 			</div><!-- .cada-linha -->
-			
+
+    <!-- you can place the upload script into your theme folder or in a plugin -->
+    <form action="<?php echo get_template_directory_uri(); ?>/library/functions/upload.php" method="POST" enctype="multipart/form-data">
+    <input type="file" name="files[]" multiple>
+    <!-- The following hidden field contains the post id for which you will be uploading images to -->
+    <input type="hidden" name="post_id" value="100">
+    <input type="submit" class="btn" value="Start Upload »">
+    </form>
+			<?php echo $_SERVER['DOCUMENT_ROOT']; ?>
 		<?php endif; ?>        
     
     </div><!-- .item-col-1 -->
@@ -1400,5 +1408,6 @@ function rolo_list_taxonomies( $args = '' ) {
         else
                 return $output;
 }
+
 
 ?>
