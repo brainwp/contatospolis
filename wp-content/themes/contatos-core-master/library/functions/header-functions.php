@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Header Functions
  *
@@ -133,12 +133,12 @@ function rolopress_default_top_menu() {
 	$url = home_url();
 	echo "<div id=\"menu\"><div class=\"wrapper-menu\">";
 	echo "<ul id=\"menu-default-menu\" class=\"menu\">";
-	echo "<li id=\"menu-item\" class=\"menu-item-contatos\"><a href=\"".$url."/type/contact\"></a></li>";
-	echo "<li id=\"menu-item\" class=\"menu-item-instituicoes\"><a href=\"".$url."/type/company\"></a></li>";
-	echo "<li id=\"menu-item\" class=\"menu-item-add-contatos\"><a href=\"".$url."/add-contact\"></a></li>";
-	echo "<li id=\"menu-item\" class=\"menu-item-add-instituicoes\"><a href=\"".$url."/add-company\"></a></li>";
-	echo "<li id=\"menu-item\" class=\"menu-item-busca-avancada\"><a href=\"".$url."/busca-avancada\"></a></li>";
-	echo "<li id=\"menu-item\" class=\"menu-item-faq\"><a href=\"".$url."/perguntas-frequentes-faq\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-contatos\"><a class=\"menu-in\" title=\"Contatos\" href=\"".$url."/type/contact\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-instituicoes\"><a class=\"menu-in\" title=\"Instituições\" href=\"".$url."/type/company\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-add-contatos\"><a class=\"menu-in\" title=\"Adicionar Contato\" href=\"".$url."/add-contact\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-add-instituicoes\"><a class=\"menu-in\" title=\"Adicionar Instituição\" href=\"".$url."/add-company\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-busca-avancada\"><a class=\"menu-in\" title=\"Busca Avançada\" href=\"".$url."/busca-avancada\"></a></li>";
+	echo "<li id=\"menu-item\" class=\"menu-item-faq\"><a class=\"menu-in\" title=\"FAQ\" href=\"".$url."/perguntas-frequentes-faq\"></a></li>";
 	echo "</ul>";
 	rolopress_default_top_menu_right(); // call function to create right side of menu.
 	echo "</div></div>";

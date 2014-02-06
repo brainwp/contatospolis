@@ -545,6 +545,13 @@ jQuery(document).ready(function() {
 	});
 
 
+	jQuery(document).ready(function(){
+		jQuery('.menu-in').tooltipster( {
+			animation: 'fade',
+			position: 'bottom',
+		});
+	});
+
     // Group delete posts
     jQuery('#group-del').on('click', function() {
 
