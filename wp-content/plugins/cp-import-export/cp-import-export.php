@@ -13,9 +13,12 @@ Author URI: http://brasa.art.br/
 
 add_action( 'admin_menu', 'cp_create_plugin_page' );
 add_action( 'admin_enqueue_scripts', 'cp_enqueue_scripts' );
-add_action( 'admin_head', 'cp_check_post' );
+add_action( 'init', 'cp_check_post' );
 register_activation_hook( __FILE__, 'cp_activate_script' );
 // register_uninstall_hook( __FILE__, 'cp_uninstall_script' );
+
+//use SimpleExcel\SimpleExcel;
+//use SimpleExcel\Spreadsheet\Worksheet;
 
 function cp_activate_script() {
 
@@ -95,6 +98,7 @@ function cp_check_post() {
 
 	if($_POST['download']) {
 		cp_download_data($_POST);
+		// cp_make_excel();
 	} elseif($_POST['upload']) {
 		cp_upload_data($_POST, $_FILES);
 	} else {
@@ -137,36 +141,23 @@ function cp_download_data($tipo) {
 	if($tipo['conteudo'] == 'tudo')
 		$csv = "ID,Tipo,Nome,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contactar,Ano de Criação,Constituida legalmente?,Contatos,Caracterização institucional,Áreas de interesse,Abrangência de atuação,Espaços de participação,Impactos socioambientais,Relação com o projeto Litoral Sustentável,Instituição,Cargo,Posicionamento político,Data das informações,Observações\n";
 
-	$type = 'company';
-	$i = 0;
+	$csv = explode(',', $csv);
+	
+	$lines = array();
+	$lines[] = $csv;
 
 	foreach ($export_data as $data) {
-/*
-		if($company['rolo_company_name'][0] && $i == 0) {
 
-			$csv .= "Instituições\n";
-			$csv .= "ID,Nome,Ano de Criação,Constituida legalmente?,Observações,Data das informações,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contatar,Contatos,Caracterização institucional,Áreas de interesse,Abrangência de atuação,Espaços de participação,Impactos socioambientais,Relação com o projeto Litoral Sustentável\n";
-
-		} 
-		elseif($company['rolo_contact_name'][0] && !$flag) {		
-		
-			$csv .= "\n";
-			$csv .= "Contatos\n";
-			$csv .= "ID,Nome,Ano de Criação,Constituida legalmente?,Observações,Data das informações,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contatar,Contatos,Caracterização institucional,Áreas de interesse,Abrangência de atuação,Espaços de participação,Impactos socioambientais,Relação com o projeto Litoral Sustentável\n";			
-
-			$flag = true;			
-		}
-*/
 		// Dados iniciais
-		
-		$csv .= $data->ID . ',';
+		$csv = array();
+		$csv[] =  $data->ID . '';
 
 		if(has_term( 'company', 'type', $data ))
-			$csv .= 'Instituição,';
+			$csv[] =  'Instituição';
 		if(has_term( 'contact', 'type', $data ))
-			$csv .= 'Contato,';
+			$csv[] =  'Contato';
 
-		$csv .= $data->post_title . ',';
+		$csv[] =  $data->post_title . '';
 
 		if(has_term( 'company', 'type', $data )) :
 
@@ -174,28 +165,28 @@ function cp_download_data($tipo) {
 
 			$company = get_post_custom($data->ID);
 
-			$csv .= '"' . $company['rolo_company_email'][0] . '",';
-			$csv .= '"' . $company['rolo_company_endereco'][0] . '",';
-			$csv .= '"' . $company['rolo_city'][0] . '",';
-			$csv .= '"' . $company['rolo_uf'][0] . '",';
-			$csv .= '"' . $company['rolo_company_telefone'][0] . '",';
-			$csv .= '"' . $company['rolo_company_website'][0] . '",';
+			$csv[] =  '"' . $company['rolo_company_email'][0] . '"';
+			$csv[] =  '"' . $company['rolo_company_endereco'][0] . '"';
+			$csv[] =  '"' . $company['rolo_city'][0] . '"';
+			$csv[] =  '"' . $company['rolo_uf'][0] . '"';
+			$csv[] =  '"' . $company['rolo_company_telefone'][0] . '"';
+			$csv[] =  '"' . $company['rolo_company_website'][0] . '"';
 			$redes = unserialize( $company['rolo_company_redes'][0] );
 			if( is_array( $redes ) ) {
-				$csv .= '"' . implode( '; ', $redes ) . '",';
+				$csv[] =  '"' . implode( '; ', $redes ) . '"';
 			} else {
-				$csv .= ',';
+				$csv[] =  '';
 			}
-			$csv .= '"' . $company['rolo_company_contato_facil'][0] . '",';
+			$csv[] =  '"' . $company['rolo_company_contato_facil'][0] . '"';
 
-			$csv .= '"' . $company['rolo_company_year'][0] . '",';
-			$csv .= '"' . $company['rolo_company_legal'][0] . '",';
+			$csv[] =  '"' . $company['rolo_company_year'][0] . '"';
+			$csv[] =  '"' . $company['rolo_company_legal'][0] . '"';
 
 			$contatos = unserialize( $company['rolo_contatos'][0] );
 			if( is_array( $contatos ) ) {
-				$csv .= '"' . implode( '; ', $contatos ) . '",';
+				$csv[] =  '"' . implode( '; ', $contatos ) . '"';
 			} else {
-				$csv .= ',';
+				$csv[] =  '';
 			}
 
 			// Taxonomias
@@ -203,155 +194,159 @@ function cp_download_data($tipo) {
 			$car = get_the_terms( $data->ID, 'caracterizacao' );
 			if($car) {
 				foreach ($car as $c) { $cars[] .= $c->name; }
-				$csv .= '"' . implode('; ', $cars) . '",';
+				$csv[] =  '"' . implode('; ', $cars) . '"';
 			} else {
-				$csv .= ',';
+				$csv[] =  '';
 			}
 			
 			$abr = get_the_terms( $data->ID, 'abrangencia' );
 			if($abr) {
 				foreach ($abr as $c) { $abrs[] .= $c->name; }
-				$csv .= '"' . implode('; ', $abrs) . '",';
+				$csv[] =  '"' . implode('; ', $abrs) . '"';
 			} else {
-				$csv .= ',';
+				$csv[] =  '';
 			}
 
 			$int = get_the_terms( $data->ID, 'interesse' );
 			if($int) {
 				foreach ($int as $c) { $ints[] .= $c->name; }
-				$csv .= '"' . implode('; ', $ints) . '",';
+				$csv[] =  '"' . implode('; ', $ints) . '"';
 			} else {
-				$csv .= ',';
+				$csv[] =  '';
 			}
 
 			$par = get_the_terms( $data->ID, 'participacao' );
 			if($par) {
 				foreach ($par as $c) { $pars[] .= $c->name; }
-				$csv .= '"' . implode('; ', $pars) . '",';
+				$csv[] =  '"' . implode('; ', $pars) . '"';
 			} else {
-				$csv .= ',';
+				$csv[] =  '';
 			}
 
 			// Impactos Socioambientais
 			
-			$csv .= '"';
+			$csv[] =  '"';
 
 			if($company['rolo_conflito_check'][0]) {
-				$csv .= 'Está em situação de conflito; ';
+				$csv[] =  'Está em situação de conflito; ';
 			} else {
-				$csv .= 'Não está em situação de conflito; ';
+				$csv[] =  'Não está em situação de conflito; ';
 			}
 
 			if($company['rolo_conflito_projeto'][0])
-				$csv .= 'Projeto: ' . $company['rolo_conflito_projeto'][0] . '; ';
+				$csv[] =  'Projeto: ' . $company['rolo_conflito_projeto'][0] . '; ';
 
 			if($company['rolo_conflito_desde'][0])
-				$csv .= 'Desde: ' . $company['rolo_conflito_desde'][0] . '; ';
+				$csv[] =  'Desde: ' . $company['rolo_conflito_desde'][0] . '; ';
 
 			if($company['rolo_conflito_instancia'][0])
-				$csv .= 'Levado a alguma instância? ' . $company['rolo_conflito_instancia'][0] . '; ';
+				$csv[] =  'Levado a alguma instância? ' . $company['rolo_conflito_instancia'][0] . '; ';
 
 			if($company['rolo_conflito_equacionado'][0])
-				$csv .= 'Equacionado? ' . $company['rolo_conflito_equacionado'][0] . '; ';
+				$csv[] =  'Equacionado? ' . $company['rolo_conflito_equacionado'][0] . '; ';
 
 			if($company['rolo_conflito_observacoes'][0])
-				$csv .= 'Observações: ' . $company['rolo_conflito_observacoes'][0] . '; ';
+				$csv[] =  'Observações: ' . $company['rolo_conflito_observacoes'][0] . '; ';
 				
-			$csv .= '",';		
+			$csv[] =  '"';		
 
 			// Relação com o projeto
 			
-			$csv .= '"';
+			$csv[] =  '"';
 
 			if($company['rolo_relacao_check'][0]) {
-				$csv .= 'Participou de evento do projeto; ';
+				$csv[] =  'Participou de evento do projeto; ';
 			} else {
-				$csv .= 'Não participou de evento do projeto; ';
+				$csv[] =  'Não participou de evento do projeto; ';
 			}
 
 			if($company['rolo_relacao_local'][0])
-				$csv .= 'Local: ' . $company['rolo_relacao_local'][0] . '; ';
+				$csv[] =  'Local: ' . $company['rolo_relacao_local'][0] . '; ';
 
 			if($company['rolo_relacao_apoio'][0]) {
-				$csv .= 'Tem apoiado/divulgado o projeto; ';
+				$csv[] =  'Tem apoiado/divulgado o projeto; ';
 			} else {
-				$csv .= 'Não tem apoiado/divulgado o projeto; ';
+				$csv[] =  'Não tem apoiado/divulgado o projeto; ';
 			}
 
 			if($company['rolo_relacao_conflito'][0])
-				$csv .= 'Histórico de conflito: ' . $company['rolo_relacao_conflito'][0] . '; ';
+				$csv[] =  'Histórico de conflito: ' . $company['rolo_relacao_conflito'][0] . '; ';
 				
-			$csv .= '",';		
+			$csv[] =  '"';		
 
 			if($tipo['conteudo'] == 'tudo')
-				$csv .= '-,-,-,';
+				$csv[] =  '-,-,-';
 
 			// Data e observações
 			$company_update = $company['rolo_company_update'][0];
 				if(!$company_update) { $company_update = "Última edição em: " . date( 'd/m/Y', strtotime($data->post_modified) ); }
 
-			$csv .= '"' . $company_update . '",';
+			$csv[] =  '"' . $company_update . '"';
 
-			$csv .= '"' . $company['rolo_company_others'][0] . '",';
+			$csv[] =  '"' . $company['rolo_company_others'][0] . '"';
 
 			// Fim de linha
-		    $csv .= "\n";
-	    
+		    
+	    	$lines[] = $csv;
 
 	    elseif(has_term( 'contact', 'type', $data )) :
 		
 			$contact = get_post_custom($data->ID);
 
-			$csv .= '"' . $contact['rolo_contact_email'][0] . '",';
-			$csv .= '"' . $contact['rolo_contact_endereco'][0] . '",';
-			$csv .= '"' . $contact['rolo_city'][0] . '",';
-			$csv .= '"' . $contact['rolo_uf'][0] . '",';			
-			$csv .= '"' . $contact['rolo_contact_telefone'][0] . '",';
-			$csv .= '"' . $contact['rolo_contact_website'][0] . '",';
+			$csv[] =  '"' . $contact['rolo_contact_email'][0] . '"';
+			$csv[] =  '"' . $contact['rolo_contact_endereco'][0] . '"';
+			$csv[] =  '"' . $contact['rolo_city'][0] . '"';
+			$csv[] =  '"' . $contact['rolo_uf'][0] . '"';			
+			$csv[] =  '"' . $contact['rolo_contact_telefone'][0] . '"';
+			$csv[] =  '"' . $contact['rolo_contact_website'][0] . '"';
 
 			$redes = unserialize( $contact['rolo_contact_redes'][0] );
 			if( is_array( $redes ) ) {
-				$csv .= '"' . implode( '; ', $redes ) . '",';
+				$csv[] =  '"' . implode( '; ', $redes ) . '"';
 			} else {
-				$csv .= ',';
+				$csv[] =  '';
 			}
 			
-			$csv .= '"' . $contact['rolo_contact_contato_facil'][0] . '",';
+			$csv[] =  '"' . $contact['rolo_contact_contato_facil'][0] . '"';
 
 			if($tipo['conteudo'] == 'tudo')
-				$csv .= '-,-,-,-,-,-,-,-,-,';
+				$csv[] =  '-,-,-,-,-,-,-,-,-';
 
 			$cias = unserialize( $contact['rolo_contact_company'][0] );
 			if( is_array( $cias ) ) {
-				$csv .= '"' . implode( '; ', $cias ) . '",';
+				$csv[] =  '"' . implode( '; ', $cias ) . '"';
 			} else {
-				$csv .= ',';
+				$csv[] =  '';
 			}
 
 			
-			$csv .= '"' . $contact['rolo_contact_role'][0] . '",';
-			$csv .= '"' . $contact['rolo_contact_party'][0] . '",';
+			$csv[] =  '"' . $contact['rolo_contact_role'][0] . '"';
+			$csv[] =  '"' . $contact['rolo_contact_party'][0] . '"';
 
 			
 			
 			$contact_update = $contact['rolo_contact_update'][0];
 				if(!$contact_update) { $contact_update = "Última edição em: " . date( 'd/m/Y', strtotime($data->post_modified) ); }
 
-			$csv .= '"' . $contact_update . '",';
+			$csv[] =  '"' . $contact_update . '"';
 
-			$csv .= '"' . $contact['rolo_contact_others'][0] . '",';
+			$csv[] =  '"' . $contact['rolo_contact_others'][0] . '"';
 
-
-			$csv .= "\n";
+			$lines[] = $csv;
 
 	    endif;
-   
    		$i++;
-	}
-	
-	file_put_contents(WP_CONTENT_DIR . '/export/last_export.csv', $csv);
-    header('Location: '. WP_CONTENT_URL . '/export/last_export.csv');
+   	}
 
+   	// cp_make_excel();
+   	header('Content-type: text/csv');
+   	header("Content-Disposition: attachment;filename=".time().".csv");
+
+	$f  =   fopen('php://output', 'w');
+    foreach($lines as $l) {
+    	fputcsv($f, $l);
+    }
+    exit;
 }
 
 function cp_upload_data($data, $files) {
@@ -366,5 +361,135 @@ function cp_upload_data($data, $files) {
 	
 
 }
+
+
+function cp_make_excel($ids) {
+	
+	include(dirname( __FILE__ ) . '/PHPExcel.php');	
+
+	// Create new PHPExcel object
+	$objPHPExcel = new PHPExcel();
+
+	// Set document properties
+	$objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
+	->setLastModifiedBy("Maarten Balliauw")
+	->setTitle("Office 2007 XLSX Test Document")
+	->setSubject("Office 2007 XLSX Test Document")
+	->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
+	->setKeywords("office 2007 openxml php")
+	->setCategory("Test result file");
+
+	$export_data = get_posts(array(
+		'numberposts' => -1,
+		'post_type' => 'post',
+		'post_status' => 'publish',
+		'post__in' => explode(',', $ids)
+		/*,
+		 'tax_query' => array(
+			array(
+				'taxonomy' => 'type',
+				'field' => 'slug',
+				'terms' => $types,
+				)
+			)*/
+	));
+
+	if($tipo['conteudo'] == 'entidades') 
+		$cols = "ID,Tipo,Nome,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contactar,Ano de Criação,Constituida legalmente?,Contatos,Caracterização institucional,Áreas de interesse,Abrangência de atuação,Espaços de participação,Impactos socioambientais,Relação com o projeto Litoral Sustentável,Data das informações,Observações\n";
+	if($tipo['conteudo'] == 'contatos') 
+		$cols = "ID,Tipo,Nome,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contactar,Instituição,Cargo,Posicionamento político,Data das informações,Observações\n";
+	if($tipo['conteudo'] == 'tudo')
+		$cols = "ID,Tipo,Nome,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contactar,Ano de Criação,Constituida legalmente?,Contatos,Caracterização institucional,Áreas de interesse,Abrangência de atuação,Espaços de participação,Impactos socioambientais,Relação com o projeto Litoral Sustentável,Instituição,Cargo,Posicionamento político,Data das informações,Observações\n";
+
+	// $cols = "ID,Tipo,Nome,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contactar,Ano de Criação,Constituida legalmente?,Contatos,Caracterização institucional,Áreas de interesse,Abrangência de atuação,Espaços de participação,Impactos socioambientais,Relação com o projeto Litoral Sustentável,Instituição,Cargo,Posicionamento político,Data das informações,Observações\n";
+	
+	global $wpdb;
+
+	$cols = $wpdb->get_results("SELECT DISTINCT meta_key FROM {$wpdb->prefix}postmeta WHERE meta_key LIKE 'rolo_%'");
+
+	foreach ($cols as $val) {
+		$cols_array[] = $val->meta_key;
+	}
+
+	// $cols_array = explode(',', $v);
+
+	// Headers
+	for( $i=0; $i<count( $cols_array ); $i++ ) {
+		$colref = cp_ExcelColumnFromNumber( $i ); // Ref (ex.: A, B, AA, AB)
+		$colname = str_replace( 'rolo_', '', $cols_array[$i] ); // Strip prefix
+		$colname = ucwords( str_replace('_', ' ', $colname ) ); // Strip underlines and capitalize words
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue($colref.'1', $colname);
+	}
+
+	// Content
+	$line = 2;
+	for( $i=0; $i<count( $export_data ); $i++ ) {
+		
+		$colname = 'A';
+		$objPHPExcel->setActiveSheetIndex(0)->setCellValue($colname.$line, $export_data[$i]->post_name);
+		
+
+		$line++;
+	}
+
+
+	// Rename worksheet
+	$objPHPExcel->getActiveSheet()->setTitle('Contatos Polis');
+
+	// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+	$objPHPExcel->setActiveSheetIndex(0);
+
+
+	// Redirect output to a client’s web browser (Excel5)
+	header('Content-Type: application/vnd.ms-excel');
+	header('Content-Disposition: attachment;filename="'.time().'".xls');
+	header('Cache-Control: max-age=0');
+	// If you're serving to IE 9, then the following may be needed
+	header('Cache-Control: max-age=1');
+
+	// If you're serving to IE over SSL, then the following may be needed
+	header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+	header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+	header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+	header ('Pragma: public'); // HTTP/1.0
+
+	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+	$objWriter->save('php://output');
+	exit;
+
+}
+
+function cp_ExcelColumnFromNumber($num) {
+           
+    $numeric = $num % 26;
+    $letter = chr(65 + $numeric);
+    $num2 = intval($num / 26);
+    if ($num2 > 0) {
+        return cp_ExcelColumnFromNumber($num2 - 1) . $letter;
+    } else {
+        return $letter;
+    }
+
+}
+
+if($_GET['xls']) {
+	// var_dump($_GET['xls']);
+cp_make_excel($_GET['xls']);
+	// echo cp_ExcelColumnFromNumber(124);
+	// 
+	// $ids = explode(',', $_GET['xls']) {
+	/*
+	global $wpdb;
+
+	$q = $wpdb->get_results("SELECT DISTINCT meta_key FROM {$wpdb->prefix}postmeta WHERE meta_key LIKE 'rolo_%'");
+
+	foreach ($q as $val) {
+		$v[] = $val->meta_key;
+	}
+
+	var_dump($v);
+	*/
+}
+	
 
 ?>
