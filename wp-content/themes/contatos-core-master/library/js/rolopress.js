@@ -70,6 +70,13 @@ jQuery(document).ready(function($){
 
 // Auto set on page load...
 jQuery(document).ready(function() {
+
+    // Acesso
+    re = window.location.search;
+    if (re.toLowerCase().indexOf("erro_acesso") >= 0) {
+        alert('O sistema rejeitou seu acesso à seção '+jQuery.QueryString["sec"]+'. Se você acredita que isto é um erro, por favor entre em contato com o administrador do site.');
+    }
+
     // Uniform
     jQuery('form.uniForm').uniform({
         prevent_submit : true,
@@ -600,3 +607,19 @@ function verificar(form){
 		}
 	}
 }
+
+// Plugin URL Query Search
+// http://stackoverflow.com/a/3855394/1001109
+(function($) {
+    $.QueryString = (function(a) {
+        if (a == "") return {};
+        var b = {};
+        for (var i = 0; i < a.length; ++i)
+        {
+            var p=a[i].split('=');
+            if (p.length != 2) continue;
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+        }
+        return b;
+    })(window.location.search.substr(1).split('&'))
+})(jQuery);
