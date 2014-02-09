@@ -202,30 +202,41 @@ function rolo_ajax_edit_contacts() {
 	$mode = $_POST['mode'];
 
 	if($mode == 'add') {
+		// Registra na Entidade
 		$contatos = get_post_meta( $postid, 'rolo_contatos', true );
-		// $contatos = array();
-		
 		if(!in_array($vars, $contatos))
 			$contatos[] = $vars;
-
 		$meta = update_post_meta( $postid, 'rolo_contatos', $contatos );
+
+		// Registra no Contato
+		$meta = update_post_meta( $vars, 'rolo_contatos', $postid );
+
 		$status = 'ok';
 	} elseif($mode == 'remove') {
+		// Remove da Entidade
 		$contatos = get_post_meta( $postid, 'rolo_contatos', true );
-
 		$keys = array_keys($contatos, $vars);
 		foreach($keys as $k) {
 			unset($contatos[$k]);
 		}
-
 		$meta = update_post_meta( $postid, 'rolo_contatos', $contatos );
+
+		// Remove do Contato
+		$meta = update_post_meta( $vars, 'rolo_contatos', '' );
 		$status = 'ok';
 
 	} elseif($vars['id'] == 'rolo_contact_company') {
 		
+		// Registra no Contato
 		$p = get_page_by_title( $vars['new_value'], false, 'post' );
-
 		$meta = update_post_meta( $vars['data'], 'rolo_contatos', $p->ID );
+
+
+		// Registra na Entidade
+		$contatos = get_post_meta( $p->ID, 'rolo_contatos', true );
+		if(!in_array($vars, $contatos))
+			$contatos[] = $vars['data'];
+		$meta = update_post_meta( $p->ID, 'rolo_contatos', $contatos );
 		
 		$value = $vars['new_value'];
 		$status = 'sucesso';
