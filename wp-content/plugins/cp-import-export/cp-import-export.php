@@ -20,6 +20,25 @@ register_activation_hook( __FILE__, 'cp_activate_script' );
 //use SimpleExcel\SimpleExcel;
 //use SimpleExcel\Spreadsheet\Worksheet;
 
+add_action( 'wp_ajax_nopriv_cp_ajax_edit_dict', 'cp_ajax_edit_dict' );
+add_action( 'wp_ajax_cp_ajax_edit_dict', 'cp_ajax_edit_dict' );
+
+function cp_ajax_edit_dict() {
+
+	$dict = get_option( 'rolo_import_dict' );
+
+	$key = $_POST['data']['data']['key'];
+	$value = $_POST['data']['new_value'];
+
+	$dict[$key] = $value;
+
+	$response = update_option( 'rolo_import_dict', $dict );
+
+	header( "Content-Type: application/json" );
+	echo json_encode($response);
+	exit;
+}
+
 function cp_activate_script() {
 
 	if(!is_dir(WP_CONTENT_DIR . '/export/')) {
@@ -45,9 +64,12 @@ function cp_uninstall_script($dir = false) {
 }
 
 function cp_enqueue_scripts() {
-	wp_register_script( 'extrajs', plugin_dir_url( __FILE__ ) . '/cp-import-export.js', array('jquery'), false, true );
+	wp_register_script( 'extrajs', plugin_dir_url( __FILE__ ) . '/cp-import-export.js', array('jquery'), '', true );
+	wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );
+	
 
 	wp_enqueue_script( 'extrajs' );
+	wp_localize_script( 'extrajs', 'ajax_url', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'key' => '' ) );
 }
 
 function cp_create_plugin_page() {
@@ -58,6 +80,12 @@ function cp_create_plugin_page() {
 function cp_ferramentas_page() {
 	define(CP_URL, $_SERVER['PHP_SELF'].'?page=ferramentas');
 ?>
+<style type="text/css">
+	tr:hover {
+		background: #444;
+		color: #fff;
+	}
+</style>
 <div class="wrap">
 	<h2>Contatos Polis - Ferramentas</h2>
 
@@ -90,6 +118,31 @@ function cp_ferramentas_page() {
 			<input type="submit" value="Fazer upload e cadastrar novos dados" class="button button-primary" id="submit" name="submit">
 		</p>
 	</form>	
+
+	<div class="dictionary">
+		<h4>Dicionário do importador</h4>
+		<p>A coluna da esquerda representa as chaves de armazenamento das informações no banco de dados.
+			<br>Caso as colunas do arquivo de importação estejam nomeadas de forma diferente, altere primeiro os nomes aqui, antes de importar o arquivo.</p>
+		<p>Informações em colunas sem nome serão ignoradas.</p>
+
+		<?php 
+
+			// update_option( 'rolo_import_dict', array( 'rolo_city' => 'Município' ) );
+
+			global $wpdb;
+			$r = $wpdb->get_results("SELECT DISTINCT meta_key FROM {$wpdb->prefix}postmeta WHERE meta_key LIKE 'rolo_%'");
+			$dict = get_option( 'rolo_import_dict' );
+
+			echo '<table class="dict"><fieldset><tr><th>Meta Key</th><th>Coluna no arquivo de importação</th></tr>';
+			foreach ($r as $key) {
+				$d = $dict[$key->meta_key];   
+				echo "<tr><td class='dict-key'>" . $key->meta_key ."</td><td class='dict-item'>" . $d ."</td></tr>";
+			}
+			echo '</fieldset></table>';
+
+		?>
+		
+	</div>
 </div>
 <?php
 }
@@ -349,16 +402,104 @@ function cp_download_data($tipo) {
     exit;
 }
 
-function cp_upload_data($data, $files) {
+function cp_upload_data($data, $files, $force_update = false) {
 
-	$newfile = WP_CONTENT_DIR . '/import/import-'.date('d-m-Y-G-i', time()).'.txt';
-	$up = move_uploaded_file($files['import_file']['tmp_name'], $newfile);
+	error_log("Importação iniciada em ".date('d/m/Y G:i:s'));
 
-	$cont = file_get_contents($newfile);
+	$dict = get_option( 'rolo_import_dict' );
 
-	// dump(explode("\n", $cont));
+	dump($data);
+	dump($files);
 
-	
+	$cont = file_get_contents($files['import_file']['tmp_name']); // Le o conteudo do arquivo
+	$contarr = explode("\n", $cont); // Explode em linhas para cada nova entrada
+	$headers = explode(',', array_shift($contarr)); // Separa os cabeçalhos em outra lista
+
+	foreach ($contarr as $l) {
+
+		// Para cada nova entrada, separa os valores em um array
+		$arr = explode(',', $l);
+
+		// Para cada valor do header
+		for( $i = 0; $i < count($headers); $i++ ) {
+			$postarr[strtolower($headers[$i])] = $arr[$i]; // Associa o header ao seu valor da entrada
+		}
+
+		dump($dict['rolo_city']);
+		dump($postarr[$dict['rolo_city']]);
+
+		$newpost = array(
+			'post_title' => $postarr[$dict['nome']]
+			/*
+			'tax_input'	 => array(
+					'caracterizacao' => $postarr['Caracterização institucional'],
+					'abrangencia' => $postarr['Abrangência de Atuação'],
+					'interesse' => $postarr['Caracterização institucional'],
+					'participacao' => array(),
+				)
+			*/
+			);
+			
+		$check = get_posts(
+			array(
+				'post_title' => $postarr[$dict['nome']], 
+				'meta_query' => array(
+					'relation' => 'OR', 
+					array('key' => 'rolo_company_email', 
+						'value' => $postarr[$dict['rolo_company_email']]
+					),
+					array('key' => 'rolo_contact_email', 
+						'value' => $postarr[$dict['rolo_contact_email']]
+					)
+				)
+			)
+		);
+
+		//dump($check);
+
+		// Confere se o post é duplicado e não pode ser reescrito
+		if($check && !$force_update) {
+			$err[] = array($dict['nome'] => $postarr[$dict['nome']], 'err' => 'Já existe uma entrada com esta combinação de nome / email');
+		} else {
+			if($force_update) // se estamos forçando o update, devolve o ID para o array
+				$newpost['ID'] = $postarr['ID'];
+
+			// $id = wp_insert_post($newpost, true);
+
+			// Confere se a inserção foi bem sucedida
+			if(is_wp_error($id)) {
+				$error_string = $id->get_error_message();
+				$err[] = array($dict['nome'] => $postarr[$dict['nome']], 'err' => $error_string);
+			} else {
+				// Sem erros, vamos gravar os metas
+				// Primeiro tiramos do array as partes que já foram gravadas
+				unset($postarr['ID']);
+				unset($postarr[$dict['nome']]);
+
+				
+
+				foreach($postarr as $key => $value) {
+
+					dump($key);
+					dump($value);
+					// update_post_meta( $id, $dict[$p], $meta_value, $prev_value );
+
+				}
+
+			}
+		}
+
+			
+
+		// dump($newpost);
+		// dump($postarr);
+
+	}
+
+	dump($err);
+	dump($headers);
+
+	error_log("Importação finalizada em ".date('d/m/Y G:i:s'));
 
 }
 
