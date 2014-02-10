@@ -34,7 +34,7 @@ function rolo_css_standard() {
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/uni-form.css" media="screen,projection,print" />' . "\n";
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/tooltipster.css" media="screen,projection,print" />' . "\n";
 
-	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/extras.css" media="screen,projection,print" />' . "\n";
+	//echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/extras.css" media="screen,projection,print" />' . "\n";
 }
 add_action ('wp_head','rolo_css_standard');
 
@@ -74,7 +74,7 @@ function rolo_css_print() {
 	if (file_exists($custom_print_css)) {
 		echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CHILD_URL . '/print.css" media="print" />' . "\r";
 	} else {
-		echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/print.css" media="print" />' . "\r";
+		echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS . '/print.css" media="print" />' . "\r";
 	}
 }
 add_action ('wp_head','rolo_css_print');

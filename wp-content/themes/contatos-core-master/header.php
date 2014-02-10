@@ -21,6 +21,7 @@
 			<div class="logo-header">
 				<a class="a-logo-header" href="<?php echo home_url(); ?>"></a>
 			</div><!-- .logo-header -->
+            
 			<div class="busca-header">
 				<form id="searchform" method="post" action="<?php echo home_url('/'); ?>">
 					<?php
@@ -40,6 +41,10 @@
 
 	</div><!-- .wrapper-header-content -->
 </div><!-- .wrapper-header -->
+
+   			<div class="logo-header-print">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/logo-contatos-print.png" />
+			</div><!-- .logo-header-print -->
 
 <div id="wrapper" class="hfeed">
 
