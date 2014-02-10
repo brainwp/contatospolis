@@ -23,13 +23,16 @@ function rolo_search_all_meta_data($where) {
 	// Somente na busca do header
 	if($_POST['busca_header'] == 'true') {
 
-		$where = str_replace("FROM ".$wpdb->posts, "FROM ".$wpdb->posts.','.$wpdb->postmeta, $where);
-		// Agrupa os IDs iguais
-		$where = str_replace("WHERE 1=1","WHERE ".$wpdb->posts.".ID = ".$wpdb->postmeta.".post_id", $where);
-		$where = str_replace("ORDER BY ".$wpdb->postmeta.".meta_value", "GROUP BY ".$wpdb->posts.".ID", $where);
+		// Insere a busca na tabela de postmeta
+		$where = str_replace("FROM ".$wpdb->posts, " FROM ".$wpdb->posts.' LEFT OUTER JOIN '.$wpdb->postmeta, $where);
+		// Apenas onde os IDs são iguais
+		$where = str_replace("WHERE 1=1","ON ".$wpdb->posts.".ID = ".$wpdb->postmeta.".post_id WHERE ".$wpdb->postmeta.".post_id IS NOT NULL", $where);
+		// Agrupados pelos IDs
+		$where = str_replace("ORDER BY ".$wpdb->posts.".post_title ASC", "GROUP BY ".$wpdb->posts.".ID ORDER BY ".$wpdb->posts.".post_title", $where);
 		// Busca pelo meta_value
 		$where = str_replace($wpdb->posts.'.post_title', $wpdb->postmeta.'.meta_value', $where);	
 	}
+	
 	
 	return $where;
 

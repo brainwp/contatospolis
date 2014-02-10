@@ -11,7 +11,8 @@
 if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
 	rolo_add_contact();
 } else {
-	rolo_permission_message();
+	// rolo_permission_message();
+	header( 'Location: '.home_url( '/?erro_acesso=1&sec='. sanitize_title( get_the_title() ) ) );
 }
 					
 get_header(); ?>

@@ -909,7 +909,8 @@ Others			</label>
 </form>
 <?php
 					} else {
-						rolo_permission_message();
+						// rolo_permission_message();
+                        header( 'Location: '.home_url( '/?erro_acesso=1&sec='. sanitize_title( get_the_title() ) ) );
 					}
 				?>	
 			

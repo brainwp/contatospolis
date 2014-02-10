@@ -589,11 +589,13 @@ function rolo_company_header($company_id) {
                                                         echo '</ul>';
                                                         echo '</div>';
 
+                                                        if(current_user_can('publish_posts')) {
                                                             echo '<form class="form-outros" name="caracterizacao" action="" method="post" onsubmit="return verificar(this)"><input id="outro" class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
                                                                 wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'caracterizacao', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Escolha uma Opção', 'depth' => 1 ));
                                                             echo '<input type="hidden" name="taxonomia" value="caracterizacao" />';
-															echo '<div class="ajuda-in" title="Preencha esse campo caso os itens acima não contemplem sua categorização."></div>';
+                                                            echo '<div class="ajuda-in" title="Preencha esse campo caso os itens acima não contemplem sua categorização."></div>';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
+                                                        }
 
                                                         echo '<div class="interesse">';
                                                         echo '<h3>'. _e('Areas of Interest', 'rolopress').'</h3>';
@@ -602,11 +604,13 @@ function rolo_company_header($company_id) {
                                                         echo '</ul>';
                                                         echo '</div>';
 
+                                                        if(current_user_can('publish_posts')) {
                                                             echo '<form class="form-outros" name="interesse" action="" method="post" onsubmit="return verificar(this)"><input id="outro"  class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
                                                                 wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'interesse', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Escolha uma Opção', 'depth' => 1 ));
                                                             echo '<input type="hidden" name="taxonomia" value="interesse" />';
 															echo '<div class="ajuda-in" title="Preencha esse campo caso os itens acima não contemplem sua categorização."></div>';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
+                                                        }
                                                         ?>
                                                 </div>
                                                 <div class="item-col-2">
@@ -618,11 +622,13 @@ function rolo_company_header($company_id) {
                                                         echo '</ul>';
                                                         echo '</div>';
 
+                                                        if(current_user_can('publish_posts')) {
                                                             echo '<form class="form-outros" name="abrangencia" action="" method="post" onsubmit="return verificar(this)"><input id="outro"  class="input-outros" type="text" name="nova" placeholder="Outro" value"" />';
                                                                 wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'abrangencia', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Escolha uma Opção', 'depth' => 1));
                                                             echo '<input type="hidden" name="taxonomia" value="abrangencia" />';
 															echo '<div class="ajuda-in" title="Preencha esse campo caso os itens acima não contemplem sua categorização."></div>';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';
+                                                        }
 
 														// Espaços de Participação
                                                         echo '<div class="participacao">';
@@ -632,11 +638,13 @@ function rolo_company_header($company_id) {
                                                         echo '</ul>';
                                                         echo '</div>';
 
+                                                        if(current_user_can('publish_posts')) {
                                                             echo '<form class="form-outros" name="participacao" action="" method="post" onsubmit="return verificar(this)"><input id="outro"  class="input-outros" type="text" name="nova" placeholder="Especifique" value"" />';
                                                                 wp_dropdown_categories(array('class' => 'select-outros', 'taxonomy' => 'participacao', 'hierarchical' => true, 'hide_empty' => 0, 'show_option_none' => 'Espaço de Participação', 'depth' => 1 ));
                                                             echo '<input type="hidden" name="taxonomia" value="participacao" />';
 															echo '<div class="ajuda-in" title="Especifique o Espaço de Participação."></div>';
                                                             echo '<br /><input class="botao-ok" type="submit" value="OK" /></form>';                                                        
+                                                        }
                                                         ?>
                                                 </div>
                                         </div>
@@ -656,13 +664,25 @@ function rolo_company_header($company_id) {
                                                         $fim = ''; if($company['rolo_conflito_equacionado'][0]) { $fim = 'checked="checked"'; }
                                                         $obs = ''; if($company['rolo_conflito_observacoes'][0]) { $obs = $company['rolo_conflito_observacoes'][0]; }                
 
+                                    if(current_user_can('publish_posts')) {
+                                        $inp = true;
+                                    }
                                                         ?>
                             
                             <div class="cada-linha">
 								<span class="title title-bloco-8 grey"><?php _e('You are in conflict with large <br /> projects and / or protected areas? ', 'rolopress'); ?></span>
                                 <span id="rolo_conflito" class="rolo_conflito resposta">
-                                <input type="checkbox" class="rolo_conflito check" <?php echo $checked; ?> /> <?php _e('Yes', 'rolopress'); ?></span>
-                                                        </div><!-- .cada-linha -->
+                                <?php 
+                                    if(current_user_can('publish_posts')) {
+                                        echo '<input type="checkbox" class="rolo_conflito check" '.$checked.' />';
+                                    } elseif ($checked) {
+                                        _e('Yes', 'rolopress') . '</span>';
+                                    } else {
+                                        _e('-', 'rolopress') . '</span>';
+                                    }
+                                        
+                                    ?>
+                            </div><!-- .cada-linha -->
 
 							<div class="cada-linha">
 								<span class="title title-bloco-8 grey"><?php _e('Which Project?', 'rolopress'); ?></span>
@@ -683,17 +703,29 @@ function rolo_company_header($company_id) {
                             </div><!-- .cada-linha -->
                             
                             <div class="cada-linha">
-                                    <span class="title title-bloco-8 grey"><?php _e('The situation was equated?', 'rolopress'); ?></span>
-                                <span class="rolo_conflito resposta"><input type="checkbox" class="input_conflito" <?php echo $fim; ?>/> <?php _e('Yes', 'rolopress'); ?></span>
+                                <span class="title title-bloco-8 grey"><?php _e('The situation was equated?', 'rolopress'); ?></span>
+                                <span class="rolo_conflito resposta">
+                                <?php 
+                                    if(current_user_can('publish_posts')) {
+                                        echo '<input type="checkbox" class="input_conflito" '. $fim .'/>';
+                                    } elseif ($fim) {
+                                        _e('Yes', 'rolopress') . '</span>';
+                                    } else {
+                                        _e('-', 'rolopress') . '</span>';
+                                    }
+                                        
+                                ?>
                             </div><!-- .cada-linha -->
                             
                             <div class="cada-linha">
-								<span class="title title-bloco-8 grey"><?php _e('Other comments on the case in question', 'rolopress'); ?></span>
+                                <span class="title title-bloco-8 grey"><?php _e('Other comments on the case in question', 'rolopress'); ?></span>
                                 <span class="rolo_conflito resposta <?php echo ($obs ? '' : 'vazio'); ?>"><?php echo $obs; ?></span>
                                 <input type="text" class="input_conflito out no-print" value="<?php echo $obs; ?>"/>
                             </div><!-- .cada-linha -->
 
-							<input type="button" class="input_conflito botao-edit <?php echo $out; ?> button no-print" value="<?php echo $edit; ?>" />
+                            <?php if(current_user_can( 'publish_posts' )) : ?>
+							 <input type="button" class="input_conflito botao-edit <?php echo $out; ?> button no-print" value="<?php echo $edit; ?>" />
+                            <?php endif; ?>
                             
 						</div><!-- item-col-1 -->
                         
@@ -713,7 +745,16 @@ function rolo_company_header($company_id) {
                             <div class="cada-linha">
 								<span class="title title-bloco-7 grey"><?php _e('Participated in any event the Project?', 'rolopress'); ?></span>
                                 <span class="rolo_relacao resposta">
-                                <input type="checkbox" class="rolo_relacao check" <?php echo $checked; ?> /> <?php _e('Yes', 'rolopress'); ?></span>
+                                    <?php 
+                                    if(current_user_can('publish_posts')) {
+                                        echo '<input type="checkbox" class="rolo_relacao_check" '. $checked .'/>';
+                                    } elseif ($checked) {
+                                        _e('Yes', 'rolopress') . '</span>';
+                                    } else {
+                                        _e('-', 'rolopress') . '</span>';
+                                    }
+                                        
+                                ?>
 							</div><!-- .cada-linha -->
                             
                             <div class="cada-linha">
@@ -724,7 +765,17 @@ function rolo_company_header($company_id) {
                                                        
                             <div class="cada-linha">
 								<span class="title title-bloco-7 grey"><?php _e('Has supported / released the project?', 'rolopress'); ?></span>
-                                <span class="rolo_relacao resposta"> <input type="checkbox" class="input_relacao" <?php echo $apoio; ?> /> <?php _e('Yes', 'rolopress'); ?></span>
+                                <span class="rolo_relacao resposta">
+                                    <?php 
+                                    if(current_user_can('publish_posts')) {
+                                        echo '<input type="checkbox" class="input_relacao" '. $apoio .'/>';
+                                    } elseif ($apoio) {
+                                        _e('Yes', 'rolopress') . '</span>';
+                                    } else {
+                                        _e('-', 'rolopress') . '</span>';
+                                    }
+                                        
+                                ?>
                             </div><!-- .cada-linha -->
                             
 							<div class="cada-linha">
@@ -733,7 +784,9 @@ function rolo_company_header($company_id) {
                                 <input type="text" class="input_relacao out no-print" value="<?php echo $conflito; ?>" />
                             </div><!-- .cada-linha -->
 
+                            <?php if(current_user_can( 'publish_posts' )) : ?>
                             <input type="button" class="input_relacao botao-edit <?php echo $out; ?> button no-print" value="<?php echo $edit; ?>" />
+                            <?php endif; ?>
                                                 
                         </div><!-- .item-col-2 width-40 -->
                         
