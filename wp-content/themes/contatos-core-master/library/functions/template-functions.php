@@ -225,8 +225,9 @@ function rolo_contact_header($contact_id) {
     <input type="submit" class="btn" value="Start Upload »">
     </form>
 			<?php echo $_SERVER['DOCUMENT_ROOT']; ?>
+            </div><!-- .cada-linha -->
 		<?php endif; ?>
-			</div><!-- .cada-linha -->
+			
     
     </div><!-- .item-col-1 -->
         
