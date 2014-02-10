@@ -667,19 +667,19 @@ function rolo_company_header($company_id) {
 							<div class="cada-linha">
 								<span class="title title-bloco-8 grey"><?php _e('Which Project?', 'rolopress'); ?></span>
 								<span class="rolo_conflito resposta <?php echo ($projeto ? '' : 'vazio'); ?>"><?php echo $projeto; ?></span>
-								<input type="text" class="input_conflito out" value="<?php echo $projeto; ?>"/>
+								<input type="text" class="input_conflito out no-print" value="<?php echo $projeto; ?>"/>
                             </div><!-- .cada-linha -->
 
 							<div class="cada-linha">
 								<span class="title title-bloco-8 grey"><?php _e('Since when does it occur?', 'rolopress'); ?></span>
                                 <span class="rolo_conflito resposta <?php echo ($desde ? '' : 'vazio'); ?>"><?php echo $desde; ?></span>
-                                <input type="text" class="input_conflito out" value="<?php echo $desde; ?>"/>
+                                <input type="text" class="input_conflito out no-print" value="<?php echo $desde; ?>"/>
                             </div><!-- .cada-linha -->
 
                             <div class="cada-linha">
                                 <span class="title title-bloco-8 grey"><?php _e('The case was taken to some instance?', 'rolopress'); ?></span>
                                 <span class="rolo_conflito resposta <?php echo ($instancia ? '' : 'vazio'); ?>"><?php echo $instancia; ?></span>
-                                <input type="text" class="input_conflito out" value="<?php echo $instancia; ?>"/>
+                                <input type="text" class="input_conflito out no-print" value="<?php echo $instancia; ?>"/>
                             </div><!-- .cada-linha -->
                             
                             <div class="cada-linha">
@@ -688,36 +688,38 @@ function rolo_company_header($company_id) {
                             </div><!-- .cada-linha -->
                             
                             <div class="cada-linha">
-                                                                <span class="title title-bloco-8 grey"><?php _e('Other comments on the case in question', 'rolopress'); ?></span>
+								<span class="title title-bloco-8 grey"><?php _e('Other comments on the case in question', 'rolopress'); ?></span>
                                 <span class="rolo_conflito resposta <?php echo ($obs ? '' : 'vazio'); ?>"><?php echo $obs; ?></span>
-                                <input type="text" class="input_conflito out" value="<?php echo $obs; ?>"/>
+                                <input type="text" class="input_conflito out no-print" value="<?php echo $obs; ?>"/>
                             </div><!-- .cada-linha -->
 
-							<input type="button" class="input_conflito botao-edit <?php echo $out; ?> button" value="<?php echo $edit; ?>" />
+							<input type="button" class="input_conflito botao-edit <?php echo $out; ?> button no-print" value="<?php echo $edit; ?>" />
                             
 						</div><!-- item-col-1 -->
                         
 						<div class="item-col-2 width-45 item-form">
-								<h3><?php _e('Relationship with Litoral Sustentável project', 'rolopress'); ?></h3>
-								<?php 
-								$edit = 'OK';
-								$out = 'out';
-								// $company_relacao = unserialize($company['rolo_relacao'][0]); 
+                            <h3><?php _e('Relationship with Litoral Sustentável project', 'rolopress'); ?></h3>
+                            <?php 
+                            $edit = 'OK';
+                            $out = 'out';
+                            // $company_relacao = unserialize($company['rolo_relacao'][0]); 
 
-								$checked = ''; if($company['rolo_relacao_check'][0]) { $checked = 'checked="checked"'; $edit = __('Edit', 'rolopress'); $out = ''; }
-								$local = ''; if($company['rolo_relacao_local'][0]) { $local = $company['rolo_relacao_local'][0]; }
-								$apoio = ''; if($company['rolo_relacao_apoio'][0]) { $apoio = 'checked="checked"'; }
-								$conflito = ''; if($company['rolo_relacao_conflito'][0]) { $conflito = $company['rolo_relacao_conflito'][0]; }
-								?>
+                            $checked = ''; if($company['rolo_relacao_check'][0]) { $checked = 'checked="checked"'; $edit = __('Edit', 'rolopress'); $out = ''; }
+                            $local = ''; if($company['rolo_relacao_local'][0]) { $local = $company['rolo_relacao_local'][0]; }
+                            $apoio = ''; if($company['rolo_relacao_apoio'][0]) { $apoio = 'checked="checked"'; }
+                            $conflito = ''; if($company['rolo_relacao_conflito'][0]) { $conflito = $company['rolo_relacao_conflito'][0]; }
+                            ?>
 
                             <div class="cada-linha">
 								<span class="title title-bloco-7 grey"><?php _e('Participated in any event the Project?', 'rolopress'); ?></span>
-                                <span class="rolo_relacao resposta"> <input type="checkbox" class="rolo_relacao check" <?php echo $checked; ?> /> <?php _e('Yes', 'rolopress'); ?></span>
+                                <span class="rolo_relacao resposta">
+                                <input type="checkbox" class="rolo_relacao check" <?php echo $checked; ?> /> <?php _e('Yes', 'rolopress'); ?></span>
 							</div><!-- .cada-linha -->
                             
                             <div class="cada-linha">
 								<span class="title title-bloco-7 grey"><?php _e('Locale', 'rolopress'); ?></span>
-                                <span class="rolo_relacao resposta <?php echo ($local ? '' : 'vazio'); ?>"><?php echo $local; ?></span><input type="text" class="input_relacao out" value="<?php echo $local; ?>"/>
+                                <span class="rolo_relacao resposta <?php echo ($local ? '' : 'vazio'); ?>"><?php echo $local; ?></span>
+                                <input type="text" class="input_relacao out no-print" value="<?php echo $local; ?>"/>
 							</div><!-- .cada-linha -->
                                                        
                             <div class="cada-linha">
@@ -727,10 +729,11 @@ function rolo_company_header($company_id) {
                             
 							<div class="cada-linha">
                                 <span class="title title-bloco-7 grey"><?php _e('Have a history of conflict with the project? <br /> What reason?', 'rolopress'); ?></span>
-                                <span class="rolo_relacao resposta <?php echo ($conflito ? '' : 'vazio'); ?>"><?php echo $conflito; ?></span><input type="text" class="input_relacao out" value="<?php echo $conflito; ?>" />
+                                <span class="rolo_relacao resposta <?php echo ($conflito ? '' : 'vazio'); ?>"><?php echo $conflito; ?></span>
+                                <input type="text" class="input_relacao out no-print" value="<?php echo $conflito; ?>" />
                             </div><!-- .cada-linha -->
 
-                            <input type="button" class="input_relacao botao-edit <?php echo $out; ?> button" value="<?php echo $edit; ?>" />
+                            <input type="button" class="input_relacao botao-edit <?php echo $out; ?> button no-print" value="<?php echo $edit; ?>" />
                                                 
                         </div><!-- .item-col-2 width-40 -->
                         
@@ -741,6 +744,11 @@ function rolo_company_header($company_id) {
 
                                 <?php rolopress_after_company_header();?>
                         <?php endif; ?>
+                        
+		<?php if(is_single()) : ?>
+	        <a class="botao-imprimir" href="javascript:window.print()">Imprimir Contato</a>
+        <?php endif; ?>
+                        
                         </div><!-- .bloco -->
                 </div><!-- hcard -->                
                 <?php
@@ -932,7 +940,7 @@ function rolo_company_members_list($company_id, $city = false, $uf = false) {
 	<div class="contatos-btn item-form contatos-in-company">
 	<table>
 		<tr>
-			<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<th></th>" : "" ?>
+			<?php echo (is_single() && current_user_can( 'publish_posts' )) ? "<th class=\"th-remove\"></th>" : "" ?>
 			<th class="contatos-item-form"><h3><?php _e('Contacts', 'rolopress'); ?></h3></th>
 			<th class="contatos-item-form"><h3><?php _e('Role', 'rolopress'); ?></h3></th>
 			<th class="contatos-item-form"><h3><?php _e('Phone', 'rolopress'); ?></h3></th>
