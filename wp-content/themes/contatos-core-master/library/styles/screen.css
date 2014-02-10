@@ -90,6 +90,9 @@ li {
     height: 46px;
     position: absolute;
 }
+.logo-header-print {
+	display: none;
+}
 .busca-header {
     float: right;
     margin: 61px 0 0;
@@ -664,6 +667,26 @@ td.td-remove {
 
 .botao-deletar:hover {
 	background-position: -285px -239px;
+	color: #FFF;
+}
+
+.botao-imprimir {
+	background: url("../../img/sprite.png") no-repeat scroll -507px -188px #023f7b;
+	padding: 20px 20px 20px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin: 20px 0 20px 0;
+	display: inline-block;
+	float: right;
+}
+
+.botao-imprimir:hover {
+	background-position: -507px -237px;
+	text-decoration: none;
 	color: #FFF;
 }
 

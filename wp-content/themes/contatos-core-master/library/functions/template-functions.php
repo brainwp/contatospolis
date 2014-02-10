@@ -216,6 +216,7 @@ function rolo_contact_header($contact_id) {
 				<span id="rolo_contact_party" class="resposta <?php echo ($contact_party ? '' : 'vazio'); ?>"><?php echo $contact_party; ?></span>
 			</div><!-- .cada-linha -->
 
+			<div class="cada-linha upload">
     <!-- you can place the upload script into your theme folder or in a plugin -->
     <form action="<?php echo get_template_directory_uri(); ?>/library/functions/upload.php" method="POST" enctype="multipart/form-data">
     <input type="file" name="files[]" multiple>
@@ -224,7 +225,8 @@ function rolo_contact_header($contact_id) {
     <input type="submit" class="btn" value="Start Upload »">
     </form>
 			<?php echo $_SERVER['DOCUMENT_ROOT']; ?>
-		<?php endif; ?>        
+		<?php endif; ?>
+			</div><!-- .cada-linha -->
     
     </div><!-- .item-col-1 -->
         
@@ -267,6 +269,10 @@ function rolo_contact_header($contact_id) {
             <span class="title title-bloco-4"><?php _e('Easiest way<br/ >to Contact ', 'rolopress'); ?></span>
             <span id="rolo_contact_contato_facil" class="resposta <?php echo ($contact_contato ? '' : 'vazio'); ?>"><?php echo $contact_contato; ?></span>
         </div><!-- .cada-linha -->
+
+        <?php if(is_single()) : ?>
+	        <a class="botao-imprimir" href="javascript:window.print()">Imprimir Contato</a>
+        <?php endif; ?>
         
     </div><!-- .item-col-2 width-40 item-form -->
 </div><!-- .bloco -->
