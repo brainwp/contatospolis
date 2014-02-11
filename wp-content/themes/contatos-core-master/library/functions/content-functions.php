@@ -650,9 +650,7 @@ return $query;
  */
 function rolo_loop() { ?>
 <?php if ( !is_single() ) { // This class is not needed on single pages ?>
-<?php global $wp_query;
-dump($wp_query);?>
-
+<?php global $wp_query; ?>
 <?php if ( is_search() && $wp_query->post_count >= 1 ) { ?>
 	<input class="botao-deletar" id="group-del" type="button" value="Excluir Selecionados" />
 <?php } ?>
