@@ -140,7 +140,7 @@ function cp_ferramentas_page() {
 		<input type="hidden" value="true" name="upload">
 		<p><label><input type="file" name="import_file" /></label></p>
 		<p><label><input type="checkbox" name="force_update" /> Sobrescrever valores existentes? </label></p>
-		<p class="description">Apenas arquivos em formato .csv. <a href="<?php echo home_url('export/exemplo.csv'); ?>">Clique aqui para fazer download de um exemplo.</a></p>
+		<p class="description">Apenas arquivos em formato .csv. <a href="<?php echo plugin_dir_url( __FILE__ ).'exemplo.csv'; ?>">Clique aqui para fazer download de um exemplo.</a></p>
 
 		<p class="submit">
 			<input type="submit" value="Fazer upload e cadastrar novos dados" class="button button-primary" id="submit" name="submit">
