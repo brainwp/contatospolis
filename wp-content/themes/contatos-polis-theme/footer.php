@@ -14,6 +14,9 @@
 				<div class="logo-litoral"><a href="http://www.litoralsustentavel.org.br" target="_blank"></a></div>
 				<div class="logo-polis"><a href="http://www.polis.org.br" target="_blank"></a></div>
 			</div><!-- .logos-footer -->
+            
+            <div class="logo-petro-gov">
+            </div><!-- .logo-petro-gov -->
 			
 		</div><!-- #colophon -->
 	</div><!-- #footer -->
