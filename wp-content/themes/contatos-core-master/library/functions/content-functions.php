@@ -649,8 +649,14 @@ return $query;
  * @since 1.2
  */
 function rolo_loop() { ?>
-<?php if (!is_single() ) { // This class is not needed on single pages ?>
-<?php echo (is_search() ? '<input class="botao-deletar" id="group-del" type="button" value="Excluir Selecionados" />' : ''); ?>
+<?php if ( !is_single() ) { // This class is not needed on single pages ?>
+<?php global $wp_query;
+dump($wp_query);?>
+
+<?php if ( is_search() && $wp_query->post_count >= 1 ) { ?>
+	<input class="botao-deletar" id="group-del" type="button" value="Excluir Selecionados" />
+<?php } ?>
+
 <ul class="item-list">
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
