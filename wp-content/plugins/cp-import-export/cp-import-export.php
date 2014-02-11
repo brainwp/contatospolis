@@ -23,6 +23,8 @@ register_activation_hook( __FILE__, 'cp_activate_script' );
 add_action( 'wp_ajax_nopriv_cp_ajax_edit_dict', 'cp_ajax_edit_dict' );
 add_action( 'wp_ajax_cp_ajax_edit_dict', 'cp_ajax_edit_dict' );
 
+$err = array();
+
 function cp_ajax_edit_dict() {
 
 	$dict = get_option( 'rolo_import_dict' );
@@ -32,7 +34,9 @@ function cp_ajax_edit_dict() {
 
 	$dict[$key] = $value;
 
-	$response = update_option( 'rolo_import_dict', $dict );
+	$response['id'] = update_option( 'rolo_import_dict', $dict );
+	$response['status'] = 'sucesso';
+	$response['value'] = $value;
 
 	header( "Content-Type: application/json" );
 	echo json_encode($response);
@@ -119,6 +123,25 @@ function cp_ferramentas_page() {
 		</p>
 	</form>	
 
+	<div class="results">
+		<h4>Resultados</h4>
+		<?php 
+			global $err;
+		
+				echo '<table class="dict"><fieldset><tr><th>ID</th><th>Nome</th><th>Email</th><th>Status</th></tr>';
+				foreach ($err as $k) {
+					echo "<tr>
+							<td>".$k['ID']."</td>
+							<td>".$k['Nome']."</td>
+							<td>".$k['Email']."</td>
+							<td>".$k['err']."</td>
+						</tr>";
+				}
+				echo '</fieldset></table>';
+			
+		?>
+	</div>
+
 	<div class="dictionary">
 		<h4>Dicionário do importador</h4>
 		<p>A coluna da esquerda representa as chaves de armazenamento das informações no banco de dados.
@@ -127,18 +150,22 @@ function cp_ferramentas_page() {
 
 		<?php 
 
-			// update_option( 'rolo_import_dict', array( 'rolo_city' => 'Município' ) );
-
 			global $wpdb;
 			$r = $wpdb->get_results("SELECT DISTINCT meta_key FROM {$wpdb->prefix}postmeta WHERE meta_key LIKE 'rolo_%'");
 			$dict = get_option( 'rolo_import_dict' );
 
 			echo '<table class="dict"><fieldset><tr><th>Meta Key</th><th>Coluna no arquivo de importação</th></tr>';
+			echo "<tr><td class='dict-key'>name</td><td>ID</td></tr>";
+			echo "<tr><td class='dict-key'>type</td><td>TIPO</td></tr>";
+			echo "<tr><td class='dict-key'>name</td><td>NOME</td></tr>";
+			
 			foreach ($r as $key) {
 				$d = $dict[$key->meta_key];   
 				echo "<tr><td class='dict-key'>" . $key->meta_key ."</td><td class='dict-item'>" . $d ."</td></tr>";
 			}
 			echo '</fieldset></table>';
+
+			
 
 		?>
 		
@@ -153,7 +180,7 @@ function cp_check_post() {
 		cp_download_data($_POST);
 		// cp_make_excel();
 	} elseif($_POST['upload']) {
-		cp_upload_data($_POST, $_FILES);
+		return cp_upload_data($_POST, $_FILES);
 	} else {
 		return;
 	}
@@ -404,102 +431,125 @@ function cp_download_data($tipo) {
 
 function cp_upload_data($data, $files, $force_update = false) {
 
-	error_log("Importação iniciada em ".date('d/m/Y G:i:s'));
+	global $err;
 
 	$dict = get_option( 'rolo_import_dict' );
 
-	dump($data);
-	dump($files);
+	$dict['ID'] = 'ID';
+	$dict['type'] = 'TIPO';
+	$dict['name'] = 'NOME';
+	$dict['email'] = 'EMAIL';
+
+	// dump($data);
+	// dump($files);
 
 	$cont = file_get_contents($files['import_file']['tmp_name']); // Le o conteudo do arquivo
+
+	// dump($cont);
+
 	$contarr = explode("\n", $cont); // Explode em linhas para cada nova entrada
 	$headers = explode(',', array_shift($contarr)); // Separa os cabeçalhos em outra lista
 
-	foreach ($contarr as $l) {
+	//dump($headers);
+	//dump(explode(',',$contarr[0]));
+
+	// Monta o array de cabeçalhos correto, com as keys conforme o dicionário do banco
+	for( $i = 0; $i < count($headers); $i++ ) {
+		$k = str_replace('"', '', $headers[$i]);
+		$k = array_search(strtolower($k), array_map('strtolower',$dict));
+
+		// $postarr[$k] = ""; // keys preenchidas, values em branco
+		$postarr[$i] = $k; // keys numericas, values preenchidos
+	}
+	// dump($postarr);
+
+	for( $i = 0; $i < count($contarr); $i++ ) {
 
 		// Para cada nova entrada, separa os valores em um array
-		$arr = explode(',', $l);
+		$arr = explode(',', $contarr[$i]);
+		$arr = str_replace('"', '', $arr);
+		
+		if (count($postarr) != count($arr)) {
+			$err[] = array('err' => 'Linha incompleta');
+		} else {		
 
-		// Para cada valor do header
-		for( $i = 0; $i < count($headers); $i++ ) {
-			$postarr[strtolower($headers[$i])] = $arr[$i]; // Associa o header ao seu valor da entrada
-		}
+			// Pega as keys corretas e combina com os valores oferecidos, 
+			// agora temos tudo organizado para salvar no banco
+			$comb = array_combine($postarr, $arr); 
 
-		dump($dict['rolo_city']);
-		dump($postarr[$dict['rolo_city']]);
+			if($comb['type'] == 'Entidade') {
+				$type = 'company';
+				$email = 'rolo_company_email';
+				$nome = 'rolo_company_name';
+			} elseif($comb['type'] == 'Contato') {
+				$type = 'contact';
+				$email = 'rolo_contact_email';
+				$nome = 'rolo_contact_first_name';
+			}
 
-		$newpost = array(
-			'post_title' => $postarr[$dict['nome']]
-			/*
-			'tax_input'	 => array(
-					'caracterizacao' => $postarr['Caracterização institucional'],
-					'abrangencia' => $postarr['Abrangência de Atuação'],
-					'interesse' => $postarr['Caracterização institucional'],
-					'participacao' => array(),
-				)
-			*/
-			);
-			
-		$check = get_posts(
-			array(
-				'post_title' => $postarr[$dict['nome']], 
-				'meta_query' => array(
-					'relation' => 'OR', 
-					array('key' => 'rolo_company_email', 
-						'value' => $postarr[$dict['rolo_company_email']]
-					),
-					array('key' => 'rolo_contact_email', 
-						'value' => $postarr[$dict['rolo_contact_email']]
+			$newpost = array(
+				'post_title' => $comb['name'],		
+				'tax_input'	 => array(
+						'type' => $type
+						/* 'caracterizacao' => $postarr['caracterizacao'],
+						'abrangencia' => $postarr['abrangencia'],
+						'interesse' => $postarr['interesse'],
+						'participacao' => $postarr['participacao'],*/
+					)
+				
+				);
+				
+			$check = get_posts(
+				array(
+					'post_title' => $comb['name'], 
+					'meta_query' => array(
+						'relation' => 'OR', 
+						array('key' => 'rolo_company_email', 
+							'value' => $comb['email']
+						),
+						array('key' => 'rolo_contact_email', 
+							'value' => $comb['email']
+						)
 					)
 				)
-			)
-		);
+			);
 
-		//dump($check);
-
-		// Confere se o post é duplicado e não pode ser reescrito
-		if($check && !$force_update) {
-			$err[] = array($dict['nome'] => $postarr[$dict['nome']], 'err' => 'Já existe uma entrada com esta combinação de nome / email');
-		} else {
-			if($force_update) // se estamos forçando o update, devolve o ID para o array
-				$newpost['ID'] = $postarr['ID'];
-
-			// $id = wp_insert_post($newpost, true);
-
-			// Confere se a inserção foi bem sucedida
-			if(is_wp_error($id)) {
-				$error_string = $id->get_error_message();
-				$err[] = array($dict['nome'] => $postarr[$dict['nome']], 'err' => $error_string);
+			// Confere se o post é duplicado e não pode ser reescrito
+			if($check && !$force_update) {
+				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Já existe uma entrada com esta combinação de nome / email');
 			} else {
-				// Sem erros, vamos gravar os metas
-				// Primeiro tiramos do array as partes que já foram gravadas
-				unset($postarr['ID']);
-				unset($postarr[$dict['nome']]);
-
 				
+				if($force_update) // se estamos forçando o update, devolve o ID para o array
+					$newpost['ID'] = $comb['ID'];
 
-				foreach($postarr as $key => $value) {
+				$id = wp_insert_post($newpost, true);
 
-					dump($key);
-					dump($value);
-					// update_post_meta( $id, $dict[$p], $meta_value, $prev_value );
+				// Confere se a inserção foi bem sucedida
+				if(is_wp_error($id)) {
+					$error_string = $id->get_error_message();
+					$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => $error_string);
+				} else {
+					// Sem erros, vamos gravar os metas
+					// Primeiro tiramos do array as partes que já foram gravadas
+					unset($comb['ID']);
+					// unset($comb['name']);
+					
+					foreach($comb as $key => $value) {
+
+						// dump($id .' '. $key .' '. $value);
+						//dump($value);
+						update_post_meta( $id, $key, $value );
+
+					}
 
 				}
-
+				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Sucesso');
 			}
+
 		}
-
-			
-
-		// dump($newpost);
-		// dump($postarr);
-
 	}
 
-	dump($err);
-	dump($headers);
-
-	error_log("Importação finalizada em ".date('d/m/Y G:i:s'));
+	return $err;
 
 }
 
