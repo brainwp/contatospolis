@@ -595,6 +595,20 @@ jQuery(document).ready(function() {
         }
 
     });
+
+    jQuery('#group-toggle').on('click', function() {
+
+        if(jQuery(this).val() === 'Selecionar Todos') {
+            jQuery('input[type="checkbox"]').not(':checked').click();
+            jQuery(this).val('Desmarcar Todos');
+        } else {
+            jQuery('input[type="checkbox"]:checked').click();
+            jQuery(this).val('Selecionar Todos');
+        }
+        
+        
+
+    });
 	
 });
 

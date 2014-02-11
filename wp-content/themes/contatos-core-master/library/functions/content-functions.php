@@ -651,10 +651,15 @@ return $query;
 function rolo_loop() { ?>
 <?php if ( !is_single() ) { // This class is not needed on single pages ?>
 <?php global $wp_query; ?>
-<?php if ( is_search() && $wp_query->post_count >= 1 ) { ?>
-	<input class="botao-deletar" id="group-del" type="button" value="Excluir Selecionados" />
-<?php } ?>
-
+<?php 
+	if ( is_search() && $wp_query->post_count >= 1 ) {
+		echo '<input class="botao-toggle" id="group-toggle" type="button" value="Selecionar Todos" />';
+		if(current_user_can( 'activate_plugins' ))
+			echo '<input class="botao-exportar" id="group-exp" type="button" value="Enviar Newsletter" />';
+		echo '<input class="botao-deletar" id="group-del" type="button" value="Excluir Selecionados" />';
+		
+	}
+?>
 <ul class="item-list">
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
