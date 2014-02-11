@@ -60,6 +60,7 @@ endif;
 
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'avatar', 130, 9999 ); //300 pixels wide (and unlimited height)
+	add_image_size( 'thumb-anexo', 80, 80, true ); //80 pixels wide (and unlimited height)
 }
 
 // Make theme available for translation

@@ -601,6 +601,53 @@ td.td-remove {
 	border: 0;
 }
 
+.cada-linha.galeria .botao-deletar {
+	margin-left: 0;
+	margin-top: 0;
+}
+
+.cada-linha.galeria {
+	padding-top: 25px;
+}
+
+.campo-upload {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    color: #666666;
+    cursor: pointer;
+    margin: 0;
+    padding: 15px;
+    width: 93%;
+}
+
+ul.galeria-anexos {
+	margin: 0;
+	padding: 0;
+	overflow:hidden;
+}
+
+ul.galeria-anexos li {
+    border: 5px solid #CCCCCC;
+    float: left;
+    height: 80px;
+    margin: 0 9px 10px 1px;
+    outline: 1px solid #333333;
+    overflow: hidden;
+    position: relative;
+    width: 80px;
+}
+
+ul.galeria-anexos li:hover {
+	border-color: #FFF;
+	outline: 1px solid #CCCCCC;
+}
+
+.check-delete {
+	position: absolute;
+	margin: 10px;
+}
+
 .botao-add-contact {
 	float: right;
 	background: url("../../img/sprite.png") no-repeat scroll -60px 5px #023f7b;
@@ -670,6 +717,24 @@ td.td-remove {
 	color: #FFF;
 }
 
+.botao-deletar-anexo {
+	background: url("../../img/sprite.png") no-repeat scroll -285px -190px #023f7b;
+	padding: 20px 20px 20px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin: 10px 20px 20px 0;
+}
+
+.botao-deletar:hover-anexo {
+	background-position: -285px -239px;
+	color: #FFF;
+}
+
+
 .botao-imprimir {
 	background: url("../../img/sprite.png") no-repeat scroll -507px -188px #023f7b;
 	padding: 20px 20px 20px 55px;
@@ -687,6 +752,25 @@ td.td-remove {
 .botao-imprimir:hover {
 	background-position: -507px -237px;
 	text-decoration: none;
+	color: #FFF;
+}
+
+#async-upload-wrap input[type="submit"] {
+	background: url("../../img/sprite.png") no-repeat scroll -506px -287px #023F7B;	
+	padding: 20px 20px 20px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin-top: 20px;
+	clear: both;
+	display: block;
+}
+
+#async-upload-wrap input[type="submit"]:hover {
+	background-position: -506px -336px;
 	color: #FFF;
 }
 

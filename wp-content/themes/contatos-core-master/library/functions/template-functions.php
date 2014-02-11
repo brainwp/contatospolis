@@ -216,18 +216,102 @@ function rolo_contact_header($contact_id) {
 				<span id="rolo_contact_party" class="resposta <?php echo ($contact_party ? '' : 'vazio'); ?>"><?php echo $contact_party; ?></span>
 			</div><!-- .cada-linha -->
 
-			<div class="cada-linha upload">
-    <!-- you can place the upload script into your theme folder or in a plugin -->
-    <form action="<?php echo get_template_directory_uri(); ?>/library/functions/upload.php" method="POST" enctype="multipart/form-data">
-    <input type="file" name="files[]" multiple>
-    <!-- The following hidden field contains the post id for which you will be uploading images to -->
-    <input type="hidden" name="post_id" value="100">
-    <input type="submit" class="btn" value="Start Upload »">
-    </form>
-			<?php echo $_SERVER['DOCUMENT_ROOT']; ?>
+            <div class="cada-linha upload">
+                <?php
+                    if ( isset( $_POST['html-delete'] ) ) {
+                        if ( isset( $_POST['attachment_ids'] ) ) {
+                            foreach ($_POST['attachment_ids'] as $id_contact) {
+                            wp_delete_attachment($id_contact, true);
+                            }
+                                if ($errors) {
+                                    echo "There was an error deleting your file.";
+                                    } else {
+                                    echo "Your file has been deleted.";
+                                }
+                        }
+                    }
+                ?> 
+                <?php
+                    if ( isset( $_POST['html-upload'] ) && !empty( $_FILES ) ) {
+                        require_once(ABSPATH . 'wp-admin/includes/admin.php');
+                        $id_contact = media_handle_upload('async-upload', $contact_id);
+                        unset($_FILES);
+                        if ( is_wp_error($id_contact) ) {
+                            $errors['upload_error'] = $id_contact;
+                            $id_contact = false;
+                        }
+                    
+                        if ($errors) {
+                            echo "<p>There was an error uploading your file.</p>";
+                        } else {
+                            echo "<p>Your file has been uploaded.</p>";
+                        }
+                    }
+                ?>
+                <span class="sub-titulo-form">Enviar arquivos</span>
+                <form id="file-form" enctype="multipart/form-data" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
+                    <p id="async-upload-wrap">
+                    <label for="async-upload"></label>
+                    <input class="campo-upload" type="file" id="async-upload" name="async-upload"> <input type="submit" value="Upload" name="html-upload">
+                    </p>
+                
+                    <p>
+                    <input type="hidden" name="post_id" id="post_id" value="$contact_id" />
+                    <?php wp_nonce_field('client-file-upload'); ?>
+                    <input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
+                    </p>
+                
+                    <p>
+                    <input class="botao-upload" type="submit" value="Save all changes" name="save" style="display: none;">
+                    </p>
+                </form>
+            
             </div><!-- .cada-linha -->
+                        
+            
+            <?php
+                $img_args = array(
+                'post_type' => 'attachment',
+                'numberposts' => -1,
+                'post_status' => null,
+                'post_parent' => $contact_id
+                );
+            $attachments = get_posts( $img_args );
+            if ( $attachments ) { ?>
+            
+            <div class="cada-linha galeria">
+             
+            <span class="sub-titulo-form">Galeria de arquivos</span>
+            <form id="file-form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
+            
+                <?php
+				echo '<ul class="galeria-anexos">';				
+                foreach ( $attachments as $attachment ) {
+                    //dump($attachment);
+                    echo '<li class="'.$c.'"><input class="check-delete" type="checkbox" id="attachment_id" name="attachment_ids[]" value="'.$attachment->ID.'" />';
+                    if ( $attachment->post_mime_type == 'application/pdf' ) {
+                        echo '<a href="' . wp_get_attachment_url( $attachment->ID ) . '" target="_blank"><img src="' . get_template_directory_uri() . '/img/icon-pdf.jpg"></a>';
+                    } else {
+                        echo '<a href="'.wp_get_attachment_url($attachment->ID).'" rel="shadowbox" title="'.$attachment->post_excerpt.'" target="_blank">';
+                        echo wp_get_attachment_image( $attachment->ID, 'thumb-anexo' );
+                        echo '</a>';
+                    }
+                   
+                   echo '</li>';
+                  }
+                echo '</ul>';
+                ?>
+                
+                <br />
+                <input class="botao-deletar-anexo" type="submit" value="Delete" name="html-delete">
+            
+            </form>
+            
+            </div><!-- .cada-linha -->        
+			<?php } ?>
+		
 		<?php endif; ?>
-			
+	
     
     </div><!-- .item-col-1 -->
         
@@ -515,7 +599,102 @@ function rolo_company_header($company_id) {
                         <div class="cada-linha">
                             <span class="title title-bloco-1 grey"><?php _e('Asked Source ', 'rolopress'); ?></span>
                             <span id="rolo_company_update_src" class="resposta <?php echo ($company_update_src ? '' : 'vazio'); ?>"><?php echo $company_update_src; ?></span>
-                        </div><!-- .cada-linha -->                        
+                        </div><!-- .cada-linha -->
+                        
+                <div class="cada-linha upload">
+                    <?php
+                        if ( isset( $_POST['html-delete'] ) ) {
+                            if ( isset( $_POST['attachment_ids'] ) ) {
+                                foreach ($_POST['attachment_ids'] as $id_company) {
+                                wp_delete_attachment($id_company, true);
+                                }
+                                    if ($errors) {
+                                        echo "There was an error deleting your file.";
+                                        } else {
+                                        echo "Your file has been deleted.";
+                                    }
+                            }
+                        }
+                    ?> 
+                    <?php
+                        if ( isset( $_POST['html-upload'] ) && !empty( $_FILES ) ) {
+                            require_once(ABSPATH . 'wp-admin/includes/admin.php');
+                            $id_company = media_handle_upload('async-upload', $company_id);
+                            unset($_FILES);
+                            if ( is_wp_error($id_company) ) {
+                                $errors['upload_error'] = $id_company;
+                                $id_company = false;
+                            }
+                        
+                            if ($errors) {
+                                echo "<p>There was an error uploading your file.</p>";
+                            } else {
+                                echo "<p>Your file has been uploaded.</p>";
+                            }
+                        }
+                    ?>
+                    <span class="sub-titulo-form">Enviar arquivos</span>
+                    <form id="file-form" enctype="multipart/form-data" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
+                        <p id="async-upload-wrap">
+                        <label for="async-upload"></label>
+                        <input class="campo-upload" type="file" id="async-upload" name="async-upload"> <input type="submit" value="Upload" name="html-upload">
+                        </p>
+                    
+                        <p>
+                        <input type="hidden" name="post_id" id="post_id" value="$company_id" />
+                        <?php wp_nonce_field('client-file-upload'); ?>
+                        <input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
+                        </p>
+                    
+                        <p>
+                        <input class="botao-upload" type="submit" value="Save all changes" name="save" style="display: none;">
+                        </p>
+                    </form>
+                
+                </div><!-- .cada-linha -->
+                            
+                
+                <?php
+                    $img_args = array(
+                    'post_type' => 'attachment',
+                    'numberposts' => -1,
+                    'post_status' => null,
+                    'post_parent' => $company_id
+                    );
+                    
+                $attachments = get_posts( $img_args );
+                if ( $attachments ) { ?>
+                
+                <div class="cada-linha galeria">
+                 
+                <span class="sub-titulo-form">Galeria de arquivos</span>
+                <form id="file-form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
+                
+                    <?php
+					echo '<ul class="galeria-anexos">';
+                    foreach ( $attachments as $attachment ) {
+                        //dump($attachment);
+                        echo '<li class="'.$c.'"><input class="check-delete" type="checkbox" id="attachment_id" name="attachment_ids[]" value="'.$attachment->ID.'" />';
+                        if ( $attachment->post_mime_type == 'application/pdf' ) {
+                            echo '<a href="' . wp_get_attachment_url( $attachment->ID ) . '" target="_blank"><img src="' . get_template_directory_uri() . '/img/icon-pdf.jpg"></a>';
+                        } else {
+                            echo '<a href="'.wp_get_attachment_url($attachment->ID).'" rel="shadowbox" title="'.$attachment->post_excerpt.'" target="_blank">';
+                            echo wp_get_attachment_image( $attachment->ID, 'thumb-anexo' );
+                            echo '</a>';
+                        }
+                       
+                       echo '</li>';
+                      }
+					echo '</ul>';
+                    ?>
+                    
+                    <br />
+                    <input class="botao-deletar-anexo" type="submit" value="Delete" name="html-delete">
+                
+                </form>
+                
+                </div><!-- .cada-linha -->        
+                <?php } ?>
 
             </div><!-- .item-col-1 width-40 item-form -->
             <div class="item-col-2 width-40 item-form">
