@@ -15,6 +15,7 @@ add_action( 'admin_menu', 'cp_create_plugin_page' );
 add_action( 'admin_enqueue_scripts', 'cp_enqueue_scripts' );
 add_action( 'init', 'cp_check_post' );
 register_activation_hook( __FILE__, 'cp_activate_script' );
+register_deactivation_hook( __FILE__, 'cp_deactivate_script' );
 // register_uninstall_hook( __FILE__, 'cp_uninstall_script' );
 
 //use SimpleExcel\SimpleExcel;
@@ -42,11 +43,12 @@ function cp_ajax_edit_dict() {
 	echo json_encode($response);
 	exit;
 }
+function cp_activate_script() {
+	// Opção para zerar o dicionário quando o plugin for desativado
+	delete_option( 'rolo_import_dict' );
+}
 
 function cp_activate_script() {
-
-	// Opção para zerar o dicionário quando o plugin for ativado
-	// delete_option( 'rolo_import_dict' );
 
 	$dict = get_option( 'rolo_import_dict' );
 
@@ -75,7 +77,11 @@ function cp_activate_script() {
 			'rolo_uf' => 'UF',
 			'rolo_update' => 'Atualizacao',
 			'rolo_website' => 'Website',
-			'rolo_year' => 'Ano de criacao'
+			'rolo_year' => 'Ano de criacao',
+			'caracterizacao' => 'Caracterização Institucional',
+			'abrangencia' => 'Abrangencia da Atuação',
+			'interesse' => 'Áreas de interesse',
+			'participacao' => 'Espaços de participação',
 		);	
 	}
 
@@ -502,16 +508,24 @@ function cp_upload_data($data, $files, $force_update = false) {
 				$nome = 'rolo_contact_first_name';
 			}
 
+			$caracterizacao = explode(';', $comb['caracterizacao']);
+			$abrangencia = explode(';', $comb['abrangencia']);
+			$interesse = explode(';', $comb['interesse']);
+			$participacao = explode(';', $comb['participacao']);
+
+			foreach($caracterizacao as $c) { $tax = term_exists( $c, 'caracterizacao' ); if($tax['term_id']) { $car[] = (int) $tax['term_id']; } }
+			foreach($abrangencia as $c) { $tax = term_exists( $c, 'abrangencia' ); if($tax['term_id']) { $abr[] = (int) $tax['term_id']; } }
+			foreach($interesse as $c) { $tax = term_exists( $c, 'interesse' ); if($tax['term_id']) { $int[] = (int) $tax['term_id']; } }
+			foreach($participacao as $c) { $tax = term_exists( $c, 'participacao' ); if($tax['term_id']) { $prt[] = (int) $tax['term_id']; } }
+
 			$newpost = array(
 				'post_title' => $comb['name'],		
 				'tax_input'	 => array(
-						'type' => $type
-						/* 'caracterizacao' => $postarr['caracterizacao'],
-						'abrangencia' => $postarr['abrangencia'],
-						'interesse' => $postarr['interesse'],
-						'participacao' => $postarr['participacao'],
-						TODO
-						*/
+						'type' => $type,
+						'caracterizacao' => $car,
+						'abrangencia' => $abr,
+						'interesse' => $int,
+						'participacao' => $prt
 					)
 				
 				);
