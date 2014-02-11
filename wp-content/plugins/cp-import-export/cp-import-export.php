@@ -45,26 +45,49 @@ function cp_ajax_edit_dict() {
 
 function cp_activate_script() {
 
-	if(!is_dir(WP_CONTENT_DIR . '/export/')) {
-		mkdir(WP_CONTENT_DIR . '/export/', 755);
+	// Opção para zerar o dicionário quando o plugin for ativado
+	// delete_option( 'rolo_import_dict' );
+
+	$dict = get_option( 'rolo_import_dict' );
+
+	if(!$dict) {
+		$dict = array(
+			'ID' => 'ID',
+			'name' => 'Nome',
+			'type' => 'Tipo',
+			'email' => 'Email',
+			'rolo_city' => 'Cidade',
+			'rolo_conflito' => 'Conflito',
+			'rolo_contato_facil' => 'Forma Contato',
+			'rolo_contatos' => 'Contatos',
+			'rolo_endereco' => 'Endereço',
+			'rolo_legal' => 'Sit. Legal',
+			'rolo_others' => 'Observacoes',
+			'rolo_party' => 'Afiliacao politica',
+			'rolo_redes_fb' => 'Facebook',
+			'rolo_redes_tw' => 'Twitter',
+			'rolo_redes_in' => 'Linkedin',
+			'rolo_redes_alt' => 'Outra rede',
+			'rolo_relacao' => 'Relacao',
+			'rolo_role' => 'Cargo',
+			'rolo_telefone' => 'Telefone',
+			'rolo_telefone_alt' => 'Outro telefone',
+			'rolo_uf' => 'UF',
+			'rolo_update' => 'Atualizacao',
+			'rolo_website' => 'Website',
+			'rolo_year' => 'Ano de criacao'
+		);	
 	}
-	if(!is_dir(WP_CONTENT_DIR . '/import/')) {
-		mkdir(WP_CONTENT_DIR . '/import/', 755);
-	}
+
+	update_option( 'rolo_import_dict', $dict );
+	
 
 }
 
 function cp_uninstall_script($dir = false) {
 
-   if($dir)
-   	$dir = ABSPATH . 'wp-content/export';
+   delete_option( 'rolo_import_dict' );
 
-   $files = array_diff(scandir($dir), array('.','..'));
-    foreach ($files as $file) {
-      (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
-    }
-
-	rmdir($dir);
 }
 
 function cp_enqueue_scripts() {
@@ -116,6 +139,7 @@ function cp_ferramentas_page() {
 	<form  enctype="multipart/form-data" id="import-filters" method="post" action="">
 		<input type="hidden" value="true" name="upload">
 		<p><label><input type="file" name="import_file" /></label></p>
+		<p><label><input type="checkbox" name="force_update" /> Sobrescrever valores existentes? </label></p>
 		<p class="description">Apenas arquivos em formato .csv. <a href="<?php echo home_url('export/exemplo.csv'); ?>">Clique aqui para fazer download de um exemplo.</a></p>
 
 		<p class="submit">
@@ -151,17 +175,14 @@ function cp_ferramentas_page() {
 		<?php 
 
 			global $wpdb;
-			$r = $wpdb->get_results("SELECT DISTINCT meta_key FROM {$wpdb->prefix}postmeta WHERE meta_key LIKE 'rolo_%'");
+			// $r = $wpdb->get_results("SELECT DISTINCT meta_key FROM {$wpdb->prefix}postmeta WHERE meta_key LIKE 'rolo_%'");
 			$dict = get_option( 'rolo_import_dict' );
 
 			echo '<table class="dict"><fieldset><tr><th>Meta Key</th><th>Coluna no arquivo de importação</th></tr>';
-			echo "<tr><td class='dict-key'>name</td><td>ID</td></tr>";
-			echo "<tr><td class='dict-key'>type</td><td>TIPO</td></tr>";
-			echo "<tr><td class='dict-key'>name</td><td>NOME</td></tr>";
 			
-			foreach ($r as $key) {
-				$d = $dict[$key->meta_key];   
-				echo "<tr><td class='dict-key'>" . $key->meta_key ."</td><td class='dict-item'>" . $d ."</td></tr>";
+			foreach ($dict as $key => $value) {
+				// $d = $dict[$key->meta_key];   
+				echo "<tr><td class='dict-key'>" . $key ."</td><td class='dict-item'>" . $value ."</td></tr>";
 			}
 			echo '</fieldset></table>';
 
@@ -440,18 +461,13 @@ function cp_upload_data($data, $files, $force_update = false) {
 	$dict['name'] = 'NOME';
 	$dict['email'] = 'EMAIL';
 
-	// dump($data);
-	// dump($files);
+	if($data['force_update'] == 'on')
+		$force_update = true;
 
 	$cont = file_get_contents($files['import_file']['tmp_name']); // Le o conteudo do arquivo
 
-	// dump($cont);
-
 	$contarr = explode("\n", $cont); // Explode em linhas para cada nova entrada
 	$headers = explode(',', array_shift($contarr)); // Separa os cabeçalhos em outra lista
-
-	//dump($headers);
-	//dump(explode(',',$contarr[0]));
 
 	// Monta o array de cabeçalhos correto, com as keys conforme o dicionário do banco
 	for( $i = 0; $i < count($headers); $i++ ) {
@@ -461,7 +477,6 @@ function cp_upload_data($data, $files, $force_update = false) {
 		// $postarr[$k] = ""; // keys preenchidas, values em branco
 		$postarr[$i] = $k; // keys numericas, values preenchidos
 	}
-	// dump($postarr);
 
 	for( $i = 0; $i < count($contarr); $i++ ) {
 
@@ -494,35 +509,31 @@ function cp_upload_data($data, $files, $force_update = false) {
 						/* 'caracterizacao' => $postarr['caracterizacao'],
 						'abrangencia' => $postarr['abrangencia'],
 						'interesse' => $postarr['interesse'],
-						'participacao' => $postarr['participacao'],*/
+						'participacao' => $postarr['participacao'],
+						TODO
+						*/
 					)
 				
 				);
-				
-			$check = get_posts(
-				array(
-					'post_title' => $comb['name'], 
-					'meta_query' => array(
-						'relation' => 'OR', 
-						array('key' => 'rolo_company_email', 
-							'value' => $comb['email']
-						),
-						array('key' => 'rolo_contact_email', 
-							'value' => $comb['email']
-						)
-					)
-				)
-			);
+
+			global $wpdb;
+			$check = $wpdb->get_results($wpdb->prepare(
+					"SELECT ID FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id WHERE {$wpdb->prefix}posts.post_title = %s AND {$wpdb->prefix}postmeta.meta_key = %s AND {$wpdb->prefix}postmeta.meta_value = %s", $comb['name'], $email, $comb['email']));
+
+			$check_id = get_post($comb['ID']);
 
 			// Confere se o post é duplicado e não pode ser reescrito
+			if($check_id && !$force_update) {
+				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Já existe um post com o ID inserido mas a opção forçar update está desmarcada');
+			}
 			if($check && !$force_update) {
-				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Já existe uma entrada com esta combinação de nome / email');
+				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Já existe uma entrada com esta combinação de nome / email mas a opção forçar update está desmarcada');
 			} else {
 				
 				if($force_update) // se estamos forçando o update, devolve o ID para o array
 					$newpost['ID'] = $comb['ID'];
 
-				$id = wp_insert_post($newpost, true);
+				 $id = wp_insert_post($newpost, true);
 
 				// Confere se a inserção foi bem sucedida
 				if(is_wp_error($id)) {
@@ -536,13 +547,30 @@ function cp_upload_data($data, $files, $force_update = false) {
 					
 					foreach($comb as $key => $value) {
 
-						// dump($id .' '. $key .' '. $value);
-						//dump($value);
-						update_post_meta( $id, $key, $value );
+						if($key != 'rolo_uf' && $key != 'rolo_city' && $key != 'rolo_contact' && $key != 'rolo_relacao') {
+							$key = str_replace('_', '_'.$type.'_', $key); // Separa as chaves de company e contact
+						}
+
+						if($key == 'name' && $type == 'contact') {
+							$ty = $type.'_first';
+						
+							$key = 'rolo_'.$ty.'_'.$key; // Nomes corretos das chaves nome e email
+
+						} elseif ($key == 'email') {
+								$ty = $type;	
+							$key = 'rolo_'.$ty.'_'.$key; // Nomes corretos das chaves nome e email
+						}
+
+						if($key == 'type')
+							$value = $type; 
+	
+						if($value)
+							update_post_meta( $id, $key, $value ); // Salvar somente colunas com conteudo
 
 					}
 
 				}
+
 				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Sucesso');
 			}
 
