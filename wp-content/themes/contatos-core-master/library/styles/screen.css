@@ -648,6 +648,32 @@ ul.galeria-anexos li:hover {
 	margin: 10px;
 }
 
+.msg-upload-ok {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #9AB2CA;
+    border-radius: 5px;
+    color: #666666;
+    display: block;
+    font-size: 13px;
+    font-style: italic;
+    margin: 10px 0 0;
+    padding: 8px 13px;
+    width: auto;	
+}
+
+.msg-upload-erro {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #ceabab;
+    border-radius: 5px;
+    color: #4f0000;
+    display: block;
+    font-size: 13px;
+    font-style: italic;
+    margin: 10px 0 0;
+    padding: 8px 13px;
+    width: auto;	
+}
+
 .botao-add-contact {
 	float: right;
 	background: url("../../img/sprite.png") no-repeat scroll -60px 5px #023f7b;

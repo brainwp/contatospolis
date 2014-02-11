@@ -224,9 +224,9 @@ function rolo_contact_header($contact_id) {
                             wp_delete_attachment($id_contact, true);
                             }
                                 if ($errors) {
-                                    echo "There was an error deleting your file.";
+                                    echo "<span class=\"msg-upload-erro\">Houve algum problema ao excluir o arquivo. Tente novamente.</span>";
                                     } else {
-                                    echo "Your file has been deleted.";
+                                    echo "<span class=\"msg-upload-ok\">O arquivo selecionado foi excluído com sucesso.</span>";
                                 }
                         }
                     }
@@ -242,9 +242,9 @@ function rolo_contact_header($contact_id) {
                         }
                     
                         if ($errors) {
-                            echo "<p>There was an error uploading your file.</p>";
+                            echo "<span class=\"msg-upload-erro\">Houve algum problema ao enviar seu arquivo. Tente novamente.</span>";
                         } else {
-                            echo "<p>Your file has been uploaded.</p>";
+                            echo "<span class=\"msg-upload-ok\">Seu arquivo foi adicionado com sucesso.</span>";
                         }
                     }
                 ?>
