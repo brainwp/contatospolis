@@ -43,7 +43,7 @@ function cp_ajax_edit_dict() {
 	echo json_encode($response);
 	exit;
 }
-function cp_activate_script() {
+function cp_deactivate_script() {
 	// Opção para zerar o dicionário quando o plugin for desativado
 	delete_option( 'rolo_import_dict' );
 }
