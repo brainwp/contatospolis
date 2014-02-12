@@ -735,7 +735,7 @@ ul.galeria-anexos li:hover {
     -moz-border-radius: 5px;
     border-radius: 5px;
 	cursor: pointer;
-	margin: 10px 20px 20px 30px;
+	margin: 10px 20px 20px 20px;
 }
 
 .botao-deletar:hover {
@@ -743,6 +743,39 @@ ul.galeria-anexos li:hover {
 	color: #FFF;
 }
 
+.botao-toggle {
+	background: url("../../img/sprite.png") no-repeat scroll -506px -384px #023F7B;
+	padding: 20px 20px 20px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin: 10px 0 20px 30px;
+}
+
+.botao-toggle:hover {
+	background-position: -506px -433px;
+	color: #FFF;
+}
+
+.botao-exportar {
+	background: url("../../img/sprite.png") no-repeat scroll -508px -485px #023F7B;
+	padding: 20px 20px 20px 55px;
+	color: #9ab2ca;
+	border: 1px solid #023f7b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	cursor: pointer;
+	margin: 10px 0 20px 20px;
+}
+
+.botao-exportar:hover {
+	background-position: -508px -534px;
+	color: #FFF;
+}
 .botao-deletar-anexo {
 	background: url("../../img/sprite.png") no-repeat scroll -285px -190px #023f7b;
 	padding: 20px 20px 20px 55px;
