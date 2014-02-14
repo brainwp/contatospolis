@@ -18,9 +18,6 @@ register_activation_hook( __FILE__, 'cp_activate_script' );
 register_deactivation_hook( __FILE__, 'cp_deactivate_script' );
 // register_uninstall_hook( __FILE__, 'cp_uninstall_script' );
 
-//use SimpleExcel\SimpleExcel;
-//use SimpleExcel\Spreadsheet\Worksheet;
-
 add_action( 'wp_ajax_nopriv_cp_ajax_edit_dict', 'cp_ajax_edit_dict' );
 add_action( 'wp_ajax_cp_ajax_edit_dict', 'cp_ajax_edit_dict' );
 
@@ -57,9 +54,8 @@ function cp_activate_script() {
 			'ID' => 'ID',
 			'name' => 'Nome',
 			'type' => 'Tipo',
-			'email' => 'Email',
+			'rolo_email' => 'Email',
 			'rolo_city' => 'Cidade',
-			'rolo_conflito' => 'Conflito',
 			'rolo_contato_facil' => 'Forma Contato',
 			'rolo_contatos' => 'Contatos',
 			'rolo_endereco' => 'Endereço',
@@ -70,7 +66,6 @@ function cp_activate_script() {
 			'rolo_redes_tw' => 'Twitter',
 			'rolo_redes_in' => 'Linkedin',
 			'rolo_redes_alt' => 'Outra rede',
-			'rolo_relacao' => 'Relacao',
 			'rolo_role' => 'Cargo',
 			'rolo_telefone' => 'Telefone',
 			'rolo_telefone_alt' => 'Outro telefone',
@@ -82,6 +77,18 @@ function cp_activate_script() {
 			'abrangencia' => 'Abrangencia da Atuação',
 			'interesse' => 'Áreas de interesse',
 			'participacao' => 'Espaços de participação',
+
+			'rolo_conflito_check' => '(conflito) Está em conflito?',
+			'rolo_conflito_projeto' => '(conflito) Qual Projeto?',
+			'rolo_conflito_desde' => '(conflito) Desde',
+			'rolo_conflito_instancia' => '(conflito) Instância',
+			'rolo_conflito_equacionado' => '(conflito) Foi solucionado?',
+			'rolo_conflito_observacoes' => '(conflito) Observações',
+
+			'rolo_relacao_check' => '(relação) Participou de envento?',
+			'rolo_relacao_local' => '(relação) Local',
+			'rolo_relacao_apoio' => '(relação) Apoia o projeto?',
+			'rolo_relacao_conflito' => '(relação) Histórico de conflito?'
 		);	
 	}
 
@@ -204,7 +211,7 @@ function cp_ferramentas_page() {
 function cp_check_post() {
 
 	if($_POST['download']) {
-		cp_download_data($_POST);
+		cp_download_data_new($_POST);
 		// cp_make_excel();
 	} elseif($_POST['upload']) {
 		return cp_upload_data($_POST, $_FILES);
@@ -213,7 +220,10 @@ function cp_check_post() {
 	}
 }
 
-function cp_download_data($tipo) {
+function cp_download_data_new($tipo = false) {
+
+	if(!$tipo)
+		$tipo = array('conteudo' => 'tudo');
 
 	if(!$tipo['conteudo'])
 		return;
@@ -232,228 +242,123 @@ function cp_download_data($tipo) {
 			'numberposts' => -1,
 			'post_type' => 'post',
 			'post_status' => 'publish',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'type',
-					'field' => 'slug',
-					'terms' => $types,
-					)
-				)
+			'type' => implode(',', $types)
 		));
 
-	if($tipo['conteudo'] == 'entidades') 
-		$csv = "ID,Tipo,Nome,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contactar,Ano de Criação,Constituida legalmente?,Contatos,Caracterização institucional,Áreas de interesse,Abrangência de atuação,Espaços de participação,Impactos socioambientais,Relação com o projeto Litoral Sustentável,Data das informações,Observações\n";
-	if($tipo['conteudo'] == 'contatos') 
-		$csv = "ID,Tipo,Nome,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contactar,Instituição,Cargo,Posicionamento político,Data das informações,Observações\n";
-	if($tipo['conteudo'] == 'tudo')
-		$csv = "ID,Tipo,Nome,E-mail,Endereço,Cidade,Estado,Telefone,Website,Redes Sociais,Forma mais fácil de contactar,Ano de Criação,Constituida legalmente?,Contatos,Caracterização institucional,Áreas de interesse,Abrangência de atuação,Espaços de participação,Impactos socioambientais,Relação com o projeto Litoral Sustentável,Instituição,Cargo,Posicionamento político,Data das informações,Observações\n";
+	$dict = get_option( 'rolo_import_dict' );
 
-	$csv = explode(',', $csv);
-	
-	$lines = array();
-	$lines[] = $csv;
+	$master_keys = array_keys($dict);
 
-	foreach ($export_data as $data) {
+	foreach($master_keys as $key) {
+		$csv .= '"'.$dict[$key].'",';
+	}
+		$csv .= "\n";
 
-		// Dados iniciais
-		$csv = array();
-		$csv[] =  $data->ID . '';
-
-		if(has_term( 'company', 'type', $data ))
-			$csv[] =  'Instituição';
-		if(has_term( 'contact', 'type', $data ))
-			$csv[] =  'Contato';
-
-		$csv[] =  $data->post_title . '';
-
-		if(has_term( 'company', 'type', $data )) :
-
-			// Post Meta
-
-			$company = get_post_custom($data->ID);
-
-			$csv[] =  '"' . $company['rolo_company_email'][0] . '"';
-			$csv[] =  '"' . $company['rolo_company_endereco'][0] . '"';
-			$csv[] =  '"' . $company['rolo_city'][0] . '"';
-			$csv[] =  '"' . $company['rolo_uf'][0] . '"';
-			$csv[] =  '"' . $company['rolo_company_telefone'][0] . '"';
-			$csv[] =  '"' . $company['rolo_company_website'][0] . '"';
-			$redes = unserialize( $company['rolo_company_redes'][0] );
-			if( is_array( $redes ) ) {
-				$csv[] =  '"' . implode( '; ', $redes ) . '"';
-			} else {
-				$csv[] =  '';
-			}
-			$csv[] =  '"' . $company['rolo_company_contato_facil'][0] . '"';
-
-			$csv[] =  '"' . $company['rolo_company_year'][0] . '"';
-			$csv[] =  '"' . $company['rolo_company_legal'][0] . '"';
-
-			$contatos = unserialize( $company['rolo_contatos'][0] );
-			if( is_array( $contatos ) ) {
-				$csv[] =  '"' . implode( '; ', $contatos ) . '"';
-			} else {
-				$csv[] =  '';
-			}
-
-			// Taxonomias
-
-			$car = get_the_terms( $data->ID, 'caracterizacao' );
-			if($car) {
-				foreach ($car as $c) { $cars[] .= $c->name; }
-				$csv[] =  '"' . implode('; ', $cars) . '"';
-			} else {
-				$csv[] =  '';
-			}
-			
-			$abr = get_the_terms( $data->ID, 'abrangencia' );
-			if($abr) {
-				foreach ($abr as $c) { $abrs[] .= $c->name; }
-				$csv[] =  '"' . implode('; ', $abrs) . '"';
-			} else {
-				$csv[] =  '';
-			}
-
-			$int = get_the_terms( $data->ID, 'interesse' );
-			if($int) {
-				foreach ($int as $c) { $ints[] .= $c->name; }
-				$csv[] =  '"' . implode('; ', $ints) . '"';
-			} else {
-				$csv[] =  '';
-			}
-
-			$par = get_the_terms( $data->ID, 'participacao' );
-			if($par) {
-				foreach ($par as $c) { $pars[] .= $c->name; }
-				$csv[] =  '"' . implode('; ', $pars) . '"';
-			} else {
-				$csv[] =  '';
-			}
-
-			// Impactos Socioambientais
-			
-			$csv[] =  '"';
-
-			if($company['rolo_conflito_check'][0]) {
-				$csv[] =  'Está em situação de conflito; ';
-			} else {
-				$csv[] =  'Não está em situação de conflito; ';
-			}
-
-			if($company['rolo_conflito_projeto'][0])
-				$csv[] =  'Projeto: ' . $company['rolo_conflito_projeto'][0] . '; ';
-
-			if($company['rolo_conflito_desde'][0])
-				$csv[] =  'Desde: ' . $company['rolo_conflito_desde'][0] . '; ';
-
-			if($company['rolo_conflito_instancia'][0])
-				$csv[] =  'Levado a alguma instância? ' . $company['rolo_conflito_instancia'][0] . '; ';
-
-			if($company['rolo_conflito_equacionado'][0])
-				$csv[] =  'Equacionado? ' . $company['rolo_conflito_equacionado'][0] . '; ';
-
-			if($company['rolo_conflito_observacoes'][0])
-				$csv[] =  'Observações: ' . $company['rolo_conflito_observacoes'][0] . '; ';
-				
-			$csv[] =  '"';		
-
-			// Relação com o projeto
-			
-			$csv[] =  '"';
-
-			if($company['rolo_relacao_check'][0]) {
-				$csv[] =  'Participou de evento do projeto; ';
-			} else {
-				$csv[] =  'Não participou de evento do projeto; ';
-			}
-
-			if($company['rolo_relacao_local'][0])
-				$csv[] =  'Local: ' . $company['rolo_relacao_local'][0] . '; ';
-
-			if($company['rolo_relacao_apoio'][0]) {
-				$csv[] =  'Tem apoiado/divulgado o projeto; ';
-			} else {
-				$csv[] =  'Não tem apoiado/divulgado o projeto; ';
-			}
-
-			if($company['rolo_relacao_conflito'][0])
-				$csv[] =  'Histórico de conflito: ' . $company['rolo_relacao_conflito'][0] . '; ';
-				
-			$csv[] =  '"';		
-
-			if($tipo['conteudo'] == 'tudo')
-				$csv[] =  '-,-,-';
-
-			// Data e observações
-			$company_update = $company['rolo_company_update'][0];
-				if(!$company_update) { $company_update = "Última edição em: " . date( 'd/m/Y', strtotime($data->post_modified) ); }
-
-			$csv[] =  '"' . $company_update . '"';
-
-			$csv[] =  '"' . $company['rolo_company_others'][0] . '"';
-
-			// Fim de linha
-		    
-	    	$lines[] = $csv;
-
-	    elseif(has_term( 'contact', 'type', $data )) :
+	// Corre o array de resultados
+	foreach ($export_data as $exp) {
 		
-			$contact = get_post_custom($data->ID);
+		// Busca todos os metadados daquele resultado
+		$exports = get_post_custom( $exp->ID );
+		// Busca todos os metadados exportáveis daquele resultado
+		$allterms = get_the_terms( $exp->ID, array( 'type','caracterizacao','abrangencia','interesse','participacao' ) );
+		// Contato ou Entidade
+		if( has_term( 'contact', 'type', $exp->ID ) ) {
+			$tipo = 'contact';
+			$tipoprint = 'Contato';
+		} elseif ( has_term( 'company', 'type', $exp->ID ) ) {
+			$tipo = 'company';
+			$tipoprint = 'Entidade';
+		} else {
+			// Pula os registros sem essa informação
+			continue;
+		}
 
-			$csv[] =  '"' . $contact['rolo_contact_email'][0] . '"';
-			$csv[] =  '"' . $contact['rolo_contact_endereco'][0] . '"';
-			$csv[] =  '"' . $contact['rolo_city'][0] . '"';
-			$csv[] =  '"' . $contact['rolo_uf'][0] . '"';			
-			$csv[] =  '"' . $contact['rolo_contact_telefone'][0] . '"';
-			$csv[] =  '"' . $contact['rolo_contact_website'][0] . '"';
+		// Separa todas as chaves para comparação com o dicionário
+		// Passa por cada uma delas buscando correspondentes
+		$exportkeys = array_keys($exports);	
+		foreach($exportkeys as $key) {
+			// Confere retira as mencoes a company e contact
+			$mkey = str_replace( '_'.$tipo.'_', '_', $key );
+			// Se a chave está presente no dicionario
+			// Colocamos no na lista de resultados com a mesma chave numérica
+			$srch = array_search($mkey, $master_keys);
+			if( $srch ) {
+				$values[$exp->ID][$srch] = $exports[$key][0];
+			} 
 
-			$redes = unserialize( $contact['rolo_contact_redes'][0] );
-			if( is_array( $redes ) ) {
-				$csv[] =  '"' . implode( '; ', $redes ) . '"';
-			} else {
-				$csv[] =  '';
+		}
+		// Não perder as colunas sem informação
+		for($i=0;$i<count($master_keys);$i++) {
+			if(!$values[$exp->ID][$i]) {
+				$values[$exp->ID][$i] = '--';
 			}
-			
-			$csv[] =  '"' . $contact['rolo_contact_contato_facil'][0] . '"';
+		}
+		// Organizar na mesma ordem para imprimir
+		ksort($values[$exp->ID], SORT_NUMERIC);
 
-			if($tipo['conteudo'] == 'tudo')
-				$csv[] =  '-,-,-,-,-,-,-,-,-';
+		// Ultima passada com as condicionais para imprimir os valores
+		for($i=0;$i<count($master_keys);$i++) {
 
-			$cias = unserialize( $contact['rolo_contact_company'][0] );
-			if( is_array( $cias ) ) {
-				$csv[] =  '"' . implode( '; ', $cias ) . '"';
+			$serial = @unserialize($values[$exp->ID][$i]);
+			$original_key = $master_keys[$i];
+			$bits = array();
+
+			// Se o valor é uma string, imprime, senão começam os desafios:
+			if(!$serial) {
+				if('ID' == $original_key) {
+					$csv .= '"'.$exp->ID.'",';	
+				} elseif('name' == $original_key) {
+					$csv .= '"'.$exp->post_title.'",';	
+				} elseif('type' == $original_key) {
+					$csv .= '"'.$tipoprint.'",';	
+				} elseif (taxonomy_exists($original_key)) {
+					$terms = get_the_terms( $exp->ID, $original_key );
+					if($terms) {
+						foreach($terms as $t)
+							$bits[] = $t->name;	
+					}
+					$csv .= '"'.implode('|', $bits).'",';
+				} else {
+					$csv .= '"'.$values[$exp->ID][$i].'",';	
+				}
+				
 			} else {
-				$csv[] =  '';
+				
+				switch ($original_key) {
+					// Imprime os nomes e IDs dos contatos
+					case 'rolo_contatos':
+						foreach($serial as $s) {
+							$user = get_post( $s );
+							$bits[] = '('.$s.') ' . $user->post_title;
+						}
+						$csv .= '"'.implode('|', $bits).'",';
+						break;
+					default:
+						$csv .= '"'.implode('|', $serial).'",';	
+						break;
+				}
 			}
+		}
+		$csv .= "\n";
+	}
 
-			
-			$csv[] =  '"' . $contact['rolo_contact_role'][0] . '"';
-			$csv[] =  '"' . $contact['rolo_contact_party'][0] . '"';
+    // Ordena pelo ID
+	ksort($values, SORT_NUMERIC);
+	
+	// Substituições por segurança
+	// retira virgulas do final das linhas
+	// retira aspas duplicadas
+	$csv = str_replace(",\n", "\n", $csv);
+	$csv = str_replace('""', '"', $csv);
 
-			
-			
-			$contact_update = $contact['rolo_contact_update'][0];
-				if(!$contact_update) { $contact_update = "Última edição em: " . date( 'd/m/Y', strtotime($data->post_modified) ); }
-
-			$csv[] =  '"' . $contact_update . '"';
-
-			$csv[] =  '"' . $contact['rolo_contact_others'][0] . '"';
-
-			$lines[] = $csv;
-
-	    endif;
-   		$i++;
-   	}
-
-   	// cp_make_excel();
    	header('Content-type: text/csv');
    	header("Content-Disposition: attachment;filename=".time().".csv");
 
-	$f  =   fopen('php://output', 'w');
-    foreach($lines as $l) {
-    	fputcsv($f, $l);
-    }
+	$f = fopen('php://output', 'w');
+	fwrite($f, $csv);
+	fclose($f);
     exit;
+
 }
 
 function cp_upload_data($data, $files, $force_update = false) {
