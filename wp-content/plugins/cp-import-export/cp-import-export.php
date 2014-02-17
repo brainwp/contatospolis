@@ -367,19 +367,38 @@ function cp_upload_data($data, $files, $force_update = false) {
 
 	$dict = get_option( 'rolo_import_dict' );
 
-	$dict['ID'] = 'ID';
-	$dict['type'] = 'TIPO';
-	$dict['name'] = 'NOME';
-	$dict['email'] = 'EMAIL';
+	//$dict['ID'] = 'ID';
+	//$dict['type'] = 'TIPO';
+	//$dict['name'] = 'NOME';
+	//$dict['email'] = 'EMAIL';
 
 	if($data['force_update'] == 'on')
 		$force_update = true;
 
 	$cont = file_get_contents($files['import_file']['tmp_name']); // Le o conteudo do arquivo
 
-	$contarr = explode("\n", $cont); // Explode em linhas para cada nova entrada
-	$headers = explode(',', array_shift($contarr)); // Separa os cabeçalhos em outra lista
+	$matches = array();
+	$cont_ids = preg_match_all("/\n\"?\d+\"?/", $cont, $matches); // Busca os IDs de cada entrada
+	$matches = str_replace("\n", '', $matches[0]); // Retira as qubras de linha
+	$contarr = preg_split("/\n\"?\d+\"?/", $cont); // Finalmente separa tudo em linhas para cada nova entrada
 
+	// Determinando os separadores
+	$tabs = explode("\t",  $contarr[0]);
+	$commas = explode(",", $contarr[0]);
+	$pontos = explode(";", $contarr[0]);
+	
+	if(count($tabs) > 1){
+		$separador = "\t";
+	} elseif(count($commas) > 1){
+		$separador = ",";
+	} else {
+		$separador = ";";
+	}
+
+ 	// Separa os cabeçalhos em outra lista
+	$headers = explode($separador, array_shift($contarr));
+	
+	
 	// Monta o array de cabeçalhos correto, com as keys conforme o dicionário do banco
 	for( $i = 0; $i < count($headers); $i++ ) {
 		$k = str_replace('"', '', $headers[$i]);
@@ -389,14 +408,26 @@ function cp_upload_data($data, $files, $force_update = false) {
 		$postarr[$i] = $k; // keys numericas, values preenchidos
 	}
 
+	require_once(dirname( __FILE__ ) . '/ForceUTF8/Encoding.php'); 
+	
+	$encoding = new Encoding();
+
 	for( $i = 0; $i < count($contarr); $i++ ) {
+		
+		$utf8_string = $encoding::toUTF8($contarr[$i]);
 
 		// Para cada nova entrada, separa os valores em um array
-		$arr = explode(',', $contarr[$i]);
+		$arr = explode($separador, $utf8_string);
 		$arr = str_replace('"', '', $arr);
 		
+		$arr[0] = $matches[$i];
+
 		if (count($postarr) != count($arr)) {
-			$err[] = array('err' => 'Linha incompleta');
+			if(count($arr) == 1 && $arr[0] == '')
+				continue;
+
+			$err[] = array('err' => 'Linha incompleta, a planilha tem '.count($postarr).' cabeçalhos e a entrada '.$arr[$i].' tem '.count($arr).' colunas');
+			
 		} else {		
 
 			// Pega as keys corretas e combina com os valores oferecidos, 
@@ -413,10 +444,10 @@ function cp_upload_data($data, $files, $force_update = false) {
 				$nome = 'rolo_contact_first_name';
 			}
 
-			$caracterizacao = explode(';', $comb['caracterizacao']);
-			$abrangencia = explode(';', $comb['abrangencia']);
-			$interesse = explode(';', $comb['interesse']);
-			$participacao = explode(';', $comb['participacao']);
+			$caracterizacao = explode('|', $comb['caracterizacao']);
+			$abrangencia = explode('|', $comb['abrangencia']);
+			$interesse = explode('|', $comb['interesse']);
+			$participacao = explode('|', $comb['participacao']);
 
 			foreach($caracterizacao as $c) { $tax = term_exists( $c, 'caracterizacao' ); if($tax['term_id']) { $car[] = (int) $tax['term_id']; } }
 			foreach($abrangencia as $c) { $tax = term_exists( $c, 'abrangencia' ); if($tax['term_id']) { $abr[] = (int) $tax['term_id']; } }
@@ -424,7 +455,9 @@ function cp_upload_data($data, $files, $force_update = false) {
 			foreach($participacao as $c) { $tax = term_exists( $c, 'participacao' ); if($tax['term_id']) { $prt[] = (int) $tax['term_id']; } }
 
 			$newpost = array(
-				'post_title' => $comb['name'],		
+				'post_title' => $comb['name'],
+				'post_date' => date( 'Y-m-d H:i:s',  time() ),
+				'post_date_gmt' => gmdate( 'Y-m-d H:i:s',  time() ),
 				'tax_input'	 => array(
 						'type' => $type,
 						'caracterizacao' => $car,
@@ -435,17 +468,18 @@ function cp_upload_data($data, $files, $force_update = false) {
 				
 				);
 
+			// wp_die(dump($comb));
+
 			global $wpdb;
 			$check = $wpdb->get_results($wpdb->prepare(
-					"SELECT ID FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id WHERE {$wpdb->prefix}posts.post_title = %s AND {$wpdb->prefix}postmeta.meta_key = %s AND {$wpdb->prefix}postmeta.meta_value = %s", $comb['name'], $email, $comb['email']));
+					"SELECT ID FROM {$wpdb->prefix}posts INNER JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id WHERE {$wpdb->prefix}posts.post_title = %s AND {$wpdb->prefix}postmeta.meta_key = %s AND {$wpdb->prefix}postmeta.meta_value = %s", $comb['name'], $email, $comb['rolo_email']));
 
 			$check_id = get_post($comb['ID']);
 
 			// Confere se o post é duplicado e não pode ser reescrito
-			if($check_id && !$force_update) {
+			if($check_id && !$force_update && $comb['ID'] != '0') {
 				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Já existe um post com o ID inserido mas a opção forçar update está desmarcada');
-			}
-			if($check && !$force_update) {
+			} elseif($check && !$force_update) {
 				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Já existe uma entrada com esta combinação de nome / email mas a opção forçar update está desmarcada');
 			} else {
 				
@@ -453,7 +487,7 @@ function cp_upload_data($data, $files, $force_update = false) {
 					$newpost['ID'] = $comb['ID'];
 
 				 $id = wp_insert_post($newpost, true);
-
+				 
 				// Confere se a inserção foi bem sucedida
 				if(is_wp_error($id)) {
 					$error_string = $id->get_error_message();
@@ -488,9 +522,10 @@ function cp_upload_data($data, $files, $force_update = false) {
 
 					}
 
+					$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Sucesso');
 				}
 
-				$err[] = array('ID' => $comb['ID'], 'Nome' => $comb['name'], 'Email' => $comb['email'], 'err' => 'Sucesso');
+				
 			}
 
 		}
