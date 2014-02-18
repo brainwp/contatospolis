@@ -495,6 +495,8 @@ function rolo_company_header($company_id) {
         $company = get_post_custom($company_id);
 
         $company_name = $company['rolo_company_name'][0];
+        if(!$company_name)
+            $company_name = $company['name'][0];
         $company_year = $company['rolo_company_year'][0];
         $company_legal = $company['rolo_company_legal'][0];
         $company_email = $company['rolo_company_email'][0];
@@ -998,6 +1000,8 @@ function rolo_company_header_list($company_id) {
         $company = get_post_custom($company_id);
 
         $company_name = $company['rolo_company_name'][0];
+        if(!$company_name)
+            $company_name = $company['name'][0];
         $company_email = $company['rolo_company_email'][0];
         $company_website = $company['rolo_company_website'][0];
 

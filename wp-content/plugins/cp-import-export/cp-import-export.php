@@ -504,8 +504,12 @@ function cp_upload_data($data, $files, $force_update = false) {
 							$key = str_replace('_', '_'.$type.'_', $key); // Separa as chaves de company e contact
 						}
 
-						if($key == 'name' && $type == 'contact') {
-							$ty = $type.'_first';
+						if($key == 'name') {
+							if($type == 'contact') {
+								$ty = $type.'_first';
+							} else {
+								$ty = $type;
+							}
 						
 							$key = 'rolo_'.$ty.'_'.$key; // Nomes corretos das chaves nome e email
 
