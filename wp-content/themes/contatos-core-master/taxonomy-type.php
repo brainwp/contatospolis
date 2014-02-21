@@ -7,7 +7,7 @@
 		<div id="main">
 
 				<?php rolo_pageheader();?>
-				<?php rolo_sorter();?>
+				<?php // rolo_sorter();?>
 				<?php rolo_loop();?>
 			
 		</div><!-- #main -->
