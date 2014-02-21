@@ -765,7 +765,7 @@ function rolo_company_header($company_id) {
                                                         require_once(ABSPATH . 'wp-admin/includes/template.php');
 
                                                         echo '<div class="caracterizacao">';
-                                                        echo '<h3>'. _e('Institutional Characterization', 'rolopress').'</h3>';
+                                                        echo '<h3 class="inline">'. __('Institutional Characterization', 'rolopress').'</h3>';
                                                         echo '<ul>';
                                                                 wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) );
                                                         echo '</ul>';
@@ -780,7 +780,7 @@ function rolo_company_header($company_id) {
                                                         }
 
                                                         echo '<div class="interesse">';
-                                                        echo '<h3>'. _e('Areas of Interest', 'rolopress').'</h3>';
+                                                        echo '<h3 class="inline">'. __('Areas of Interest', 'rolopress').'</h3>';
                                                         echo '<ul>';
                                                                 wp_terms_checklist( $company_id, array('taxonomy' => 'interesse', 'checked_ontop' => false ) );
                                                         echo '</ul>';
@@ -798,7 +798,7 @@ function rolo_company_header($company_id) {
                                                 <div class="item-col-2">
                                                         <?php
                                                         echo '<div class="abrangencia">';
-                                                        echo '<h3>'. _e('Scope of Practice', 'rolopress').'</h3>';
+                                                        echo '<h3 class="inline">'. __('Scope of Practice', 'rolopress').'</h3>';
                                                         echo '<ul>';
                                                                 wp_terms_checklist( $company_id, array('class' => 'select-outros', 'taxonomy' => 'abrangencia', 'checked_ontop' => false ) );
                                                         echo '</ul>';
@@ -814,7 +814,7 @@ function rolo_company_header($company_id) {
 
 														// Espaços de Participação
                                                         echo '<div class="participacao">';
-                                                        echo '<h3>'. _e('Spaces of Participation', 'rolopress').'</h3>';
+                                                        echo '<h3 class="inline">'. __('Spaces of Participation', 'rolopress').'</h3>';
                                                         echo '<ul>';
                                                                 wp_terms_checklist( $company_id, array('class' => 'select-outros', 'taxonomy' => 'participacao', 'checked_ontop' => false ) );
                                                         echo '</ul>';
@@ -833,7 +833,7 @@ function rolo_company_header($company_id) {
                                         <hr>
                                         <div class="impactos">
                                                 <div class="item-col-1 width-45 item-form">
-                                                        <h3><?php _e('Social and Environmental Impacts', 'rolopress'); ?></h3>
+                                                        <h3 class="inline"><?php _e('Social and Environmental Impacts', 'rolopress'); ?></h3>
                                                         <?php 
                                                         $edit = 'OK';
                                                         $out = 'out';
@@ -912,7 +912,7 @@ function rolo_company_header($company_id) {
 						</div><!-- item-col-1 -->
                         
 						<div class="item-col-2 width-45 item-form">
-                            <h3><?php _e('Relationship with Litoral Sustentável project', 'rolopress'); ?></h3>
+                            <h3 class="inline"><?php _e('Relationship with Litoral Sustentável project', 'rolopress'); ?></h3>
                             <?php 
                             $edit = 'OK';
                             $out = 'out';

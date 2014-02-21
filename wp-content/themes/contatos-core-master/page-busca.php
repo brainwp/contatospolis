@@ -112,11 +112,11 @@ get_header(); ?>
 
     <fieldset class="inlineLabels company margin-busca">
 
-		<div class="item-col-1 width-50">
+		<div class="item-col-1 width-45">
 
     	<?php require_once(ABSPATH . 'wp-admin/includes/template.php'); ?>
         <div class="cada-linha add ul-checkbox">
-                <span class="title grey"><h3><?php _e('Caracterização Institucional', 'rolopress'); ?></h3></span>
+                <span class="title grey"><h3 class="inline"><?php _e('Caracterização Institucional', 'rolopress'); ?></h3></span>
 				<span class="busca">
 					<ul>
 						<?php wp_terms_checklist( $company_id, array( 'taxonomy' => 'caracterizacao', 'checked_ontop' => false ) ); ?>
@@ -125,7 +125,7 @@ get_header(); ?>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha add ul-checkbox">
-                <span class="title grey"><h3><?php _e('Áreas de interesse', 'rolopress'); ?></h3></span>
+                <span class="title grey"><h3 class="inline"><?php _e('Áreas de interesse', 'rolopress'); ?></h3></span>
 				<span class="busca">
 					<ul>
 						<?php wp_terms_checklist( $company_id, array( 'taxonomy' => 'interesse', 'checked_ontop' => false ) ); ?>
@@ -133,12 +133,12 @@ get_header(); ?>
 				</span>
         </div><!-- .cada-linha -->
 
-        </div><!-- .item-col-1 width-50 -->
+        </div><!-- .item-col-1 width-45 -->
 
 		<div class="item-col-1 width-40">
 
         <div class="cada-linha add ul-checkbox">
-                <span class="title title-bloco-6 grey"><h3><?php _e('Abrangência de atuação', 'rolopress'); ?></h3></span>
+                <span class="title grey"><h3 class="inline"><?php _e('Abrangência de atuação', 'rolopress'); ?></h3></span>
 				<span class="busca busca-resposta">
 					<ul>
 						<?php wp_terms_checklist( $company_id, array( 'taxonomy' => 'abrangencia', 'checked_ontop' => false ) ); ?>
@@ -147,7 +147,7 @@ get_header(); ?>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha add ul-checkbox">
-                <span class="title title-bloco-6 grey"><h3><?php _e('Impactos Socioambientais', 'rolopress'); ?></h3></span>
+                <span class="title grey"><h3 class="inline"><?php _e('Impactos Socioambientais', 'rolopress'); ?></h3></span>
 				<span class="busca busca-resposta">
 					<ul>
 						<li id="impactos"><label class="selectit"><input type="checkbox" id="in-impactos" name="tax_input[impactos]" value="conflito">Encontra-se em situação de conflito?</label></li>
@@ -156,7 +156,7 @@ get_header(); ?>
         </div><!-- .cada-linha -->
 
         <div class="cada-linha add ul-checkbox">
-                <span class="title grey"><h3><?php _e('Espaços de Participação', 'rolopress'); ?></h3></span>
+                <span class="title grey"><h3 class="inline"><?php _e('Espaços de Participação', 'rolopress'); ?></h3></span>
 				<span class="busca">
 					<ul>
 						<li id="evento"><label class="selectit"><input type="checkbox" id="in-espaco-evento" name="tax_input[espacos][evento]" value="evento">Participou de algum evento do projeto?</label></li>

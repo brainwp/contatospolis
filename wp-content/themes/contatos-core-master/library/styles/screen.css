@@ -1091,6 +1091,12 @@ span#editor-rolo_company_telefone.jeip-editor {
 	background: url("../../img/petro-gov.png") no-repeat;
 }
 
+.inline {
+    border-bottom: 2px solid #DDDDDD;
+	padding-top: 20px;
+    padding-bottom: 4px;
+}
+
 /* =main
 -------------------------------------------------------------- */
 h3.section-heading {
