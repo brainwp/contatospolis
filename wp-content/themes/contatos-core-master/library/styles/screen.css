@@ -881,10 +881,17 @@ ul.galeria-anexos li:hover {
 
 .box-redes {
     float: left;
-    margin-left: 15px;
     overflow: hidden;
     width: 70%;
 }
+
+.box-redes-single {
+    float: left;
+	margin-left: 15px;
+    overflow: hidden;
+    width: 70%;
+}
+
 
 .resposta-uf {
 	float: left;

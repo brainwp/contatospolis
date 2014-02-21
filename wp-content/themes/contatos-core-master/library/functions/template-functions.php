@@ -344,10 +344,16 @@ function rolo_contact_header($contact_id) {
 			</div><!-- .cada-linha -->
 				   
 			<?php endif; ?>
+            <?php if(is_single()) {
+				$class_redes = "box-redes-single";
+            	
+			} else {
+				$class_redes = "box-redes";
+			}?>
                 
         <div class="cada-linha redes">
             <span class="title title-bloco-4"><?php _e('Social Networks ', 'rolopress'); ?></span>
-            <div class="box-redes"><?php echo $redes; ?></div>
+            <div class="<?php echo $class_redes; ?>"><?php echo $redes; ?></div>
         </div><!-- .cada-linha -->
         
         <div class="cada-linha contato">
