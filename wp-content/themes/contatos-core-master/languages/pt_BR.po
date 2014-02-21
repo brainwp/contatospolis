@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Contatos Polis\n"
 "POT-Creation-Date: 2014-02-21 09:51-0300\n"
-"PO-Revision-Date: 2014-02-21 10:02-0300\n"
+"PO-Revision-Date: 2014-02-21 11:32-0300\n"
 "Last-Translator: Diego Rojas <diego@brasa.art.br>\n"
 "Language-Team: brasa.art.br <contato@brasa.art.br>\n"
 "Language: pt_BR\n"
@@ -890,6 +890,8 @@ msgstr "Impactos Socioambientais"
 msgid ""
 "You are in conflict with large <br /> projects and / or protected areas? "
 msgstr ""
+"Encontra-se em situação de conflito com grandes projetos e/ou áreas de "
+"proteção ambiental? "
 
 #: ../library/functions/template-functions.php:861
 #: ../library/functions/template-functions.php:894
@@ -915,7 +917,7 @@ msgstr "Desde quando isso ocorre?"
 
 #: ../library/functions/template-functions.php:882
 msgid "The case was taken to some instance?"
-msgstr ""
+msgstr "O caso foi levado a algum órgão / instancia?"
 
 #: ../library/functions/template-functions.php:888
 msgid "The situation was equated?"
