@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Contatos Polis\n"
-"POT-Creation-Date: 2014-02-21 09:51-0300\n"
-"PO-Revision-Date: 2014-02-21 11:32-0300\n"
+"POT-Creation-Date: 2014-02-21 11:32-0300\n"
+"PO-Revision-Date: 2014-02-21 14:58-0300\n"
 "Last-Translator: Diego Rojas <diego@brasa.art.br>\n"
 "Language-Team: brasa.art.br <contato@brasa.art.br>\n"
 "Language: pt_BR\n"
@@ -242,7 +242,7 @@ msgid "Contact Settings"
 msgstr "Configurações do Contato"
 
 #: ../library/admin/admin-menu/admin-setup-menus.php:22
-#: ../library/functions/template-functions.php:1181
+#: ../library/functions/template-functions.php:1187
 #: ../library/setup/settings.php:146 ../library/setup/settings.php:149
 msgid "Contacts"
 msgstr "Contatos"
@@ -501,7 +501,7 @@ msgstr "1 Nota"
 #: ../library/functions/content-functions.php:501
 #: ../library/functions/content-functions.php:507
 #: ../library/functions/content-functions.php:511
-#: ../library/functions/template-functions.php:921
+#: ../library/functions/template-functions.php:927
 msgid "Edit"
 msgstr "Editar"
 
@@ -660,7 +660,7 @@ msgstr ""
 "ajudar."
 
 #: ../library/functions/template-functions.php:163
-#: ../library/functions/template-functions.php:577
+#: ../library/functions/template-functions.php:583
 msgid "Change Image"
 msgstr "Mudar imagem"
 
@@ -669,7 +669,7 @@ msgid "City of Residence "
 msgstr "Cidade que Reside"
 
 #: ../library/functions/template-functions.php:182
-#: ../library/functions/template-functions.php:720
+#: ../library/functions/template-functions.php:726
 msgid "State "
 msgstr "Estado "
 
@@ -682,18 +682,18 @@ msgid "Role "
 msgstr "Cargo "
 
 #: ../library/functions/template-functions.php:197
-#: ../library/functions/template-functions.php:592
-#: ../library/functions/template-functions.php:1124
+#: ../library/functions/template-functions.php:598
+#: ../library/functions/template-functions.php:1130
 msgid "Observation "
 msgstr "Observação "
 
 #: ../library/functions/template-functions.php:204
-#: ../library/functions/template-functions.php:596
+#: ../library/functions/template-functions.php:602
 msgid "Date of Information "
 msgstr "Data da Informação "
 
 #: ../library/functions/template-functions.php:210
-#: ../library/functions/template-functions.php:602
+#: ../library/functions/template-functions.php:608
 msgid "Asked Source "
 msgstr "Fonte de Consulta"
 
@@ -702,302 +702,302 @@ msgid "Political Positioning "
 msgstr "Posição Política "
 
 #: ../library/functions/template-functions.php:321
-#: ../library/functions/template-functions.php:705
-#: ../library/functions/template-functions.php:1092
+#: ../library/functions/template-functions.php:711
+#: ../library/functions/template-functions.php:1098
 msgid "E-mail "
 msgstr "Email "
 
 #: ../library/functions/template-functions.php:326
-#: ../library/functions/template-functions.php:710
-#: ../library/functions/template-functions.php:1098
+#: ../library/functions/template-functions.php:716
+#: ../library/functions/template-functions.php:1104
 msgid "Address "
 msgstr "Endereço "
 
 #: ../library/functions/template-functions.php:331
-#: ../library/functions/template-functions.php:1103
+#: ../library/functions/template-functions.php:1109
 msgid "Phones "
 msgstr "Telefones "
 
 #: ../library/functions/template-functions.php:341
-#: ../library/functions/template-functions.php:734
-#: ../library/functions/template-functions.php:1112
+#: ../library/functions/template-functions.php:740
+#: ../library/functions/template-functions.php:1118
 msgid "Website "
 msgstr "Website "
 
-#: ../library/functions/template-functions.php:349
-#: ../library/functions/template-functions.php:743
+#: ../library/functions/template-functions.php:355
+#: ../library/functions/template-functions.php:749
 msgid "Social Networks "
 msgstr "Redes sociais"
 
-#: ../library/functions/template-functions.php:354
+#: ../library/functions/template-functions.php:360
 msgid "Easiest way<br/ >to Contact "
 msgstr "Forma mais fácil<br />de contatar "
 
-#: ../library/functions/template-functions.php:387
-#: ../library/functions/template-functions.php:1257
+#: ../library/functions/template-functions.php:393
+#: ../library/functions/template-functions.php:1263
 msgid "Export vCard"
 msgstr "Exportar vCard"
 
-#: ../library/functions/template-functions.php:400
-#: ../library/functions/template-functions.php:1271
+#: ../library/functions/template-functions.php:406
+#: ../library/functions/template-functions.php:1277
 msgid "Map"
 msgstr "Mapa"
 
-#: ../library/functions/template-functions.php:408
-#: ../library/functions/template-functions.php:1279
+#: ../library/functions/template-functions.php:414
+#: ../library/functions/template-functions.php:1285
 #: ../library/setup/setup-fields.php:63 ../library/setup/setup-fields.php:551
 msgid "City"
 msgstr "Cidade"
 
-#: ../library/functions/template-functions.php:409
-#: ../library/functions/template-functions.php:1280
+#: ../library/functions/template-functions.php:415
+#: ../library/functions/template-functions.php:1286
 #: ../library/setup/setup-fields.php:552
 msgid "State"
 msgstr "Estado"
 
-#: ../library/functions/template-functions.php:410
-#: ../library/functions/template-functions.php:1281
+#: ../library/functions/template-functions.php:416
+#: ../library/functions/template-functions.php:1287
 #: ../library/setup/setup-fields.php:553
 msgid "Zip"
 msgstr "CEP"
 
-#: ../library/functions/template-functions.php:411
-#: ../library/functions/template-functions.php:1282
+#: ../library/functions/template-functions.php:417
+#: ../library/functions/template-functions.php:1288
 #: ../library/setup/setup-fields.php:554
 msgid "Country"
 msgstr "País"
 
-#: ../library/functions/template-functions.php:420
-#: ../library/functions/template-functions.php:1294
+#: ../library/functions/template-functions.php:426
+#: ../library/functions/template-functions.php:1300
 #: ../library/setup/setup-fields.php:111 ../library/setup/setup-fields.php:302
 msgid "Mobile"
 msgstr "Celular"
 
-#: ../library/functions/template-functions.php:421
+#: ../library/functions/template-functions.php:427
 #: ../library/setup/setup-fields.php:111 ../library/widgets/pages.php:85
 msgid "Home"
 msgstr "Home"
 
-#: ../library/functions/template-functions.php:422
-#: ../library/functions/template-functions.php:1295
+#: ../library/functions/template-functions.php:428
+#: ../library/functions/template-functions.php:1301
 #: ../library/setup/setup-fields.php:111 ../library/setup/setup-fields.php:302
 msgid "Work"
 msgstr "Trabalho"
 
-#: ../library/functions/template-functions.php:423
-#: ../library/functions/template-functions.php:1296
+#: ../library/functions/template-functions.php:429
+#: ../library/functions/template-functions.php:1302
 #: ../library/setup/setup-fields.php:111 ../library/setup/setup-fields.php:302
 msgid "Fax"
 msgstr "Fax"
 
-#: ../library/functions/template-functions.php:424
-#: ../library/functions/template-functions.php:1297
+#: ../library/functions/template-functions.php:430
+#: ../library/functions/template-functions.php:1303
 #: ../library/setup/setup-fields.php:111 ../library/setup/setup-fields.php:302
 msgid "Other"
 msgstr "Outro"
 
-#: ../library/functions/template-functions.php:431
-#: ../library/functions/template-functions.php:1305
+#: ../library/functions/template-functions.php:437
+#: ../library/functions/template-functions.php:1311
 #: ../library/setup/setup-fields.php:139 ../library/setup/setup-fields.php:330
 msgid "Yahoo"
 msgstr "Yahoo"
 
-#: ../library/functions/template-functions.php:432
-#: ../library/functions/template-functions.php:1306
+#: ../library/functions/template-functions.php:438
+#: ../library/functions/template-functions.php:1312
 #: ../library/setup/setup-fields.php:139 ../library/setup/setup-fields.php:330
 msgid "MSN"
 msgstr "MSN"
 
-#: ../library/functions/template-functions.php:433
-#: ../library/functions/template-functions.php:1307
+#: ../library/functions/template-functions.php:439
+#: ../library/functions/template-functions.php:1313
 msgid "AIM"
 msgstr "AIM"
 
-#: ../library/functions/template-functions.php:434
-#: ../library/functions/template-functions.php:1308
+#: ../library/functions/template-functions.php:440
+#: ../library/functions/template-functions.php:1314
 msgid "GTalk"
 msgstr "GTalk"
 
-#: ../library/functions/template-functions.php:435
+#: ../library/functions/template-functions.php:441
 #: ../library/setup/setup-fields.php:139 ../library/setup/setup-fields.php:330
 msgid "Skype"
 msgstr "Skype"
 
-#: ../library/functions/template-functions.php:436
-#: ../library/functions/template-functions.php:1309
+#: ../library/functions/template-functions.php:442
+#: ../library/functions/template-functions.php:1315
 #: ../library/setup/setup-fields.php:157 ../library/setup/setup-fields.php:348
 msgid "Twitter"
 msgstr "Twitter"
 
-#: ../library/functions/template-functions.php:440
-#: ../library/functions/template-functions.php:1314
+#: ../library/functions/template-functions.php:446
+#: ../library/functions/template-functions.php:1320
 #: ../library/setup/setup-fields.php:129 ../library/setup/setup-fields.php:320
 msgid "Website"
 msgstr "Website"
 
-#: ../library/functions/template-functions.php:443
-#: ../library/functions/template-functions.php:1317
+#: ../library/functions/template-functions.php:449
+#: ../library/functions/template-functions.php:1323
 #: ../library/setup/setup-fields.php:236 ../library/setup/setup-fields.php:401
 #: ../library/widgets/tags.php:18 ../library/widgets/tags.php:94
 msgid "Tags"
 msgstr "Tags"
 
-#: ../library/functions/template-functions.php:583
+#: ../library/functions/template-functions.php:589
 msgid "Year of Creation "
 msgstr "Ano de criação"
 
-#: ../library/functions/template-functions.php:585
+#: ../library/functions/template-functions.php:591
 msgid "Year in which the institution was created"
 msgstr "Ano de criação da instituição"
 
-#: ../library/functions/template-functions.php:588
+#: ../library/functions/template-functions.php:594
 msgid "Legally Constituted? "
 msgstr "Legalmente constituído?"
 
-#: ../library/functions/template-functions.php:715
+#: ../library/functions/template-functions.php:721
 msgid "City "
 msgstr "Cidade "
 
-#: ../library/functions/template-functions.php:725
+#: ../library/functions/template-functions.php:731
 msgid "Phone "
 msgstr "Telefone "
 
-#: ../library/functions/template-functions.php:751
+#: ../library/functions/template-functions.php:757
 msgid "Easiest way<br />to Contact "
 msgstr "Forma mais fácil<br />de contatar "
 
-#: ../library/functions/template-functions.php:768
+#: ../library/functions/template-functions.php:774
 msgid "Institutional Characterization"
 msgstr "Carecterização Institucional"
 
-#: ../library/functions/template-functions.php:783
+#: ../library/functions/template-functions.php:789
 msgid "Areas of Interest"
 msgstr "Áreas de Interesse"
 
-#: ../library/functions/template-functions.php:801
+#: ../library/functions/template-functions.php:807
 msgid "Scope of Practice"
 msgstr "Abrangência da Atuação"
 
-#: ../library/functions/template-functions.php:817
+#: ../library/functions/template-functions.php:823
 msgid "Spaces of Participation"
 msgstr "Espaços de Participação"
 
-#: ../library/functions/template-functions.php:836
+#: ../library/functions/template-functions.php:842
 msgid "Social and Environmental Impacts"
 msgstr "Impactos Socioambientais"
 
-#: ../library/functions/template-functions.php:855
+#: ../library/functions/template-functions.php:861
 msgid ""
 "You are in conflict with large <br /> projects and / or protected areas? "
 msgstr ""
 "Encontra-se em situação de conflito com grandes projetos e/ou áreas de "
 "proteção ambiental? "
 
-#: ../library/functions/template-functions.php:861
-#: ../library/functions/template-functions.php:894
-#: ../library/functions/template-functions.php:934
-#: ../library/functions/template-functions.php:955
+#: ../library/functions/template-functions.php:867
+#: ../library/functions/template-functions.php:900
+#: ../library/functions/template-functions.php:940
+#: ../library/functions/template-functions.php:961
 msgid "Yes"
 msgstr "Sim"
 
-#: ../library/functions/template-functions.php:863
-#: ../library/functions/template-functions.php:896
-#: ../library/functions/template-functions.php:936
-#: ../library/functions/template-functions.php:957
+#: ../library/functions/template-functions.php:869
+#: ../library/functions/template-functions.php:902
+#: ../library/functions/template-functions.php:942
+#: ../library/functions/template-functions.php:963
 msgid "-"
 msgstr ""
 
-#: ../library/functions/template-functions.php:870
+#: ../library/functions/template-functions.php:876
 msgid "Which Project?"
 msgstr "Qual projeto?"
 
-#: ../library/functions/template-functions.php:876
+#: ../library/functions/template-functions.php:882
 msgid "Since when does it occur?"
 msgstr "Desde quando isso ocorre?"
 
-#: ../library/functions/template-functions.php:882
+#: ../library/functions/template-functions.php:888
 msgid "The case was taken to some instance?"
 msgstr "O caso foi levado a algum órgão / instancia?"
 
-#: ../library/functions/template-functions.php:888
+#: ../library/functions/template-functions.php:894
 msgid "The situation was equated?"
 msgstr "A situação foi equacionada?"
 
-#: ../library/functions/template-functions.php:903
+#: ../library/functions/template-functions.php:909
 msgid "Other comments on the case in question"
 msgstr "Outros comentários sobre o caso em questão"
 
-#: ../library/functions/template-functions.php:915
+#: ../library/functions/template-functions.php:921
 msgid "Relationship with Litoral Sustentável project"
 msgstr "Relação com Projeto Litoral Sustentável"
 
-#: ../library/functions/template-functions.php:928
+#: ../library/functions/template-functions.php:934
 msgid "Participated in any event the Project?"
 msgstr "O projeto participou de algum evento?"
 
-#: ../library/functions/template-functions.php:943
+#: ../library/functions/template-functions.php:949
 msgid "Locale"
 msgstr "Localidade"
 
-#: ../library/functions/template-functions.php:949
+#: ../library/functions/template-functions.php:955
 msgid "Has supported / released the project?"
 msgstr "Tem apoiado / divulgado o projeto?"
 
-#: ../library/functions/template-functions.php:964
+#: ../library/functions/template-functions.php:970
 msgid "Have a history of conflict with the project? <br /> What reason?"
 msgstr "O projeto possui histórico conflituoso? <br /> Por que?"
 
-#: ../library/functions/template-functions.php:1119
+#: ../library/functions/template-functions.php:1125
 msgid "Easiest way<br />to contact "
-msgstr "Easiest way<br />to contact "
+msgstr "Forma mais fácil<br />de contatar "
 
-#: ../library/functions/template-functions.php:1131
+#: ../library/functions/template-functions.php:1137
 msgid "Acting "
 msgstr "Atuação "
 
-#: ../library/functions/template-functions.php:1136
+#: ../library/functions/template-functions.php:1142
 msgid "Interests "
 msgstr "Interesses "
 
-#: ../library/functions/template-functions.php:1141
+#: ../library/functions/template-functions.php:1147
 msgid "Participation "
 msgstr "Participação"
 
-#: ../library/functions/template-functions.php:1146
+#: ../library/functions/template-functions.php:1152
 msgid "Relationship with Litoral Sustentável project "
 msgstr "Relação com Projeto Litoral Sustentável"
 
-#: ../library/functions/template-functions.php:1150
+#: ../library/functions/template-functions.php:1156
 msgid "Participated in any event the Project? "
 msgstr "O projeto participou de algum evento?"
 
-#: ../library/functions/template-functions.php:1155
+#: ../library/functions/template-functions.php:1161
 msgid "Has supported / released the project? "
 msgstr "Tem apoiado / divulgado o projeto? "
 
-#: ../library/functions/template-functions.php:1182
+#: ../library/functions/template-functions.php:1188
 msgid "Role"
 msgstr "Cargo"
 
-#: ../library/functions/template-functions.php:1183
+#: ../library/functions/template-functions.php:1189
 #: ../library/setup/setup-fields.php:116 ../library/setup/setup-fields.php:307
 msgid "Phone"
 msgstr "Telefone"
 
-#: ../library/functions/template-functions.php:1184
+#: ../library/functions/template-functions.php:1190
 #, fuzzy
 msgid "E-mail"
 msgstr "Email"
 
-#: ../library/functions/template-functions.php:1530
+#: ../library/functions/template-functions.php:1536
 msgid "Page "
 msgstr "Página "
 
-#: ../library/functions/template-functions.php:1581
+#: ../library/functions/template-functions.php:1587
 msgid "No categories"
 msgstr "Sem Categorias"
 
-#: ../library/functions/template-functions.php:1589
+#: ../library/functions/template-functions.php:1595
 #: ../library/widgets/categories.php:18 ../library/widgets/categories.php:113
 msgid "Categories"
 msgstr "Categorias"
