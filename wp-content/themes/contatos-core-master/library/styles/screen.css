@@ -418,6 +418,7 @@ h2.page-title-light{
     border-radius: 5px;
     color: #444;
     font-size: 15px;
+	padding: 5px 0 5px 10px;
 }
 
 .form-outros {
@@ -909,7 +910,7 @@ select.resposta-uf {
 }
 
 .resposta-textarea {
-	max-width: 300px;
+	max-width: 280px;
 }
 
 #rolo_contact_telefone_alt, #rolo_company_telefone_alt {
