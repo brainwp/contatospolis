@@ -16,8 +16,8 @@ function rolo_post_order($query) {
 
 	if( $query->is_main_query() ) {
 		
-		$query->query_vars['orderby'] = 'title';
-		$query->query_vars['order'] = 'ASC';
+		$query->query_vars['orderby'] = 'date';
+		$query->query_vars['order'] = 'DESC';
 
 	}
 }
