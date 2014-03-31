@@ -20,6 +20,19 @@
 			
 		</div><!-- #colophon -->
 	</div><!-- #footer -->
+
+	<div class="menu-municipios">
+		<h2>Busca Direta</h2>
+		<ul>
+			<li><a href="<?php echo home_url('/?rolo_city=sao_paulo'); ?>">São Paulo</a></li>
+			<li><a href="<?php echo home_url('/?rolo_city=sao_paulo'); ?>">São Paulo</a></li>
+			<li><a href="<?php echo home_url('/?rolo_city=sao_paulo'); ?>">São Paulo</a></li>
+			<li><a href="<?php echo home_url('/?rolo_city=sao_paulo'); ?>">São Paulo</a></li>
+			<li><a href="<?php echo home_url('/'); ?>">Peruíbe</a></li>
+			<li><a href="<?php echo home_url('/'); ?>">Peruíbe</a></li>
+		</ul>
+	</div><!-- .menu-municipios -->
+
 	<?php rolopress_after_footer(); // After footer hook ?>
 	
 <?php wp_footer(); // WordPress footer hook ?>
