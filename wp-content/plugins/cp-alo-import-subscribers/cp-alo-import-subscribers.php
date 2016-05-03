@@ -35,14 +35,18 @@ function cp_alo_ajax_create_mailing() {
 
 		// Reune infos
 		$sub = get_post($r);
+		$email = get_post_meta($r, 'rolo_'.$type.'_email', true);
 		$contato = has_term( 'Contact', 'type', $r );
 		if($contato) { $type = 'contact'; } else { $type = 'company'; }
-		$email = get_post_meta($r, 'rolo_'.$type.'_email', true);
 
 		// Cria o novo assinante
 		$subs = array(
 					'name' => $sub->post_title,
 					'email' => $email
+					//,
+					//'join_date' => date('Y-m-d G:i:s'),
+					//'active' => 1,
+					//'lang' => 'pt'
 				);
 
 		// Pega o id pelo email

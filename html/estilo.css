@@ -1,0 +1,178 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.voltar {
+    border: 2px solid #CC3300;
+    height: 193px;
+    left: 49px;
+    position: absolute;
+    top: 35px;
+    width: 150px;
+}
+
+.menu-projetos {
+    border: 2px solid #99FF00;
+    height: 50px;
+    left: 640px;
+    position: absolute;
+    top: 259px;
+    width: 100px;
+}
+.menu-institucional {
+    border: 2px solid #99FF00;
+    height: 50px;
+    left: 147px;
+    position: absolute;
+    top: 259px;
+    width: 110px;
+}
+
+/* HOME
+============================================================ */
+
+.home {
+	background: url(imagens/home.jpg) center top no-repeat;	
+}
+
+#home {
+	min-width: 960px;
+	max-width: 1280px;
+	height: 2078px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+
+#home .link {
+    border: 2px solid #99FF00;
+    height: 290px;
+    position: absolute;
+    right: 0;
+    top: 702px;
+    width: 251px;
+}
+#home .link a {
+    height: 290px;
+    position: absolute;
+    width: 251px;
+}
+
+/* PROJETOS
+============================================================ */
+
+.projetos {
+	background: url(imagens/projetos.jpg) center top no-repeat;	
+}
+
+#projetos {
+	min-width: 960px;
+	max-width: 1280px;
+	height: 2766px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+/* INSTITUCIONAL
+============================================================ */
+
+.institucional {
+	background: url(imagens/institucional.jpg) center top no-repeat;	
+}
+
+#institucional {
+	min-width: 960px;
+	max-width: 1280px;
+	height: 1475px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+
+.home-menu-institucional {
+    border: 2px solid #99FF00;
+    height: 50px;
+    left: 414px;
+    position: absolute;
+    top: 259px;
+    width: 110px;
+}
+
+
+/* POLITICAS HOME
+============================================================ */
+.politicas-home {
+	background: url(imagens/politicas-home.jpg) center top no-repeat;	
+}
+
+#politicas-home {
+	min-width: 960px;
+	height: 2447px;
+	overflow: hidden;
+	margin: 0 auto;
+	max-width: 1280px;
+	position: relative;
+}
+
+#politicas-home a.link1 {
+    border: 2px solid #99FF00;
+    height: 50px;
+    left: 37px;
+    position: absolute;
+    top: 1319px;
+    width: 292px;
+}
+
+#politicas-home a.link2 {
+    border: 2px solid #99FF00;
+    height: 275px;
+    left: 78px;
+    position: absolute;
+    top: 1397px;
+    width: 203px;
+}
+
+/* POLITICAS PUBLICACOES
+============================================================ */
+.politicas-publicacoes {
+	background: url(imagens/politicas-publicacoes.jpg) center top no-repeat;	
+}
+
+#politicas-publicacoes {
+	min-width: 960px;
+	max-width: 1280px;
+	height: 2820px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+
+#politicas-publicacoes .link {
+    border: 2px solid #99FF00;
+    height: 366px;
+    left: 35px;
+    position: absolute;
+    top: 1188px;
+    width: 296px;
+}
+
+/* POLITICAS PUBLICACOES SINGLE
+============================================================ */
+.politicas-publicacoes-single {
+	background: url(imagens/politicas-publicacoes-single.jpg) center top no-repeat;	
+}
+
+#politicas-publicacoes-single {
+	min-width: 960px;
+	max-width: 1280px;
+	height: 1817px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
