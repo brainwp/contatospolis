@@ -173,12 +173,15 @@ jQuery(document).ready(function() {
 
     });
 
-    jQuery('input.rolo_relacao.check').on('change', function() {
+    jQuery('input.rolo_relacao_check').on('change', function() {
+        console.log( 'wwww');
 
-        if (jQuery(".rolo_relacao.check:checked").length == 1) {
+        if( jQuery( this ).is( ':checked' ) ) {
             jQuery('.input_relacao').removeClass('out');
+            jQuery( '.rolo_relacao.resposta.vazio' ).hide( 800 );
         } else {
             jQuery('.input_relacao').not('.button').addClass('out');
+            jQuery( '.rolo_relacao.resposta.vazio' ).show( 800 );
         }
 
     });
